@@ -1,0 +1,47 @@
+/*************************************************************************************************************
+
+                                    ESTILOS DE LA PLANTILLA DE ADMINISTRACION
+    
+        ARrchivo CSS para los estilos de la plantilla usada para la parte de administración (AdminLTE) 
+
+
+******************************************+*++**************************************************************++*/
+
+@import '/css/estilosGenerales';
+
+
+aside{
+    background-color: black !important;
+}
+
+.brand-text{
+    color: white !important;
+}
+
+.nav-item .active{
+    background-color: transparent !important;
+    color: white !important;
+    font-weight: bold;
+    box-shadow: 0px 0px 0px transparent !important;
+    border-right: 2px solid red;
+    border-radius: unset;    
+}
+
+.content-wrapper {
+    background-color: #EFEFEF !important;    
+}
+
+
+.main-header{
+    background: black; /* no se que color poner */
+    border-bottom: 1px solid transparent;
+    color: white;
+}
+
+.nav-link{
+    color: white !important;
+}
+
+
+
+
