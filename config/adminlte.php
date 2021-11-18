@@ -47,7 +47,7 @@ return [
 
     'logo' => '<b>QR</b>Celia',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo_img_class' => 'brand-image elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'AdminLTE',
@@ -245,14 +245,14 @@ return [
         [
             'text'        => 'Ajustes',
             'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'fa-solid fa-gear fa-spin',
             'label_color' => 'success',
         ],
 
         [
             'text'        => 'Personalización',
             'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'fa-solid fa-pen-ruler',
             'label_color' => 'success',
         ],
 
@@ -260,25 +260,26 @@ return [
         [
             'text' => 'Contenido',
             'url'  => 'admin',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fa-solid fa-file-lines',
+            'url'  => 'admin/contenido',
         ],
         [
             'text' => 'Comentarios',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fa-solid fa-comment-dots',
         ],
 
         [
             'text' => 'Categorias',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fa-solid fa-tags',
         ],
 
         ['header' => 'AJUSTES DE USUARIOS'],
         [
             'text' => 'Usuarios',
             'url'  => 'admin',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-users',
         ],
         [
             'text' => 'Roles y Permisos',
@@ -286,23 +287,6 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         
-
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
     ],
 
     /*

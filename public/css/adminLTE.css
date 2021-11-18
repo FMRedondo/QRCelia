@@ -42,6 +42,11 @@ aside{
     color: white !important;
 }
 
+aside span b{
+    color: red;
+    font-weight: bolder;
+}
+
 
 
 
