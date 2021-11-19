@@ -258,10 +258,15 @@ return [
 
         ['header' => 'AJUSTES DE CONTENIDO'],
         [
-            'text' => 'Contenido',
+            'text' => 'Puntos de interes',
             'url'  => 'admin',
             'icon' => 'fa-solid fa-file-lines',
             'url'  => 'admin/contenido',
+        ],
+        [
+            'text' => 'Recursos',
+            'url'  => 'admin/settings',
+            'icon' => 'fa-solid fa-comment-dots',
         ],
         [
             'text' => 'Comentarios',

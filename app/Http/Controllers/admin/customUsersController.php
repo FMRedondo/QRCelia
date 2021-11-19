@@ -22,7 +22,6 @@ class customUsersController extends Controller
         $id = $_POST['id'];
         $result = customUsersModel::getUser($id);
         return $result;
-
     }
 
     public function deleteUser(){
