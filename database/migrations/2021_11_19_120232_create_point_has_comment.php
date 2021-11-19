@@ -17,7 +17,7 @@ class CreatePointHasComment extends Migration
             $table -> id();
             $table -> timestamps();
             $table -> string('idPoint');
-            $table -> string('idCommet');
+            $table -> string('idComment');
         });
     }
 
