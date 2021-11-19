@@ -25,15 +25,18 @@ class TypeController extends Controller
     public function getTypes(){
         $result = TypeModel::getTypes();
         return $result;
+
     }
 
     public function getType(){
         $id = $_POST['id'];
+        $result = TypeModel::getType($id);
         return $result;
     }
 
     public function searchType(){
-        $seach = $_POST['search'];
+        $search = $_POST['search'];
+        $result = TypeModel::searchType($search);
         return $result;
     }
 
@@ -41,6 +44,7 @@ class TypeController extends Controller
         $id = $_POST['id'];
         $field = $_POST['field'];
         $value = $_POST['value'];
-
+        
+        TypeModel::updateType($id,$field,$value);
     }
 }
