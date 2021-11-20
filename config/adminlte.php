@@ -270,7 +270,7 @@ return [
         ],
         [
             'text' => 'Comentarios',
-            'url'  => 'admin/settings',
+            'url'  => 'admin/comments',
             'icon' => 'fa-solid fa-comment-dots',
         ],
 

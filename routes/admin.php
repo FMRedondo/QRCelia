@@ -10,3 +10,7 @@ Route::get('/', function () {
 Route::get('/contenido', function () {
     return view('admin/contenido');
 });
+
+Route::get('/comments', function () {
+    return view('admin/comments');
+});
