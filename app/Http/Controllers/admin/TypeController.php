@@ -8,10 +8,6 @@ use App\Models\admin\TypeModel;
 
 class TypeController extends Controller
 {
-    public function index(){
-        //
-    }
-
     public function addType(){
         $name = $_POST['name'];
         TypeModel::addType($name);
@@ -25,7 +21,6 @@ class TypeController extends Controller
     public function getTypes(){
         $result = TypeModel::getTypes();
         return $result;
-
     }
 
     public function getType(){

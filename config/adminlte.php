@@ -244,14 +244,14 @@ return [
 
         [
             'text'        => 'Ajustes',
-            'url'         => 'admin/pages',
-            'icon'        => 'fa-solid fa-gear fa-spin',
+            'url'         => 'admin/ajustes',
+            'icon'        => 'fa-solid fa-gear',
             'label_color' => 'success',
         ],
 
         [
             'text'        => 'Personalización',
-            'url'         => 'admin/pages',
+            'url'         => 'admin/personalizar',
             'icon'        => 'fa-solid fa-pen-ruler',
             'label_color' => 'success',
         ],
@@ -264,31 +264,30 @@ return [
             'url'  => 'admin/contenido',
         ],
         [
+            'text' => 'Categorias',
+            'url'  => 'admin/categorias',
+            'icon' => 'fa-solid fa-tags',
+        ],
+        [
             'text' => 'Recursos',
-            'url'  => 'admin/settings',
-            'icon' => 'fa-solid fa-comment-dots',
+            'url'  => 'admin/recursos',
+            'icon' => 'fa-solid fa-image',
         ],
         [
             'text' => 'Comentarios',
-            'url'  => 'admin/comments',
+            'url'  => 'admin/comentarios',
             'icon' => 'fa-solid fa-comment-dots',
-        ],
-
-        [
-            'text' => 'Categorias',
-            'url'  => 'admin/settings',
-            'icon' => 'fa-solid fa-tags',
         ],
 
         ['header' => 'AJUSTES DE USUARIOS'],
         [
             'text' => 'Usuarios',
-            'url'  => 'admin',
+            'url'  => 'admin/usuarios',
             'icon' => 'fas fa-fw fa-users',
         ],
         [
             'text' => 'Roles y Permisos',
-            'url'  => 'admin/settings',
+            'url'  => 'admin/roles',
             'icon' => 'fas fa-fw fa-lock',
         ],
         
