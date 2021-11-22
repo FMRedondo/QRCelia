@@ -20,7 +20,7 @@ class TypeController extends Controller
 
     public function getTypes(){
         $result = TypeModel::getTypes();
-        return $result;
+        return response()->json($result);
     }
 
     public function getType(){
