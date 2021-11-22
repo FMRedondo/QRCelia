@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\CommentController;
+use App\Http\Controllers\admin\TypeController;
 
 Route::get('/', function () {
     return view('admin/index');
@@ -17,10 +18,6 @@ Route::get('/personalizar', function () {
 
 Route::get('/contenido', function () {
     return view('admin/contenido');
-});
-
-Route::get('/categorias', function () {
-    return view('admin/categorias');
 });
 
 Route::get('/recursos', function () {
@@ -40,5 +37,13 @@ Route::get('/roles', function () {
     return view('admin/roles');
 });
 
+//  RUTAS DE COMENTARIOS
 Route::get('/comentarios', [CommentController::class, 'index'])-> name('show.viewComments');
 Route::get('/comentarios/getComments', [CommentController::class, 'getComments'])-> name('show.comments');
+
+//  RUTAS DE CATEGORIAS DE PUNTOS
+Route::get('/categorias', [TypeController::class, 'index'])-> name('show.viewTypes');
+Route::get('/categorias/getTypes', [TypeController::class, 'getTypes'])-> name('show.types');
+Route::get('/categorias/getTypes', [TypeController::class, 'getTypes'])-> name('show.types');
+Route::get('/categorias/getTypes', [TypeController::class, 'getTypes'])-> name('show.types');
+Route::get('/categorias/getTypes', [TypeController::class, 'getTypes'])-> name('show.types');
