@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\admin\CommentController;
 
 Route::get('/', function () {
     return view('admin/index');
@@ -31,9 +31,6 @@ Route::get('/recursos', function () {
     return view('admin/recursos');
 });
 
-Route::get('/comentarios', function () {
-    return view('admin/comentarios');
-});
 
 Route::get('/usuarios', function () {
     return view('admin/usuarios');
@@ -42,3 +39,6 @@ Route::get('/usuarios', function () {
 Route::get('/roles', function () {
     return view('admin/roles');
 });
+
+Route::get('/comentarios', [CommentController::class, 'index'])-> name('show.viewComments');
+Route::get('/comentarios/getComments', [CommentController::class, 'getComments'])-> name('show.comments');

@@ -13,7 +13,7 @@ class CommentController extends Controller
     //
 
     public function index(){
-
+        return view('admin/comentarios');
     }
 
     public function addComment(){
@@ -28,7 +28,9 @@ class CommentController extends Controller
 
     public function getComments(){
         $result = CommentModel::getComments();
-        return $result;
+
+
+        return response() -> json($result);
     }
 
     public function getComment(){
