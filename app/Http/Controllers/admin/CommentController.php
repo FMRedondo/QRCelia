@@ -28,8 +28,6 @@ class CommentController extends Controller
 
     public function getComments(){
         $result = CommentModel::getComments();
-
-
         return response() -> json($result);
     }
 
@@ -40,9 +38,10 @@ class CommentController extends Controller
     }
 
     public function searchcomments(){
-        $seach = $_POST['search'];
-        $result = CommentModel::searchComments($seach);
-        return $result;
+        $search = $_POST['search'];
+        $_token = $_POST['_token'];
+        $result = CommentModel::searchComments($search);
+        return response() -> json($result);
     }
 
     public function updateComment(){

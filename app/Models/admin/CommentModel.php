@@ -34,7 +34,7 @@ class CommentModel extends Model
     }
 
     public static function searchComments($search){
-        $sql = "SELECT * FROM comments WHERE (name LIKE '%$search%')";
+        $sql = "SELECT * FROM comments WHERE (content LIKE '%$search%')";
         $result = DB::update($sql);
         return $result;
     }
