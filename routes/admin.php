@@ -44,3 +44,5 @@ Route::post('/comentarios/searchcomments', [CommentController::class, 'searchcom
 
 Route::get('/categorias', [TypeController::class, 'index'])-> name('show.viewTypes');
 Route::get('/categorias/getTypes', [TypeController::class, 'getTypes'])-> name('show.types');
+Route::post('/categorias/addType', [TypeController::class, 'addType'])-> name('add.type');
+Route::post('/categorias/deleteType', [TypeController::class, 'deleteType'])-> name('delete.type');

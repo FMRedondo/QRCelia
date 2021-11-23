@@ -16,5 +16,30 @@
 	padding-bottom: 0;
 }
 
+.error-font{
+    font-weight: 800;
+}
+
+.addTypePanel, .delTypePanel{
+    display: none;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    margin:0 auto;
+    top: 20%;
+    left: 25%;
+    width: 60% !important;
+    background-color: white;
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.5); 
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.5);
+    z-index: 9999;
+    padding:1em;
+}
+
+.alignCloseButton{
+	display: flex;
+	justify-content: flex-end;
+}
+
 @media (max-width: 795px) {
 }

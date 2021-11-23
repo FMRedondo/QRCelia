@@ -33,13 +33,13 @@ class TypeModel extends Model
     }
 
     public static function searchType($search){
-        $sql = "SELECT * FROM types WHERE (id = $search )";
+        $sql = "SELECT * FROM types WHERE (name LIKE '%$search%' )";
         $result = DB::select($sql);
         return $result;
     }
 
     public static function addType($name){
-        $sql = "INSERT INTO types (name) VALUES ($name)";
+        $sql = "INSERT INTO types (name) VALUES ('$name')";
         DB::insert($sql);
         $id = DB::getPdo()->lastInsertId();
         return $id;
