@@ -1,0 +1,75 @@
+.logoLogin{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.inputLogin{
+    border: none;
+    background-color: transparent !important;
+    border-bottom: 1px solid #042351 !important;
+    padding: 0.5em !important;
+    border-radius: 0px !important;
+    outline: none;
+    color: black;
+}
+
+.inputLogin::placeholder{
+    color: black;
+}
+
+.inputLogin:focus{
+    border-bottom: 1px solid #042351 !important;
+    background: transparent !important;
+    box-shadow: none;
+    outline: none;
+}
+
+.botonIniciar{
+    background: #042351 !important;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center !important;
+    justify-content: center;
+}
+
+.bg-white{
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.centrarBotones{
+    display: flex !important;
+    justify-content: space-around !important;
+}
+
+.min-h-screen{
+    position: relative;
+    z-index: 10;
+    background-color: transparent;
+    margin: 0 auto;
+}
+
+.imagenFondo{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: block;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 9;
+    overflow: hidden;
+    opacity: 50%;
+    display: flex;
+    align-items: center;
+    background-image: url("../../img/celia.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+label{
+    color: black !important;
+    font-weight: bolder !important;
+}

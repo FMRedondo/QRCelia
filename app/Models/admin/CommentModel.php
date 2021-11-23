@@ -35,7 +35,7 @@ class CommentModel extends Model
 
     public static function searchComments($search){
         $sql = "SELECT * FROM comments WHERE (content LIKE '%$search%')";
-        $result = DB::update($sql);
+        $result = DB::select($sql);
         return $result;
     }
 
@@ -43,7 +43,5 @@ class CommentModel extends Model
         $sql = "INSERT INTO comments (content) VALUE($content)";
         DB::insert($sql);
     }
-     
-
 
 }
