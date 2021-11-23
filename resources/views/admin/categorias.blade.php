@@ -8,6 +8,25 @@
 
 @section('content')
 <section class="container mx-auto p-6 font-mono">
+  <!-- Bara de arriba -->
+  <div class="d-flex mb-3 flex-row row">
+    <!-- Barra para buscar -->
+    <div class="input-group col-10 searchBar">
+      <input type="text" class="form-control searchText" placeholder="Buscar...">
+      <div class="input-group-append">
+        <span class="input-group-text" class="searchButton">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </span>
+      </div>
+    </div>
+    <!-- Boton de aniadir -->
+    <div class="input-group col-2">
+    <button type="button" class="btn btn-labeled btn-success">
+         <span class="btn-label"><i class="fa-solid fa-plus"></i></span>Añadir</button>
+    </div>
+  </div>
+
+  <!-- Tabla de datos -->
     <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
       <div class="w-full overflow-x-auto">
         <table class="w-full">
@@ -29,7 +48,6 @@
                         </div>
                         <div>
                         <p class="font-semibold text-black">Sufyan</p>
-                        <p class="text-xs text-gray-600">Categoria</p>
                         </div>
                     </div>
                     </td>
@@ -52,6 +70,7 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/adminLTE.css">
+    <link rel="stylesheet" href="/css/typesIndex.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 @stop

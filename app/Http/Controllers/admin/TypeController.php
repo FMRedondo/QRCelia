@@ -8,6 +8,10 @@ use App\Models\admin\TypeModel;
 
 class TypeController extends Controller
 {
+    public function index(){
+        return view('admin/categorias');
+    }
+
     public function addType(){
         $name = $_POST['name'];
         TypeModel::addType($name);
