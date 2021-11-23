@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8ac033623d62920166f6b747fe6e403b",
+    "content-hash": "4af2e9e7f9b339d3588dd3030c7e3d05",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -48,6 +48,75 @@
                 "source": "https://github.com/ColorlibHQ/AdminLTE/tree/v3.1.0"
             },
             "time": "2021-03-22T07:30:50+00:00"
+        },
+        {
+            "name": "amendozaaguiar/laraveles-spanish-for-jetstream",
+            "version": "1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/amendozaaguiar/laraveles-spanish-for-jetstream.git",
+                "reference": "7e7bed069a6f0868aa0995b36e4f7427ffc96ef9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/amendozaaguiar/laraveles-spanish-for-jetstream/zipball/7e7bed069a6f0868aa0995b36e4f7427ffc96ef9",
+                "reference": "7e7bed069a6f0868aa0995b36e4f7427ffc96ef9",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": ">=5.4.0",
+                "illuminate/support": ">=5.4.0",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.4|^4.0",
+                "phpunit/phpunit": "^5.6|^6.3|^7.0|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laraveles\\Spanish\\SpanishServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laraveles\\Spanish\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anderson Mendoza"
+                },
+                {
+                    "name": "Israel Ortuño",
+                    "email": "ai.ortuno@gmail.com"
+                },
+                {
+                    "name": "Cesar Garcia",
+                    "email": "cesargb@gmail.com",
+                    "homepage": "https://github.com/cesargb",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Conjunto de traducciones en español para Laravel con Jetstream",
+            "homepage": "https://github.com/amendozaaguiar/laraveles-spanish-for-jetstream",
+            "keywords": [
+                "jetstream",
+                "laravel",
+                "laraveles",
+                "spanish",
+                "traduccion"
+            ],
+            "support": {
+                "source": "https://github.com/amendozaaguiar/laraveles-spanish-for-jetstream/tree/1.6.0"
+            },
+            "time": "2021-01-28T00:39:48+00:00"
         },
         {
             "name": "asm89/stack-cors",

@@ -6,205 +6,79 @@
 // Mostrar una lista con todas las categorias
 $(document).ready(load)
 
+<<<<<<< HEAD
 function load() {
+=======
+function cargar() {
+>>>>>>> 9d076945577a2fe2989d9a63e8f2489999fa8103
     var params = []
     $.ajax({
         data: params,
         url: '/admin/categorias/getTypes',
-        dataType: 'JSON',
-        type: 'GET',
+        type: 'get',
 
         success: function (response) {
-            $("tbody").empty();
-            $(".loadingImage").remove();
-            response.forEach(function(data) {
-                if (data.created_at == null) 
-                    data.created_at = "No disponible"
+            $table = `
+                <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+                <div class="w-full overflow-x-auto">
+                    <table class="w-full">
+                    <thead>
+                        <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+                        <th class="px-4 py-3 text-center">Nombre</th>
+                        <th class="px-4 py-3 text-center">Fecha creacion</th>
+                        <th class="px-4 py-3 text-center">Ultima modificación</th>
+                        <th class="px-4 py-3 text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                    </tbody>
+                    </table>
+                </div>
+                </div>
+            `;
 
-                if (data.updated_at == null) 
+            $(".fa-spinner").remove();
+            $(".contenidoPrincipal").append($table);
+
+            response.forEach(function (data) {
+                if (data.updated_at == null) {
                     data.updated_at = "No disponible"
+                }
+                if (data.created_at == null) {
+                    data.created_at = "No disponible"
+                }
 
                 let tableContent = `
-                <tr class="text-gray-700 typesInfo#1">
-                    <td class="px-4 py-3 border">
-                    <div class="flex items-center text-sm">
-                        <div class="relative w-8 h-8 mr-3 rounded-full md:block">
-                        <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                        </div>
-                        <div>
-                        <p class="font-semibold text-black">${data.name}</p>
-                        </div>
-                    </div>
-                    </td>
-                    <td class="px-4 py-3 text-xs border">
-                        <span class="px-4 py-3 text-ms font-semibold">${data.created_at}</span>
-                    </td>
-                    <td class="px-4 py-3 text-xs border">
-                        <span class="px-4 py-3 text-ms font-semibold">${data.updated_at}</span>
-                    </td>
-                    <td class="px-4 py-3 text-sm border d-flex flex-row justify-content-around">
-                        <button type="button" class="btn btn-primary btnShowEditType" data-id='${data.id}'>Modificar</button>
-                        <button type="button" class="btn btn-danger btnDelType" data-id='${data.id}'>Eliminar</button>
-                    </td>
-                </tr>
+                    <tr class="text-gray-700 typesInfo#1">
+                        <td class="px-4 py-3 border">
+                            <div class="flex items-center text-sm">
+                                <div class="relative w-8 h-8 mr-3 rounded-full md:block">
+                                    <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true">
+                                    </div>
+                                 </div>
+                                <div>
+                                    <p class="font-semibold text-black">${data.name}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-4 py-3 text-xs border">
+                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> ${data.created_at} </span>
+                        </td>
+                        <td class="px-4 py-3 text-xs border">
+                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> ${data.updated_at} </span>
+                        </td>
+                        <td class="px-4 py-3 text-sm border d-flex flex-row justify-content-around">
+                            <button type="button" class="btn btn-primary btnShowEditType" data-id='${data.id}'>Modificar</button>
+                            <button type="button" class="btn btn-danger btnDelType" data-id='${data.id}'>Eliminar</button>
+                        </td>
+                    </tr>
                 `;
-
-                $(".tableContent").append(tableContent);
-            });
+                $("tbody").append(tableContent);
+            })
         },
 
         error: function (response){
-            console.log("Error en la petición");
+            console.log("Error en la peticion");
         }
     });
-
-    /*
-
-    // Buscar una categoría
-    $(".inputTypeSearch").keyup(searchType);
-        function searchType(){
-            var parametros = {
-                "function": 'searchType',
-                "busqueda": $(".inputTypeSearch").val(),
-            }
-
-            $.ajax({
-                data: parametros,
-                url: '',
-                type: 'post',
-
-                success: function (response) {
-                    $(".typesInfo").empty();
-                    $(".typesInfo").append(response);
-
-                    $(".btnDelType").click(delType);
-                    $(".btnShowEditType").click(showEditType);
-                },
-
-                error: function (response) {
-                    alert("error en la peticion");
-                }
-            });
-        }
-
-    // Añadir una nueva categoria
-    $('.btnAddType').click(function(){
-        $(".addTypePanel").toggle();
-        $(".addType ").click(addType);
-    });
-
-    // Funcion para añadir una nueva categoria de puntos
-    function addType(){
-        var typeName = $(".addTypeName").val();
-
-        var parametros = {
-                "name": typeName,
-            }
-
-            $.ajax({
-                data: parametros,
-                url: '',
-                type: 'post',
-                
-                success: function (response) {
-                    $(".typesInfo").empty();
-                    $(".typesInfo").append(response);
-                },
-
-                error: function (response) {
-                    alert("error en la peticion");
-                }
-            });
-    }
-
-    // Funcion para eliminar UNA categoria de puntos
-    $(".btnDelType").click(delType);
-    function delType(){
-        var id = $(this).data('id');
-        var parametros = {
-            "id": id,
-        }
-
-            $.ajax({
-                data: parametros,
-                url: 'categorias',
-                type: 'post',
-                
-                success: function (response) {
-                var kill = ".typesInfo#" + id;
-                    $(kill).remove();
-                },
-
-                error: function (response) {
-                    alert("error en la peticion");
-                }
-            });
-    }
-
-    // Mostrar ventana para editar una categoria
-    $(".btnShowEditType").click(showEditType);
-    function showEditType(){
-        var parametros = {
-            "function": '',
-            "id": $(this).data('id'),
-        }
-
-        $.ajax({
-                data: parametros,
-                url: '',
-                type: 'post',
-                
-                success: function (response) {
-                $(".editTypePanel").toggle();
-                $(".editTypeContent").empty();
-                $(".editTypeContent").append(response);
-                $(".editType").change(editType);
-
-                },
-
-                error: function (response) {
-                    alert("error en la peticion");
-                }
-        });
-
-    }
-
-
-    // Cerrar la ventana para editar una categoria
-    $(".closeEditType").click(closeEditTypeWindow);
-    function closeEditTypeWindow(){
-        $(".editTypePanel").toggle();
-    }
-
-    // Editar una categoria
-    function editType(){
-        var parametros = {
-            "funcion": '',
-            "id": $(this).data('id'),
-            "campo":$(this).data('campo'),
-            "valor": $(this).val(),
-        }
-
-        var ruta = "#" + $(this).data('id') + " ." + $(this).data('campo');
-        var valor = $(this).val();
-
-        $.ajax({
-                data: parametros,
-                url: '',
-                type: 'post',
-                
-                success: function (response) {
-                $(ruta).empty();
-                $(ruta).append(valor);
-
-                },
-
-                error: function (response) {
-                    alert("error en la peticion");
-                }
-        });
-    }
-    
-    */
-    
-    }
+}
