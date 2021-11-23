@@ -43,7 +43,5 @@ class CommentModel extends Model
         $sql = "INSERT INTO comments (content) VALUE($content)";
         DB::insert($sql);
     }
-     
-
 
 }
