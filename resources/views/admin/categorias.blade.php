@@ -3,14 +3,13 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Esta es la pagina de las categorias</h1>
 @stop
 
 @section('content')
 @csrf
 <section class="container mx-auto p-6 font-mono">
   <!-- Bara de arriba -->
-  <div class="d-flex mb-3 flex-row row">
+  <div class="d-flex mb-3 pt-5 flex-row row">
     <!-- Barra para buscar -->
     <div class="input-group col-10 searchBar">
       <input type="text" class="form-control searchText" placeholder="Buscar...">
@@ -47,7 +46,7 @@
           <input type='text' class='form-control typeName' placeholder='Introduce el nombre de la categoría' name='typeName'>  
         </div>   
         <div class='form-group mb-4 d-flex justify-content-center'>  
-          <input type='submit' class='btnSendAddType btn btn-lg btn-success' id='addType'>  
+          <button type='submit' class='btnSendAddType btn btn-lg btn-success' id='addType'>Añadir categoria</button>  
         </div>  
     </div>  
   </div>
@@ -66,7 +65,7 @@
     </div>
     <div class="px-4 py-3 text-sm d-flex flex-row justify-content-around">
       <button type="button" class="btn btn-primary btnDelTypeYes" data-id=''>Sí</button>
-      <button type="button" class="btn btn-danger btnDelTypeNo" data-id=''>No</button>
+      <button type="button" class="btn btn-danger btnDelTypeNo">No</button>
     </div>  
   </div>
 

@@ -27,6 +27,7 @@ class TypeController extends Controller
     public function deleteType(){
         $id = $_POST['id'];
         TypeModel::deleteType($id);
+        return $id;
     }
 
     public function getTypes(){

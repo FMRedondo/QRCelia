@@ -147,10 +147,15 @@ function addType(){
 }
 
 // Funcion para mostrar la pestaña para borrar categorias
-$(".btnDelType").click(showDelType);
-function showDelType() {
+$(".btnDelType").click(function() {
+    var id = $(this).data('id');
+    showDelType(id);
+});
+function showDelType(id) {
+    console.log(id);
     $(".delTypePanel").toggle();
     $(".closeWindow").click(showDelType);
+    $("btnDelTypeYes").attr("data-id", id);
     $(".btnDelTypeNo").click(showDelType);
     $(document).on('keypress',function(key) {
         if(key.which == 13) {
@@ -163,11 +168,27 @@ function showDelType() {
 // Funcion para borrar categorias
 $(".btnDelTypeYes").click(delType);
 function delType() {
+    console.log($(this).attr("data-id"));
     var params = {
-        "id": $(this).data('id'),
+        "id": $(this).attr("data-id"),
         "_token": $('meta[name="csrf-token"]').attr('content'),
     }
     console.log(params);
+
+    $.ajax({
+        data: params,
+        url: '/admin/categorias/deleteType',
+        type: 'post',
+
+        success: function (response) {
+            console.log("Todo va bien");
+        },
+
+        error: function (response) {
+            console.log("Error en la peticion");            
+        },
+
+    });
 }
 
 function showEditType() {
