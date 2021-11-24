@@ -12,8 +12,8 @@
   <div class="d-flex mb-3 pt-5 flex-row row">
     <!-- Barra para buscar -->
     <div class="input-group col-10 searchBar">
-      <input type="text" class="form-control searchText" placeholder="Buscar...">
-      <div class="input-group-append">
+      <input type="text" class="form-control searchText searchType" placeholder="Buscar...">
+      <div class="input-group-append searchTypeButton">
         <span class="input-group-text" class="btnSearch">
           <i class="fa-solid fa-magnifying-glass"></i>
         </span>

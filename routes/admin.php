@@ -46,3 +46,4 @@ Route::get('/categorias', [TypeController::class, 'index'])-> name('show.viewTyp
 Route::get('/categorias/getTypes', [TypeController::class, 'getTypes'])-> name('show.types');
 Route::post('/categorias/addType', [TypeController::class, 'addType'])-> name('add.type');
 Route::post('/categorias/deleteType', [TypeController::class, 'deleteType'])-> name('delete.type');
+Route::post('/categorias/searchType', [TypeController::class, 'searchType'])-> name('search.type');

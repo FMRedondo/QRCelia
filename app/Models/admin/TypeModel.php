@@ -33,7 +33,7 @@ class TypeModel extends Model
     }
 
     public static function searchType($search){
-        $sql = "SELECT * FROM types WHERE (name LIKE '%$search%' )";
+        $sql = "SELECT * FROM types WHERE (name LIKE '%$search%')";
         $result = DB::select($sql);
         return $result;
     }
