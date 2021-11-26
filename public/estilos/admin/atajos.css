@@ -1,0 +1,12 @@
+.atajos{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3em;
+    padding-top: 3em;
+    justify-content: space-around;
+}
+
+.atajo{
+    width: 45%;
+}

@@ -188,7 +188,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'admin',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -227,21 +227,12 @@ return [
     'menu' => [
         // Navbar items:
         [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
-            'topnav_right' => true,
-        ],
-        [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
 
         // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
-        ],
-
+        ['header' => 'CONFIGURACIÓN'],
         [
             'text'        => 'Ajustes',
             'url'         => 'admin/ajustes',
@@ -252,7 +243,7 @@ return [
         [
             'text'        => 'Personalización',
             'url'         => 'admin/personalizar',
-            'icon'        => 'fa-solid fa-pen-ruler',
+            'icon'        => 'fa-solid fa-pen-ruler mb-3',
             'label_color' => 'success',
         ],
 
@@ -276,7 +267,7 @@ return [
         [
             'text' => 'Comentarios',
             'url'  => 'admin/comentarios',
-            'icon' => 'fa-solid fa-comment-dots',
+            'icon' => 'fa-solid fa-comment-dots mb-3',
         ],
 
         ['header' => 'AJUSTES DE USUARIOS'],

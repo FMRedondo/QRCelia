@@ -92,8 +92,10 @@ function showAddType() {
 // Funcion para añadir una nueva categoria
 $(".btnSendAddType").click(addType);
 function addType(){
+    let name = $(".typeName").val();
+
     var params = {
-        "name": $(".typeName").val(),
+        "name": name,
         "_token": $('meta[name="csrf-token"]').attr('content')
     }
 
@@ -104,12 +106,13 @@ function addType(){
 
         success: function (response) {
             $(".addTypePanel").toggle();
-            let name = $(".typeName").val();
-            var newContent = ""; 
+            alert(typeof(response));
+            alert(response.date)
+           
+        /*
 
             $(response).each(function(data) {
-                console.log(data[0]);
-                newContent = `
+                var newContent = `
                 <tr class="text-gray-700 typesInfo#1">
                     <td class="px-4 py-3 border">
                         <div class="flex items-center text-sm">
@@ -134,10 +137,13 @@ function addType(){
                     </td>
                 </tr>
                 `;
+                $("tbody").append(newContent);
             });
 
+            */
+
             $(".typeName").val("");
-            $("tbody").append(newContent);
+            
          },
 
          error: function (response) {
