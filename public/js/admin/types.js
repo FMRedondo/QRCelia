@@ -108,6 +108,7 @@ function addType(){
             var newContent = ""; 
 
             $(response).each(function(data) {
+                console.log(data[0]);
                 newContent = `
                 <tr class="text-gray-700 typesInfo#1">
                     <td class="px-4 py-3 border">
@@ -140,7 +141,6 @@ function addType(){
          },
 
          error: function (response) {
-            console.log(response);
             alert("Error en la peticion");
          } 
 
@@ -153,7 +153,6 @@ $(".btnDelType").click(function() {
     showDelType(id);
 });
 function showDelType(id) {
-    console.log(id);
     $(".delTypePanel").toggle();
     $(".closeWindow").click(showDelType);
     $("btnDelTypeYes").attr("data-id", id);
@@ -169,12 +168,10 @@ function showDelType(id) {
 // Funcion para borrar categorias
 $(".btnDelTypeYes").click(delType);
 function delType() {
-    console.log($(this).attr("data-id"));
     var params = {
         "id": $(this).attr("data-id"),
         "_token": $('meta[name="csrf-token"]').attr('content'),
     }
-    console.log(params);
 
     $.ajax({
         data: params,

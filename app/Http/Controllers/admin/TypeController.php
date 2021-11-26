@@ -16,11 +16,11 @@ class TypeController extends Controller
     public function addType(){
         $name = $_POST['name'];
         $_token = $_POST['_token'];
-        $result = TypeModel::addType($name);
+        $date = DATE("Y-m-d H:i");
+        $result = TypeModel::addType($name,$date);
         return response()->json([
             'id'=> $result,
-            'created_at'=> date("Y-m-d H:i:s"),
-            'updated_at'=> date("Y-m-d H:i:s")
+            'date'=> $date
         ]);
     }
 

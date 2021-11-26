@@ -38,8 +38,8 @@ class TypeModel extends Model
         return $result;
     }
 
-    public static function addType($name){
-        $sql = "INSERT INTO types (name) VALUES ('$name')";
+    public static function addType($name,$date){
+        $sql = "INSERT INTO types (name,created_at,updated_at) VALUES ('$name','$date','$date')";
         DB::insert($sql);
         $id = DB::getPdo()->lastInsertId();
         return $id;
