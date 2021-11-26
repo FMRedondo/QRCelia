@@ -108,7 +108,8 @@ function addType(){
             var newContent = ""; 
 
             $(response).each(function(data) {
-                console.log(data[0]);
+                data = JSON.parse(data);
+                console.log(data);
                 newContent = `
                 <tr class="text-gray-700 typesInfo#1">
                     <td class="px-4 py-3 border">
