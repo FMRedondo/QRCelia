@@ -18,16 +18,16 @@ function load() {
                 <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
                 <div class="w-full overflow-x-auto">
                     <table class="w-full">
-                    <thead>
-                        <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
-                        <th class="px-4 py-3 text-center">Nombre</th>
-                        <th class="px-4 py-3 text-center">Fecha creacion</th>
-                        <th class="px-4 py-3 text-center">Ultima modificación</th>
-                        <th class="px-4 py-3 text-center">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white">
-                    </tbody>
+                        <thead>
+                            <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+                                <th class="px-4 py-3 text-center">Nombre</th>
+                                <th class="px-4 py-3 text-center">Fecha creacion</th>
+                                <th class="px-4 py-3 text-center">Ultima modificación</th>
+                                <th class="px-4 py-3 text-center">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white">
+                        </tbody>
                     </table>
                 </div>
                 </div>
@@ -37,6 +37,8 @@ function load() {
             $(".contenidoPrincipal").append($table);
 
             response.forEach(function (data) {
+                let tableContent = "";
+
                 if (data.updated_at == null) {
                     data.updated_at = "No disponible"
                 }
@@ -44,7 +46,7 @@ function load() {
                     data.created_at = "No disponible"
                 }
 
-                let tableContent = `
+                tableContent = `
                     <tr class="text-gray-700 typesInfo#1">
                         <td class="px-4 py-3 border">
                             <div class="flex items-center text-sm">
@@ -70,30 +72,36 @@ function load() {
                     </tr>
                 `;
                 $("tbody").append(tableContent);
-                $(".btnShowEditType").click(showEditType);
-                $(".btnDelType").click(showDelType);
-                $(".searchType").keyup(searchType);
             })
+            $(".btnShowEditType").click(showEditType);
+            $(".btnDelType").click(showDelType);
+            $(".searchType").keyup(searchType);
         },
 
         error: function (response){
             console.log("Error en la peticion");
         }
     });
-}
 
 // Funcion para mostrar pestaña para añadir nuevo tipo
 $(".btnAddType").click(showAddType);
+$(".closeWindowAddType").click(closeAddTypeWindow);
+function closeAddTypeWindow() {
+    $("typeName").val("");
+    $(".addTypePanel").toggle();
+    
+}
 function showAddType() {
     $(".addTypePanel").toggle();
-    $(".closeWindow").click(showAddType);
 }
 
 // Funcion para añadir una nueva categoria
 $(".btnSendAddType").click(addType);
 function addType(){
+    let name = $(".typeName").val();
+
     var params = {
-        "name": $(".typeName").val(),
+        "name": name,
         "_token": $('meta[name="csrf-token"]').attr('content')
     }
 
@@ -104,13 +112,8 @@ function addType(){
 
         success: function (response) {
             $(".addTypePanel").toggle();
-            let name = $(".typeName").val();
-            var newContent = ""; 
 
-            $(response).each(function(data) {
-                data = JSON.parse(data);
-                console.log(data);
-                newContent = `
+                var newContent = `
                 <tr class="text-gray-700 typesInfo#1">
                     <td class="px-4 py-3 border">
                         <div class="flex items-center text-sm">
@@ -124,21 +127,20 @@ function addType(){
                         </div>
                     </td>
                     <td class="px-4 py-3 text-xs border">
-                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> ${data.created_at} </span>
+                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> ${response.date} </span>
                     </td>
                     <td class="px-4 py-3 text-xs border">
-                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> ${data.updated_at} </span>
+                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> ${response.date} </span>
                     </td>
                     <td class="px-4 py-3 text-sm border d-flex flex-row justify-content-around">
-                        <button type="button" class="btn btn-primary btnShowEditType" data-id='${data.id}'>Modificar</button>
-                        <button type="button" class="btn btn-danger btnDelType" data-id='${data.id}'>Eliminar</button>
+                        <button type="button" class="btn btn-primary btnShowEditType" data-id='${response.id}'>Modificar</button>
+                        <button type="button" class="btn btn-danger btnDelType" data-id='${response.id}'>Eliminar</button>
                     </td>
                 </tr>
                 `;
-            });
-
-            $(".typeName").val("");
             $("tbody").append(newContent);
+            $(".btnShowEditType").click(showEditType);
+            $(".btnDelType").click(showDelType);
          },
 
          error: function (response) {
@@ -149,21 +151,21 @@ function addType(){
 }
 
 // Funcion para mostrar la pestaña para borrar categorias
-$(".btnDelType").click(function() {
-    var id = $(this).data('id');
-    showDelType(id);
-});
+$(".btnDelType").click(showAddType);
+$(".btnDelTypeNo").click(closeDeleteTypeWindow);
+$(".closeWindowDeleteType").click(closeDeleteTypeWindow);
+function closeDeleteTypeWindow() {
+    $(".delTypePanel").toggle();
+}
+
 function showDelType(id) {
     $(".delTypePanel").toggle();
-    $(".closeWindow").click(showDelType);
     $("btnDelTypeYes").attr("data-id", id);
-    $(".btnDelTypeNo").click(showDelType);
     $(document).on('keypress',function(key) {
         if(key.which == 13) {
             DelType();
         }
     });
-
 }
 
 // Funcion para borrar categorias
@@ -239,8 +241,9 @@ function searchType() {
                 `;
                 $("tbody").append(tableContent);
             })
+            $(".btnShowEditType").click(showEditType);
+            $(".btnDelType").click(showDelType);
         },
-
 
         error: function (response) {
             alert("Error en la peticion");
@@ -252,4 +255,6 @@ function searchType() {
 // Funcion para editar una categoria
 function showEditType() {
     
+}
+
 }
