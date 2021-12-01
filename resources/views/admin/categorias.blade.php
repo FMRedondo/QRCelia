@@ -64,8 +64,8 @@
       </p>
     </div>
     <div class="px-4 py-3 text-sm d-flex flex-row justify-content-around">
-      <button type="button" class="btn btn-primary btnDelTypeYes" data-id=''>Sí</button>
-      <button type="button" class="btn btn-danger btnDelTypeNo">No</button>
+      <button type="button" class="btn btn-primary btnWindow btnDelTypeYes" data-val='true'>Sí</button>
+      <button type="button" class="btn btn-danger btnWindow btnDelTypeNo" data-val='false'>No</button>
     </div>  
   </div>
 

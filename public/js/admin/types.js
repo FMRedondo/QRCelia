@@ -47,7 +47,7 @@ function load() {
                 }
 
                 tableContent = `
-                    <tr class="text-gray-700 typesInfo#1">
+                    <tr class="text-gray-700" id="${data.id}">
                         <td class="px-4 py-3 border">
                             <div class="flex items-center text-sm">
                                 <div class="relative w-8 h-8 mr-3 rounded-full md:block">
@@ -82,16 +82,19 @@ function load() {
             console.log("Error en la peticion");
         }
     });
+}
 
 // Funcion para mostrar pestaña para añadir nuevo tipo
 $(".btnAddType").click(showAddType);
+function showAddType() {
+    $(".addTypePanel").toggle();
+    $(".typeName").val("");
+}
+
+// Funcion para cerrar pestaña para añadir nuevo tipo
 $(".closeWindowAddType").click(closeAddTypeWindow);
 function closeAddTypeWindow() {
-    $("typeName").val("");
-    $(".addTypePanel").toggle();
-    
-}
-function showAddType() {
+    $(".typeName").val("");
     $(".addTypePanel").toggle();
 }
 
@@ -114,7 +117,7 @@ function addType(){
             $(".addTypePanel").toggle();
 
                 var newContent = `
-                <tr class="text-gray-700 typesInfo#1">
+                <tr class="text-gray-700" id="${response.id}">
                     <td class="px-4 py-3 border">
                         <div class="flex items-center text-sm">
                             <div class="relative w-8 h-8 mr-3 rounded-full md:block">
@@ -151,47 +154,44 @@ function addType(){
 }
 
 // Funcion para mostrar la pestaña para borrar categorias
-$(".btnDelType").click(showAddType);
-$(".btnDelTypeNo").click(closeDeleteTypeWindow);
-$(".closeWindowDeleteType").click(closeDeleteTypeWindow);
-function closeDeleteTypeWindow() {
-    $(".delTypePanel").toggle();
-}
+// y despues borrarlas cuando le das a si
+$(".btnDelType").click(showDelType);
+function showDelType() {
+    $(".delTypePanel").show();
+    let id = $(this).data("id");
 
-function showDelType(id) {
-    $(".delTypePanel").toggle();
-    $("btnDelTypeYes").attr("data-id", id);
-    $(document).on('keypress',function(key) {
-        if(key.which == 13) {
-            DelType();
+    // Funcion para borrar categorias
+    $(".btnWindow").click(function() {
+        if ($(this).data("val") == true) {
+            var params = {
+                "id": id,
+                "_token": $('meta[name="csrf-token"]').attr('content'),
+            }
+            $.ajax({
+                data: params,
+                url: '/admin/categorias/deleteType',
+                type: 'post',
+                success: function (response) {
+                    let ruta = "table tbody #" + id;
+                    $(ruta).remove();
+                    $(".delTypePanel").hide();
+                },
+                error: function (response) {
+                    console.log("Error en la peticion");            
+                },
+            });
         }
-    });
+        if ($(this).data("val") == false)
+            closeDeleteTypeWindow();
+    })
 }
 
-// Funcion para borrar categorias
-$(".btnDelTypeYes").click(delType);
-function delType() {
-    var params = {
-        "id": $(this).attr("data-id"),
-        "_token": $('meta[name="csrf-token"]').attr('content'),
-    }
-
-    $.ajax({
-        data: params,
-        url: '/admin/categorias/deleteType',
-        type: 'post',
-
-        success: function (response) {
-            console.log("Todo va bien");
-        },
-
-        error: function (response) {
-            console.log("Error en la peticion");            
-        },
-
-    });
+// Funcion para cerrar la pestaña para borrar categorias
+$(".closeWindowDeleteType").click(closeDeleteTypeWindow);
+$(".btnDelTypeNo").click(closeDeleteTypeWindow);
+function closeDeleteTypeWindow() {
+    $(".delTypePanel").hide();
 }
-
 
 // Funcion para realizar una busqueda
 function searchType() {
@@ -215,7 +215,7 @@ function searchType() {
                 }
 
                 let tableContent = `
-                    <tr class="text-gray-700 typesInfo#1">
+                    <tr class="text-gray-700" id="${data.id}">
                         <td class="px-4 py-3 border">
                             <div class="flex items-center text-sm">
                                 <div class="relative w-8 h-8 mr-3 rounded-full md:block">
@@ -255,6 +255,4 @@ function searchType() {
 // Funcion para editar una categoria
 function showEditType() {
     
-}
-
 }
