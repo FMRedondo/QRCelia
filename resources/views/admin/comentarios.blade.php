@@ -8,11 +8,11 @@
 
 @section('content')
 
-<section class="container mx-auto p-6 font-mono contenidoPrincipal">
+
   @csrf
 
 
-  <div class="d-flex mb-3 pt-5 flex-row row">
+  <div class="d-flex mb-3 pt-5 flex-row row container m-auto">
     <!-- Barra para buscar -->
     <div class="input-group col-10 searchBar">
       <input type="text" class="form-control searchText searchType" placeholder="Buscar...">
@@ -24,7 +24,7 @@
     </div>
     <!-- Boton de aniadir -->
     <div class="input-group col-2">
-      <button type="button" class="btn btn-labeled btn-success btnAddType">
+      <button type="button" class="btn btn-labeled btn-success btnAddType disable">
           <span class="btn-label"><i class="fa-solid fa-plus"></i></span>Añadir
       </button>
     </div>
@@ -33,10 +33,10 @@
     <i class="fa-solid fa-spinner fa-spin-pulse h1 d-flex justify-content-center mt-5 mb-5"></i>
 
   <!-- Tabla de datos -->
-  <div class="contenidoPrincipal"></div>
+  <div class="contenidoPrincipal container m-auto"></div>
 
   <!-- Cartel para eliminar una categoria -->
-  <div class="delTypePanel">
+  <div class="delTypePanel d-none">
     <div class="alignCloseButton">
       <button type="button" class="btn btn-danger closeWindow">
         <i class="fa-solid fa-xmark"></i>
@@ -56,9 +56,6 @@
   <div class="my-1 mt-5 mb-3 shadow-lg">
     <label class="sr-only" for="inlineFormInputGroupUsername"></label>
   </div>
-
-  <i class="fa-solid fa-spinner fa-spin-pulse h1 d-flex justify-content-center mt-5 mb-5"></i>
-  </section>
 @stop
 
 @section('css')
