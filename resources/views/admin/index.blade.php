@@ -8,8 +8,9 @@
 @section('content')
 
     <section class="atajos">
-        <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2 atajo">
+        <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2 atajo graficaContenido">
             <canvas id="contenidoPuntos" width="100%" height="50%"></canvas>
+            <i class="fa-solid fa-spinner fa-spin-pulse h1 d-flex justify-content-center mt-5 mb-5"></i>
          </div>
          
          <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2 atajo">
@@ -61,62 +62,6 @@
 
 @section('js')
     <script src="https://kit.fontawesome.com/75e57fedbe.js" crossorigin="anonymous"></script>
+    <script src="/js/admin/panelesadmin.js"></script>
     <script src="/plugin/charts/Chart.min.js"></script>
-    <script>
-       var ctx= document.getElementById("contenidoPuntos").getContext("2d");
-        var myChart= new Chart(ctx,{
-            type:"bar",
-            data:{
-                labels:['Recursos','Puntos de interes','Comentarios', 'categorias', 'usuarios'],
-                datasets:[{
-                        label:'Contenido',
-                        data:[90,85,85, 90, 2],
-                        backgroundColor:[
-                            'red',
-                            'yellow',
-                            'yellow',
-                            'red',
-                            'black'
-                        ]
-                }]
-            },
-            options:{
-                scales:{
-                    yAxes:[{
-                            ticks:{
-                                beginAtZero:true
-                            }
-                    }]
-                }
-            }
-        });
-
-
-
-        var ctx= document.getElementById("myChart2").getContext("2d");
-        var myChart2= new Chart(ctx,{
-            type:"doughnut",
-            data:{
-                labels:['Religioso','Arte','Historico'],
-                datasets:[{
-                        label:'Tipos de putos de insteres',
-                        data:[30,206,22],
-                        backgroundColor:[
-                            'rgb(66, 134, 244,0.5)',
-                            'rgb(74, 135, 72,0.5)',
-                            'rgb(229, 89, 50,0.5)'
-                        ]
-                }]
-            },
-            options:{
-                scales:{
-                    yAxes:[{
-                            ticks:{
-                                beginAtZero:true
-                            }
-                    }]
-                }
-            }
-        });
-    </script>
 @stop

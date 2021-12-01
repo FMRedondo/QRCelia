@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\CommentController;
 use App\Http\Controllers\admin\TypeController;
+use App\Http\Controllers\admin\panelesController;
 
 Route::get('/', function () {
     return view('admin/index');
@@ -37,6 +38,7 @@ Route::get('/roles', function () {
     return view('admin/roles');
 });
 
+Route::get('/verDatosContenido', [panelesController::class, 'datosPanelContenido'])-> name('verContenido.panel');
 
 Route::get('/comentarios', [CommentController::class, 'index'])-> name('show.viewComments');
 Route::get('/comentarios/getComments', [CommentController::class, 'getComments'])-> name('show.comments');
