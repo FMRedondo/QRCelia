@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
@@ -16,7 +15,7 @@ class TypeController extends Controller
     public function addType(){
         $name = $_POST['name'];
         $_token = $_POST['_token'];
-        $date = DATE("Y-m-d H:i");
+        $date = DATE("Y-m-d H:i:s");
         $result = TypeModel::addType($name,$date);
         return response()->json([
             'id'=> $result,
@@ -50,7 +49,8 @@ class TypeController extends Controller
         $id = $_POST['id'];
         $field = $_POST['field'];
         $value = $_POST['value'];
-        
-        TypeModel::updateType($id,$field,$value);
+        $date = DATE("Y-m-d H:i:s");
+        TypeModel::updateType($id,$field,$value,$date);
+        return $date;
     }
 }

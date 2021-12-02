@@ -22,8 +22,8 @@ class TypeModel extends Model
         return $result;
     }
 
-    public static function updateType($id, $field, $value){
-        $sql = "UPDATE FROM types SET $field = $value WHERE (id = $id)";
+    public static function updateType($id, $field, $value, $date){
+        $sql = "UPDATE types SET $field = '$value', updated_at = '$date' WHERE (id = $id)";
         DB::update($sql);
     }
 

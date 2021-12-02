@@ -55,15 +55,15 @@ function load() {
                                     </div>
                                  </div>
                                 <div>
-                                    <p class="font-semibold text-black">${data.name}</p>
+                                    <p class="font-semibold text-black regTypeName">${data.name}</p>
                                 </div>
                             </div>
                         </td>
                         <td class="px-4 py-3 text-xs border">
-                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> ${data.created_at} </span>
+                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regTypeCreated"> ${data.created_at} </span>
                         </td>
                         <td class="px-4 py-3 text-xs border">
-                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> ${data.updated_at} </span>
+                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regTypeUpdated"> ${data.updated_at} </span>
                         </td>
                         <td class="px-4 py-3 text-sm border d-flex flex-row justify-content-around">
                             <button type="button" class="btn btn-primary btnShowEditType" data-id='${data.id}'>Modificar</button>
@@ -79,7 +79,7 @@ function load() {
         },
 
         error: function (response){
-            console.log("Error en la peticion");
+            alert("Error en la peticion");
         }
     });
 }
@@ -118,15 +118,15 @@ function addType(){
                                 </div>
                             </div>
                             <div>
-                                <p class="font-semibold text-black">${name}</p>
+                                <p class="font-semibold text-black regTypeName">${name}</p>
                             </div>
                         </div>
                     </td>
                     <td class="px-4 py-3 text-xs border">
-                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> ${response.date} </span>
+                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regTypeCreated"> ${response.date} </span>
                     </td>
                     <td class="px-4 py-3 text-xs border">
-                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> ${response.date} </span>
+                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regTypeUpdated"> ${response.date} </span>
                     </td>
                     <td class="px-4 py-3 text-sm border d-flex flex-row justify-content-around">
                         <button type="button" class="btn btn-primary btnShowEditType" data-id='${response.id}'>Modificar</button>
@@ -165,12 +165,12 @@ function showDelType() {
                 url: '/admin/categorias/deleteType',
                 type: 'post',
                 success: function (response) {
-                    let ruta = "table tbody #" + id;
-                    $(ruta).remove();
+                    let route = "table tbody #" + id;
+                    $(route).remove();
                     $(".delTypePanel").hide();
                 },
                 error: function (response) {
-                    console.log("Error en la peticion");            
+                    alert("Error en la peticion");            
                 },
             });
         }
@@ -209,15 +209,15 @@ function searchType() {
                                     </div>
                                 </div>
                                 <div>
-                                    <p class="font-semibold text-black">${data.name}</p>
+                                    <p class="font-semibold text-black regTypeName">${data.name}</p>
                                 </div>
                             </div>
                         </td>
                         <td class="px-4 py-3 text-xs border">
-                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> ${data.created_at} </span>
+                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regTypeCreated"> ${data.created_at} </span>
                         </td>
                         <td class="px-4 py-3 text-xs border">
-                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> ${data.updated_at} </span>
+                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regTypeUpdated"> ${data.updated_at} </span>
                         </td>
                         <td class="px-4 py-3 text-sm border d-flex flex-row justify-content-around">
                             <button type="button" class="btn btn-primary btnShowEditType" data-id='${data.id}'>Modificar</button>
@@ -242,7 +242,7 @@ function searchType() {
 $(".btnShowEditType").click(showEditType);
 function showEditType() {
     var id = $(this).data("id");
-    let content = ``;
+    var content = ``;
     
     var params = {
         "id": id,
@@ -251,6 +251,7 @@ function showEditType() {
 
     $.ajax({
         data: params,
+        dataType: 'json',
         url: '/admin/categorias/getType',
         type: 'post',
 
@@ -258,7 +259,7 @@ function showEditType() {
             content = `
             <div class="modifyTypePanel">
                 <div class="alignCloseButton">
-                    <button type="button" class="btn btn-danger closeWindow closeWindowModifyType">
+                    <button type="button" class="btn btn-danger closeWindow btnWindowModify" data-val='false'>
                         <i class="fa-solid fa-xmark"></i>
                     </button> 
                 </div>     
@@ -266,10 +267,10 @@ function showEditType() {
                 <div class='contenido pt-0'>  
                     <div class='form-group mb-4'>  
                         <label class='mb-2'>Nombre:</label>  
-                        <input type='text' class='form-control typeName' value='${response.name}' name='typeName'>  
+                        <input type='text' class='form-control typeName typeNameMod' value='${response[0].name}' name='typeNameMod'>  
                     </div>   
                     <div class='form-group mb-4 d-flex justify-content-center'>  
-                        <button type='submit' class='btnSendModifyType btn btn-lg btn-success' id='modifyType'>Modificar categoria</button>  
+                        <button type='submit' class='btnSendModifyType btn btn-lg btn-success btnWindowModify' data-val='true' id='modifyType'>Modificar categoria</button>  
                     </div>  
                 </div>
             </div>
@@ -277,6 +278,42 @@ function showEditType() {
 
             $(".delTypePanel").after(content);
             $(".modifyTypePanel").show();
+
+            $(".btnWindowModify").click(function() {
+                if ($(this).data("val") == true) {
+                    let newName = $(".typeNameMod").val();
+                    var params = {
+                        "id": id,
+                        "field": "name",
+                        "value": newName,
+                        "_token": $('meta[name="csrf-token"]').attr('content')
+                    }
+                    
+                    $.ajax({
+                        data: params,
+                        url: '/admin/categorias/editType',
+                        type: 'post',
+
+                        success: function (response) {
+                            console.log(response);
+                            let ruta = "table tbody #" + id + " .regTypeName";
+                            $(ruta).text(newName);
+                            ruta = "table tbody #" + id + " .regTypeUpdated"
+                            $(ruta).text(response);
+                            $(".modifyTypePanel").remove();
+                        },
+
+                        error: function (response) {
+                            alert("Error en la peticion");
+                            console.log(response);
+                        },
+                    });
+                }
+
+                if ($(this).data("val") == false) {
+                    $(".modifyTypePanel").remove();
+                }
+            });
         },
 
         error: function (response) {
