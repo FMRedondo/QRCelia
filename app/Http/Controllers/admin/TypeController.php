@@ -37,7 +37,7 @@ class TypeController extends Controller
     public function getType(){
         $id = $_POST['id'];
         $result = TypeModel::getType($id);
-        return $result;
+        return response() -> json($result);
     }
 
     public function searchType(){

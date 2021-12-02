@@ -17,7 +17,7 @@ class TypeModel extends Model
     }
 
     public static function getType($id){
-        $sql = "SELECT * FROM types (WHERE id = $id)";
+        $sql = "SELECT * FROM types WHERE (id = $id)";
         $result = DB::select($sql);
         return $result;
     }

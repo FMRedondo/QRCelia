@@ -35,7 +35,7 @@
   <!-- Cartel para añadir una categoria -->
   <div class="addTypePanel">
     <div class="alignCloseButton">
-      <button type="button" class="btn btn-danger closeWindow closeWindowAddType">
+      <button type="button" class="btn btn-danger closeWindow btnAddType closeWindowAddType">
         <i class="fa-solid fa-xmark"></i>
       </button> 
     </div>     
@@ -54,7 +54,7 @@
   <!-- Cartel para eliminar una categoria -->
   <div class="delTypePanel">
     <div class="alignCloseButton">
-      <button type="button" class="btn btn-danger closeWindowDeleteType">
+      <button type="button" class="btn btn-danger closeWindowDeleteType btnWindow" data-val='false'>
         <i class="fa-solid fa-xmark"></i>
       </button> 
     </div>

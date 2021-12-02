@@ -84,18 +84,11 @@ function load() {
     });
 }
 
-// Funcion para mostrar pestaña para añadir nuevo tipo
+// Funcion para mostrar/cerrar pestaña para añadir nuevo tipo
 $(".btnAddType").click(showAddType);
 function showAddType() {
     $(".addTypePanel").toggle();
     $(".typeName").val("");
-}
-
-// Funcion para cerrar pestaña para añadir nuevo tipo
-$(".closeWindowAddType").click(closeAddTypeWindow);
-function closeAddTypeWindow() {
-    $(".typeName").val("");
-    $(".addTypePanel").toggle();
 }
 
 // Funcion para añadir una nueva categoria
@@ -182,15 +175,8 @@ function showDelType() {
             });
         }
         if ($(this).data("val") == false)
-            closeDeleteTypeWindow();
+            $(".delTypePanel").hide();
     })
-}
-
-// Funcion para cerrar la pestaña para borrar categorias
-$(".closeWindowDeleteType").click(closeDeleteTypeWindow);
-$(".btnDelTypeNo").click(closeDeleteTypeWindow);
-function closeDeleteTypeWindow() {
-    $(".delTypePanel").hide();
 }
 
 // Funcion para realizar una busqueda
@@ -253,6 +239,49 @@ function searchType() {
 
 
 // Funcion para editar una categoria
+$(".btnShowEditType").click(showEditType);
 function showEditType() {
+    var id = $(this).data("id");
+    let content = ``;
     
+    var params = {
+        "id": id,
+        "_token": $('meta[name="csrf-token"]').attr('content')
+    }
+
+    $.ajax({
+        data: params,
+        url: '/admin/categorias/getType',
+        type: 'post',
+
+        success: function(response){
+            content = `
+            <div class="modifyTypePanel">
+                <div class="alignCloseButton">
+                    <button type="button" class="btn btn-danger closeWindow closeWindowModifyType">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button> 
+                </div>     
+                <h1 class='text-center mt-3'>Modificar categoría</h1>  
+                <div class='contenido pt-0'>  
+                    <div class='form-group mb-4'>  
+                        <label class='mb-2'>Nombre:</label>  
+                        <input type='text' class='form-control typeName' value='${response.name}' name='typeName'>  
+                    </div>   
+                    <div class='form-group mb-4 d-flex justify-content-center'>  
+                        <button type='submit' class='btnSendModifyType btn btn-lg btn-success' id='modifyType'>Modificar categoria</button>  
+                    </div>  
+                </div>
+            </div>
+            `;
+
+            $(".delTypePanel").after(content);
+            $(".modifyTypePanel").show();
+        },
+
+        error: function (response) {
+            alert("Error en la peticion");
+        },
+
+    });
 }

@@ -20,7 +20,7 @@
     font-weight: 800;
 }
 
-.addTypePanel, .delTypePanel{
+.addTypePanel, .delTypePanel, .modifyTypePanel{
     display: none;
     position: fixed;
     justify-content: center;
