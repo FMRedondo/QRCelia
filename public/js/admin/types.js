@@ -2,10 +2,9 @@
 //  jQuery para CATEGORIAS de puntos    //
 //           QRCELIA                    //
 //                                      //
+load();
 
 // Mostrar una lista con todas las categorias
-$(document).ready(load)
-
 function load() {
     var params = []
     $.ajax({
@@ -241,6 +240,7 @@ function searchType() {
 // Funcion para editar una categoria
 $(".btnShowEditType").click(showEditType);
 function showEditType() {
+    var error = false;
     var id = $(this).data("id");
     var content = ``;
     
@@ -267,10 +267,10 @@ function showEditType() {
                 <div class='contenido pt-0'>  
                     <div class='form-group mb-4'>  
                         <label class='mb-2'>Nombre:</label>  
-                        <input type='text' class='form-control typeName typeNameMod' value='${response[0].name}' name='typeNameMod'>  
+                        <input type='text' class='form-control typeName typeNameMod' data-field='name' value='${response[0].name}' name='typeNameMod'>  
                     </div>   
                     <div class='form-group mb-4 d-flex justify-content-center'>  
-                        <button type='submit' class='btnSendModifyType btn btn-lg btn-success btnWindowModify' data-val='true' id='modifyType'>Modificar categoria</button>  
+                        <button type='submit' class='btnSendModifyType btn btn-lg btn-success btnWindowModify' data-val='false' id='modifyType'>Modificar categoria</button>  
                     </div>  
                 </div>
             </div>
@@ -278,47 +278,50 @@ function showEditType() {
 
             $(".delTypePanel").after(content);
             $(".modifyTypePanel").show();
-
-            $(".btnWindowModify").click(function() {
-                if ($(this).data("val") == true) {
-                    let newName = $(".typeNameMod").val();
-                    var params = {
-                        "id": id,
-                        "field": "name",
-                        "value": newName,
-                        "_token": $('meta[name="csrf-token"]').attr('content')
-                    }
-                    
-                    $.ajax({
-                        data: params,
-                        url: '/admin/categorias/editType',
-                        type: 'post',
-
-                        success: function (response) {
-                            console.log(response);
-                            let ruta = "table tbody #" + id + " .regTypeName";
-                            $(ruta).text(newName);
-                            ruta = "table tbody #" + id + " .regTypeUpdated"
-                            $(ruta).text(response);
-                            $(".modifyTypePanel").remove();
-                        },
-
-                        error: function (response) {
-                            alert("Error en la peticion");
-                            console.log(response);
-                        },
-                    });
-                }
-
+            $(".btnWindowModify").click(function () {
                 if ($(this).data("val") == false) {
                     $(".modifyTypePanel").remove();
                 }
-            });
+            })
         },
 
         error: function (response) {
             alert("Error en la peticion");
+            error = true;
         },
 
     });
+
+    if (!error) {
+        alert("No hay error y entra a comprobar cambios");
+        $(".typeNameMod").change(function() {
+            alert("HA CAMBIAO Y DETECTA EL CAMBIO");
+            let newName = $(".typeNameMod").val();
+            var params = {
+                "id": id,
+                "field": $(this).data("field"),
+                "value": newName,
+                "_token": $('meta[name="csrf-token"]').attr('content')
+            }
+                
+            $.ajax({
+                data: params,
+                url: '/admin/categorias/editType',
+                type: 'post',
+
+                success: function (response) {
+                    let route = "table tbody #" + id + " .regTypeName";
+                    $(route).text(newName);
+                    ruta = "table tbody #" + id + " .regTypeUpdated"
+                    $(route).text(response);
+                    $(".modifyTypePanel").remove();
+                },
+
+                error: function (response) {
+                    alert("Error en la peticion");
+                    console.log(response);
+                },
+            });
+        });
+    }
 }
