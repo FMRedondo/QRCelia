@@ -154,7 +154,7 @@ function showDelType() {
 
     // Funcion para borrar categorias
     $(".btnWindow").click(function() {
-        if ($(this).data("val") == true) {
+        if ($(this).data("val")) {
             var params = {
                 "id": id,
                 "_token": $('meta[name="csrf-token"]').attr('content'),
@@ -173,7 +173,7 @@ function showDelType() {
                 },
             });
         }
-        if ($(this).data("val") == false)
+        if (!($(this).data("val")))
             $(".delTypePanel").hide();
     })
 }
@@ -279,7 +279,7 @@ function showEditType() {
             $(".delTypePanel").after(content);
             $(".modifyTypePanel").show();
             $(".btnWindowModify").click(function () {
-                if ($(this).data("val") == false) {
+                if (!($(this).data("val"))) {
                     $(".modifyTypePanel").remove();
                 }
             })
@@ -293,9 +293,7 @@ function showEditType() {
     });
 
     if (!error) {
-        alert("No hay error y entra a comprobar cambios");
         $(".typeNameMod").change(function() {
-            alert("HA CAMBIAO Y DETECTA EL CAMBIO");
             let newName = $(".typeNameMod").val();
             var params = {
                 "id": id,
