@@ -23,22 +23,6 @@ Route::get('/contenido', function () {
     return view('admin/contenido');
 });
 
-<<<<<<< HEAD
-Route::get('/usuarios', function () {
-    return view('admin/usuarios');
-});
-=======
-Route::get('/recursos', function () {
-    return view('admin/recursos');
-});
-
-Route::get('/recursos', function () {
-    return view('admin/recursos');
-});
-
-
->>>>>>> f96bce8c31f0a7e5243f0473eb51046f18aabb78
-
 Route::get('/roles', function () {
     return view('admin/roles');
 });
@@ -60,9 +44,12 @@ Route::post('/categorias/searchType', [TypeController::class, 'searchType'])-> n
 Route::post('/categorias/getType', [TypeController::class, 'getType']) -> name('get.type');
 Route::post('/categorias/editType', [TypeController::class, 'updateType']) -> name('edit.type');
 
-<<<<<<< HEAD
 Route::get('/recursos', [resourceController::class, 'index'])-> name('show.viewResources');
-=======
+
 Route::get('/usuarios', [customUsersController::class, 'index'])-> name('show.viewUsers');
 Route::get('/usuarios/getUsers', [customUsersController::class, 'getUsers'])-> name('show.users');
->>>>>>> f96bce8c31f0a7e5243f0473eb51046f18aabb78
+Route::post('/usuarios/addUser', [customUsersController::class, 'addUser'])-> name('add.user');
+Route::post('/usuarios/deleteUser', [customUsersController::class, 'deleteUser'])-> name('delete.user');
+Route::post('/usuarios/searchUsers', [customUsersController::class, 'searchUsers'])-> name('search.users');
+Route::post('/usuarios/getUser', [customUsersController::class, 'getUser']) -> name('get.user');
+Route::post('/usuarios/editUser', [customUsersController::class, 'updateUser']) -> name('edit.user');

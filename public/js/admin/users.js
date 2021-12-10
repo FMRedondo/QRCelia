@@ -4,7 +4,7 @@
 //                                      //
 load();
 
-// Mostrar una lista con todas las categorias
+// LISTA DE LOS USUARIOS--OK
 function load() {
     var params = []
     $.ajax({
@@ -86,6 +86,8 @@ function load() {
     });
 }
 
+
+//AÑADIR USUARION--NO
 // Funcion para mostrar/cerrar pestaña para añadir nuevo usuario
 $(".btnAddUser").click(showAddUser);
 function showAddUser() {
@@ -128,21 +130,10 @@ function addUser(){
                 <td class="px-4 py-3 text-xs border">
                     <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regUserEmail"> ${data.email} </span>
                 </td>
-
-                <td class="px-4 py-3 text-xs border">
-                    <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regUserVerified"> ${data.email_verified_at} </span>
-                </td>                        
+        
 
                 <td class="px-4 py-3 text-xs border">
                     <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regUserPassword"> ${data.password} </span>
-                </td>
-
-                <td class="px-4 py-3 text-xs border">
-                    <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regUserId"> ${data.current_team_id} </span>
-                </td>
-
-                <td class="px-4 py-3 text-xs border">
-                    <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regUserPhoto"> ${data.profile_photo_path} </span>
                 </td>
 
                 <td class="px-4 py-3 text-sm border d-flex flex-row justify-content-around">
@@ -196,15 +187,18 @@ function showDelUser() {
     })
 }
 
+//BUSQUEDAS --OK
 // Funcion para realizar una busqueda
-function searchUser() {
+$('.searchUsers').keyup(searchUsers);
+
+function searchUsers() {
     var params = {
-        "search": $(".searchUser").val(),
+        "search": $(".searchUsers").val(),
         "_token": $('meta[name="csrf-token"]').attr('content')
     }
     $.ajax({
         data: params,
-        url: '/admin/usuarios/searchUser',
+        url: '/admin/usuarios/searchUsers',
         type: 'post',
 
         success: function (response) {
@@ -218,48 +212,37 @@ function searchUser() {
                 }
 
                 let tableContent = `
-                    <tr class="text-gray-700" id="${response.id}">
-                    <td class="px-4 py-3 border">
-                        <div class="flex items-center text-sm">
-                            <div class="relative w-8 h-8 mr-3 rounded-full md:block">
-                                <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true">
+                    <tr class="text-gray-700" id="${data.id}">
+                        <td class="px-4 py-3 border">
+                            <div class="flex items-center text-sm">
+                                <div class="relative w-8 h-8 mr-3 rounded-full md:block">
+                                    <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true">
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-black regUserName">${data.name}</p>
                                 </div>
                             </div>
-                            <div>
-                                <p class="font-semibold text-black regUserName">${name}</p>
-                            </div>
-                        </div>
-                    </td>
+                        </td>
+    
+                        <td class="px-4 py-3 text-xs border">
+                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regUserEmail"> ${data.email} </span>
+                        </td>
+                
+        
+                        <td class="px-4 py-3 text-xs border">
+                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regUserPassword"> ${data.password} </span>
+                        </td>
 
-                    <td class="px-4 py-3 text-xs border">
-                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regUserEmail"> ${data.email} </span>
-                    </td>
-
-                    <td class="px-4 py-3 text-xs border">
-                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regUserVerified"> ${data.email_verified_at} </span>
-                    </td>                        
-
-                    <td class="px-4 py-3 text-xs border">
-                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regUserPassword"> ${data.password} </span>
-                    </td>
-
-                    <td class="px-4 py-3 text-xs border">
-                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regUserId"> ${data.current_team_id} </span>
-                    </td>
-
-                    <td class="px-4 py-3 text-xs border">
-                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regUserPhoto"> ${data.profile_photo_path} </span>
-                    </td>
-
-                    <td class="px-4 py-3 text-sm border d-flex flex-row justify-content-around">
-                        <button type="button" class="btn btn-primary btnShowEditUser" data-id='${data.id}'>Modificar</button>
-                        <button type="button" class="btn btn-danger btnDelUser" data-id='${data.id}'>Eliminar</button>
-                    </td>
-                </tr>
-            `;
+                        <td class="px-4 py-3 text-sm border d-flex flex-row justify-content-around">
+                            <button type="button" class="btn btn-primary btnShowEditUser" data-id='${data.id}'>Modificar</button>
+                            <button type="button" class="btn btn-danger btnDelUser" data-id='${data.id}'>Eliminar</button>
+                        </td>
+                    </tr>
+                `;
                 $("tbody").append(tableContent);
             })
-            $(".btnShowEditType").click(showEditType);
+            $(".btnShowEditUser").click(showEditUser);
             $(".btnDelType").click(showDelUser);
         },
 

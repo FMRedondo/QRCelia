@@ -76,19 +76,23 @@ function searchComments(){
         success: function (response) {
             $("tbody").empty();
             var contenidoTabla;
-            response.forEach(function (datos) {
+            response.forEach(function (data) {
                     contenidoTabla+= `
-                <tr class="text-gray-700" id="${datos.id}">
-                    <td class="px-4 py-3 text-xs border">
-                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> ${datos.content} </span>
-                    </td>
-                    <td class="px-4 py-3 text-xs border">
-                    <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> ${datos.idPunto} </span>
-                    </td>
-                </tr>`;
+                    <tr class="text-gray-700" id='${data.id}'>
+                        <td class="px-4 py-3 text-xs border">
+                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> ${data.content} </span>
+                        </td>
+                        <td class="px-4 py-3 text-xs border">
+                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> ${data.idPunto} </span>
+                        </td>
+                        <td class="px-4 py-3 text-sm border d-flex flex-row justify-content-around">
+                            <button type="button" class="btn btn-danger btnDelComments" data-id='${data.id}'>Eliminar</button>
+                        </td>
+                    </tr>`;
             });
 
             $("tbody").append(contenidoTabla);
+            $(".btnDelComments").click(showDelComments);
         },
 
         error: function () {
