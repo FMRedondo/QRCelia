@@ -6,8 +6,40 @@
 
 @section('content')
 @csrf
-   <p>Em una palabra, el CRUD de los usuarios</p>
+<section class="container mx-auto p-6 font-mono">
+    <!-- Barra de arriba -->
+    <div class="d-flex mb-3 pt-5 flex-row row">
+    <!-- Barra busqueda-->
+    <div class="input-group col-10 searchBar">
+        <input type="text" class="form-control searchUsers" placeholder="Buscar...">
+        <div class="input-group-append searchUsersButton">
+            <span class="input-group-text" class="btnSearch">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            </span>
+        </div>
+    </div>
+
+
    <div class="contenidoPrincipal"></div>
+
+    <!-- Cartel para eliminar una categoria -->
+    <div class="delUserPanel">
+        <div class="alignCloseButton">
+        <button type="button" class="btn btn-danger closeWindowDeleteUser btnWindow" data-val='false'>
+            <i class="fa-solid fa-xmark"></i>
+        </button> 
+        </div>
+        <div class="d-flex justify-content-center">
+        <p class="error-font fw-bolder text-danger">
+            ¡Atencion! Estas a punto de eliminar un Usuario
+        </p>
+        </div>
+        <div class="px-4 py-3 text-sm d-flex flex-row justify-content-around">
+        <button type="button" class="btn btn-primary btnWindow btnDelUserYes" data-val='true'>Sí</button>
+        <button type="button" class="btn btn-danger btnWindow btnDelUserNo" data-val='false'>No</button>
+        </div>  
+    </div>
+
 @stop
 
 @section('css')

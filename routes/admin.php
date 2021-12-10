@@ -52,3 +52,8 @@ Route::post('/categorias/editType', [TypeController::class, 'updateType']) -> na
 
 Route::get('/usuarios', [customUsersController::class, 'index'])-> name('show.viewUsers');
 Route::get('/usuarios/getUsers', [customUsersController::class, 'getUsers'])-> name('show.users');
+Route::post('/usuarios/addUser', [customUsersController::class, 'addUser'])-> name('add.user');
+Route::post('/usuarios/deleteUser', [customUsersController::class, 'deleteUser'])-> name('delete.user');
+Route::post('/usuarios/searchUsers', [customUsersController::class, 'searchUsers'])-> name('search.users');
+Route::post('/usuarios/getUser', [customUsersController::class, 'getUser']) -> name('get.user');
+Route::post('/usuarios/editUser', [customUsersController::class, 'updateUser']) -> name('edit.user');
