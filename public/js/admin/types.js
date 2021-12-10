@@ -283,6 +283,7 @@ function showEditType() {
                     $(".modifyTypePanel").remove();
                 }
             })
+
         },
 
         error: function (response) {
@@ -293,7 +294,8 @@ function showEditType() {
     });
 
     if (!error) {
-        $(".typeNameMod").change(function() {
+        function actualizar(){
+            alert("hola!")
             let newName = $(".typeNameMod").val();
             var params = {
                 "id": id,
@@ -320,6 +322,6 @@ function showEditType() {
                     console.log(response);
                 },
             });
-        });
+        };
     }
 }

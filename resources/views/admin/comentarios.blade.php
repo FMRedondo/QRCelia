@@ -14,19 +14,13 @@
 
   <div class="d-flex mb-3 pt-5 flex-row row container m-auto">
     <!-- Barra para buscar -->
-    <div class="input-group col-10 searchBar">
-      <input type="text" class="form-control searchText searchType" placeholder="Buscar...">
+    <div class="input-group col-12 searchBar">
+      <input type="text" class="form-control searchComments" placeholder="Buscar...">
       <div class="input-group-append searchTypeButton">
         <span class="input-group-text" class="btnSearch">
           <i class="fa-solid fa-magnifying-glass"></i>
         </span>
       </div>
-    </div>
-    <!-- Boton de aniadir -->
-    <div class="input-group col-2">
-      <button type="button" class="btn btn-labeled btn-success btnAddType disable" disabled>
-          <span class="btn-label"><i class="fa-solid fa-plus"></i></span>Añadir
-      </button>
     </div>
   </div>
   
@@ -59,7 +53,7 @@
 
 
 
-  <div class="w-50 m-auto p-5  mx-auto my-auto rounded-xl shadow-lg  bg-white delCommentsPanel">
+  <div class="w-50 m-auto p-5  mx-auto my-auto rounded-xl shadow-lg  bg-white delCommentsPanel delPanel">
     <div class="">
       <div class="text-center p-5 flex-auto justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 -m-1 flex items-center text-red-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -72,8 +66,8 @@
           <p class="text-sm text-gray-500 px-8">Esta opción es irrebersible, si borras el comentario, no lo podras recuperar</p>    
       </div>
       <div class="p-3  mt-2 text-center space-x-4 md:block">
-          <button class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100">Cancelar</button>
-          <button class="mb-2 md:mb-0 bg-red border border-red-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-red-600">Borrar</button>
+          <button class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100 btnWindow" data-val='false'>Cancelar</button>
+          <button class="mb-2 md:mb-0 bg-red border border-red-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-red-600 btnWindow" data-val='true'>Borrar</button>
       </div>
     </div>
 
