@@ -6,6 +6,7 @@
 @stop
 
 @section('content')
+@csrf
 <section class="container mx-auto p-6 font-mono">
   <!-- Bara de arriba -->
   <div class="d-flex mb-3 pt-5 flex-row row">
@@ -32,7 +33,7 @@
   <div class="contenidoPrincipal"></div>
 
   <!-- Cartel para añadir una categoria -->
-  <div class="addTypePanel">
+  <div class="addPanel">
     <div class="alignCloseButton">
       <button type="button" class="btn btn-danger closeWindow btnAddType closeWindowAddType">
         <i class="fa-solid fa-xmark"></i>
@@ -51,7 +52,7 @@
   </div>
 
   <!-- Cartel para eliminar una categoria -->
-  <div class="delTypePanel">
+  <div class="delPanel">
     <div class="alignCloseButton">
       <button type="button" class="btn btn-danger closeWindowDeleteType btnWindow" data-val='false'>
         <i class="fa-solid fa-xmark"></i>
@@ -75,10 +76,11 @@
     <link rel="stylesheet" href="/css/adminLTE.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="/css/typesIndex.css">
+    <link rel="stylesheet" href="/css/panel.css">
 @stop
 
 @section('js')
     <script src="https://kit.fontawesome.com/75e57fedbe.js" crossorigin="anonymous"></script>
     <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/js/admin/resources.js"></script>
 @stop

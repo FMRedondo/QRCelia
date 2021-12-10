@@ -86,7 +86,7 @@ function load() {
 // Funcion para mostrar/cerrar pestaña para añadir nuevo tipo
 $(".btnAddType").click(showAddType);
 function showAddType() {
-    $(".addTypePanel").toggle();
+    $(".addPanel").toggle();
     $(".typeName").val("");
 }
 
@@ -106,7 +106,7 @@ function addType(){
         type: 'post',
 
         success: function (response) {
-            $(".addTypePanel").toggle();
+            $(".addPanel").toggle();
 
                 var newContent = `
                 <tr class="text-gray-700" id="${response.id}">
@@ -149,7 +149,7 @@ function addType(){
 // y despues borrarlas cuando le das a si
 $(".btnDelType").click(showDelType);
 function showDelType() {
-    $(".delTypePanel").show();
+    $(".delPanel").show();
     let id = $(this).data("id");
 
     // Funcion para borrar categorias
@@ -166,7 +166,7 @@ function showDelType() {
                 success: function (response) {
                     let route = "table tbody #" + id;
                     $(route).remove();
-                    $(".delTypePanel").hide();
+                    $(".delPanel").hide();
                 },
                 error: function (response) {
                     alert("Error en la peticion");            
@@ -174,7 +174,7 @@ function showDelType() {
             });
         }
         if (!($(this).data("val")))
-            $(".delTypePanel").hide();
+            $(".delPanel").hide();
     })
 }
 
@@ -240,7 +240,6 @@ function searchType() {
 // Funcion para editar una categoria
 $(".btnShowEditType").click(showEditType);
 function showEditType() {
-    var error = false;
     var id = $(this).data("id");
     var content = ``;
     
@@ -257,7 +256,7 @@ function showEditType() {
 
         success: function(response){
             content = `
-            <div class="modifyTypePanel">
+            <div class="modifyPanel">
                 <div class="alignCloseButton">
                     <button type="button" class="btn btn-danger closeWindow btnWindowModify" data-val='false'>
                         <i class="fa-solid fa-xmark"></i>
@@ -276,50 +275,48 @@ function showEditType() {
             </div>
             `;
 
-            $(".delTypePanel").after(content);
-            $(".modifyTypePanel").show();
+            $(".delPanel").after(content);
+            $(".modifyPanel").show();
+
+            $(".typeNameMod").change(function() {
+                var newName = $(".typeNameMod").val();
+                var params = {
+                    "id": id,
+                    "field": $(this).data("field"),
+                    "value": newName,
+                    "_token": $('meta[name="csrf-token"]').attr('content')
+                }
+                    
+                $.ajax({
+                    data: params,
+                    url: '/admin/categorias/editType',
+                    type: 'post',
+    
+                    success: function (response) {
+                        alert(newName);
+                        let route = "table tbody #" + id + " .regTypeName";
+                        $(route).text(newName);
+                        route = "table tbody #" + id + " .regTypeUpdated"
+                        $(route).text(response);
+                    },
+    
+                    error: function (response) {
+                        alert("Error en la peticion");
+                        console.log(response);
+                    },
+                });
+            });
+
             $(".btnWindowModify").click(function () {
                 if (!($(this).data("val"))) {
-                    $(".modifyTypePanel").remove();
+                    $(".modifyPanel").remove();
                 }
             })
         },
 
         error: function (response) {
             alert("Error en la peticion");
-            error = true;
         },
 
     });
-
-    if (!error) {
-        $(".typeNameMod").change(function() {
-            let newName = $(".typeNameMod").val();
-            var params = {
-                "id": id,
-                "field": $(this).data("field"),
-                "value": newName,
-                "_token": $('meta[name="csrf-token"]').attr('content')
-            }
-                
-            $.ajax({
-                data: params,
-                url: '/admin/categorias/editType',
-                type: 'post',
-
-                success: function (response) {
-                    let route = "table tbody #" + id + " .regTypeName";
-                    $(route).text(newName);
-                    ruta = "table tbody #" + id + " .regTypeUpdated"
-                    $(route).text(response);
-                    $(".modifyTypePanel").remove();
-                },
-
-                error: function (response) {
-                    alert("Error en la peticion");
-                    console.log(response);
-                },
-            });
-        });
-    }
 }
