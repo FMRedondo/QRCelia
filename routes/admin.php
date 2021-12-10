@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\CommentController;
 use App\Http\Controllers\admin\TypeController;
 use App\Http\Controllers\admin\panelesController;
+use App\Http\Controllers\admin\customUsersController;
 
 Route::get('/', function () {
     return view('admin/index');
@@ -30,9 +31,6 @@ Route::get('/recursos', function () {
 });
 
 
-Route::get('/usuarios', function () {
-    return view('admin/usuarios');
-});
 
 Route::get('/roles', function () {
     return view('admin/roles');
@@ -54,3 +52,6 @@ Route::post('/categorias/deleteType', [TypeController::class, 'deleteType'])-> n
 Route::post('/categorias/searchType', [TypeController::class, 'searchType'])-> name('search.type');
 Route::post('/categorias/getType', [TypeController::class, 'getType']) -> name('get.type');
 Route::post('/categorias/editType', [TypeController::class, 'updateType']) -> name('edit.type');
+
+Route::get('/usuarios', [customUsersController::class, 'index'])-> name('show.viewUsers');
+Route::get('/usuarios/getUsers', [customUsersController::class, 'getUsers'])-> name('show.users');
