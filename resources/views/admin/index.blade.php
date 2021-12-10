@@ -20,28 +20,21 @@
          <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2 atajo">
             <div class="container flex flex-col gap-5 mx-2">
                 <label class="text-gray-100 font-semibold tracking-wider text-lg">Acceso directos</label>
-                <div class="bg-gray-100 rounded-lg w-full h-auto py-4 flex flex-row justify-between divide-x divide-solid divide-gray-400">
-                    <div class="relative flex-1 flex flex-col gap-2 px-4">
-                        <label class="text-gray-800 text-base font-semibold tracking-wider">Total de puntos</label>
-                        <label class="text-green-800 text-4xl font-bold">( x puntos )</label>
-
+                
+                <div class="small-box bg-info">
+                    <div class="inner">
+                      <h3>0</h3>
+      
+                      <p>Punto de interes</p>
                     </div>
-                    <div class="relative flex-1 flex flex-col gap-2 px-4">
-                        <label class="text-gray-800 text-base font-semibold tracking-wider">Total de comentarios</label>
-                        <label class="text-green-800 text-4xl font-bold">( x comentarios )</label>
-
+                    <div class="icon">
+                      <i class="ion ion-bag"></i>
                     </div>
-                    <div class="relative flex-1 flex flex-col gap-2 px-4">
-                        <label class="text-gray-800 text-base font-semibold tracking-wider">Total de recursos</label>
-                        <label class="text-green-800 text-4xl font-bold">( x recursos )</label>
+                    <a href="#" class="small-box-footer">ver puntos <i class="fas fa-arrow-circle-right"></i></a>
+                  </div>
+                    
 
-                    </div>
-                    <div class="relative flex-1 flex flex-col gap-2 px-4">
-                        <label class="text-gray-800 text-base font-semibold tracking-wider">Total de categorias</label>
-                        <label class="text-green-800 text-4xl font-bold">( x categorias )</label>
-
-                    </div>
-                </div>
+               
             </div>
 
            

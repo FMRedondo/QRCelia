@@ -2,12 +2,12 @@
 
 @section('title', 'Dashboard')
 
-@section('content_header')
-    <h1>Esta es la pagina de los usuarios</h1>
-@stop
+
 
 @section('content')
+@csrf
    <p>Em una palabra, el CRUD de los usuarios</p>
+   <div class="contenidoPrincipal"></div>
 @stop
 
 @section('css')
@@ -19,4 +19,5 @@
 @section('js')
     <script src="https://kit.fontawesome.com/75e57fedbe.js" crossorigin="anonymous"></script>
     <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/js/admin/users.js"></script>
 @stop

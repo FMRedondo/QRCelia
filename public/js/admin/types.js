@@ -269,7 +269,7 @@ function showEditType() {
                         <input type='text' class='form-control typeName typeNameMod' data-field='name' value='${response[0].name}' name='typeNameMod'>  
                     </div>   
                     <div class='form-group mb-4 d-flex justify-content-center'>  
-                        <button type='submit' class='btnSendModifyType btn btn-lg btn-success btnWindowModify' data-val='false' id='modifyType'>Modificar categoria</button>  
+                        <button type='submit' class='btnSendModifyType btn btn-lg btn-primary btnWindowModify' data-val='false' id='modifyType'>Modificar categoria</button>  
                     </div>  
                 </div>
             </div>
@@ -293,7 +293,6 @@ function showEditType() {
                     type: 'post',
     
                     success: function (response) {
-                        alert(newName);
                         let route = "table tbody #" + id + " .regTypeName";
                         $(route).text(newName);
                         route = "table tbody #" + id + " .regTypeUpdated"
@@ -312,6 +311,7 @@ function showEditType() {
                     $(".modifyPanel").remove();
                 }
             })
+
         },
 
         error: function (response) {

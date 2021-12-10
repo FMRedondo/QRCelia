@@ -36,7 +36,7 @@ class resourceController extends Controller
             $resource->save(); 
         }
 
-        return response()->json($result);
+        
     }
 
     public function deleteResource(){
@@ -63,8 +63,6 @@ class resourceController extends Controller
 
     public function updateResource(){
         $id = $_POST['id'];
-        $type= $_POST['type'];
-        $name = $_POST['name'];
 
         if ($request->hasFile('file')) {
 
@@ -81,9 +79,9 @@ class resourceController extends Controller
             ]);
             $resource->save(); 
         }
-        $autor=$_POST['autor'];
 
-        ResourceModel::updateResource($id,$type,$name,$url,$autor);
-        return response()->json($result);
+
+        ResourceModel::updateResource($id,$url);
+       
     }
 }
