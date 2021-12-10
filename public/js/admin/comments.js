@@ -34,7 +34,7 @@ function index() {
 
             response.forEach(function (data) {
                 let contenidoTabla = `
-                <tr class="text-gray-700">
+                <tr class="text-gray-700" id='${data.id}'>
                     <td class="px-4 py-3 text-xs border">
                         <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> ${data.content} </span>
                     </td>
@@ -42,11 +42,13 @@ function index() {
                     <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> ${data.idPunto} </span>
                     </td>
                     <td class="px-4 py-3 text-sm border d-flex flex-row justify-content-around">
-                        <button type="button" class="btn btn-danger btnDelType" data-id='${data.id}'>Eliminar</button>
+                        <button type="button" class="btn btn-danger btnDelComments" data-id='${data.id}'>Eliminar</button>
                     </td>
                 </tr>`;
 
                 $(".contenido").append(contenidoTabla);
+
+                $(".btnDelComments").click(showDelComments);
 
 
             });
@@ -76,13 +78,12 @@ function searchComments(){
             var contenidoTabla;
             response.forEach(function (datos) {
                     contenidoTabla+= `
-                <tr class="text-gray-700">
+                <tr class="text-gray-700" id="${datos.id}">
                     <td class="px-4 py-3 text-xs border">
                         <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> ${datos.content} </span>
                     </td>
                     <td class="px-4 py-3 text-xs border">
-                    <span class="tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama tumama "></span><span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> 
-                    dolar{datos.idPunto} </span>
+                    <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> ${datos.idPunto} </span>
                     </td>
                 </tr>`;
             });
@@ -96,13 +97,12 @@ function searchComments(){
     });
 }
 
-$(".btnDelComments").click(showDelComments);
 
 function showDelComments() {
+
     $(".delCommentsPanel").show();
     let id = $(this).data("id");
 
-    // Funcion para borrar categorias
     $(".btnWindow").click(function() {
         if ($(this).data("val")) {
             var params = {
@@ -116,7 +116,7 @@ function showDelComments() {
                 success: function (response) {
                     let route = "table tbody #" + id;
                     $(route).remove();
-                    $(".delTPanel").hide();
+                    $(".delCommentsPanel").hide();
                 },
                 error: function (response) {
                     alert("Error en la peticion");            

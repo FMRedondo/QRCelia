@@ -43,6 +43,9 @@ Route::get('/verDatosContenido', [panelesController::class, 'datosPanelContenido
 Route::get('/comentarios', [CommentController::class, 'index'])-> name('show.viewComments');
 Route::get('/comentarios/getComments', [CommentController::class, 'getComments'])-> name('show.comments');
 Route::post('/comentarios/searchcomments', [CommentController::class, 'searchcomments'])-> name('search.comments');
+Route::post('/comentarios/deleteComments', [CommentController::class, 'deleteComment'])-> name('delete.comments');
+
+
 
 Route::get('/categorias', [TypeController::class, 'index'])-> name('show.viewTypes');
 Route::get('/categorias/getTypes', [TypeController::class, 'getTypes'])-> name('show.types');
