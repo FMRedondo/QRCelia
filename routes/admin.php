@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\CommentController;
 use App\Http\Controllers\admin\TypeController;
+use App\Http\Controllers\admin\resourceController;
 use App\Http\Controllers\admin\panelesController;
 
 Route::get('/', function () {
@@ -20,15 +21,6 @@ Route::get('/personalizar', function () {
 Route::get('/contenido', function () {
     return view('admin/contenido');
 });
-
-Route::get('/recursos', function () {
-    return view('admin/recursos');
-});
-
-Route::get('/recursos', function () {
-    return view('admin/recursos');
-});
-
 
 Route::get('/usuarios', function () {
     return view('admin/usuarios');
@@ -51,3 +43,5 @@ Route::post('/categorias/deleteType', [TypeController::class, 'deleteType'])-> n
 Route::post('/categorias/searchType', [TypeController::class, 'searchType'])-> name('search.type');
 Route::post('/categorias/getType', [TypeController::class, 'getType']) -> name('get.type');
 Route::post('/categorias/editType', [TypeController::class, 'updateType']) -> name('edit.type');
+
+Route::get('/recursos', [resourceController::class, 'index'])-> name('show.viewResources');
