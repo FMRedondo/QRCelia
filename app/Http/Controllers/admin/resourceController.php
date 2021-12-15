@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\admin\TypeModel;
 use Illuminate\Support\Facades\Date;
+use App\Models\admin\resourceModel;
 
 class resourceController extends Controller
 {
@@ -29,7 +30,7 @@ class resourceController extends Controller
             $request->file->store('img', 'public');
 
             
-            $resource = new resource([
+            $resource = new resourceModel([
                 "name" => $request->get('name'),
                 "url" => $request->file->hashName()
             ]);

@@ -34,8 +34,6 @@ Route::get('/comentarios/getComments', [CommentController::class, 'getComments']
 Route::post('/comentarios/searchcomments', [CommentController::class, 'searchcomments'])-> name('search.comments');
 Route::post('/comentarios/deleteComments', [CommentController::class, 'deleteComment'])-> name('delete.comments');
 
-
-
 Route::get('/categorias', [TypeController::class, 'index'])-> name('show.viewTypes');
 Route::get('/categorias/getTypes', [TypeController::class, 'getTypes'])-> name('show.types');
 Route::post('/categorias/addType', [TypeController::class, 'addType'])-> name('add.type');
@@ -45,6 +43,12 @@ Route::post('/categorias/getType', [TypeController::class, 'getType']) -> name('
 Route::post('/categorias/editType', [TypeController::class, 'updateType']) -> name('edit.type');
 
 Route::get('/recursos', [resourceController::class, 'index'])-> name('show.viewResources');
+Route::get('/recursos/getResource', [TypeController::class, 'getTypes'])-> name('show.resource');
+Route::post('/recursos/addResource', [TypeController::class, 'addType'])-> name('add.resource');
+Route::post('/recursos/deleteResource', [TypeController::class, 'deleteResource'])-> name('delete.resource');
+Route::post('/recursos/searchResource', [TypeController::class, 'searchResource'])-> name('search.resource');
+Route::post('/recursos/getResource', [TypeController::class, 'getResource']) -> name('get.resource');
+Route::post('/recursos/editResource', [TypeController::class, 'updateResource']) -> name('edit.resource');
 
 Route::get('/usuarios', [customUsersController::class, 'index'])-> name('show.viewUsers');
 Route::get('/usuarios/getUsers', [customUsersController::class, 'getUsers'])-> name('show.users');

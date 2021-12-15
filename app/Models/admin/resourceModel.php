@@ -23,7 +23,7 @@ class resourceModel extends Model
         return $result;
     }
 
-    public static function updateResource($id, $type, $name, $url, $autor){
+    public static function updateResource($id, $field, $value){
         $sql = "UPDATE FROM resources SET $field = $value WHERE (id = $id)";
         DB::update($sql);
     }
