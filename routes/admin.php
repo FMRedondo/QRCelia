@@ -19,8 +19,8 @@ Route::get('/personalizar', function () {
     return view('admin/personalizar');
 });
 
-Route::get('/contenido', function () {
-    return view('admin/contenido');
+Route::get('/puntosInteres', function () {
+    return view('admin/puntosInteres');
 });
 
 Route::get('/roles', function () {
