@@ -8,39 +8,10 @@ use Illuminate\Support\Facades\Date;
 use App\Models\admin\resourceModel;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 
-class resourceController extends Controller
+class ResourceController extends Controller
 {
     public function index(){
         return view('admin/recursos');
-    }
-
-    // Funcion para subir recursos al servidor
-    public function store(Request $request){
-        $request->validate([
-            'type'=>'required',
-            'name'=>'required',
-        ]);
-        
-        if ($request->hasFile('file')) {
-            $request->validate([
-                'image' => 'mimes:jpeg,jpg,bmp,png',
-                'video' => 'mimes:mp4,mov,avi,webm',
-                'audio' => 'mimes:mp3,mpeg,wav'
-            ]);
-
-                                    // /storage/public/img
-            $request->file->store('img', 'public');
-            $resource = new resourceModel([
-                "name" => $request->get('name'),
-                "url" => $request->file->hashName()
-            ]);
-            $resource->save(); 
-        }
-    }
-
-    public function deleteResource(){
-        $id = $_POST['id'];
-        ResourceModel::deleteResource($id);
     }
 
     public function getResources(){
@@ -54,15 +25,67 @@ class resourceController extends Controller
         return response() -> json($result);
     }
 
+    // Funcion para añadir recursos
+    public function addResource(){
+        $_token = $_POST['_token'];
+        $type = $_POST['type'];
+        $name = $_POST['name'];
+        $url = $_POST['url'];
+        $autor = $_POST['autor'];
+        $user = $_POST['user'];
+        $date = DATE("Y-m-d H:i:s");
+        $result = ResourceModel::addResource($type,$name,$url,$autor,$user,$date);
+        return response()->json([
+            'id'=> $result,
+            'date'=> $date
+        ]);
+    }
+
+    public function deleteResource(){
+        $id = $_POST['id'];
+        ResourceModel::deleteResource($id);
+    }
+
     public function searchResource(){
         $search = $_POST['search'];
         $result = ResourceModel::searchResource($search);
         return response()->json($result);
     }
 
+    public function updateResource(){
+        $id = $_POST['id'];
+        $field = $_POST['field'];
+        $value = $_POST['value'];
+        $date = DATE("Y-m-d H:i:s");
+        ResourceModel::updateResource($id,$field,$value,$date);
+        return $date;
+    } 
+
+    // Funcion para subir recursos al servidor
+    public function store(Request $request){
+        $request->validate([
+            'type'=>'required',
+            'name'=>'required',
+        ]);
+        if ($request->hasFile('file')) {
+            $request->validate([
+                'image' => 'mimes:jpeg,jpg,bmp,png',
+                'video' => 'mimes:mp4,mov,avi,webm',
+                'audio' => 'mimes:mp3,mpeg,wav'
+            ]);
+                                    // /storage/public/img????
+            $request->file->store('img', 'public');
+            $resource = new resourceModel([
+                "name" => $request->get('name'),
+                "url" => $request->file->hashName()
+            ]);
+            $resource->save(); 
+        }
+    }
+
     // Funcion para resubir un recurso
     public function reUploadResource(Request $request){
-        $folder = "test";
+        $folder = "upload_error";
         $name = $request->get('name');
         $id = $_POST['id'];
         $field = "url";
@@ -72,14 +95,25 @@ class resourceController extends Controller
                 'video' => 'mimes:mp4,mov,avi,webm',
                 'audio' => 'mimes:mp3,mpeg,wav'
             ]);
-
-                                    //guarda en /storage/public/img
-            $request->file->store('img', 'public');
+            $file = pathinfo($name);
+            $extension = $file['extension'];
+            if ($extension == "jpeg" || $extension == "jpg" || $extension == "bmp" || $extension = "png") {
+                $folder = "img";
+            }
+            if ($extension == "mp4" || $extension == "mov" || $extension == "avi" || $extension = "webm") {
+                $folder = "video";
+            }
+            if ($extension == "mp3" || $extension == "wav") {
+                $folder = "audio";
+            }
+                                    //guarda en /storage/public/img?????
+            $request->file->store($folder, 'public');
             $resource = new resource([
                 "name" => $request->get('name'),
                 "url" => $request->file->hashName()
             ]);
             $resource->save(); 
+            $value = "public/" .  $folder . "/" . $name;
         }
         ResourceModel::updateResource($id,$field,$value);
     }

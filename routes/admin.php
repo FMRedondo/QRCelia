@@ -42,14 +42,14 @@ Route::post('/categorias/searchType', [TypeController::class, 'searchType'])-> n
 Route::post('/categorias/getType', [TypeController::class, 'getType']) -> name('get.type');
 Route::post('/categorias/editType', [TypeController::class, 'updateType']) -> name('edit.type');
 
-Route::get('/recursos', [resourceController::class, 'index'])-> name('show.viewResources');
-Route::get('/recursos/getResource', [TypeController::class, 'getTypes'])-> name('show.resource');
-Route::post('/recursos/addResource', [TypeController::class, 'addType'])-> name('add.resource');
-Route::post('/recursos/deleteResource', [TypeController::class, 'deleteResource'])-> name('delete.resource');
-Route::post('/recursos/searchResource', [TypeController::class, 'searchResource'])-> name('search.resource');
-Route::post('/recursos/getResource', [TypeController::class, 'getResource']) -> name('get.resource');
-Route::post('/recursos/editResource', [TypeController::class, 'updateResource']) -> name('edit.resource');
-Route::post('/recursos/reUploadResource', [TypeController::class, 'reUploadResource']) -> name('reUpload.resource');
+Route::get('/recursos', [ResourceController::class, 'index'])-> name('show.viewResources');
+Route::get('/recursos/getResources', [ResourceController::class, 'getResources'])-> name('show.resource');
+Route::post('/recursos/addResource', [ResourceController::class, 'addResource'])-> name('add.resource');
+Route::post('/recursos/deleteResource', [ResourceController::class, 'deleteResource'])-> name('delete.resource');
+Route::post('/recursos/searchResource', [ResourceController::class, 'searchResource'])-> name('search.resource');
+Route::post('/recursos/getResource', [ResourceController::class, 'getResource']) -> name('get.resource');
+Route::post('/recursos/editResource', [ResourceController::class, 'updateResource']) -> name('edit.resource');
+Route::post('/recursos/reUploadResource', [ResourceController::class, 'reUploadResource']) -> name('reUpload.resource');
 
 Route::get('/usuarios', [customUsersController::class, 'index'])-> name('show.viewUsers');
 Route::get('/usuarios/getUsers', [customUsersController::class, 'getUsers'])-> name('show.users');

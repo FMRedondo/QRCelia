@@ -23,9 +23,11 @@ class resourceModel extends Model
         return $result;
     }
 
-    public static function updateResource($id, $field, $value){
-        $sql = "UPDATE FROM resources SET $field = $value WHERE (id = $id)";
-        DB::update($sql);
+    public static function addResource($type,$name,$url,$autor,$user,$date){
+        $sql = "INSERT INTO resources (type,name,url,autor,user,created_at,updated_at) VALUES('$type','$name','$url','$autor','$user','$date','$date')";
+        DB::insert($sql);
+        $id = DB::getPdo()->lastInsertId();
+        return $id;
     }
 
     public static function deleteResource($id){
@@ -39,8 +41,8 @@ class resourceModel extends Model
         return $result;
     }
 
-    public static function addResources($content){
-        $sql = "INSERT INTO resources (content) VALUE($content)";
-        DB::insert($sql);
+    public static function updateResource($id, $field, $value){
+        $sql = "UPDATE FROM resources SET $field = $value WHERE (id = $id)";
+        DB::update($sql);
     }
 }

@@ -48,6 +48,26 @@ function load() {
                     data.created_at = "No disponible"
                 }
 
+                $thumbnail = "No disponible"
+                if (data.type == "image") {
+                    $thumbnail = `<img src='${data.url}' class='img-thumbnail img-fluid'/>`
+                }
+                if (data.type == "video") {
+                    $thumbnail = `
+                    <iframe width="420" height="315"
+                        src="${data.url}">
+                    </iframe>
+                    `;
+                }
+                if (data.type == "audio") {
+                    $thumbnail = `                   
+                    <audio controls>
+                    <source src="${data.url}">
+                    Your browser does not support the audio element.
+                    </audio>
+                    `;
+                }
+
                 tableContent = `
                     <tr class="text-gray-700" id="${data.id}">
                         <td class="px-4 py-3 border">
@@ -65,7 +85,7 @@ function load() {
                             <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regResourceCreated"> ${data.type} </span>
                         </td>
                         <td class="px-4 py-3 text-xs border">
-                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regResourceCreated"> AQUI VA LA FOTO </span>
+                            ${$thumbnail}
                         </td>
                         <td class="px-4 py-3 text-xs border">
                             <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regResourceCreated"> ${data.autor} </span>
