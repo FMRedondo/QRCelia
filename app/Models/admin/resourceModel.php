@@ -43,6 +43,4 @@ class resourceModel extends Model
         $sql = "INSERT INTO resources (content) VALUE($content)";
         DB::insert($sql);
     }
-    
-
 }

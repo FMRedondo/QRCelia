@@ -136,6 +136,8 @@ function addType(){
             $("tbody").append(newContent);
             $(".btnShowEditType").click(showEditType);
             $(".btnDelType").click(showDelType);
+            $(".btnShowEditType").off();
+            $(".btnShowEditType").click(showEditType);
          },
 
          error: function (response) {

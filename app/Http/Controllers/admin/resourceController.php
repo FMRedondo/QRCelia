@@ -13,31 +13,28 @@ class resourceController extends Controller
         return view('admin/recursos');
     }
 
+    // Funcion para subir recursos al servidor
     public function store(Request $request){
-
         $request->validate([
             'type'=>'required',
             'name'=>'required',
         ]);
         
         if ($request->hasFile('file')) {
-
             $request->validate([
-                'image' => 'mimes:jpeg,bmp,png' 
+                'image' => 'mimes:jpeg,jpg,bmp,png',
+                'video' => 'mimes:mp4,mov,avi,webm',
+                'audio' => 'mimes:mp3,mpeg,wav'
             ]);
 
                                     // /storage/public/img
             $request->file->store('img', 'public');
-
-            
             $resource = new resourceModel([
                 "name" => $request->get('name'),
                 "url" => $request->file->hashName()
             ]);
             $resource->save(); 
         }
-
-        
     }
 
     public function deleteResource(){
@@ -62,27 +59,27 @@ class resourceController extends Controller
         return response()->json($result);
     }
 
-    public function updateResource(){
+    // Funcion para resubir un recurso
+    public function reUploadResource(Request $request){
+        $folder = "test";
+        $name = $request->get('name');
         $id = $_POST['id'];
-
+        $field = "url";
         if ($request->hasFile('file')) {
-
             $request->validate([
-                'image' => 'mimes:jpeg,bmp,png' 
+                'image' => 'mimes:jpeg,jpg,bmp,png',
+                'video' => 'mimes:mp4,mov,avi,webm',
+                'audio' => 'mimes:mp3,mpeg,wav'
             ]);
 
                                     //guarda en /storage/public/img
             $request->file->store('img', 'public');
-
             $resource = new resource([
                 "name" => $request->get('name'),
                 "url" => $request->file->hashName()
             ]);
             $resource->save(); 
         }
-
-
-        ResourceModel::updateResource($id,$url);
-       
+        ResourceModel::updateResource($id,$field,$value);
     }
 }

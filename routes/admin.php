@@ -49,6 +49,7 @@ Route::post('/recursos/deleteResource', [TypeController::class, 'deleteResource'
 Route::post('/recursos/searchResource', [TypeController::class, 'searchResource'])-> name('search.resource');
 Route::post('/recursos/getResource', [TypeController::class, 'getResource']) -> name('get.resource');
 Route::post('/recursos/editResource', [TypeController::class, 'updateResource']) -> name('edit.resource');
+Route::post('/recursos/reUploadResource', [TypeController::class, 'reUploadResource']) -> name('reUpload.resource');
 
 Route::get('/usuarios', [customUsersController::class, 'index'])-> name('show.viewUsers');
 Route::get('/usuarios/getUsers', [customUsersController::class, 'getUsers'])-> name('show.users');
