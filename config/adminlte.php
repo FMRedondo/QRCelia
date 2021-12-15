@@ -252,7 +252,7 @@ return [
             'text' => 'Puntos de interes',
             'url'  => 'admin',
             'icon' => 'fa-solid fa-file-lines',
-            'url'  => 'admin/contenido',
+            'url'  => 'admin/puntosInteres',
         ],
         [
             'text' => 'Categorias',
