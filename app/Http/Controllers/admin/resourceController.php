@@ -63,24 +63,37 @@ class ResourceController extends Controller
 
     // Funcion para subir recursos al servidor
     public function store(Request $request){
-        $request->validate([
-            'type'=>'required',
-            'name'=>'required',
-        ]);
+        $folder = "upload_error";
+        $name = $request->get('name');
+        $id = $_POST['id'];
+        $field = "url";
         if ($request->hasFile('file')) {
             $request->validate([
                 'image' => 'mimes:jpeg,jpg,bmp,png',
                 'video' => 'mimes:mp4,mov,avi,webm',
                 'audio' => 'mimes:mp3,mpeg,wav'
             ]);
-                                    // /storage/public/img????
-            $request->file->store('img', 'public');
-            $resource = new resourceModel([
+            $file = pathinfo($name);
+            $extension = $file['extension'];
+            if ($extension == "jpeg" || $extension == "jpg" || $extension == "bmp" || $extension = "png") {
+                $folder = "img";
+            }
+            if ($extension == "mp4" || $extension == "mov" || $extension == "avi" || $extension = "webm") {
+                $folder = "video";
+            }
+            if ($extension == "mp3" || $extension == "wav") {
+                $folder = "audio";
+            }
+                                    //guarda en /storage/public/img?????
+            $request->file->store($folder, 'public');
+            $resource = new resource([
                 "name" => $request->get('name'),
                 "url" => $request->file->hashName()
             ]);
             $resource->save(); 
+            $value = "public/" .  $folder . "/" . $name;
         }
+        ResourceModel::updateResource($id,$field,$value);
     }
 
     // Funcion para resubir un recurso

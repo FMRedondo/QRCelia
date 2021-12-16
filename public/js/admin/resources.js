@@ -13,30 +13,7 @@ function load() {
         type: 'get',
 
         success: function (response) {
-            $table = `
-                <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
-                <div class="w-full overflow-x-auto">
-                    <table class="w-full">
-                        <thead>
-                            <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
-                                <th class="px-4 py-3 text-center">Nombre</th>
-                                <th class="px-4 py-3 text-center">Tipo</th>
-                                <th class="px-4 py-3 text-center">Previsualización</th>
-                                <th class="px-4 py-3 text-center">Autor</th>
-                                <th class="px-4 py-3 text-center">Fecha creacion</th>
-                                <th class="px-4 py-3 text-center">Ultima modificación</th>
-                                <th class="px-4 py-3 text-center">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white">
-                        </tbody>
-                    </table>
-                </div>
-                </div>
-            `;
-
             $(".fa-spinner").remove();
-            $(".contenidoPrincipal").append($table);
 
             response.forEach(function (data) {
                 let tableContent = "";
@@ -48,61 +25,33 @@ function load() {
                     data.created_at = "No disponible"
                 }
 
-                $thumbnail = "No disponible"
+                var thumbnail = ""
+
                 if (data.type == "image") {
-                    $thumbnail = `<img src='${data.url}' class='img-thumbnail img-fluid'/>`
+                    thumbnail = data.url;
                 }
                 if (data.type == "video") {
-                    $thumbnail = `
-                    <iframe width="420" height="315"
-                        src="${data.url}">
-                    </iframe>
-                    `;
+                    thumbnail = "/img/video.png";
                 }
                 if (data.type == "audio") {
-                    $thumbnail = `                   
-                    <audio controls>
-                    <source src="${data.url}">
-                    Your browser does not support the audio element.
-                    </audio>
-                    `;
+                    thumbnail = "/img/audio.png";
                 }
 
-                tableContent = `
-                    <tr class="text-gray-700" id="${data.id}">
-                        <td class="px-4 py-3 border">
-                            <div class="flex items-center text-sm">
-                                <div class="relative w-8 h-8 mr-3 rounded-full md:block">
-                                    <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true">
-                                    </div>
-                                 </div>
-                                <div>
-                                    <p class="font-semibold text-black regResourceName">${data.name}</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-4 py-3 text-xs border">
-                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regResourceCreated"> ${data.type} </span>
-                        </td>
-                        <td class="px-4 py-3 text-xs border">
-                            ${$thumbnail}
-                        </td>
-                        <td class="px-4 py-3 text-xs border">
-                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regResourceCreated"> ${data.autor} </span>
-                        </td>
-                        <td class="px-4 py-3 text-xs border">
-                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regResourceCreated"> ${data.created_at} </span>
-                        </td>
-                        <td class="px-4 py-3 text-xs border">
-                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regResourceUpdated"> ${data.updated_at} </span>
-                        </td>
-                        <td class="px-4 py-3 text-sm border d-flex flex-row justify-content-around">
-                            <button type="button" class="btn btn-primary btnShowEditResource" data-id='${data.id}'>Modificar</button>
-                            <button type="button" class="btn btn-danger btnDelResource" data-id='${data.id}'>Eliminar</button>
-                        </td>
-                    </tr>
+                content = `
+                <div class="card d-flex flex-column p-2" style="width: 33%;">
+                    <a class="overflow-hidden">
+                      <img alt="" class="img-fluid" src="${thumbnail}">
+                    </a>
+                    <div class="mt-4">
+                        <h2 class="text-lg font-medium">${data.name}</h2>
+                        <p>
+                            <strong>Autor:</strong>
+                            <span class="text-xs tracking-widest">${data.user}</span>
+                        <p>
+                    </div>
+                </div>
                 `;
-                $("tbody").append(tableContent);
+                $("#mostrarRecursos").append(content);
             })
             $(".btnShowEditResource").click(showEditResource);
             $(".btnDelResource").click(showDelResource);

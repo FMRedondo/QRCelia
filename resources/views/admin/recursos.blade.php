@@ -30,26 +30,10 @@
     <i class="fa-solid fa-spinner fa-spin-pulse h1 d-flex justify-content-center mt-5 mb-5"></i>
 
   <!-- Tabla de datos -->
-  <div class="contenidoPrincipal"></div>
+  <div id="mostrarRecursos" class="contenidoPrincipal d-flex align-items-center justify-content-center flex-wrap"></div>
 
   <!-- Cartel para añadir un recurso -->
   <div class="w-50 m-auto p-5  mx-auto my-auto rounded-xl shadow-lg  bg-white addPanel">
-    <div class="">
-      <div class="text-center p-5 flex-auto justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" data-prefix="fas" data-icon="circle-plus" class="svg-inline--fa fa-circle-plus w-16 h-16 flex items-center mx-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#218838" stroke="#218838">
-          <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256C397.4 512 512 397.4 512 256S397.4 0 256 0zM352 280H280V352c0 13.2-10.8 24-23.1 24C242.8 376 232 365.2 232 352V280H160C146.8 280 136 269.2 136 256c0-13.2 10.8-24 24-24H232V160c0-13.2 10.8-24 24-24C269.2 136 280 146.8 280 160v72h72C365.2 232 376 242.8 376 256C376 269.2 365.2 280 352 280z"></path>
-        </svg>
-          <h2 class="text-xl font-bold py-4 ">Añadir nuevo recurso</h2>
-          <div class='form-group mb-4'>  
-            <label class='mb-2'>Nombre:</label>  
-            <input type='text' class='form-control resourceName rounded-pill' placeholder='Introduce el nombre del recurso' name='resourceName'>  
-          </div>  
-      </div>
-      <div class="p-3  mt-2 text-center space-x-4 md:block">
-          <button class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100 btnWindow closeWindow btnAddResource closeWindowAddResource" data-val='false'>Cancelar</button>
-          <button class="mb-2 md:mb-0 bg-green border border-red-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-red-600 btnWindow btnSendAddResource btn btn-lg btn-success" data-val='true'>Añadir</button>
-      </div>
-    </div>
   </div>
 
   <!-- Cartel para eliminar un recurso -->
