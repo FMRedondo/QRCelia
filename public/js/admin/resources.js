@@ -38,17 +38,8 @@ function load() {
                 }
 
                 content = `
-                <div class="card d-flex flex-column p-2" style="width: 33%;">
-                    <a class="overflow-hidden">
-                      <img alt="" class="img-fluid" src="${thumbnail}">
-                    </a>
-                    <div class="mt-4">
-                        <h2 class="text-lg font-medium">${data.name}</h2>
-                        <p>
-                            <strong>Autor:</strong>
-                            <span class="text-xs tracking-widest">${data.user}</span>
-                        <p>
-                    </div>
+                <div class="card p-2" style="width: 33%;">
+                    <img alt="" class="w-100" src="${thumbnail}">
                 </div>
                 `;
                 $("#mostrarRecursos").append(content);
