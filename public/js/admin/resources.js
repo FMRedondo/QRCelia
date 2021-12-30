@@ -128,7 +128,7 @@ function addResource(){
     }
     $.ajax({
         data: params,
-        url: '/admin/recursos/addResource',
+        url: '/admin/recursos',
         type: 'post',
 
         success: function (response) {
@@ -136,6 +136,7 @@ function addResource(){
         },
 
         error: function (response) {
+            console.log(response);
             alert("Error en la peticion");
         }
     });

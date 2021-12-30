@@ -7,7 +7,7 @@ use App\Http\Controllers\admin\resourceController;
 use App\Http\Controllers\admin\panelesController;
 use App\Http\Controllers\admin\customUsersController;
 use App\Http\Controllers\admin\interestPointController;
-
+use App\Http\Controllers\admin\resourceUploadController;
 
 Route::get('/', function () {
     return view('admin/index');
@@ -51,13 +51,13 @@ Route::post('/categorias/getType', [TypeController::class, 'getType']) -> name('
 Route::post('/categorias/editType', [TypeController::class, 'updateType']) -> name('edit.type');
 
 Route::get('/recursos', [ResourceController::class, 'index'])-> name('show.viewResources');
+Route::post('/recursos', [resourceUploadController::class, 'store'])-> name('upload.resource');
 Route::get('/recursos/getResources', [ResourceController::class, 'getResources'])-> name('show.resource');
 Route::post('/recursos/addResource', [ResourceController::class, 'addResource'])-> name('add.resource');
 Route::post('/recursos/deleteResource', [ResourceController::class, 'deleteResource'])-> name('delete.resource');
 Route::post('/recursos/searchResource', [ResourceController::class, 'searchResource'])-> name('search.resource');
 Route::post('/recursos/getResource', [ResourceController::class, 'getResource']) -> name('get.resource');
 Route::post('/recursos/editResource', [ResourceController::class, 'updateResource']) -> name('edit.resource');
-Route::post('/recursos/reUploadResource', [ResourceController::class, 'reUploadResource']) -> name('reUpload.resource');
 
 Route::get('/usuarios', [customUsersController::class, 'index'])-> name('show.viewUsers');
 Route::get('/usuarios/getUsers', [customUsersController::class, 'getUsers'])-> name('show.users');

@@ -37,7 +37,8 @@
 			</h2>
 			<p class="mt-2 text-sm text-gray-400">Imágenes, videos y audios</p>
 		</div>
-    <form class="mt-2 space-y-3" action="#" method="POST">
+    <form class="mt-2 space-y-3" action="" method="POST" enctype="multipart/form-data">
+      @csrf
       <div class="grid grid-cols-1 space-y-2">
           <div class="flex items-center justify-center w-full">
             <label class="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
@@ -51,7 +52,7 @@
                     <a href="" id="" class="text-blue-600 hover:underline">haz click y</a>
                   seleccionalos</p>
               </div>
-                <input type="file" id="resourceUpload" multiple class="hidden">
+                <input type="file" id="resourceUpload" multiple name="resourceUpload" class="hidden">
               </label>
           </div>
       </div>
