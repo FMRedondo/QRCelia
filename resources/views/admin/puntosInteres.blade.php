@@ -181,9 +181,11 @@
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="/css/panel.css">
+    <link rel="stylesheet" href="/estilos/interestPoints.css">
 @stop
 
 @section('js')
     <script src="https://kit.fontawesome.com/75e57fedbe.js" crossorigin="anonymous"></script>
     <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/js/admin/interestPoints.js"></script>
 @stop

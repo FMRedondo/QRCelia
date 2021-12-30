@@ -6,6 +6,8 @@ use App\Http\Controllers\admin\TypeController;
 use App\Http\Controllers\admin\resourceController;
 use App\Http\Controllers\admin\panelesController;
 use App\Http\Controllers\admin\customUsersController;
+use App\Http\Controllers\admin\interestPointController;
+
 
 Route::get('/', function () {
     return view('admin/index');
@@ -19,15 +21,21 @@ Route::get('/personalizar', function () {
     return view('admin/personalizar');
 });
 
-Route::get('/puntosInteres', function () {
-    return view('admin/puntosInteres');
-});
-
 Route::get('/roles', function () {
     return view('admin/roles');
 });
 
 Route::get('/verDatosContenido', [panelesController::class, 'datosPanelContenido'])-> name('verContenido.panel');
+
+
+
+Route::get('/puntosInteres', [interestPointController::class, 'index'])-> name('show.interestPoints');
+
+
+
+
+
+
 
 Route::get('/comentarios', [CommentController::class, 'index'])-> name('show.viewComments');
 Route::get('/comentarios/getComments', [CommentController::class, 'getComments'])-> name('show.comments');
