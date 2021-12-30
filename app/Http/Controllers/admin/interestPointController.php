@@ -7,5 +7,11 @@ use Illuminate\Http\Request;
 
 class interestPointController extends Controller
 {
-    //
+    public function index(){
+        return view('admin/puntosInteres');
+    }
+
+    public function getPoints(){
+        
+    }
 }

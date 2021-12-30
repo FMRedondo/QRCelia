@@ -41,5 +41,17 @@
 	justify-content: flex-end;
 }
 
+.editButton{
+    width: 3em;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.editButton i{
+    font-size: 1.2em;
+}
+
 @media (max-width: 795px) {
 }
