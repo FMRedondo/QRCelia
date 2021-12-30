@@ -38,11 +38,47 @@ function load() {
                 }
 
                 content = `
-                <div class="card p-2" style="width: 33%;">
-                    <img alt="" class="w-100" src="${thumbnail}">
-                </div>
+                <div class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32" style="width: 30%">
+                    <div class="imgThumbnail">
+                        <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-4"
+                        src="${thumbnail}" alt="Image Size 720x400" />
+                        <button type="button" class="btn btn-success rounded-circle flex editButton">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h2 class="text-lg text-gray-900 font-medium title-font mb-4 whitespace-nowrap truncate">
+                            ${data.name}
+                        </h2>
+                        <p class="text-gray-600 font-light text-md mb-3">
+                            Autor: ${data.autor}
+                        </p>
+                        <p class="text-gray-600 font-light text-md mb-3">
+                            Tipo: ${data.type}
+                        </p>
+
+                        <div class="py-4 border-t text-xs text-gray-700">
+                            <div class="d-flex flex-column">
+
+                                <div class="col-span-2 mb-2">
+                                    Fecha de creación:
+                                    <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-400 rounded-full">
+                                        ${data.created_at}
+                                    </span>
+                                </div>
+                                 
+                                <div class="col-span-2 mb-2">
+                                    Última modificación:
+                                    <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-400 rounded-full">
+                                        ${data.updated_at}
+                                    </span>
+                                </div>
+                                
+                            </div>
+                    </div>
+                </div>    
                 `;
-                $("#mostrarRecursos").append(content);
+                $("#resourceList").append(content);
             })
             $(".btnShowEditResource").click(showEditResource);
             $(".btnDelResource").click(showDelResource);
@@ -59,13 +95,50 @@ function load() {
 $(".btnAddResource").click(showAddResource);
 function showAddResource() {
     $(".addPanel").toggle();
-    $(".resourceName").val("");
+    $("#resourceUpload").prop('disabled', false);
+    $("#resourceUpload").change(checkResourceUpload);
+}
+
+function checkResourceUpload(){
+    var numFiles = $('#resourceUpload').get(0).files.length;
+
+    if (numFiles > 0) {
+        $("#preview").empty();
+        $("#preview").append("<div id='imagesPreview' class='d-flex flex-row justify-content-center flex-wrap' style='overflow-y: scroll; max-height:450px;'></div>"); 
+        for (let i = 0; i < numFiles; i++) {
+            var tempURL = URL.createObjectURL($('#resourceUpload').get(0).files[i]);
+            var content = `
+                <div class="p-2" style="width: 30%">
+                    <div class="imgThumbnail">
+                        <img src="${tempURL}"/> 
+                    </div>
+                <div>
+            `;
+            $("#resourceUpload").prop('disabled', true);
+            $("#imagesPreview").append(content);            
+        }
+    }
 }
 
 // Funcion para añadir un nuevo recurso
-$(".btnSendAddResource").click(addResource);
+$("#btnSendAddResource").click(addResource);
 function addResource(){
-    // MOVIDA PARA SUBIR FOTOS
+    var params = {
+        "_token": $('meta[name="csrf-token"]').attr('content')
+    }
+    $.ajax({
+        data: params,
+        url: '/admin/recursos/addResource',
+        type: 'post',
+
+        success: function (response) {
+            
+        },
+
+        error: function (response) {
+            alert("Error en la peticion");
+        }
+    });
 }
 
 // Funcion para mostrar la pestaña para borrar recursos
