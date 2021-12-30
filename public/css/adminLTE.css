@@ -11,7 +11,7 @@
 
 
 aside{
-    background-color: black !important;
+    background-color: #232323 !important;
 }
 
 .brand-text{
@@ -33,7 +33,7 @@ aside{
 
 
 .main-header{
-    background: black; /* no se que color poner */
+    background: #232323; /* no se que color poner */
     border-bottom: 1px solid transparent;
     color: white;
 }

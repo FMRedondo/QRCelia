@@ -8,8 +8,24 @@ use App\Models\admin\interestPointModel;
 
 class interestPointController extends Controller
 {
+
+    /*  CONSULTA DE REDONDO
+    
+    SELECT interest_points.name, interest_points.text, interest_points.description, interest_points.url, interest_points.poster,  GROUP_CONCAT(types.name) AS 'categorias' 
+    FROM interest_points 
+    LEFT JOIN point_has_type ON point_has_type.idPoint =  interest_points.id 
+    LEFT JOIN types ON types.id = point_has_type.idType
+    GROUP BY interest_points.name;
+
+    */
+
+
     public function index(){
         return view('admin/puntosInteres');
+    }
+
+    public function verEditarPuntosInteres(){
+        return view('admin/verPuntoInteres');
     }
 
     public function addInterestPoint(){
