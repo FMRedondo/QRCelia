@@ -7,6 +7,8 @@
 @stop
 
 @section('content')
+@csrf
+
 <div class="xl:w-1/3 md:w-1/2 p-4 d-flex flex-wrap contenidoPuntos" style="gap:3em">
     <i class="fa-solid fa-spinner fa-spin-pulse h1 d-flex justify-content-center m-auto mt-25"></i>
 </div>

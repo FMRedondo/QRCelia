@@ -1,6 +1,7 @@
 $(document).ready(() => {
   
     var parametros = [];
+    const token = $('meta[name="csrf-token"]').attr('content');
 
     $.ajax({
         data: parametros,
@@ -41,7 +42,11 @@ $(document).ready(() => {
                     </div>
         
                     <div class="flex items-center mt-2 flex-row-reverse">
-                        <button type="button" class="btn btn-success rounded-circle flex editButton" data-id=${data.id}><i class="fa-solid fa-pen-to-square"></i></button>
+                        <form method='post' action='/admin/verPuntoInteres'>
+                            <input type="hidden" name="_token" value="${token}"/>
+                            <input type="hidden" name="id" value="${data.id}"/>
+                            <input type='submit' class="btn btn-success rounded-circle flex editButton" value='<i class="fa-solid fa-pen-to-square"></i>'>
+                        </form>
                     </div>
                 </div>    
             </div>`;
