@@ -24,3 +24,11 @@
     bottom: 1em;
     right: 1em;
 }
+
+.bigPanel{
+    width: 90% !important;
+    left: 5%;
+    height: 85%;
+    top: 10%;
+    padding: 0;
+}
