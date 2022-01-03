@@ -7,7 +7,7 @@
 
 @section('content')
 @csrf
-<section class="container mx-auto p-6 font-mono">
+<section class="container-fluid mx-auto p-6 font-mono">
   <!-- Bara de arriba -->
   <div class="d-flex mb-3 pt-5 flex-row row">
     <!-- Barra para buscar -->
@@ -20,7 +20,7 @@
       </div>
     </div>
     <!-- Boton de aniadir -->
-    <div class="input-group col-2">
+    <div class="input-group col-2 justify-content-center">
       <button type="button" class="btn btn-labeled btn-success btnAddType">
           <span class="btn-label"><i class="fa-solid fa-plus"></i></span>Añadir
       </button>

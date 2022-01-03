@@ -36,7 +36,7 @@ class resourceModel extends Model
     }
 
     public static function searchResource($search){
-        $sql = "SELECT * FROM resources WHERE (name LIKE '%$search%')";
+        $sql = "SELECT * FROM resources WHERE (name LIKE '%$search%' OR type LIKE '%$search%' OR autor LIKE '%$search%' OR user LIKE '%$search%')";
         $result = DB::select($sql);
         return $result;
     }
