@@ -8,9 +8,10 @@
 </head>
 <body>
     <div id="app">
-        <example-component></example-component>
+        <homepage></homepage>
     </div>
     
     <script src="{{ mix('/js/app.js') }}"></script>
+    <link rel="stylesheet" href="/css/estilosGenerales.css">
 </body>
 </html>
