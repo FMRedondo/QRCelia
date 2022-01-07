@@ -53,5 +53,13 @@
     font-size: 1.2em;
 }
 
+.bigPanel{
+    width: 90% !important;
+    left: 5% !important;
+    height: 85% !important;
+    top: 10% !important;
+    padding: 0 !important;
+}
+
 @media (max-width: 795px) {
 }

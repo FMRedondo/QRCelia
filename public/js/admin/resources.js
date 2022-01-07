@@ -270,6 +270,7 @@ function searchResource() {
 
 // Funcion para editar un recurso
 $(".editButton").click(showEditResource);
+
 function showEditResource() {
     var id = $(this).data("id");
     var content = ``;
@@ -307,8 +308,11 @@ function showEditResource() {
             
                 content = `
                     <div class="rounded-xl shadow-lg bg-white modifyPanel bigPanel">
-                        <div class"d-flex" style="height:10%; background-color:#F4F4F4;">
-                            <p class="display-4 p-1">Editar un recurso</p>
+                        <div class="d-flex align-items-center px-4" style="height:10%; background-color:#F4F4F4;">
+                            <p class="display-4 p-1 w-75">Editar un recurso</p>
+                            <div class="d-flex w-25 justify-content-end">
+                                <button type="button" class="btn btn-lg btn-primary closeModifyWindow">Modificar</button>
+                            </div>
                         </div>
                         <div class="w-100 d-flex" style="height:90%;">
                             <div class="w-50 d-flex justify-content-center align-items-center">
@@ -317,10 +321,45 @@ function showEditResource() {
                                         <img class="rounded w-full object-cover object-center"
                                             src="${thumbnail}" alt="Portada de recurso" />
                                     </div>
+                                    <div class="d-flex align-items-center justify-content-center mt-3">
+                                        <button type="button" class="btn btn-labeled btn-success">
+                                            <span class="btn-label"><i class="fa-solid fa-arrow-rotate-right"></i></span>Cambiar recurso
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                             <div class="w-50 d-flex flex-column p-5">
-                                
+                                <div class="mb-4">
+                                    <label for="resourceName" class="form-label">Nombre del recurso:</label>
+                                    <input type="text" value="${data.name}" data-field='name' class="form-control ResourceField" id="resourceName" style="border-radius: 0.25rem">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="resourceAutor" class="form-label">Autor del recurso:</label>
+                                    <input type="text" value="${data.autor}" data-field='autor' class="form-control ResourceField" id="resourceAutor" style="border-radius: 0.25rem">
+                                    <div class="form-text">El autor es la persona que ha fotografiado/grabado/narrado el recurso.</div>
+                                </div>
+                            
+                                <div class="mb-4">
+                                    <label for="resourceUser" class="form-label">Subido por:</label>
+                                    <p class="form-control" id="resourceUser" style="border-radius: 0.25rem">${data.user}</p>
+                                </div>
+
+                                <div class="mb-5">
+                                    <label for="resourceType" class="form-label">Tipo de recurso:</label>
+                                    <p class="form-control" id="resourceType" style="border-radius: 0.25rem">${data.type}</p>
+                                </div>
+                        
+                                <div class="mt-5">
+                                    <div class="mb-2 d-flex">
+                                        <p class="w-25 font-bold d-flex align-items-center justify-content-end mr-2">Fecha de creación:</p>
+                                        <p class="form-control w-75" id="resourceCreated" style="border-radius: 0.25rem">${data.created_at}</p>
+                                    </div>
+                                    <div class="mb-2 d-flex">
+                                        <p class="w-25 font-bold d-flex align-items-center justify-content-end mr-2">Fecha de modificación:</p>
+                                        <p class="form-control w-75" id="resourceUpdated" style="border-radius: 0.25rem">${data.updated_at}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     <div>
@@ -330,10 +369,15 @@ function showEditResource() {
             $("#resourceList").after(content);
             $(".modifyPanel").show();
 
-            $(".btnWindowModify").click(function () {
+            $(".btnWindowModify").on(function () {
                 if ($(this).data("val")) {
                     $(".modifyPanel").remove();
                 }
+            })
+
+            $(".closeModifyWindow").click(function () {
+                $(".modifyPanel").hide();
+                $(".modifyPanel").remove();
             })
 
         },

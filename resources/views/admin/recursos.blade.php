@@ -11,7 +11,7 @@
   <!-- Bara de arriba -->
   <div class="d-flex mb-3 pt-5 flex-row row">
     <!-- Barra para buscar -->
-    <div class="input-group col-10 searchBar">
+    <div class="input-group col-10 searchBar" style="width: 83.33333333%;">
       <input type="text" class="form-control searchText searchResource" placeholder="Buscar...">
       <div class="input-group-append searchResourceButton">
         <span class="input-group-text" class="btnSearch">
@@ -20,7 +20,7 @@
       </div>
     </div>
     <!-- Boton de aniadir -->
-    <div class="input-group col-2 justify-content-center">
+    <div class="input-group col-2 justify-content-center" style="width: 16.66666667%;">
       <button type="button" class="btn btn-labeled btn-success btnAddResource">
           <span class="btn-label"><i class="fa-solid fa-plus"></i></span>Añadir
       </button>
@@ -41,7 +41,7 @@
       @csrf
       <div class="grid grid-cols-1 space-y-2">
           <div class="flex items-center justify-center w-full">
-            <label class="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
+            <label class="flex flex-col rounded-lg w-full h-60 p-10 group text-center">
               <div class="h-full w-full text-center flex flex-col items-center justify-center items-center" id="preview">
                 <div class="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10">
                   <img class="has-mask h-36 object-center" src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg" alt="freepik image">
@@ -76,10 +76,9 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/adminLTE.css">
-    <link rel="stylesheet" href="/css/app.css">
-    <link rel="stylesheet" href="/css/panel.css">
     <link rel="stylesheet" href="/css/estilosGenerales.css">
+    <link rel="stylesheet" href="/css/adminLTE.css">
+    <link rel="stylesheet" href="/css/panel.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 @stop
