@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="estilos/login/loginYregistro.css">
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
@@ -65,8 +68,6 @@
     </x-jet-authentication-card>
 
     <div class="imagenFondo"></div>
-
-<link rel="stylesheet" href="estilos/login/loginYregistro.css">
 </x-guest-layout>
 
 

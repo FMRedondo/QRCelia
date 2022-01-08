@@ -38,7 +38,7 @@ function load() {
                 }
 
                 content = `
-                <div class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32" style="width: 30%">
+                <div id="${data.id}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32" style="width: 30%">
                     <div class="imgThumbnail">
                         <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-4"
                         src="${thumbnail}" alt="Image Size 720x400" />
@@ -47,10 +47,10 @@ function load() {
                         </button>
                     </div>
                     <div class="p-4">
-                        <h2 class="text-lg text-gray-900 font-medium title-font mb-4 whitespace-nowrap truncate">
+                        <h2 class="name text-lg text-gray-900 font-medium title-font mb-4 whitespace-nowrap truncate">
                             ${data.name}
                         </h2>
-                        <p class="text-gray-600 font-light text-md mb-3">
+                        <p class="autor text-gray-600 font-light text-md mb-3">
                             Autor: ${data.autor}
                         </p>
                         <p class="text-gray-600 font-light text-md mb-3">
@@ -69,7 +69,7 @@ function load() {
                                  
                                 <div class="col-span-2 mb-2">
                                     Última modificación:
-                                    <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-400 rounded-full">
+                                    <span class="resourceUpdated inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-400 rounded-full">
                                         ${data.updated_at}
                                     </span>
                                 </div>
@@ -216,7 +216,7 @@ function searchResource() {
                 }
 
                 let tableContent = `
-                <div class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32" style="width: 30%">
+                <div id="${data.id}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32" style="width: 30%">
                 <div class="imgThumbnail">
                     <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-4"
                     src="${thumbnail}" alt="Image Size 720x400" />
@@ -225,10 +225,10 @@ function searchResource() {
                     </button>
                 </div>
                 <div class="p-4">
-                    <h2 class="text-lg text-gray-900 font-medium title-font mb-4 whitespace-nowrap truncate">
+                    <h2 class="name text-lg text-gray-900 font-medium title-font mb-4 whitespace-nowrap truncate">
                         ${data.name}
                     </h2>
-                    <p class="text-gray-600 font-light text-md mb-3">
+                    <p class="autor text-gray-600 font-light text-md mb-3">
                         Autor: ${data.autor}
                     </p>
                     <p class="text-gray-600 font-light text-md mb-3">
@@ -247,7 +247,7 @@ function searchResource() {
                              
                             <div class="col-span-2 mb-2">
                                 Última modificación:
-                                <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-400 rounded-full">
+                                <span class="resourceUpdated inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-400 rounded-full">
                                     ${data.updated_at}
                                 </span>
                             </div>
@@ -270,7 +270,6 @@ function searchResource() {
 
 // Funcion para editar un recurso
 $(".editButton").click(showEditResource);
-
 function showEditResource() {
     var id = $(this).data("id");
     var content = ``;
@@ -331,12 +330,12 @@ function showEditResource() {
                             <div class="w-50 d-flex flex-column p-5">
                                 <div class="mb-4">
                                     <label for="resourceName" class="form-label">Nombre del recurso:</label>
-                                    <input type="text" value="${data.name}" data-field='name' class="form-control ResourceField" id="resourceName" style="border-radius: 0.25rem">
+                                    <input type="text" value="${data.name}" data-field='name' class="name form-control ResourceField" id="resourceName" style="border-radius: 0.25rem">
                                 </div>
 
                                 <div class="mb-4">
                                     <label for="resourceAutor" class="form-label">Autor del recurso:</label>
-                                    <input type="text" value="${data.autor}" data-field='autor' class="form-control ResourceField" id="resourceAutor" style="border-radius: 0.25rem">
+                                    <input type="text" value="${data.autor}" data-field='autor' class="autor form-control ResourceField" id="resourceAutor" style="border-radius: 0.25rem">
                                     <div class="form-text">El autor es la persona que ha fotografiado/grabado/narrado el recurso.</div>
                                 </div>
                             
@@ -357,7 +356,7 @@ function showEditResource() {
                                     </div>
                                     <div class="mb-2 d-flex">
                                         <p class="w-25 font-bold d-flex align-items-center justify-content-end mr-2">Fecha de modificación:</p>
-                                        <p class="form-control w-75" id="resourceUpdated" style="border-radius: 0.25rem">${data.updated_at}</p>
+                                        <p class="resourceUpdated form-control w-75" id="resourceUpdated" style="border-radius: 0.25rem">${data.updated_at}</p>
                                     </div>
                                 </div>
                             </div>
@@ -379,6 +378,35 @@ function showEditResource() {
                 $(".modifyPanel").hide();
                 $(".modifyPanel").remove();
             })
+
+            $(".ResourceField").change(function() {
+                var newVal = $(this).val();
+                var field = $(this).data("field");
+                var params = {
+                    "id": id,
+                    "field": field,
+                    "value": newVal,
+                    "_token": $('meta[name="csrf-token"]').attr('content')
+                }
+                    
+                $.ajax({
+                    data: params,
+                    url: '/admin/recursos/editResource',
+                    type: 'post',
+    
+                    success: function (response) {
+                        let route = "div #" + id + " ." + field;
+                        $(route).text(newVal);
+                        route = "div #" + id + " .resourceUpdated";
+                        $(route).text(response);
+                    },
+    
+                    error: function (response) {
+                        alert("Error en la peticion");
+                        console.log(response);
+                    },
+                });
+            });
 
         },
 
