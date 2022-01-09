@@ -310,7 +310,9 @@ function showEditResource() {
                         <div class="d-flex align-items-center px-4" style="height:10%; background-color:#F4F4F4;">
                             <p class="display-4 p-1 w-75">Editar un recurso</p>
                             <div class="d-flex w-25 justify-content-end">
-                                <button type="button" class="btn btn-lg btn-primary closeModifyWindow">Cerrar Ventana</button>
+                                <div class="closeModifyWindow" style="color:#dc3545;">
+                                    <i type="button" class="fa-solid fa-circle-xmark fa-3x"></i>
+                                </div>
                             </div>
                         </div>
                         <div class="w-100 d-flex" style="height:90%;">

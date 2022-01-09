@@ -271,6 +271,7 @@ function showEditType() {
                         </div>  
                     </div>
                     <div class="p-3  mt-2 text-center space-x-4 md:block">
+                        <button class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100 btnWindow closeWindow btnAddType btnWindowModify closeWindowModifyType" data-val='false'>Cancelar</button>
                         <button class="mb-2 md:mb-0 bg-primary border border-red-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg btnWindow btn btn-lg btn-success btnWindowModify btnSendModifyType" data-val='true'>Modificar</button>
                     </div>
                 </div>
@@ -309,9 +310,7 @@ function showEditType() {
             });
 
             $(".btnWindowModify").click(function () {
-                if ($(this).data("val")) {
                     $(".modifyPanel").remove();
-                }
             })
 
         },
