@@ -67,6 +67,8 @@
     </form>
   </div>
 
+  <!-- Ventana para eliminar un recurso -->
+
   <!-- Tarjetas de recursos -->
   <div class="xl:w-1/3 md:w-1/2 p-4 d-flex flex-wrap" id="resourceList" style="gap:3em">
   </div>

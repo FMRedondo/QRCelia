@@ -310,19 +310,21 @@ function showEditResource() {
                         <div class="d-flex align-items-center px-4" style="height:10%; background-color:#F4F4F4;">
                             <p class="display-4 p-1 w-75">Editar un recurso</p>
                             <div class="d-flex w-25 justify-content-end">
-                                <button type="button" class="btn btn-lg btn-primary closeModifyWindow">Modificar</button>
+                                <button type="button" class="btn btn-lg btn-primary closeModifyWindow">Cerrar Ventana</button>
                             </div>
                         </div>
                         <div class="w-100 d-flex" style="height:90%;">
                             <div class="w-50 d-flex justify-content-center align-items-center">
                                 <div>
-                                    <div class="w-100">
-                                        <img class="rounded w-full object-cover object-center"
-                                            src="${thumbnail}" alt="Portada de recurso" />
+                                    <div class="imgThumbnail" style="height: 35em !important;">
+                                        <img class="rounded w-full object-cover object-center" src="${thumbnail}" alt="Portada de recurso" />
                                     </div>
-                                    <div class="d-flex align-items-center justify-content-center mt-3">
-                                        <button type="button" class="btn btn-labeled btn-success">
+                                    <div class="d-flex align-items-center justify-content-around mt-3">
+                                        <button data-id="${data.id}" type="button" class="btnChangeResource btn btn-labeled btn-success">
                                             <span class="btn-label"><i class="fa-solid fa-arrow-rotate-right"></i></span>Cambiar recurso
+                                        </button>
+                                        <button data-id="${data.id}" type="button" class="btnDelResource btn btn-labeled btn-danger">
+                                            <span class="btn-label"><i class="fa-solid fa-trash-can"></i></span>Eliminar recurso
                                         </button>
                                     </div>
                                 </div>
@@ -408,6 +410,8 @@ function showEditResource() {
                 });
             });
 
+            $(".btnDelResource").click(showDeleteResource);
+
         },
 
         error: function (response) {
@@ -415,4 +419,58 @@ function showEditResource() {
         },
 
     });
+}
+
+// Funcion para eliminar un recurso
+function showDeleteResource() {
+    var id = $(this).data("id");
+
+    var content = `
+        <div class="w-50 m-auto p-5  mx-auto my-auto rounded-xl shadow-lg  bg-white delResourcePanel delPanel">
+            <div class="">
+                <div class="text-center p-5 flex-auto justify-center">
+                    <i class="fa-solid fa-circle-info" style="color: #ef4444;"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 flex items-center text-red-500 mx-auto" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                    </svg>
+                    <h2 class="text-xl font-bold py-4 ">¿Estas seguro?</h2>
+                    <p class="text-sm text-gray-500 px-8">Esta opción es irreversible, si borras este punto, no lo podrás recuperar</p>    
+                </div>
+                <div class="p-3  mt-2 text-center space-x-4 md:block">
+                    <button class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100 btnWindow" data-val='false'>Cancelar</button>
+                    <button class="mb-2 md:mb-0 bg-red border border-red-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-red-600 btnWindow" data-val='true' data-id="${id}">Borrar</button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    $(".content-wrapper").after(content);
+    $(".delResourcePanel").show();
+
+    $(".btnWindow").click(function() {
+        if ($(this).data("val")) {
+            let id = $(this).data("id");
+            var params = {
+                "id": id,
+                "_token": $('meta[name="csrf-token"]').attr('content'),
+            }
+            $.ajax({
+                data: params,
+                url: '/admin/recursos/deleteResource',
+                type: 'post',
+                success: function (response) {
+                    let route = "div #" + id;
+                    $(route).remove();
+                    $(".delPanel").remove();
+                    $(".modifyPanel").remove();
+                },
+                error: function (response) {
+                    alert("Error en la peticion");            
+                },
+            });
+        }
+        if (!($(this).data("val")))
+            $(".delPanel").remove();
+    })
+
 }
