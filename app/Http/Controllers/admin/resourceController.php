@@ -60,4 +60,10 @@ class ResourceController extends Controller
         ResourceModel::updateResource($id,$field,$value,$date);
         return $date;
     }
+
+    public function searchByType(){
+        $type = $_POST['type'];
+        $result = ResourceModel::searchByType($type);
+        return response()->json($result);
+    }
 }

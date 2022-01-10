@@ -16,8 +16,6 @@ function load() {
             $(".fa-spinner").remove();
 
             response.forEach(function (data) {
-                let tableContent = "";
-
                 if (data.updated_at == null) {
                     data.updated_at = "No disponible"
                 }
@@ -26,7 +24,6 @@ function load() {
                 }
 
                 var thumbnail = ""
-
                 if (data.type == "image") {
                     thumbnail = data.url;
                 }
@@ -80,6 +77,7 @@ function load() {
                 `;
                 $("#resourceList").append(content);
             })
+            
             $(".editButton").click(showEditResource);
             $(".btnDelResource").click(showDelResource);
             $(".searchResource").keyup(searchResource);
@@ -294,15 +292,32 @@ function showEditResource() {
                     data.created_at = "No disponible"
                 }
 
-                var thumbnail = ""
+                var resource = ""
                 if (data.type == "image") {
-                    thumbnail = data.url;
+                    resource = `
+                    <div class="imgThumbnail" style="height: 35em !important; padding: 2em;">
+                        <img class="rounded w-full object-cover object-center" src="${data.url}" alt="Portada de recurso" />
+                    </div>
+                        `;
                 }
                 if (data.type == "video") {
-                    thumbnail = "/img/video.png";
+                    resource = `
+                    <div class="imgThumbnail" style="height: 35em !important;">
+                        <video controls style="padding: 2em;">
+                            <source src="${data.url}" type="video/mp4">
+                            Tu navegador no soporta la visualización del video. Actualizalo.
+                        </video>
+                    </div>
+                    `;
                 }
                 if (data.type == "audio") {
-                    thumbnail = "/img/audio.png";
+                    resource = `
+                    <div class="d-flex justify-content-center mb-5 pb-5">
+                        <audio controls>
+                            <source src="${data.url}">
+                        </audio>
+                    </div>
+                    `;
                 }
             
                 content = `
@@ -315,14 +330,12 @@ function showEditResource() {
                                 </div>
                             </div>
                         </div>
-                        <div class="w-100 d-flex" style="height:90%;">
+                        <div class="modifyPanelContent w-100 d-flex" style="height:90%;">
                             <div class="w-50 d-flex justify-content-center align-items-center">
-                                <div>
-                                    <div class="imgThumbnail" style="height: 35em !important;">
-                                        <img class="rounded w-full object-cover object-center" src="${thumbnail}" alt="Portada de recurso" />
-                                    </div>
+                                <div class="w-100">
+                                    ${resource}
                                     <div class="d-flex align-items-center justify-content-around mt-3">
-                                        <button data-id="${data.id}" type="button" class="btnChangeResource btn btn-labeled btn-success">
+                                        <button data-id="${data.id}" type="button" class="btnChangeResource btn btn-labeled btn-success" data-type="${data.type}">
                                             <span class="btn-label"><i class="fa-solid fa-arrow-rotate-right"></i></span>Cambiar recurso
                                         </button>
                                         <button data-id="${data.id}" type="button" class="btnDelResource btn btn-labeled btn-danger">
@@ -379,9 +392,12 @@ function showEditResource() {
             })
 
             $(".closeModifyWindow").click(function () {
-                $(".modifyPanel").hide();
-                $(".modifyPanel").remove();
-            })
+                $(".closeModifyWindow").addClass("pulseEffect");
+                setTimeout(function() {
+                    $(".modifyPanel").hide();
+                    $(".modifyPanel").remove();
+                }, 400);
+            });
 
             $(".ResourceField").change(function() {
                 var newVal = $(this).val();
@@ -413,6 +429,7 @@ function showEditResource() {
             });
 
             $(".btnDelResource").click(showDeleteResource);
+            $(".btnChangeResource").click(showChangeResource)
 
         },
 
@@ -426,7 +443,6 @@ function showEditResource() {
 // Funcion para eliminar un recurso
 function showDeleteResource() {
     var id = $(this).data("id");
-
     var content = `
         <div class="w-50 m-auto p-5  mx-auto my-auto rounded-xl shadow-lg  bg-white delResourcePanel delPanel">
             <div class="">
@@ -474,5 +490,46 @@ function showDeleteResource() {
         if (!($(this).data("val")))
             $(".delPanel").remove();
     })
+}
 
+// Funcion para asignar un nuevo recurso a uno ya existente
+function showChangeResource() {
+    var params = {
+        "type": $(this).data("type"),
+        "_token": $('meta[name="csrf-token"]').attr('content'),
+    };
+    
+    $(".modifyPanelContent").empty();
+    $(".modifyPanelContent").addClass("justify-content-center align-items-center overflow-scroll");
+    var content = `
+        <div class="w-100 p-1">
+            <div class="w-100 row row-cols-5 gridResources justify-content-center">
+            </div>
+        </div>
+    `;
+    $(".modifyPanelContent").append(content);
+
+    $.ajax({
+        data: params,
+        url: '/admin/recursos/searchByType',
+        type: 'post',
+
+        success: function (response) {
+            response.forEach(function (data) {
+                var resource = `
+                <div class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden p-2 m-3" style="width: 25%">
+                    <div class="imgThumbnail">
+                        <img class="rounded w-full object-cover object-center" src="${data.url}">
+                    </div>
+                </div>            
+                `;
+
+                $(".gridResources").append(resource);
+            })
+        },
+
+        error: function (response) {
+            alert("Error en la petición ")
+        },
+    });
 }

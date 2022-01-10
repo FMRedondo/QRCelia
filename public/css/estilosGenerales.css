@@ -27,3 +27,17 @@
     bottom: 1em;
     right: 1em;
 }
+
+/* Animacion para boton pulsar */
+.pulseEffect{
+    animation: pulse 400ms infinite;
+}
+@keyframes pulse{
+    0%{
+        box-shadow: #ff69b4 0 0 0 0
+    }
+    100%{
+        box-shadow: #ff69b4 0 0 0 16px;
+    }
+
+}

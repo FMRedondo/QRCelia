@@ -45,4 +45,10 @@ class resourceModel extends Model
         $sql = "UPDATE resources SET $field = '$value' , updated_at = '$date' WHERE (id = $id)";
         DB::update($sql);
     }
+
+    public static function searchByType($type){
+        $sql = "SELECT * FROM resources WHERE (type = '$type')";
+        $result = DB::select($sql);
+        return $result;
+    }
 }
