@@ -29,6 +29,5 @@
 
 @section('js')
     <script src="https://kit.fontawesome.com/75e57fedbe.js" crossorigin="anonymous"></script>
-    <script src="/js/jquery-3.6.0.min.js"></script>
     <script src="/js/admin/interestPoints.js"></script>
 @stop

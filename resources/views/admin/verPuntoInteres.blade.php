@@ -27,15 +27,11 @@
            echo $titulo;
         }
     }
+    
 
 @endphp
 
-
-
-
-
-
-
+<textarea class="ckeditor" name="editor1" id="editor1" rows="10" cols="80"></textarea>
 @stop
 
 @section('css')
@@ -44,5 +40,6 @@
 
 @section('js')
     <script src="https://kit.fontawesome.com/75e57fedbe.js" crossorigin="anonymous"></script>
-    <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/js/admin/fichaPuntosInteres.js"></script>
+    <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
 @stop

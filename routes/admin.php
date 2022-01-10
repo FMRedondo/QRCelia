@@ -31,6 +31,7 @@ Route::get('/verDatosContenido', [panelesController::class, 'datosPanelContenido
 
 Route::get('/puntosInteres', [interestPointController::class, 'index'])-> name('show.interestPoints'); 
 Route::get('/puntosInteres/getPoints', [interestPointController::class, 'getInterestPoints'])-> name('get.interestPoints');
+Route::post('/puntosInteres/getPoint', [interestPointController::class, 'getInterestPoint'])-> name('get.interestPoint');
 Route::post('/verPuntoInteres', [interestPointController::class, 'verEditarPuntosInteres'])-> name('verEditar.interestPoints');
 
 

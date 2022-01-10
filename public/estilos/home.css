@@ -1,0 +1,68 @@
+.home{
+    width: 100%;
+    height: 100vh;
+    background-image: url("/img/celiaRambla.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    -webkit-box-shadow: inset 5px 5px 100px 15px rgba(0,0,0,0.5); 
+    box-shadow: inset 5px 5px 100px 66px rgba(0,0,0,0.5);
+}
+
+.negrita{
+    font-weight: bolder;
+    font-style: italic;
+}
+
+.wrapper{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.datos{
+    width: 50%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2em;
+    text-align: center;
+}
+
+.datosBanner{
+    font-size: 4em;
+    font-weight: bolder;
+}
+
+.textoBanner{
+    text-align: center;
+    font-size: 1.15em;
+    margin-top: 1.5em;
+    text-align: justify;
+}
+
+.botones{
+    width: 100%;
+    display: flex;
+    gap: 1em;
+    margin-top: 2em;
+    justify-content: center;
+}
+
+.boton{
+    width: 30%;
+    background-color: #C6A878;
+    padding: 1em;
+    text-decoration: none;
+    color: white;
+    letter-spacing: 0.08em;
+    border: 2px solid #C6A878;
+}
+
+.boton:last-child{
+    background-color: transparent;
+    border: 2px solid #C6A878;
+}
