@@ -61,5 +61,10 @@
     padding: 0 !important;
 }
 
+.resourceCard:hover{
+    -webkit-box-shadow: 5px 5px 38px 10px rgba(0,0,0,0.85); 
+    box-shadow: 5px 5px 38px 10px rgba(0,0,0,0.85);
+}
+
 @media (max-width: 795px) {
 }

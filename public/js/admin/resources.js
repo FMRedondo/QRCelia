@@ -321,7 +321,7 @@ function showEditResource() {
                 }
             
                 content = `
-                    <div class="rounded-xl shadow-lg bg-white modifyPanel bigPanel">
+                    <div data-id="${data.id}" class="rounded-xl shadow-lg bg-white modifyPanel bigPanel">
                         <div class="d-flex align-items-center px-4" style="height:10%; background-color:#F4F4F4;">
                             <p class="display-4 p-1 w-75">Editar un recurso</p>
                             <div class="d-flex w-25 justify-content-end">
@@ -516,15 +516,74 @@ function showChangeResource() {
 
         success: function (response) {
             response.forEach(function (data) {
-                var resource = `
-                <div class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden p-2 m-3" style="width: 25%">
-                    <div class="imgThumbnail">
-                        <img class="rounded w-full object-cover object-center" src="${data.url}">
+                var source = "";
+                if (data.type == "image") {
+                    source = `
+                        <div data-url="${data.url}" class="resourceCard c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden p-2 m-3" style="width: 25%">
+                            <div class="imgThumbnail">
+                                <img class="rounded w-full object-cover object-center" src="${data.url}">
+                            </div>
+                        </div>   
+                    `;
+                }
+                if (data.type == "audio") {
+                    source = `
+                    <div data-url="${data.url}" class="resourceCard d-flex flex-column justify-content-center c-card bg-white shadow-md rounded-lg overflow-hidden">
+                        <div class="imgThumbnail h-75">
+                            <img src="/img/audio.png">  
+                        </div>
+                        <div class="h-25 d-flex align-items-center justify-content-center">
+                            <audio controls>
+                                <source src="${data.url}">
+                            </audio>
+                        </div>
                     </div>
-                </div>            
-                `;
+                    `;
+                }
+                if (data.type == "video"){
+                    source = `
+                    <div data-url="${data.url}" class="resourceCard c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden p-2 m-3" style="width: 25%">
+                            <video controls style="padding: 0.5em;">
+                                <source src="${data.url}" type="video/mp4">
+                                Tu navegador no soporta la visualización del video. Actualizalo.
+                            </video>
+                    </div>   
+                    `;
+                }
 
-                $(".gridResources").append(resource);
+                $(".gridResources").append(source);
+
+                $(".resourceCard").click(function () {
+                    var id = $(".modifyPanel").data("id");
+                    var newUrl = $(this).data("url");
+                    var params = {
+                        "newUrl": newUrl,
+                        "idResource": id,
+                        "_token": $('meta[name="csrf-token"]').attr('content')
+                    };
+
+                    $.ajax({
+                        data: params,
+                        url: '/admin/recursos/changeResource',
+                        type: 'post',
+
+                        success: function (response) {
+                            let route = "div #" + id + " img";
+                            $(route).attr('src',newUrl);
+
+                            route = "div #" + id + " .resourceUpdated";
+                            $(route).text(response);
+
+
+                            $(".modifyPanel").hide();
+                            $(".modifyPanel").remove();
+                        },
+
+                        error: function (response) {
+                            alert("Error en la petición")
+                        },
+                    });
+                })
             })
         },
 

@@ -66,4 +66,12 @@ class ResourceController extends Controller
         $result = ResourceModel::searchByType($type);
         return response()->json($result);
     }
+
+    public function changeResource(){
+        $newUrl = $_POST['newUrl'];
+        $idResource = $_POST['idResource'];
+        $date = DATE("Y-m-d H:i:s");
+        ResourceModel::changeResource($newUrl, $idResource, $date);
+        return $date;
+    }
 }

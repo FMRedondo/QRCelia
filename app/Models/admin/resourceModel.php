@@ -51,4 +51,9 @@ class resourceModel extends Model
         $result = DB::select($sql);
         return $result;
     }
+
+    public static function changeResource($newUrl, $idResource, $date){
+        $sql = "UPDATE resources set url = '$newUrl', updated_at = '$date'  WHERE(id = $idResource)";
+        DB::update($sql);
+    }
 }

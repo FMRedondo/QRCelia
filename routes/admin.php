@@ -61,6 +61,8 @@ Route::post('/recursos/searchResource', [ResourceController::class, 'searchResou
 Route::post('/recursos/getResource', [ResourceController::class, 'getResource']) -> name('get.resource');
 Route::post('/recursos/editResource', [ResourceController::class, 'updateResource']) -> name('edit.resource');
 Route::post('/recursos/searchByType', [ResourceController::class, 'searchByType'])-> name('searchByType.resource');
+Route::post('/recursos/changeResource', [ResourceController::class, 'changeResource'])-> name('changeResource.resource');
+
 
 Route::get('/usuarios', [customUsersController::class, 'index'])-> name('show.viewUsers');
 Route::get('/usuarios/getUsers', [customUsersController::class, 'getUsers'])-> name('show.users');
