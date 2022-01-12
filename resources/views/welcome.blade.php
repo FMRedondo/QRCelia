@@ -11,7 +11,7 @@
 <body>
     <section id="app" class="home">
         <header-component></header-component>
-        <div class="datos">
+        <div class="datos" id="datosHome">
             <div class="wrapper">
                 <p class="datosBanner">
                     Descubre la historia del <br><span class="negrita"> I.E.S Celia Viñas </span>
@@ -22,7 +22,7 @@
                 </p>
                 <div class="botones">
                     <a href="#" class="boton">Descubre más</a>
-                    <a href="#" class="boton">Ver sitio aleatorio</a>
+                    <a href="#" class="boton">QR Misterioso</a>
                 </div>
             </div>
         </div>
@@ -30,6 +30,6 @@
     </section>
     
     <script src="{{ mix('/js/app.js') }}"></script>
-    <link rel="stylesheet" href="/css/estilosGenerales.css">
+    <script src="https://kit.fontawesome.com/75e57fedbe.js" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -64,7 +64,7 @@ $(document).ready(() => {
 
 const showEditPanel = () =>{
     const token = $('meta[name="csrf-token"]').attr('content');
-    const id = $(this).data("id")
+    var id = $(this).data("id");
 
     var parametros =  {
         "id": $(this).data("id"), 

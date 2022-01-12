@@ -5260,8 +5260,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  mounted: function mounted() {}
+  methods: {
+    desplegarMenu: function desplegarMenu(event) {
+      var menu = document.getElementById('nav');
+      menu.classList.toggle('oculto');
+      var enlacesMenu = document.getElementsByClassName("enlaces");
+      enlacesMenu.addEventListener("click", function () {
+        alert("ee");
+      });
+    },
+    imagenMenu: function imagenMenu(tipo) {
+      var nav = document.getElementById('nav'); //nav.style.background = 'green';
+
+      if (tipo == 'inicio') nav.style.backgroundImage = "url('/img/home/home.jpg')";
+      if (tipo == 'puntos') nav.style.backgroundImage = "url('/img/home/escudo.jpg')";
+      if (tipo == 'misterioso') nav.style.backgroundImage = "url('/img/home/misterio.jpeg')";
+      if (tipo == 'creditos') nav.style.backgroundImage = "url('/img/home/puntos.jpeg')";
+    }
+  }
 });
 
 /***/ }),
@@ -10383,7 +10405,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.header[data-v-798ca618]{\n    width: 100%;\n    height: 100px;\n    position: fixed;\n    top: 0;\n    left: 0;\n}\n.header .wrapper[data-v-798ca618]{\n    display: flex;\n    justify-content: space-between;\n    margin-top: 1em;\n}\n.logo[data-v-798ca618]{\n    width: 10%;\n    display: flex;\n    align-items: center;\n    gap: 1em;\n}\n.logo img[data-v-798ca618]{\n    width:30%;\n}\n.titulo[data-v-798ca618]{\n    font-size: 1.8em;\n}\n.titulo span[data-v-798ca618]{\n    color: red;\n    text-transform: uppercase;\n}\n.header nav[data-v-798ca618]{\n    width: 50%;\n    display: flex;\n    gap: 1.5em;\n    align-items: center;\n    justify-content: flex-end;\n}\n.header nav a[data-v-798ca618]{\n    text-decoration: none;\n    color: red;\n    font-weight: bolder;\n    font-size: 1.3em;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.oculto[data-v-798ca618]{\n    /*animation: ocultarMenu 200ms infinite;*/\n    transition: ease-in-out 20ms;\n    display: flex !important;\n}\n.ocultarDatos[data-v-798ca618]{\n    display: flex !important;\n}\n.header[data-v-798ca618]{\n    width: 100%;\n    height: 100px;\n    position: fixed;\n    top: 0;\n    left: 0;\n    z-index: 9999;\n}\n.header .wrapper[data-v-798ca618]{\n    display: flex;\n    justify-content: space-between;\n    margin-top: 1em;\n}\n.logo[data-v-798ca618]{\n    width: 10%;\n    display: flex;\n    align-items: center;\n    gap: 1em;\n}\n.logo img[data-v-798ca618]{\n    width:30%;\n}\n.titulo[data-v-798ca618]{\n    font-size: 2.2em;\n}\n.titulo span[data-v-798ca618]{\n    color: red;\n    text-transform: uppercase;\n}\n.header .btnMenu[data-v-798ca618]{\n    width: 50%;\n    display: flex;\n    gap: 1.5em;\n    align-items: center;\n    justify-content: flex-end;\n}\n.header .btnMenu a[data-v-798ca618]{\n    text-decoration: none;\n    color: red;\n    font-weight: bolder;\n    font-size: 1.3em;\n}\nbutton[data-v-798ca618]{\n    border: none;\n    background-color: transparent;\n    color: white;\n    font-size: 2.2em;\n    font-weight: bolder;\n    display: flex;\n    justify-content: center;\n    align-content: center;\n}\n.nav[data-v-798ca618]{\n    width: 100%;\n    height: 100vh;\n    background-color: black;\n    position: fixed;\n    top: 0;\n    right: 0;\n    display: none;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    gap: 2em;\n    font-size: 3.5em;\n    padding: 2em;\n    background-repeat: no-repeat !important;\n    background-size: cover !important;\n    display: none;\n}\n.nav a[data-v-798ca618]{\n    color: white;\n    text-decoration: none;\n}\n.nav a:hover + .nav[data-v-798ca618]{\n    background-color: purple !important;\n}\n\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -28297,35 +28319,85 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("header", { staticClass: "header", attrs: { id: "header" } }, [
+    _c("div", { staticClass: "wrapper" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "btnMenu" }, [
+        _c("button", { on: { click: _vm.desplegarMenu } }, [
+          _c("i", { staticClass: "fas fa-bars" }),
+        ]),
+      ]),
+    ]),
+    _vm._v(" "),
+    _c("nav", { staticClass: "nav", attrs: { id: "nav" } }, [
+      _c(
+        "a",
+        {
+          attrs: { href: "#" },
+          on: {
+            mouseover: function ($event) {
+              return _vm.imagenMenu("inicio")
+            },
+          },
+        },
+        [_vm._v("Inicio")]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          attrs: { href: "#" },
+          on: {
+            mouseover: function ($event) {
+              return _vm.imagenMenu("puntos")
+            },
+          },
+        },
+        [_vm._v("Puntos de interés")]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          attrs: { href: "#" },
+          on: {
+            mouseover: function ($event) {
+              return _vm.imagenMenu("misterioso")
+            },
+          },
+        },
+        [_vm._v("QR Misterioso")]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          attrs: { href: "#" },
+          on: {
+            mouseover: function ($event) {
+              return _vm.imagenMenu("creditos")
+            },
+          },
+        },
+        [_vm._v("Créditos")]
+      ),
+    ]),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("header", { staticClass: "header" }, [
-      _c("div", { staticClass: "wrapper" }, [
-        _c("div", { staticClass: "logo" }, [
-          _c("img", {
-            attrs: { src: "/img/escudoCelia.png", alt: "logo IES Celia Viñas" },
-          }),
-          _vm._v(" "),
-          _c("h1", { staticClass: "titulo" }, [
-            _c("span", [_vm._v("qr")]),
-            _vm._v("Celia"),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("nav", [
-          _c("a", { attrs: { href: "#" } }, [_vm._v("Inicio")]),
-          _vm._v(" "),
-          _c("a", { attrs: { href: "#" } }, [_vm._v("Puntos Interes")]),
-          _vm._v(" "),
-          _c("a", { attrs: { href: "#" } }, [_vm._v("206")]),
-          _vm._v(" "),
-          _c("a", { attrs: { href: "#" } }, [_vm._v("kia")]),
-        ]),
+    return _c("div", { staticClass: "logo" }, [
+      _c("img", {
+        attrs: { src: "/img/escudoCelia.png", alt: "logo IES Celia Viñas" },
+      }),
+      _vm._v(" "),
+      _c("h1", { staticClass: "titulo" }, [
+        _c("span", [_vm._v("qr")]),
+        _vm._v("Celia"),
       ]),
     ])
   },
