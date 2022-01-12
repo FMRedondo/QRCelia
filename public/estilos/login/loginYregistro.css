@@ -73,3 +73,10 @@ label{
     color: black !important;
     font-weight: bolder !important;
 }
+
+.min-h-screen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}

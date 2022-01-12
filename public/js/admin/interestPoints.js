@@ -41,8 +41,8 @@ $(document).ready(() => {
                         </div>
                     </div>
         
-                    <div class="flex items-center mt-2 flex-row-reverse">
-                        <a class="btn btn-success rounded-circle flex editButton" data-id=${data.id}><i class="fa-solid fa-pen-to-square"></i></a>
+                    <div class="flex items-center mt-2 flex-row-reverse" data-id=${data.id}>
+                        <a class="btn btn-success rounded-circle flex editButton" data-id=${data.id}><i class="fa-solid fa-pen-to-square" data-id=${data.id}></i></a>
                     </div>
                 </div>    
             </div>`;
@@ -57,22 +57,25 @@ $(document).ready(() => {
         error: function (response) {
             alert("error en la peticion");
         }
+
     });
 
 })
 
 
-const showEditPanel = () =>{
+const showEditPanel = () => {
     const token = $('meta[name="csrf-token"]').attr('content');
     var id = $(this).data("id");
 
+    console.log(Object.values(this))
+
     var parametros =  {
-        "id": $(this).data("id"), 
+        "id": id, 
         "_token": token,
     }
 
     alert(id + " -> " + token)
-
+/*
     $.ajax({
         data: parametros,
         url: '/admin/puntosInteres/getPoint',
@@ -87,7 +90,7 @@ const showEditPanel = () =>{
 
             });
 
-            */
+            
 
             alert(response)
 
@@ -96,6 +99,8 @@ const showEditPanel = () =>{
         error: function (response) {
             alert("error en la peticion");
         }
+
+        
     });
 
 
