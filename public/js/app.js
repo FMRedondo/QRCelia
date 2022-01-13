@@ -5283,7 +5283,7 @@ __webpack_require__.r(__webpack_exports__);
       if (tipo == 'puntos') nav.style.backgroundImage = "url('/img/home/escudo.jpg')";
       if (tipo == 'misterioso') nav.style.backgroundImage = "url('/img/home/misterio.jpeg')";
       if (tipo == 'creditos') nav.style.backgroundImage = "url('/img/home/puntos.jpeg')";
-      nav.style.transition = "1s";
+      nav.style.transition = " 6t1s";
     },
     cerrarMenu: function cerrarMenu(event) {
       var menu = document.getElementById('nav');

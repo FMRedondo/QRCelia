@@ -31,7 +31,7 @@ const getData = async (url = '') => {
 const postData = async (url = '', data={}) => {
     const response = await fetch(url, {
         method: 'POST',
-        mode: 'cors',
+        mode: 'no-cors',
         cache: 'no-cache',
         credentials: 'same-origin',
         headers: {
@@ -99,14 +99,14 @@ const index = async () => {
 
 index();
 
-const editarPunto = async (element) =>{
+const editarPunto = async (element) => {
     const id = element.target.getAttribute('data-id');
     var response;
-    await getData('/admin/puntosInteres/getPoint', {id: id}).then((res) => {
+    await postData('/admin/comentarios/searchcomments', {'_token': token, 'search': 'es'}).then((res) => {
         response = res;
     })
 
-    console.log(response)
+    console.log(JSON.parse(response))
 
 }
 

@@ -50,7 +50,7 @@
                 if(tipo == 'creditos')
                     nav.style.backgroundImage  = "url('/img/home/puntos.jpeg')";
 
-                    nav.style.transition = "1s";
+                    nav.style.transition = " 6t1s";
             },
             cerrarMenu: (event) =>{
                 const menu = document.getElementById('nav');
