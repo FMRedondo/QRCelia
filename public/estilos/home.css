@@ -10,14 +10,14 @@
     box-shadow: inset 5px 5px 100px 66px rgba(0,0,0,0.5);
 }
 
-.negrita{
-    font-weight: bolder;
-    font-style: italic;
-}
-
 .wrapper{
     width: 90%;
     margin: 0 auto;
+}
+
+.negrita{
+    font-weight: bolder;
+    font-style: italic;
 }
 
 .datos{
