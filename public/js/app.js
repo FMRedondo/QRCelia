@@ -5265,6 +5265,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   methods: {
     desplegarMenu: function desplegarMenu(event) {
@@ -5282,6 +5283,15 @@ __webpack_require__.r(__webpack_exports__);
       if (tipo == 'puntos') nav.style.backgroundImage = "url('/img/home/escudo.jpg')";
       if (tipo == 'misterioso') nav.style.backgroundImage = "url('/img/home/misterio.jpeg')";
       if (tipo == 'creditos') nav.style.backgroundImage = "url('/img/home/puntos.jpeg')";
+      nav.style.transition = "1s";
+    },
+    cerrarMenu: function cerrarMenu(event) {
+      var menu = document.getElementById('nav');
+      menu.classList.toggle('oculto');
+    },
+    quitarImagen: function quitarImagen(event) {
+      var nav = document.getElementById('nav');
+      nav.style.backgroundImage = "";
     }
   }
 });
@@ -10405,7 +10415,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.oculto[data-v-798ca618]{\n    /*animation: ocultarMenu 200ms infinite;*/\n    transition: ease-in-out 20ms;\n    display: flex !important;\n}\n.ocultarDatos[data-v-798ca618]{\n    display: flex !important;\n}\n.header[data-v-798ca618]{\n    width: 100%;\n    height: 100px;\n    position: fixed;\n    top: 0;\n    left: 0;\n    z-index: 9999;\n}\n.header .wrapper[data-v-798ca618]{\n    display: flex;\n    justify-content: space-between;\n    margin-top: 1em;\n}\n.logo[data-v-798ca618]{\n    width: 10%;\n    display: flex;\n    align-items: center;\n    gap: 1em;\n}\n.logo img[data-v-798ca618]{\n    width:30%;\n}\n.titulo[data-v-798ca618]{\n    font-size: 2.2em;\n}\n.titulo span[data-v-798ca618]{\n    color: red;\n    text-transform: uppercase;\n}\n.header .btnMenu[data-v-798ca618]{\n    width: 50%;\n    display: flex;\n    gap: 1.5em;\n    align-items: center;\n    justify-content: flex-end;\n}\n.header .btnMenu a[data-v-798ca618]{\n    text-decoration: none;\n    color: red;\n    font-weight: bolder;\n    font-size: 1.3em;\n}\nbutton[data-v-798ca618]{\n    border: none;\n    background-color: transparent;\n    color: white;\n    font-size: 2.2em;\n    font-weight: bolder;\n    display: flex;\n    justify-content: center;\n    align-content: center;\n}\n.nav[data-v-798ca618]{\n    width: 100%;\n    height: 100vh;\n    background-color: black;\n    position: fixed;\n    top: 0;\n    right: 0;\n    display: none;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    gap: 2em;\n    font-size: 3.5em;\n    padding: 2em;\n    background-repeat: no-repeat !important;\n    background-size: cover !important;\n    display: none;\n}\n.nav a[data-v-798ca618]{\n    color: white;\n    text-decoration: none;\n}\n.nav a:hover + .nav[data-v-798ca618]{\n    background-color: purple !important;\n}\n\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.oculto[data-v-798ca618]{\n    /*animation: ocultarMenu 200ms infinite;*/\n    transition: ease-in-out 20ms;\n    display: flex !important;\n}\n.ocultarDatos[data-v-798ca618]{\n    display: flex !important;\n}\n.header[data-v-798ca618]{\n    width: 100%;\n    height: 100px;\n    position: fixed;\n    top: 0;\n    left: 0;\n    z-index: 9999;\n}\n.header .wrapper[data-v-798ca618]{\n    display: flex;\n    justify-content: space-between;\n    margin-top: 1em;\n}\n.logo[data-v-798ca618]{\n    width: 10%;\n    display: flex;\n    align-items: center;\n    gap: 1em;\n}\n.logo img[data-v-798ca618]{\n    width:30%;\n}\n.titulo[data-v-798ca618]{\n    font-size: 2.2em;\n}\n.titulo span[data-v-798ca618]{\n    color: red;\n    text-transform: uppercase;\n}\n.header .btnMenu[data-v-798ca618]{\n    width: 50%;\n    display: flex;\n    gap: 1.5em;\n    align-items: center;\n    justify-content: flex-end;\n}\n.header .btnMenu a[data-v-798ca618]{\n    text-decoration: none;\n    color: red;\n    font-weight: bolder;\n    font-size: 1.3em;\n}\nbutton[data-v-798ca618]{\n    border: none;\n    background-color: transparent;\n    color: white;\n    font-size: 2.2em;\n    font-weight: bolder;\n    display: flex;\n    justify-content: center;\n    align-content: center;\n}\n.nav[data-v-798ca618]{\n    width: 100%;\n    height: 100vh;\n    background-color: black;\n    position: fixed;\n    top: 0;\n    right: 0;\n    display: none;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    gap: 2em;\n    font-size: 3.5em;\n    padding: 2em;\n    background-repeat: no-repeat !important;\n    background-size: cover !important;\n    display: none;\n}\n.nav a[data-v-798ca618]{\n    color: white;\n    text-decoration: none;\n}\n.nav a:hover + .nav[data-v-798ca618]{\n    background-color: purple !important;\n}\n.closeNav[data-v-798ca618]{\n    position: fixed;\n    top: 0.5em;\n    right: 1.5em;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -28331,6 +28341,11 @@ var render = function () {
     ]),
     _vm._v(" "),
     _c("nav", { staticClass: "nav", attrs: { id: "nav" } }, [
+      _c("i", {
+        staticClass: "far fa-times-circle closeNav",
+        on: { click: _vm.cerrarMenu },
+      }),
+      _vm._v(" "),
       _c(
         "a",
         {
@@ -28339,6 +28354,7 @@ var render = function () {
             mouseover: function ($event) {
               return _vm.imagenMenu("inicio")
             },
+            mouseleave: _vm.quitarImagen,
           },
         },
         [_vm._v("Inicio")]
@@ -28352,6 +28368,7 @@ var render = function () {
             mouseover: function ($event) {
               return _vm.imagenMenu("puntos")
             },
+            mouseleave: _vm.quitarImagen,
           },
         },
         [_vm._v("Puntos de interés")]
@@ -28365,6 +28382,7 @@ var render = function () {
             mouseover: function ($event) {
               return _vm.imagenMenu("misterioso")
             },
+            mouseleave: _vm.quitarImagen,
           },
         },
         [_vm._v("QR Misterioso")]
@@ -28378,6 +28396,7 @@ var render = function () {
             mouseover: function ($event) {
               return _vm.imagenMenu("creditos")
             },
+            mouseleave: _vm.quitarImagen,
           },
         },
         [_vm._v("Créditos")]

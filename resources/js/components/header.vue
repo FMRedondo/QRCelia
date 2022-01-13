@@ -11,10 +11,11 @@
        </div>
 
         <nav class="nav" id="nav">
-            <a href="#" @mouseover="imagenMenu('inicio')">Inicio</a>
-            <a href="#" @mouseover="imagenMenu('puntos')">Puntos de interés</a>
-            <a href="#" @mouseover="imagenMenu('misterioso')">QR Misterioso</a>
-            <a href="#" @mouseover="imagenMenu('creditos')">Créditos</a>
+            <i class="far fa-times-circle closeNav" @click="cerrarMenu"></i>
+            <a href="#" @mouseover="imagenMenu('inicio')"  @mouseleave="quitarImagen">Inicio</a>
+            <a href="#" @mouseover="imagenMenu('puntos')" @mouseleave="quitarImagen">Puntos de interés</a>
+            <a href="#" @mouseover="imagenMenu('misterioso')" @mouseleave="quitarImagen">QR Misterioso</a>
+            <a href="#" @mouseover="imagenMenu('creditos')" @mouseleave="quitarImagen">Créditos</a>
         </nav>
 
    </header>
@@ -48,6 +49,17 @@
 
                 if(tipo == 'creditos')
                     nav.style.backgroundImage  = "url('/img/home/puntos.jpeg')";
+
+                    nav.style.transition = "1s";
+            },
+            cerrarMenu: (event) =>{
+                const menu = document.getElementById('nav');
+                menu.classList.toggle('oculto');
+            },
+
+            quitarImagen: (event) => {
+                const nav = document.getElementById('nav');
+                nav.style.backgroundImage  = "";
             }
             
         }
@@ -159,5 +171,11 @@
         background-color: purple !important;
     }
 
+
+    .closeNav{
+        position: fixed;
+        top: 0.5em;
+        right: 1.5em;
+    }
     
 </style>

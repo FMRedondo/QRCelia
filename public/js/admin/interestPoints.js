@@ -1,7 +1,7 @@
-const _token = $('meta[name="csrf-token"]').attr('content');
+const token = $('meta[name="csrf-token"]').attr('content');
 
 /**
- * 
+ * Realizar peticiones al servidor con el metodo get
  * @param {string} url URL donde queremos realizar la peticion GET
  * @returns devuelve un JSON con los datos pedidos al servidor
  */
@@ -21,6 +21,29 @@ const getData = async (url = '') => {
     return response.json();
 }
 
+
+/**
+ * Realiar peticiones al servidor con el metodo post
+ * @param {string} url URL donde queremos realizar la peticion
+ * @param {objeto} data  Objeto con los parametros que queremos enviar el servidor
+ * @returns devuelve un JSON con los datos pedidos al servidor
+ */
+const postData = async (url = '', data={}) => {
+    const response = await fetch(url, {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify(data)
+    });
+
+    return response.json();
+}
 
 const index = async () => {
     var response;
@@ -61,7 +84,7 @@ const index = async () => {
                 </div>
 
                 <div class="flex items-center mt-2 flex-row-reverse">
-                    <button class="btn btn-success rounded-circle flex editButton fa-solid fa-pen-to-square" id=${data.id}></button>
+                    <button class="btn btn-success rounded-circle flex editButton fa-solid fa-pen-to-square" data-id=${data.id}></button>
                 </div>
             </div>    
         </div>`;
@@ -76,11 +99,82 @@ const index = async () => {
 
 index();
 
+const editarPunto = async (element) =>{
+    const id = element.target.getAttribute('data-id');
+    var response;
+    await getData('/admin/puntosInteres/getPoint', {id: id}).then((res) => {
+        response = res;
+    })
 
-const editarPunto = (element) =>{
-    const id = element.target.getAttribute('id')
-
-    
+    console.log(response)
 
 }
+
+
+
+
+
+
+/*
+
+<div data-id="${data.id}" class="rounded-xl shadow-lg bg-white modifyPanel bigPanel">
+                        <div class="d-flex align-items-center px-4" style="height:10%; background-color:#F4F4F4;">
+                            <p class="display-4 p-1 w-75">Editar un recurso</p>
+                            <div class="d-flex w-25 justify-content-end">
+                                <div class="closeModifyWindow" style="color:#dc3545;">
+                                    <i type="button" class="fa-solid fa-circle-xmark fa-3x"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modifyPanelContent w-100 d-flex" style="height:90%;">
+                            <div class="w-50 d-flex justify-content-center align-items-center">
+                                <div class="w-100">
+                                    ${resource}
+                                    <div class="d-flex align-items-center justify-content-around mt-3">
+                                        <button data-id="${data.id}" type="button" class="btnChangeResource btn btn-labeled btn-success" data-type="${data.type}">
+                                            <span class="btn-label"><i class="fa-solid fa-arrow-rotate-right"></i></span>Cambiar recurso
+                                        </button>
+                                        <button data-id="${data.id}" type="button" class="btnDelResource btn btn-labeled btn-danger">
+                                            <span class="btn-label"><i class="fa-solid fa-trash-can"></i></span>Eliminar recurso
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-50 d-flex flex-column p-5">
+                                <div class="mb-4">
+                                    <label for="resourceName" class="form-label">Nombre del recurso:</label>
+                                    <input type="text" value="${data.name}" data-field='name' class="name form-control ResourceField" id="resourceName" style="border-radius: 0.25rem">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="resourceAutor" class="form-label">Autor del recurso:</label>
+                                    <input type="text" value="${data.autor}" data-field='autor' class="autor form-control ResourceField" id="resourceAutor" style="border-radius: 0.25rem">
+                                    <div class="form-text">El autor es la persona que ha fotografiado/grabado/narrado el recurso.</div>
+                                </div>
+                            
+                                <div class="mb-4">
+                                    <label for="resourceUser" class="form-label">Subido por:</label>
+                                    <p class="form-control" id="resourceUser" style="border-radius: 0.25rem">${data.user}</p>
+                                </div>
+
+                                <div class="mb-5">
+                                    <label for="resourceType" class="form-label">Tipo de recurso:</label>
+                                    <p class="form-control" id="resourceType" style="border-radius: 0.25rem">${data.type}</p>
+                                </div>
+                        
+                                <div class="mt-5">
+                                    <div class="mb-2 d-flex">
+                                        <p class="w-25 font-bold d-flex align-items-center justify-content-end mr-2">Fecha de creación:</p>
+                                        <p class="form-control w-75" id="resourceCreated" style="border-radius: 0.25rem">${data.created_at}</p>
+                                    </div>
+                                    <div class="mb-2 d-flex">
+                                        <p class="w-25 font-bold d-flex align-items-center justify-content-end mr-2">Fecha de modificación:</p>
+                                        <p class="resourceUpdated form-control w-75" id="resourceUpdated" style="border-radius: 0.25rem">${data.updated_at}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <div>
+
+*/
 
