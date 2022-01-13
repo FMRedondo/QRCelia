@@ -1,0 +1,10 @@
+.header{
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white !important;
+}
+
+.wrapper{
+    width: 90%;
+    margin: 0 auto;
+}
+
