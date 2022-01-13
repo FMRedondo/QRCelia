@@ -5244,14 +5244,6 @@ module.exports = {
 //
 //
 //
-window.onload = function () {
-  var photo = new Vue({
-    el: '#photo',
-    data: {
-      url: "'/img/home/home.jpg'"
-    }
-  });
-};
 
 /***/ }),
 
@@ -28695,7 +28687,7 @@ var render = function () {
   return _c(
     "div",
     { staticClass: "gallery", attrs: { id: "gallery" } },
-    [_c("photogallery-component", { attrs: { id: "photo", src: _vm.url } })],
+    [_c("photogallery-component", { attrs: { id: "photo", src: _vm.vm.a } })],
     1
   )
 }
