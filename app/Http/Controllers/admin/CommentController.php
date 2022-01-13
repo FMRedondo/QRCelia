@@ -5,8 +5,6 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\admin\CommentModel;
-use Egulias\EmailValidator\Warning\Comment;
-use PhpParser\Node\Expr\FuncCall;
 
 class CommentController extends Controller
 {

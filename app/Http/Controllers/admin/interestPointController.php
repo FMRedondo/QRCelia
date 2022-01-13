@@ -23,6 +23,7 @@ class interestPointController extends Controller
         $text           = $_POST['text'];
         $poster         = $_POST['poster'];
         $date           = DATE("Y-m-d H:i:s");
+        $_token         = $_POST['token'];
 
         $result = interestPointModel::addInterestPoint($name, $description, $text, $poster, $date);
         return response() -> json([
@@ -33,6 +34,7 @@ class interestPointController extends Controller
 
     public function deleteInterestPoint(){
         $id = $_POST['id'];
+        $_token = $_POST['token'];
         interestPointModel::deleteInterestPoint($id);
     }
 
@@ -41,17 +43,15 @@ class interestPointController extends Controller
     }
 
     public function getInterestPoint(){
+        $_token = $_POST['token'];
         $id = $_POST['id'];
-        $_token = $_POST['_token'];
-        /*
         $result = interestPointModel::getInterestPoint($id);
         return response() -> json($result);
-        */
-        return "hola";
     }
 
     public function searchInterestPoints(){
         $search = $_POST['search'];
+        $_token = $_POST['token'];
         $result = interestPointModel::searchInterestPoints($search);
         return response() -> json($result);
     }
@@ -60,6 +60,7 @@ class interestPointController extends Controller
         $id     = $_POST['id'];
         $field  = $_POST['field'];
         $value  = $_POST['value'];
+        $_token = $_POST['token'];
         $date   = DATE("Y-m-d H:i:s");
 
         interestPointModel::updateInterestPoint($id, $field, $value, $date);
