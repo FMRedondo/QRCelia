@@ -1,19 +1,18 @@
 <template>
   <div class="gallery" id="gallery">
-      <photogallery-component id="photo"></photogallery-component>
+      <photogallery-component id="photo" :src="url"></photogallery-component>
   </div>
 </template>
 
 <script>
-    var photo = new Vue(
-      {
-        el: '#photo',
-        data:{
-          src: "/img/celiaRambla.jpg",
-          alt: "El celia lo peta"
-        }
-      }        
-    )
+window.onload = function() {
+  var photo = new Vue({
+    el: '#photo',
+    data: {
+      url: "'/img/home/home.jpg'"
+    }
+  })
+};
 </script>
 
 <style scoped>

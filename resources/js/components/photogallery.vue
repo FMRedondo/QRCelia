@@ -1,9 +1,8 @@
-<template>
-    <img>
+<template> 
+    <img >
 </template>
 
 <script>
-
 </script>
 
 <style>
