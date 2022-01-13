@@ -32,6 +32,7 @@ class interestPointController extends Controller
         ]);
     }
 
+
     public function deleteInterestPoint(){
         $id = $_POST['id'];
         $_token = $_POST['token'];
@@ -42,6 +43,7 @@ class interestPointController extends Controller
         return interestPointModel::getInterestPoints();
     }
 
+
     public function getInterestPoint(){
         $_token = $_POST['token'];
         $id = $_POST['id'];
@@ -50,6 +52,7 @@ class interestPointController extends Controller
         */
         return "adbyiafdihybhijkbaf ahidbfubhyiadscfikbyuasf";
     }
+
 
     public function searchInterestPoints(){
         $search = $_POST['search'];
