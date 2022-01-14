@@ -10,11 +10,6 @@ use App\Http\Controllers\admin\interestPointController;
 use App\Http\Controllers\admin\resourceUploadController;
 
 
-
-Route::post('/puntosInteres/getPoint', [interestPointController::class, 'getInterestPoint'])-> name('get.interestPoint');
-
-
-
 Route::get('/', function () {
     return view('admin/index');
 });
@@ -34,11 +29,9 @@ Route::get('/roles', function () {
 Route::get('/verDatosContenido', [panelesController::class, 'datosPanelContenido'])-> name('verContenido.panel');
 
 Route::get('/puntosInteres', [interestPointController::class, 'index'])-> name('show.interestPoints'); 
-
-
-
 Route::get('/puntosInteres/getPoints', [interestPointController::class, 'getInterestPoints'])-> name('get.interestPoints');
 Route::post('/verPuntoInteres', [interestPointController::class, 'verEditarPuntosInteres'])-> name('verEditar.interestPoints');
+Route::post('/puntosInteres/getPoint', [interestPointController::class, 'getInterestPoint'])-> name('get.interestPoint');
 
 
 
