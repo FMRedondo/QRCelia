@@ -76,8 +76,11 @@ const index = () => {
 
 index();
 
-
+/*
 
 const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('data-id'), '_token': token}, '/admin/puntosInteres/getPoint', 'POST', (response) => {
-    console.log(response)
+    const modifyPanel = document.querySelector(".modifyPanel")
+    modifyPanel.style.display = "fixed"
 });
+
+*/
