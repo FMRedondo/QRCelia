@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\admin\interestPointModel;
+use PHPUnit\Framework\MockObject\Verifiable;
 
 class interestPointController extends Controller
 {
@@ -33,9 +34,8 @@ class interestPointController extends Controller
     }
 
 
-    public function deleteInterestPoint(){
-        $id = $_POST['id'];
-        $_token = $_POST['token'];
+    public function deleteInterestPoint(Request $request){
+        $id = $request->get('id');
         interestPointModel::deleteInterestPoint($id);
     }
 
@@ -44,19 +44,16 @@ class interestPointController extends Controller
     }
 
 
-    public function getInterestPoint(){
+    public function getInterestPoint(Request $request){
+        $_token = $request->session()->token();
         $id     = $_POST['id'];
-        $_token = $_POST['_token'];
-        //$result = interestPointModel::getInterestPoint($id);
-        //return response() -> json($result);
-        //var_dump($request);
-        return "funciona!!!"; 
+        $result = interestPointModel::getInterestPoint($id);
+        return response() -> json($result);
     }
 
 
     public function searchInterestPoints(){
         $search = $_POST['search'];
-        $_token = $_POST['token'];
         $result = interestPointModel::searchInterestPoints($search);
         return response() -> json($result);
     }
@@ -65,7 +62,7 @@ class interestPointController extends Controller
         $id     = $_POST['id'];
         $field  = $_POST['field'];
         $value  = $_POST['value'];
-        $_token = $_POST['token'];
+        $_token = $_POST['_token'];
         $date   = DATE("Y-m-d H:i:s");
 
         interestPointModel::updateInterestPoint($id, $field, $value, $date);
