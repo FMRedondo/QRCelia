@@ -24,6 +24,10 @@
 <script>
 
     export default{
+        created () {
+            window.addEventListener('scroll', this.scrollNav);
+        },
+
         methods: {
             desplegarMenu: (event) => {
                const menu = document.getElementById('nav');
@@ -60,6 +64,17 @@
             quitarImagen: (event) => {
                 const nav = document.getElementById('nav');
                 nav.style.backgroundImage  = "";
+            },
+
+            scrollNav: (event) => {
+                const header = document.getElementById('header');
+                if (window.scrollY == 0) {
+                    header.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+                } else if(window.scrollY > 1){
+                    header.style.backgroundColor = "rgba(0, 0, 0, 1)";
+                }
+
+                
             }
             
         }

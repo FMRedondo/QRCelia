@@ -10,7 +10,22 @@
 </head>
 <body>
     <section id="app">
-        <interestpoint-page></interestpoint-page>
+        <interestpoint-page v-on:scroll.native="scrollNav"></interestpoint-page>
+
+        <div id="gallery">
+                <div id="arrows">
+                    <div class="arrow prev"></div>
+                    <div class="arrow next"></div>
+                </div>
+        </div>
+        
+        <div id="information">
+
+        <div id="pointThumbnail">
+            <div class="pointContent">
+            </div>
+        </div>
+
     </section>
     <script src="https://kit.fontawesome.com/75e57fedbe.js" crossorigin="anonymous"></script>
     <script src="{{ mix('/js/app.js') }}"></script>

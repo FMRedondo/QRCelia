@@ -10,7 +10,7 @@
 </head>
 <body>
     <section id="app" class="home">
-        <header-component></header-component>
+        <header-component v-on:scroll.native="scrollNav"></header-component>
         <div class="datos" id="datosHome">
             <div class="wrapper">
                 <p class="datosBanner">
