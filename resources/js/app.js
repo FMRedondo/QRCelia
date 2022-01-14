@@ -27,7 +27,7 @@ Vue.component('gallery-component', require('./components/gallery.vue').default);
 Vue.component('interestpoint-page', require('./pages/interestPoint.vue').default);
 Vue.component('header-component', require('./components/header.vue').default);
 Vue.component('gallery-component', require('./components/gallery.vue').default);
-Vue.component('photogallery-component', require('./components/photo-gallery.vue').default);
+Vue.component('photogallery-component', require('./components/photogallery.vue').default);
 
 
 
@@ -38,5 +38,5 @@ Vue.component('photogallery-component', require('./components/photo-gallery.vue'
  */
 
 const app = new Vue({
-    el: '#app',
+    el: '#app'
 });
