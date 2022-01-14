@@ -78,8 +78,54 @@ index();
 
 
 const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('data-id'), '_token': token}, '/admin/puntosInteres/getPoint', 'POST', (response) => {
-    //const modifyPanel = document.querySelector(".modifyPanel")
-    //modifyPanel.style.display = "fixed"
-    console.log(response)
-});
+    const resourceList = document.querySelector("#resourceList")
+    const content = `
+    
+    <div data-id="" class="rounded-xl shadow-lg bg-white modifyPanel bigPanel">
+        <div class="d-flex align-items-center px-4" style="height:10%; background-color:#F4F4F4;">
+            <p class="display-4 p-1 w-75">Editar ${response[0].name}</p>
+            <div class="d-flex w-25 justify-content-end">
+                <div class="closeModifyWindow" style="color:#dc3545;">
+                    <i type="button" class="fa-solid fa-circle-xmark fa-3x"></i>
+                </div>
+            </div>
+        </div>
 
+        <div class="modifyPanelContent w-100 d-flex" style="height:90%;">
+            <div class="w-50 d-flex justify-content-center align-items-center">
+                <div class="w-100">
+                <img src=${response[0].poster} style='width:90%; margin:0 auto'>
+                </div>
+            </div>
+            <div class="w-50 d-flex flex-column p-5">
+                <div class="mb-4">
+                    <label for="resourceName" class="form-label">Nombre:</label>
+                    <input type="text" value="${response[0].name}" data-field='name' class="name form-control ResourceField" id="resourceName" style="border-radius: 0.25rem">
+                </div>
+
+                <div class="mb-4">
+                    <label for="resourceAutor" class="form-label">Descripcion:</label>
+                    <input type="text" value="${response[0].description}" class="autor form-control ResourceField" id="resourceAutor" style="border-radius: 0.25rem">
+                </div>
+                            
+                <div class="mb-4">
+                     <label for="resourceUser" class="form-label">Contenido</label>
+                     <textarea class="ckeditor" name="editor1" id="editor1" rows="10" cols="88"></textarea>
+                </div>
+            </div>
+        </div>`;
+
+    console.log(response)
+
+    resourceList.innerHTML = content;
+    const modifyPanel = document.querySelector(".modifyPanel ")
+    const backPanel = document.querySelector(".backPanel")
+    backPanel.style.display = "block"
+    modifyPanel.style.display = "block"
+
+    const botonCerrar = document.querySelector(".closeModifyWindow")
+    botonCerrar.addEventListener('click', () => {
+        modifyPanel.style.display = "none"
+        backPanel.style.display = "none"
+    })
+});
