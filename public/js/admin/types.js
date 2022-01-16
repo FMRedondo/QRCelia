@@ -88,6 +88,7 @@ $(".btnAddType").click(showAddType);
 function showAddType() {
     $(".addPanel").toggle();
     $(".typeName").val("");
+    $(".backPanel").show();
 }
 
 // Funcion para añadir una nueva categoria
@@ -138,6 +139,7 @@ function addType(){
             $(".btnDelType").click(showDelType);
             $(".btnShowEditType").off();
             $(".btnShowEditType").click(showEditType);
+            $(".backPanel").hide();
          },
 
          error: function (response) {
@@ -152,6 +154,7 @@ function addType(){
 $(".btnDelType").click(showDelType);
 function showDelType() {
     $(".delPanel").show();
+    $(".backPanel").show();
     let id = $(this).data("id");
 
     // Funcion para borrar categorias
@@ -169,6 +172,7 @@ function showDelType() {
                     let route = "table tbody #" + id;
                     $(route).remove();
                     $(".delPanel").hide();
+                    $(".backPanel").hide();
                 },
                 error: function (response) {
                     alert("Error en la peticion");            
@@ -177,6 +181,7 @@ function showDelType() {
         }
         if (!($(this).data("val")))
             $(".delPanel").hide();
+            $(".backPanel").hide();
     })
 }
 
@@ -280,6 +285,7 @@ function showEditType() {
 
             $(".delPanel").after(content);
             $(".modifyPanel").show();
+            $(".backPanel").show();
 
             $(".typeNameMod").change(function() {
                 var newName = $(".typeNameMod").val();
@@ -311,6 +317,7 @@ function showEditType() {
 
             $(".btnWindowModify").click(function () {
                     $(".modifyPanel").remove();
+                    $(".backPanel").hide();
             })
 
         },
