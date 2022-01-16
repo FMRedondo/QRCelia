@@ -50,7 +50,7 @@ Route::post('/categorias/getType', [TypeController::class, 'getType']) -> name('
 Route::post('/categorias/editType', [TypeController::class, 'updateType']) -> name('edit.type');
 
 Route::get('/recursos', [ResourceController::class, 'index'])-> name('show.viewResources');
-Route::post('/recursos', [resourceUploadController::class, 'store'])-> name('upload.resource');
+Route::post('/recursos', [resourceUploadController::class, 'addResource'])-> name('upload.resource');
 Route::get('/recursos/getResources', [ResourceController::class, 'getResources'])-> name('show.resource');
 Route::post('/recursos/addResource', [ResourceController::class, 'addResource'])-> name('add.resource');
 Route::post('/recursos/deleteResource', [ResourceController::class, 'deleteResource'])-> name('delete.resource');

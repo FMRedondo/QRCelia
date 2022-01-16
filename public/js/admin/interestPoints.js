@@ -70,6 +70,8 @@ const index = () => {
         const btnEdit = document.getElementsByClassName("editButton");
         for(let i = 0; i < btnEdit.length; i++)
             btnEdit[i].addEventListener('click', datosPuntoInteres)
+
+        // FALTA HACER EL EVEVENTO PARA LA ACUALIZACION DE LOS DATOS
     })
 };
 
@@ -129,3 +131,20 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
         backPanel.style.display = "none"
     })
 });
+
+
+const actualizarDatos = (element) => ajax(
+    {   
+        'id': element.target.getAttribute('data-id'),
+        'value' : value,
+        'field': field,
+        '_token': token
+    },'/admin/puntosInteres/getPoint','POST',(response) => {
+    
+        alert("Esto funciona")
+
+})
+
+
+
+

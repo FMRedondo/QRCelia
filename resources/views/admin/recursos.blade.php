@@ -31,13 +31,18 @@
 
   <!-- Cartel para añadir un recurso -->
   <div class="w-50 m-auto mx-auto my-auto rounded-xl shadow-lg  bg-white addPanel" style="top: 10% !important;">
-    <div class="text-center">
-			<h2 class="mt-1 text-3xl font-bold text-gray-900">
-				Subir un nuevo recurso
-			</h2>
-			<p class="mt-2 text-sm text-gray-400">Imágenes, videos y audios</p>
-		</div>
-    <form class="mt-2 space-y-3" action="" method="POST" enctype="multipart/form-data">
+    <div class="titleContent d-flex justify-content-between p-2">
+      <div class="text-center">
+        <h2 class="mt-1 text-3xl font-bold text-gray-900">Subir un nuevo recurso</h2>
+          <p class="mt-2 text-sm text-gray-400">Imágenes, videos y audios</p>
+      </div>
+      <div class="cerrarVentana">
+      <div class="closeModifyWindow" style="color:#dc3545;">
+          <i type="button" class="fa-solid fa-circle-xmark fa-3x"></i>
+      </div>
+      </div>
+    </div>
+    <form class="mt-2 space-y-3" method="POST" enctype="multipart/form-data">
       @csrf
       <div class="grid grid-cols-1 space-y-2">
           <div class="flex items-center justify-center w-full">
@@ -71,6 +76,8 @@
   <div class="xl:w-1/3 md:w-1/2 p-4 d-flex flex-wrap" id="resourceList" style="gap:3em">
   </div>
 </section>
+
+<div class='backPanel'></div>
 
 
 @stop

@@ -10,35 +10,51 @@ use Illuminate\Support\Facades\Auth;
 class resourceUploadController extends Controller
 {
     // Funcion para subir recursos al servidor
-    public function store(){
+    public function addResource(){
+
+        /*
+         *
+         * Bucle que recorra la matrix de arcvhivos
+         * ver mimes y ver que tipo de archivo quieremos subir 
+         * segun el tipo de contenudo lo subimos en su carpeta /public/recursos/***
+         * 
+        */
+
+
         $_token = $_POST['_token'];
-        //guarda en /storage/public/folder?????
-        //guarda en /public/folder?????
         $name = $_FILES['resourceUpload']['name'];
         $saved = $_FILES['resourceUpload']['tmp_name'];
         $date = DATE("Y-m-d H:i:s");
         $folder = "img";
         $type = "image";
 
+        return $name;
+
+        /*
+
         if (!file_exists('/public/recursos/'.$folder)) {
             mkdir('/public/recursos/'.$folder,0777,true);
 
             if (file_exists('/public/recursos/'.$folder)) {
                 if (move_uploaded_file($saved, '/public/recursos/' . $folder . '/' . $name)) {
-                    echo "Archivo guardado";
                     $url = '/public/recursos/' . $folder . '/' . $name;
+                    ResourceModel::addResource($type,$name,$url,$date);
+                    return true;
+                   
                 }else{
-                    echo "No se ha podido guardar el archivo";
+                   return false;
                 }
             }
         }else{
             if (move_uploaded_file($saved, '/public/recursos/' . $folder . '/' . $name)) {
-                echo "Archivo guardado";
                 $url = '/public/recursos/' . $folder . '/' . $name;
+                ResourceModel::addResource($type,$name,$url,$date);
+                return true;
             }else{
-                echo "No se ha podido guardar el archivo";
+               return false;
             }
         }
-        ResourceModel::addResource($type,$name,$url,$date);
+
+        */
     }    
 }

@@ -93,6 +93,7 @@ function load() {
 $(".btnAddResource").click(showAddResource);
 function showAddResource() {
     $(".addPanel").toggle();
+    $(".backPanel").show();
     $("#resourceUpload").prop('disabled', false);
     $("#resourceUpload").change(checkResourceUpload);
 }
@@ -128,13 +129,19 @@ function checkResourceUpload(){
 
 // Funcion para añadir un nuevo recurso
 $("#btnSendAddResource").click(addResource);
+
+// $('#resourceUpload').get(0).files
+
+
 function addResource(){
     var params = {
-        "_token": $('meta[name="csrf-token"]').attr('content')
+        "_token": $('meta[name="csrf-token"]').attr('content'),
+        "resources": $('#resourceUpload').get(0).files,
     }
+
     $.ajax({
         data: params,
-        url: '/admin/recursos',
+        url: '/admin/recursos/addResource',
         type: 'post',
 
         success: function (response) {
@@ -592,3 +599,8 @@ function showChangeResource() {
         },
     });
 }
+
+$(".closeModifyWindow").click(() => {
+    $(".addPanel").hide();
+    $(".backPanel").hide();
+})
