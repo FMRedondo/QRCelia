@@ -33,8 +33,7 @@ Route::get('/puntosInteres', [interestPointController::class, 'index'])-> name('
 Route::get('/puntosInteres/getPoints', [interestPointController::class, 'getInterestPoints'])-> name('get.interestPoints');
 Route::post('/verPuntoInteres', [interestPointController::class, 'verEditarPuntosInteres'])-> name('verEditar.interestPoints');
 Route::post('/puntosInteres/getPoint', [interestPointController::class, 'getInterestPoint'])-> name('get.interestPoint');
-
-
+Route::post('/puntosInteres/editPoint', [interestPointController::class, 'updateInterestPoint'])-> name('update.interestPoint');
 
 Route::get('/comentarios', [CommentController::class, 'index'])-> name('show.viewComments');
 Route::get('/comentarios/getComments', [CommentController::class, 'getComments'])-> name('show.comments');

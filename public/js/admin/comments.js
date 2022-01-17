@@ -105,6 +105,7 @@ function searchComments(){
 function showDelComments() {
 
     $(".delCommentsPanel").show();
+    $(".backPanel").show();
     let id = $(this).data("id");
 
     $(".btnWindow").click(function() {
@@ -121,6 +122,7 @@ function showDelComments() {
                     let route = "table tbody #" + id;
                     $(route).remove();
                     $(".delCommentsPanel").hide();
+                    $(".backPanel").hide();
                 },
                 error: function (response) {
                     alert("Error en la peticion");            
@@ -129,8 +131,13 @@ function showDelComments() {
         }
         if (!($(this).data("val")))
             $(".delCommentsPanel").hide();
+            $(".backPanel").hide();
     })
 }
+
+
+
+
 
 
 

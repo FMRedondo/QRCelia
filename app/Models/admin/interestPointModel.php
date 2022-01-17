@@ -22,8 +22,8 @@ class interestPointModel extends Model
         return $result;
     }
 
-    public static function updateInterestPoint($id, $field, $value, $date){
-        $sql = "UPDATE interest_points SET $field = '$value', update_at = '$date' WHERE (id = $id)";
+    public static function updateInterestPoint($id, $field, $value){
+        $sql = "UPDATE interest_points SET $field = '$value' WHERE (id = $id)";
         $result = DB::update($sql);
         return $result;
     }

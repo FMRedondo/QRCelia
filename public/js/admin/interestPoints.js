@@ -16,8 +16,20 @@ const ajax = async (data, url, type, success) => {
         success: success,
 
         error: function (response) {
-            alert("Error en la peticion");
-            console.log(response);
+           const error = `
+           <div class="alert alert-danger" role="alert">
+               ERROR, no se ha podido actualizar la información
+            </div>
+           `;
+
+           const panelMensaje = document.getElementById('mensaje')
+           panelMensaje.innerHTML = error;
+           console.log("Error al realizar la peticion")
+
+           const animacion = setInterval(() => {
+            panelMensaje.innerHTML = ""
+           }, 3000)
+
         },
     });
 }
@@ -33,10 +45,10 @@ const index = () => {
                     <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-4"
                         src="https://picsum.photos/720/400" alt="Image Size 720x400" />
                     <div class="p-4">
-                        <h2 class="text-lg text-gray-900 font-medium title-font mb-2 whitespace-nowrap truncate">
+                        <h2 class="text-lg text-gray-900 font-medium title-font mb-2 whitespace-nowrap truncate" id='${data.name}'>
                             ${data.name}
                         </h2>
-                        <p class="text-gray-600 font-light text-md mb-3">
+                        <p class="text-gray-600 font-light text-md mb-3" id=${data.description}>
                         ${data.description}
                         </p>
                         <div class="py-4 border-t border-b text-xs text-gray-700">
@@ -102,22 +114,20 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
             <div class="w-50 d-flex flex-column p-5">
                 <div class="mb-4">
                     <label for="resourceName" class="form-label">Nombre:</label>
-                    <input type="text" value="${response[0].name}" data-field='name' class="name form-control ResourceField" id="resourceName" style="border-radius: 0.25rem">
+                    <input type="text" value="${response[0].name}" data-field='name' class="name form-control ResourceField editInput"  data-id=${response[0].id} id="resourceName" style="border-radius: 0.25rem">
                 </div>
 
                 <div class="mb-4">
                     <label for="resourceAutor" class="form-label">Descripcion:</label>
-                    <input type="text" value="${response[0].description}" class="autor form-control ResourceField" id="resourceAutor" style="border-radius: 0.25rem">
+                    <input type="text" value="${response[0].description}" class="autor form-control ResourceField editInput"  data-id=${response[0].id} data-field="description" id="resourceAutor" style="border-radius: 0.25rem">
                 </div>
                             
                 <div class="mb-4">
                      <label for="resourceUser" class="form-label">Contenido</label>
-                     <textarea class="ckeditor" name="editor1" id="editor1" rows="10" cols="88"></textarea>
+                     <textarea class="ckeditor editInput" name="editor1" id="editor1" data-id=${response[0].id} rows="10" cols="88" data-field="text">${response[0].text}</textarea>
                 </div>
             </div>
         </div>`;
-
-    console.log(response)
 
     resourceList.innerHTML = content;
     const modifyPanel = document.querySelector(".modifyPanel ")
@@ -130,20 +140,40 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
         modifyPanel.style.display = "none"
         backPanel.style.display = "none"
     })
+
+    const inputActualizar  = document.getElementsByClassName("editInput");
+        for(let i = 0; i < inputActualizar.length; i++)
+            inputActualizar[i].addEventListener('change', actualizarDatos)
+
 });
 
 
 const actualizarDatos = (element) => ajax(
     {   
         'id': element.target.getAttribute('data-id'),
-        'value' : value,
-        'field': field,
+        'field':  element.target.getAttribute('data-field'),
+        'value' : element.target.value,
         '_token': token
-    },'/admin/puntosInteres/getPoint','POST',(response) => {
+    },'/admin/puntosInteres/editPoint','POST',(response) => {
     
-        alert("Esto funciona")
+    const aviso = `
+        <div class="alert alert-success" role="alert">
+            Datos actualizados correctamente
+        </div>
+    `;
+
+    const panelMensaje = document.getElementById('mensaje')
+    panelMensaje.innerHTML = aviso;
+
+    const animacion = setInterval(() => {
+        panelMensaje.innerHTML = ""
+    }, 3000)
 
 })
+
+
+
+
 
 
 

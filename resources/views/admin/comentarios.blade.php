@@ -46,6 +46,8 @@
       </div>
     </div>
 
+    <div class='backPanel'></div>
+
 @stop
 
 @section('css')

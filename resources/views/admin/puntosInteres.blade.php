@@ -14,15 +14,18 @@
 
 <div class="xl:w-1/3 md:w-1/2 p-4 d-flex flex-wrap" id="resourceList" style="gap:3em"></div>
 <div class='backPanel'></div>
+<div class="mensaje" id="mensaje"></div>
 
 @stop
 
 @section('css')
+    <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/adminLTE.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="/css/panel.css">
     <link rel="stylesheet" href="/estilos/admin/interestPoints.css">
+
 @stop
 
 @section('js')

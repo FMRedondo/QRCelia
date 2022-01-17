@@ -78,6 +78,16 @@
     background-color: rgba(0, 0, 0, 0.7);
 }
 
+#mensaje{
+    display: block;
+    width: 20em;
+    height: 5em;
+    position: fixed;
+    top: 22px;
+    right: 10px;
+    z-index: 9999999;
+}
+
 
 @media (max-width: 795px) {
 }

@@ -64,10 +64,11 @@ class interestPointController extends Controller
         $id     = $_POST['id'];
         $field  = $_POST['field'];
         $value  = $_POST['value'];
-        $_token = $_POST['token'];
-        $date   = DATE("Y-m-d H:i:s");
+        $_token = $_POST['_token'];
+        //$date   = DATE("Y-m-d H:i:s");
 
-        interestPointModel::updateInterestPoint($id, $field, $value, $date);
-        return $date;
+
+        interestPointModel::updateInterestPoint($id, $field, $value);
+        //return $date;
     }
 }
