@@ -7,35 +7,76 @@
     width: 90%;
     margin: 0 auto;
 }
-
-#information{
+.swiper {
+    width: 40%;
+}
+ 
+.videosPanel .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 35% !important;
+    box-shadow: 0px 0px 0px transparent;
+}
+ 
+.videosPanel .swiper-slide img {
+    display: block;
     width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-
-    /*
-    background-color: #ffffff;
-    opacity: 1;
-    background-image:  linear-gradient(30deg, #C6A878 12%, transparent 12.5%, transparent 87%, #C6A878 87.5%, #C6A878), linear-gradient(150deg, #C6A878 12%, transparent 12.5%, transparent 87%, #C6A878 87.5%, #C6A878), linear-gradient(30deg, #C6A878 12%, transparent 12.5%, transparent 87%, #C6A878 87.5%, #C6A878), linear-gradient(150deg, #C6A878 12%, transparent 12.5%, transparent 87%, #C6A878 87.5%, #C6A878), linear-gradient(60deg, #C6A87877 25%, transparent 25.5%, transparent 75%, #C6A87877 75%, #C6A87877), linear-gradient(60deg, #C6A87877 25%, transparent 25.5%, transparent 75%, #C6A87877 75%, #C6A87877);
-    background-size: 66px 116px;
-    background-position: 0 0, 0 0, 33px 58px, 33px 58px, 0 0, 33px 58px;
-    */
+}
+ 
+.videosPanel .swiper-slide .textoTetimonio{
+    opacity: 0;
+}
+ 
+.videosPanel .swiper-slide-active .textoTetimonio{
+    opacity: 100;
+}
+ 
+.videosPanel .swiper-slide-visible{
+    box-shadow: none !important;
+}
+ 
+.videosPanel .swiper-pagination-bullet{
+    background-color: var(--secciones) !important;
 }
 
-.pointContent{
+.videosPanel .swiper-wrapper{
+    margin-top: 2em;
+}
+
+/* GALERIA CON EL SWIPER */
+#gallery{
+    width: auto;
+    height: 90vh;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#gallery .swiper {
+    width: 100%;
+    height: 100%;
+}
+
+#gallery .swiper-slide {
+    background-position: center;
+    background-size: cover;
+}
+
+#gallery .swiper-slide img {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+
+#gallery .pointContent{
     width: 70%;
     height: 100%;
     background-color: white;
     margin: 100px auto 0 auto;
     z-index: 10;
     padding: 3em 0 0 0;
-    /*
-    border-radius: 2%;
-    -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 30px 10px rgba(0,0,0,0.3); 
-    box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 30px 10px rgba(0,0,0,0.3);
-    */
 }
+
+/* FIN FIN FIN FIN FIN FIN FIN FIN FIN */
 
 .contentHeader{
     display: flex;
@@ -62,6 +103,10 @@
     font-size: 1.2em;
 }
 
+#type{
+    text-align: right;
+}
+
 .contentThumbnail{
     display: flex;
     justify-content: center;
@@ -86,7 +131,7 @@
 }
 
 .videosPanel, .audioPanel{
-    height: 300px;
+    height: 20em;
     background-color: #2D2D2D;
 }
 

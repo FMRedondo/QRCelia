@@ -13,26 +13,28 @@
     <section id="app">
         <interestpoint-page v-on:scroll.native="scrollNav"></interestpoint-page>
 
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="https://www.filmingalmeria.es/Servicios/Informacion/Informacion.nsf/1628D7278E7ADFCBC1257D8F0045E1BB/$file/almeria-cine-localizaciones-capital-celia-vi%C3%B1as-contemporaneo-5.jpg" />
+        <div id="gallery">
+            <div class="swiper gallery">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="https://www.filmingalmeria.es/Servicios/Informacion/Informacion.nsf/1628D7278E7ADFCBC1257D8F0045E1BB/$file/almeria-cine-localizaciones-capital-celia-vi%C3%B1as-contemporaneo-5.jpg" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://fondosmil.com/fondo/38780.jpg" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://www.xtrafondos.com/descargar.php?id=3183&resolucion=1280x720" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://www.xtrafondos.com/descargar.php?id=4518&resolucion=1280x720" />
+                    </div>
                 </div>
-                <div class="swiper-slide">
-                    <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://www.filmingalmeria.es/Servicios/Informacion/Informacion.nsf/1628D7278E7ADFCBC1257D8F0045E1BB/$file/almeria-cine-localizaciones-capital-celia-vi%C3%B1as-contemporaneo-5.jpg" />
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
             </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-pagination"></div>
         </div>
-
+    
         <div class="wrapper">
             <separador-component texto='información'></separador-component>
         </div>
@@ -41,9 +43,9 @@
             <div class="pointContent">
                 <div class="contentHeader">
                     <div class="contentTitle">
-                        <p id="type">Categoría: Tanques chulos</p>
                         <h1>Panzerkampwagen VI Tiger I</h1>
                         <p id="desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod maiores eum accusantium libero optio quos laborum deleniti necessitatibus vitae.</p>
+                        <p id="type">En una palabra: "Tanques chulos "</p>
                     </div>
                     <div class="contentThumbnail">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Bundesarchiv_Bild_101I-299-1805-16%2C_Nordfrankreich%2C_Panzer_VI_%28Tiger_I%29_cropped.jpg" alt="Miniatura del punto">
@@ -64,6 +66,39 @@
         <div id="multimedia">
             <div class="videosPanel">
 
+                <div class="swiper videos">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Bundesarchiv_Bild_101I-299-1805-16%2C_Nordfrankreich%2C_Panzer_VI_%28Tiger_I%29_cropped.jpg" />
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+                      </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
             </div>
             <div class="audioPanel">
 
@@ -74,7 +109,7 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="{{ mix('/js/app.js') }}"></script>
     <script>
-      var swiper = new Swiper(".mySwiper", {
+      var gallery_swiper = new Swiper(".gallery", {
         spaceBetween: 30,
         effect: "fade",
         navigation: {
@@ -84,6 +119,23 @@
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
+        },
+      });
+
+      var video_swiper = new Swiper(".videos", {
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: "auto",
+        coverflowEffect: {
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
+        },
+        pagination: {
+          el: ".swiper-pagination",
         },
       });
     </script>

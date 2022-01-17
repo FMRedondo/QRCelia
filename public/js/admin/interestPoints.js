@@ -41,14 +41,14 @@ const index = () => {
             contenidoVista.innerHTML = "";
             response.forEach(data => {
                 let contenidoTabla = `
-                    <div class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32" style="width: 30%">
+                    <div id="card${data.id}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32" style="width: 30%">
                     <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-4"
-                        src="https://picsum.photos/720/400" alt="Image Size 720x400" />
+                        src="${data.poster}" alt="${data.name}" />
                     <div class="p-4">
-                        <h2 class="text-lg text-gray-900 font-medium title-font mb-2 whitespace-nowrap truncate" id='${data.name}'>
+                        <h2 class="name text-lg text-gray-900 font-medium title-font mb-2 whitespace-nowrap truncate" id=${data.name} data-field='name'>
                             ${data.name}
                         </h2>
-                        <p class="text-gray-600 font-light text-md mb-3" id=${data.description}>
+                        <p class="description text-gray-600 font-light text-md mb-3" id=${data.description} data-field='description'>
                         ${data.description}
                         </p>
                         <div class="py-4 border-t border-b text-xs text-gray-700">
@@ -95,9 +95,9 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
     const resourceList = document.querySelector("#resourceList")
     const content = `
     
-    <div data-id="" class="rounded-xl shadow-lg bg-white modifyPanel bigPanel">
+    <div class="rounded-xl shadow-lg bg-white modifyPanel bigPanel">
         <div class="d-flex align-items-center px-4" style="height:10%; background-color:#F4F4F4;">
-            <p class="display-4 p-1 w-75">Editar ${response[0].name}</p>
+            <p id="windowTitle" class="name display-4 p-1 w-75">Editar ${response[0].name}</p>
             <div class="d-flex w-25 justify-content-end">
                 <div class="closeModifyWindow" style="color:#dc3545;">
                     <i type="button" class="fa-solid fa-circle-xmark fa-3x"></i>
@@ -165,6 +165,15 @@ const actualizarDatos = (element) => ajax(
     const panelMensaje = document.getElementById('mensaje')
     panelMensaje.innerHTML = aviso;
 
+    const ruta = `#card${element.target.getAttribute('data-id')} .${element.target.getAttribute('data-field')}`
+    const cambiarCampos = document.querySelector(ruta);
+    cambiarCampos.innerHTML = element.target.value;
+
+    //ESTO NO FUNCIONA
+    const ruta2 = `#windowTitle${element.target.getAttribute('data-id')} .${element.target.getAttribute('data-field')}` //<--- EL PETARDAZO ESTÁ AQUI
+    const cambiarCampos2 = document.querySelector(ruta2);
+    cambiarCampos2.innerHTML = "Editar " + element.target.value;
+  
     const animacion = setInterval(() => {
         panelMensaje.innerHTML = ""
     }, 3000)
