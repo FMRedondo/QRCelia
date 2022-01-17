@@ -4,6 +4,10 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    --colorPrimario: #F05454;
+    --colorSecundario:#30475E;
+    --colorClaro:#F5F5F5;
+    --colorOscuro:#121212;
 }
 
 .imgThumbnail{
@@ -26,6 +30,11 @@
     position: absolute;
     bottom: 1em;
     right: 1em;
+}
+
+.primerElemento{
+    margin-top: 100px;
+    padding-top: 2em;
 }
 
 /* Animacion para boton pulsar */
