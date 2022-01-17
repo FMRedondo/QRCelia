@@ -24,3 +24,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/puntoInteres', function () {
     return view('interestPoint');
 });
+
+Route::get('/puntosInteres', function () {
+    return view('puntosInteres');
+});

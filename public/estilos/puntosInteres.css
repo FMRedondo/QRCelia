@@ -1,0 +1,17 @@
+.wrapper{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.header{
+    background-color: black;
+    color: white !important;
+}
+
+.puntosInteres{
+    margin-top: 100px;
+    padding: 2em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

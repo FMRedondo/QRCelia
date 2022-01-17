@@ -13,7 +13,6 @@
     <section id="app">
         <interestpoint-page v-on:scroll.native="scrollNav"></interestpoint-page>
 
-
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -32,6 +31,10 @@
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
             <div class="swiper-pagination"></div>
+        </div>
+
+        <div class="wrapper">
+            <separador-component texto='información'></separador-component>
         </div>
         
         <div id="information">

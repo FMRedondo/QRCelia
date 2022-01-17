@@ -21,6 +21,7 @@ window.Vue = require('vue').default;
 
 Vue.component('header-component', require('./components/header.vue').default);
 Vue.component('gallery-component', require('./components/gallery.vue').default);
+Vue.component('separador-component', require('./components/separador.vue').default);
 
 
 
