@@ -17,10 +17,18 @@
                 <separador-component texto='Puntos de interés'></separador-component>
                 <p class="texto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati dicta perferendis animi hic, eum voluptates maiores sed praesentium dolores inventore aspernatur dolorem. Molestias at beatae voluptate praesentium corporis quas minus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem minima libero a, nisi quibusdam hic, delectus adipisci eaque rem quia modi sunt molestias similique dolorem vel asperiores recusandae et. Quibusdam!</p>
                 <div class="puntosInteres">
-                    <punto-interes titulo='ejemplo' imagen='/img/celia.jpg' texto='Hola que pasa, como va la cosa, si si, esta claro que es asi y punto' descripcion='Esta es lña descripcion de esta mierda de componente'></punto-interes>
-                    <punto-interes titulo='manolo la tiene pequeña' imagen='/img/celia.jpg' texto='Hola que pasa, como va la cosa, si si, esta claro que es asi y punto' descripcion='Esta es lña descripcion de esta mierda de componente'></punto-interes>
-                    <punto-interes titulo='ajax lo peta' imagen='/img/celia.jpg' texto='Hola que pasa, como va la cosa, si si, esta claro que es asi y punto' descripcion='Esta es lña descripcion de esta mierda de componente'></punto-interes>
-                    <punto-interes titulo='felix feliz' imagen='/img/celia.jpg' texto='Hola que pasa, como va dqd  wfwe fwf wfsfwefwe la cosa, si si, esta claro que es asi y punto' descripcion='Esta es lña descripcion de esta mierda de componente'></punto-interes>
+
+                    @php
+                        $puntos = DB::select("SELECT * FROM interest_points");
+                        foreach ($puntos as $punto) {
+                            $name           = $punto -> name;
+                            $description    = $punto -> description;
+                            $text           = $punto -> text;
+                            $poster         = $punto -> poster;
+
+                            echo "<punto-interes titulo='$name' imagen='$poster' texto='$text' descripcion='$description'></punto-interes>";
+                        }
+                    @endphp
                 </div>
             </div>
         </section>

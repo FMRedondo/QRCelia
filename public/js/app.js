@@ -29224,12 +29224,7 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "puntoInteres" }, [
-    _c("img", {
-      attrs: {
-        src: "https://iescelia.org/web/wp-content/uploads/2015/05/home_slider_2-780x400.jpg",
-        alt: "IES CELIA VIÑAS",
-      },
-    }),
+    _c("img", { attrs: { src: _vm.imagen, alt: "IES CELIA VIÑAS" } }),
     _vm._v(" "),
     _c("div", { staticClass: "contenidoPunto" }, [
       _c("h3", [_vm._v(_vm._s(_vm.titulo))]),

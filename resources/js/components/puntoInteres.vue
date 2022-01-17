@@ -1,6 +1,6 @@
 <template>
     <div class="puntoInteres">
-        <img src="https://iescelia.org/web/wp-content/uploads/2015/05/home_slider_2-780x400.jpg" alt="IES CELIA VIÑAS">
+        <img v-bind:src="imagen" alt="IES CELIA VIÑAS">
         <div class="contenidoPunto">
             <h3>{{titulo}}</h3>
             <p class="descripcion">{{descripcion}}</p>
