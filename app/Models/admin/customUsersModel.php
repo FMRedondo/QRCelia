@@ -38,4 +38,17 @@ class customUsersModel extends Model
         $result = DB::select($sql);
         return $result;
     }
+    
+    public static function addUser($name,$email,$password){
+        $sql = "INSERT INTO users (name,email,password) VALUES ('$name','$email','$password')";
+        DB::insert($sql);
+        $id = DB::getPdo()->lastInsertId();
+        return $id;
+    }
+
+
+
+
+
+
 }

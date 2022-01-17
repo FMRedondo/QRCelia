@@ -87,21 +87,24 @@ function load() {
 }
 
 
-//AÑADIR USUARION--NO
+//AÑADIR USUARIO --SI
 // Funcion para mostrar/cerrar pestaña para añadir nuevo usuario
 $(".btnAddUser").click(showAddUser);
 function showAddUser() {
-    $(".addUserPanel").toggle();
+    $(".addPanel").toggle();
     $(".UserName").val("");
 }
-
+   
 // Funcion para añadir una nueva user
 $(".btnSendAddUser").click(addUser);
 function addUser(){
     let name = $(".userName").val();
+    let email = $(".userEmail").val();
+    let password = $(".userPassword").val();
+
 
     var params = {
-        "name": name,
+        "name": name,"email": email,"password": password,
         "_token": $('meta[name="csrf-token"]').attr('content')
     }
 
@@ -111,26 +114,26 @@ function addUser(){
         type: 'post',
 
         success: function (response) {
-            $(".addUserPanel").toggle();
+        
+            $(".addPanel").toggle();
 
                 var newContent = `
-                <tr class="text-gray-700" id="${response.id}">
-                    <td class="px-4 py-3 border">
-                        <div class="flex items-center text-sm">
-                            <div class="relative w-8 h-8 mr-3 rounded-full md:block">
-                                <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true">
-                                </div>
-                            </div>
-                            <div>
-                                <p class="font-semibold text-black regUserName">${name}</p>
+            <tr class="text-gray-700" id="${response.id}">
+                <td class="px-4 py-3 border">
+                    <div class="flex items-center text-sm">
+                        <div class="relative w-8 h-8 mr-3 rounded-full md:block">
+                            <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true">
                             </div>
                         </div>
-                    </td>
+                        <div>
+                            <p class="font-semibold text-black regUserName">${data.name}</p>
+                        </div>
+                    </div>
+                </td>
 
                 <td class="px-4 py-3 text-xs border">
                     <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regUserEmail"> ${data.email} </span>
-                </td>
-        
+                </td>                 
 
                 <td class="px-4 py-3 text-xs border">
                     <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regUserPassword"> ${data.password} </span>
@@ -141,10 +144,15 @@ function addUser(){
                     <button type="button" class="btn btn-danger btnDelUser" data-id='${data.id}'>Eliminar</button>
                 </td>
             </tr>
+        
         `;
             $("tbody").append(newContent);
             $(".btnShowEditUser").click(showEditUser);
             $(".btnDelUser").click(showDelUser);
+            $(".btnShowEditUser").off();
+            $(".btnShowEditUser").click(showEditUser);
+
+
          },
 
          error: function (response) {
@@ -243,7 +251,7 @@ function searchUsers() {
                 $("tbody").append(tableContent);
             })
             $(".btnShowEditUser").click(showEditUser);
-            $(".btnDelType").click(showDelUser);
+            $(".btnDelUser").click(showDelUser);
         },
 
         error: function (response) {
@@ -254,7 +262,7 @@ function searchUsers() {
 
 
 // Funcion para editar una categoria
-$(".btnShowEditType").click(showEditUser);
+$(".btnShowEditUser").click(showEditUser);
 function showEditUser() {
     var error = false;
     var id = $(this).data("id");
@@ -273,21 +281,22 @@ function showEditUser() {
 
         success: function(response){
             content = `
-            <div class="modifyUserPanel">
-                <div class="alignCloseButton">
-                    <button type="button" class="btn btn-danger closeWindow btnWindowModify" data-val='false'>
-                        <i class="fa-solid fa-xmark"></i>
-                    </button> 
-                </div>     
-                <h1 class='text-center mt-3'>Modificar usuario</h1>  
-                <div class='contenido pt-0'>  
-                    <div class='form-group mb-4'>  
-                        <label class='mb-2'>Nombre:</label>  
-                        <input type='text' class='form-control typeName userNameMod' data-field='name' value='${response[0].name}' name='userNameMod'>  
-                    </div>   
-                    <div class='form-group mb-4 d-flex justify-content-center'>  
-                        <button type='submit' class='btnSendModifyUser btn btn-lg btn-success btnWindowModify' data-val='false' id='modifyUser'>Modificar categoria</button>  
-                    </div>  
+            <div class="w-50 m-auto p-5  mx-auto my-auto rounded-xl shadow-lg  bg-white modifyPanel">
+                <div class="">
+                    <div class="text-center p-5 flex-auto justify-center">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="pen-to-square" class="svg-inline--fa fa-pen-to-square w-16 h-16 flex items-center mx-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#0069d9" stroke="#0069d9">
+                        <path d="M383.1 448H63.1V128h156.1l64-64H63.1C28.65 64 0 92.65 0 128v320c0 35.35 28.65 64 63.1 64h319.1c35.34 0 63.1-28.65 63.1-64l-.0039-220.1l-63.1 63.99V448zM497.9 42.19l-28.13-28.14c-18.75-18.75-49.14-18.75-67.88 0l-38.62 38.63l96.01 96.01l38.62-38.63C516.7 91.33 516.7 60.94 497.9 42.19zM147.3 274.4l-19.04 95.22c-1.678 8.396 5.725 15.8 14.12 14.12l95.23-19.04c4.646-.9297 8.912-3.213 12.26-6.562l186.8-186.8l-96.01-96.01L153.8 262.2C150.5 265.5 148.2 269.8 147.3 274.4z"></path>
+                    </svg>
+                        <h2 class="text-xl font-bold py-4 ">Modificar Usuario</h2>
+                        <div class='form-group mb-4'>  
+                            <label class='mb-2'>Nombre:</label>  
+                            <input type='text' class='form-control typeName typeNameMod rounded-pill'  data-field='name' value='${response[0].name}' name='typeNameMod'>  
+                        </div>  
+                    </div>
+                    <div class="p-3  mt-2 text-center space-x-4 md:block">
+                        <button class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100 btnWindow closeWindow btnAddUser btnWindowModify closeWindowModifyUser" data-val='false'>Cancelar</button>
+                        <button class="mb-2 md:mb-0 bg-primary border border-red-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg btnWindow btn btn-lg btn-success btnWindowModify btnSendModifyUser" data-val='true'>Modificar</button>
+                    </div>
                 </div>
             </div>
             `;
