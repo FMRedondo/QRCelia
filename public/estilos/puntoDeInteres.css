@@ -51,7 +51,7 @@
 
 #information{
     width: 100%;
-    height: 100vh;
+    height: auto;
     display: flex;
     justify-content: center;
     background-color: #ffffff;
@@ -63,12 +63,14 @@
 
 .pointContent{
     width: 90%;
-    height: calc(100vh - 100px);
-    position: absolute;
+    height: 100%;
     background-color: white;
     margin: 100px auto 0 auto;
     z-index: 10;
-    padding: 3em;
+    padding: 3em 0 0 0;
+    border-radius: 2%;
+    -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 30px 10px rgba(0,0,0,0.3); 
+    box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 30px 10px rgba(0,0,0,0.3);
 }
 
 .contentHeader{
@@ -76,7 +78,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 60%;
     width: 90%;
     margin: 0 auto;
 }
@@ -91,6 +92,7 @@
     display: flex;
     justify-content: center;
     width: 50%;
+    padding: 1em;
 }
 
 .contentThumbnail img{
@@ -99,25 +101,18 @@
 }
 
 .contentText{
-    padding-top: 3em;
-    height: 40%;
+    padding: 2em 0 2em 0;
     width: 90%;
     text-align: justify;
     margin: 0 auto;
-    overflow-y: auto;
 }
 
 .contentText p{
     font-size: medium;
 }
 
-#multimedia{
-    width: 100%;
-    height: 100vh;
-}
-
 .videosPanel, .audioPanel{
-    height: 50%;
+    height: 300px;
     background-color: #2D2D2D;
 }
 

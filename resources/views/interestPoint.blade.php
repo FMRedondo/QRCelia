@@ -40,18 +40,18 @@
                         </p>
                     </div>
                 </div>
+                    
+                <div id="multimedia">
+                    <div class="videosPanel">
+
+                    </div>
+                    <div class="audioPanel">
+
+                    </div>
+                </div>
+
             </div>
         </div>
-
-        <div id="multimedia">
-            <div class="videosPanel">
-
-            </div>
-            <div class="audioPanel">
-
-            </div>
-        </div>
-
     </section>
     <script src="https://kit.fontawesome.com/75e57fedbe.js" crossorigin="anonymous"></script>
     <script src="{{ mix('/js/app.js') }}"></script>
