@@ -1,17 +1,31 @@
 .wrapper{
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
 }
 
 .header{
-    background-color: black;
+    background-color: var(--colorOscuro);
     color: white !important;
 }
 
 .puntosInteres{
-    margin-top: 100px;
-    padding: 2em;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-between ;
+    gap: 2em;
+    padding:2em 0;
+}
+
+#puntosInteres{
+    background-color: var(--colorClaro);
+}
+
+.texto:first-child{
+    padding:3em 0;
+    margin-top: 1em;
+}
+
+.texto{
+    text-align: justify;
+    margin: 1em 0;
 }

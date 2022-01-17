@@ -21,8 +21,8 @@
                     aunque este edificio, fue construdido en 1923, comenzó a ser instituto en 1951. ¿Sabías que antes de ese año, en 1937, sufrio daños por parte de un bombardeo alemán?
                 </p>
                 <div class="botones">
-                    <a href="#" class="boton">Descubre más</a>
-                    <a href="#" class="boton">QR Misterioso</a>
+                    <a href="/puntosInteres" class="boton">Descubre más</a>
+                    <a href="/QRMisterioso" class="boton">QR Misterioso</a>
                 </div>
             </div>
         </div>
