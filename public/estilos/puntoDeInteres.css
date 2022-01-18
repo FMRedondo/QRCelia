@@ -7,27 +7,25 @@
     width: 90%;
     margin: 0 auto;
 }
-.swiper {
-    width: 40%;
+
+/* ESTILOS DE CARRUSELES VIDEO/AUDIOS */
+.swiper-videos {
+    width: 50%;
 }
  
 .videosPanel .swiper-slide {
     background-position: center;
     background-size: cover;
-    width: 35% !important;
+    width: 50% !important;
     box-shadow: 0px 0px 0px transparent;
 }
  
-.videosPanel .swiper-slide img {
+.videosPanel .swiper-slide video, .videosPanel .swiper-slide img {
     display: block;
     width: 100%;
 }
  
-.videosPanel .swiper-slide .textoTetimonio{
-    opacity: 0;
-}
- 
-.videosPanel .swiper-slide-active .textoTetimonio{
+.videosPanel .swiper-slide-active {
     opacity: 100;
 }
  
@@ -36,12 +34,15 @@
 }
  
 .videosPanel .swiper-pagination-bullet{
-    background-color: var(--secciones) !important;
+    display: none;
 }
 
 .videosPanel .swiper-wrapper{
     margin-top: 2em;
 }
+
+/* ESTILOS AUDIOS */
+
 
 /* GALERIA CON EL SWIPER */
 #gallery{

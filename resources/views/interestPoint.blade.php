@@ -64,45 +64,28 @@
         </div>
 
         <div id="multimedia">
-            <div class="videosPanel">
 
-                <div class="swiper videos">
+            <div class="videosPanel">
+                <div class="swiper swiper-videos videos">
                     <div class="swiper-wrapper">
                       <div class="swiper-slide">
-                        <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                        <video controls src="/resources/video/videoprueba.mp4"></video>
                       </div>
                       <div class="swiper-slide">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Bundesarchiv_Bild_101I-299-1805-16%2C_Nordfrankreich%2C_Panzer_VI_%28Tiger_I%29_cropped.jpg" />
+                        <video controls src="/resources/video/videoprueba.mp4"></video>
                       </div>
                       <div class="swiper-slide">
-                        <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-                      </div>
-                      <div class="swiper-slide">
-                        <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-                      </div>
-                      <div class="swiper-slide">
-                        <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-                      </div>
-                      <div class="swiper-slide">
-                        <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-                      </div>
-                      <div class="swiper-slide">
-                        <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-                      </div>
-                      <div class="swiper-slide">
-                        <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-                      </div>
-                      <div class="swiper-slide">
-                        <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+                        <video controls src="/resources/video/videoprueba.mp4"></video>
                       </div>
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
-
             </div>
+
             <div class="audioPanel">
-
+                 
             </div>
+
         </div>
     </section>
     <script src="https://kit.fontawesome.com/75e57fedbe.js" crossorigin="anonymous"></script>
