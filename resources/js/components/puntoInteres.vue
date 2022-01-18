@@ -5,7 +5,7 @@
             <h3>{{titulo}}</h3>
             <p class="descripcion">{{descripcion}}</p>
             <p>{{texto}}</p>
-            <a href="#">Leer más</a>
+            <a v-bind:href="enlace">Leer más</a>
         </div>
     </div>
 </template>
@@ -86,7 +86,8 @@ export default {
     titulo: String,
     imagen: String,
     texto: String,
-    descripcion: String
+    descripcion: String,
+    enlace: String,
   }
 };
 </script>
