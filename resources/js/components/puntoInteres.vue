@@ -39,6 +39,9 @@
 
     .descripcion{
         text-align: justify;
+        font-weight: bolder;
+        margin-bottom: 0.5em;
+        color: var(--colorSecundario);
     }
     
     a{
@@ -55,6 +58,23 @@
 
     a:hover{
         color: var(--colorSecundario);
+    }
+
+
+    /* RESPONSIVE */
+
+
+    @media (max-width: 1300px){
+        .puntoInteres{
+            width: 45%;
+        }
+    }
+
+    @media (max-width: 850px){
+        .puntoInteres{
+            width: 100%;
+            margin: 0 auto;
+        }
     }
 
 
