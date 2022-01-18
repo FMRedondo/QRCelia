@@ -8,6 +8,14 @@
     margin: 0 auto;
 }
 
+#multimedia .separacion .linea{
+    background-color: white !important;
+}
+#multimedia .separacion .texto{
+    border: 2px solid white !important;
+    color: white !important;
+}
+
 /* ESTILOS DE CARRUSELES VIDEO/AUDIOS */
 .swiper-videos {
     width: 50%;
@@ -42,6 +50,42 @@
 }
 
 /* ESTILOS AUDIOS */
+.audio-card{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: auto;
+    background-color: white;
+    border-radius: 0.5rem;
+    margin: 0 auto;
+}
+
+.audio-card{
+    position: relative;
+}
+
+.audio-card img{
+    width: 100%;
+    height: auto;
+}
+
+.audio-card button{
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    background-color: var(--colorSecundario);
+    color: white;
+    transition: ease-in-out 200ms;
+    border: none;
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+}
+
+.audio-card button:hover{
+    background-color: var(--colorPrimario);
+}
+
 
 
 /* GALERIA CON EL SWIPER */
@@ -121,7 +165,7 @@
 }
 
 .contentText{
-    padding: 2em 0 2em 0;
+    padding: 2em 0;
     width: 90%;
     text-align: justify;
     margin: 0 auto;
@@ -132,8 +176,8 @@
 }
 
 .videosPanel, .audioPanel{
-    height: 20em;
     background-color: #2D2D2D;
+    padding: 3em 0;
 }
 
 .audioPanel{
