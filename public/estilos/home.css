@@ -66,3 +66,38 @@
     background-color: transparent;
     border: 2px solid #C6A878;
 }
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1500px){
+    .datosBanner{
+        font-size: 3em;
+    }
+}
+
+@media (max-width: 1285px){
+    .datos{
+        width: 100%;
+    }
+}
+
+@media (max-width: 650px){
+    .boton{
+        width: 50%;
+    }
+}
+
+@media (max-width: 500px){
+    .datosBanner{
+        font-size: 2.5em;
+    }
+
+    .botones{
+        flex-direction: column;
+    }
+
+    .boton{
+        width: 100%;
+    }
+}

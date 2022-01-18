@@ -5,7 +5,7 @@
             <h3>{{titulo}}</h3>
             <p class="descripcion">{{descripcion}}</p>
             <p>{{texto}}</p>
-            <a href="#">Leer más</a>
+            <a v-bind:href="enlace">Leer más</a>
         </div>
     </div>
 </template>
@@ -39,6 +39,9 @@
 
     .descripcion{
         text-align: justify;
+        font-weight: bolder;
+        margin-bottom: 0.5em;
+        color: var(--colorSecundario);
     }
     
     a{
@@ -58,6 +61,23 @@
     }
 
 
+    /* RESPONSIVE */
+
+
+    @media (max-width: 1300px){
+        .puntoInteres{
+            width: 45%;
+        }
+    }
+
+    @media (max-width: 850px){
+        .puntoInteres{
+            width: 100%;
+            margin: 0 auto;
+        }
+    }
+
+
 </style>
 
 <script>
@@ -66,7 +86,8 @@ export default {
     titulo: String,
     imagen: String,
     texto: String,
-    descripcion: String
+    descripcion: String,
+    enlace: String,
   }
 };
 </script>

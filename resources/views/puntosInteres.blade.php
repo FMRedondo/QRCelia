@@ -21,12 +21,13 @@
                     @php
                         $puntos = DB::select("SELECT * FROM interest_points");
                         foreach ($puntos as $punto) {
+                            $id             = $punto -> id;
                             $name           = $punto -> name;
                             $description    = $punto -> description;
                             $text           = $punto -> text;
                             $poster         = $punto -> poster;
 
-                            echo "<punto-interes titulo='$name' imagen='$poster' texto='$text' descripcion='$description'></punto-interes>";
+                            echo "<punto-interes titulo='$name' imagen='$poster' texto='$text' descripcion='$description' enlace='puntoInteres/$id'></punto-interes>";
                         }
                     @endphp
                 </div>

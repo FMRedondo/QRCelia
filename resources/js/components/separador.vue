@@ -36,6 +36,26 @@
         text-align: center;
     }
 
+     @media (max-width: 1100px){
+        .linea{
+            width: 10%;
+        }
+
+        .contenido{
+            width: 80%;
+        }
+    }
+
+    @media (max-width: 700px){
+        .linea{
+            width: 10px !important;
+        }
+
+        .contenido{
+            width: calc(100% - 20px) !important;
+        }
+    }
+
 </style>
 
 <script>
