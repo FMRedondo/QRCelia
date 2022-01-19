@@ -28,3 +28,7 @@ Route::get('/puntoInteres', function () {
 Route::get('/puntosInteres', function () {
     return view('puntosInteres');
 });
+
+Route::get('/puntodeinteres/{id}', function () {
+    return view('interestPoint');
+});
