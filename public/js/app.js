@@ -5665,45 +5665,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var res, message, data;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.prev = 0;
-                _context.next = 3;
-                return fetch("/puntodeinteres/getPoint");
+                axios.post("/puntodeinteres/getPoint", null, {
+                  params: {
+                    idpoint: _this.idpoint,
+                    _token: document.getElementsByName("_token").nodeValue
+                  }
+                }).then(function (response) {
+                  return response.status;
+                })["catch"](function (err) {
+                  return console.warn(err);
+                });
 
-              case 3:
-                res = _context.sent;
-
-                if (!res.ok) {
-                  message = "An error has occured: ".concat(res.status, " - ").concat(res.statusText);
-                  alert(message);
-                }
-
-                _context.next = 7;
-                return res.json();
-
-              case 7:
-                data = _context.sent;
-                alert("SI");
-                _context.next = 14;
-                break;
-
-              case 11:
-                _context.prev = 11;
-                _context.t0 = _context["catch"](0);
-                _this.getResult = _context.t0.message;
-
-              case 14:
+              case 1:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 11]]);
+        }, _callee);
       }))();
     }
+  },
+  created: function created() {
+    this.getAllData();
   }
 });
 
@@ -5715,24 +5702,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   \*****************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js")["default"];
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
 Vue.component('header-component', __webpack_require__(/*! ./components/header.vue */ "./resources/js/components/header.vue")["default"]);
 Vue.component('separador-component', __webpack_require__(/*! ./components/separador.vue */ "./resources/js/components/separador.vue")["default"]);
 Vue.component('punto-interes', __webpack_require__(/*! ./components/puntoInteres.vue */ "./resources/js/components/puntoInteres.vue")["default"]);
@@ -5741,12 +5713,6 @@ Vue.component('header-component', __webpack_require__(/*! ./components/header.vu
 Vue.component('gallery-component', __webpack_require__(/*! ./components/gallery.vue */ "./resources/js/components/gallery.vue")["default"]);
 Vue.component('information-component', __webpack_require__(/*! ./components/information.vue */ "./resources/js/components/information.vue")["default"]);
 Vue.component('multimedia-component', __webpack_require__(/*! ./components/multimedia.vue */ "./resources/js/components/multimedia.vue")["default"]);
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
 var app = new Vue({
   el: '#app'
 });

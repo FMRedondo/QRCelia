@@ -18,25 +18,18 @@ export default{
 
     methods: {
         async getAllData() {
-            try {
-                const res = await fetch(`/puntodeinteres/getPoint`);
-
-                if (!res.ok) {
-                const message = `An error has occured: ${res.status} - ${res.statusText}`;
-                alert(message);
-                }
-
-                const data = await res.json();
-                alert("SI")
-
-            } catch (err) {
-                this.getResult = err.message;
-            }
+            axios.post(`/puntodeinteres/getPoint`, null, { params: {
+                idpoint: this.idpoint,
+                _token: document.getElementsByName("_token").nodeValue
+            }})
+            .then(response => response.status)
+            .catch(err => console.warn(err));
         },
+    },
 
-
-
-    }
+        created() {
+            this.getAllData();
+        }
 }
 </script>
 
