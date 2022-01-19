@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\interestPointController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,10 +23,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/puntoInteres', function () {
-    return view('interestPoint');
-});
-
 Route::get('/puntosInteres', function () {
     return view('puntosInteres');
 });
@@ -32,3 +30,5 @@ Route::get('/puntosInteres', function () {
 Route::get('/puntodeinteres/{id}', function () {
     return view('interestPoint');
 });
+
+Route::get('/puntodeinteres/getPoint', [interestPointController::class, 'getInterestPoint'])-> name('front.GetInterestPoint');
