@@ -17,18 +17,19 @@ export default{
     },
 
     methods: {
-        async getAllData() {
-            axios.post(`/puntodeinteres/getPoint`, null, { params: {
-                idpoint: this.idpoint,
-                _token: document.getElementsByName("_token").nodeValue
+        async getInterestPoint() {
+            axios.get("/puntodeinteres/getPoint", null, { params: {
+                id: this.idpoint,
             }})
-            .then(response => response.status)
-            .catch(err => console.warn(err));
+            .then(function (response) {
+                console.log(response.data)
+            })
+            .catch(err => console.log(err.message));
         },
     },
 
         created() {
-            this.getAllData();
+            this.getInterestPoint();
         }
 }
 </script>

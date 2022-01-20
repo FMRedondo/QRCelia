@@ -19,4 +19,5 @@ Route::get('/puntodeinteres/{id}', function () {
     return view('interestPoint');
 });
 
-Route::post('/puntodeinteres/getPoint', [interestPointController::class, 'getInterestPoint'])-> name('front.GetInterestPoint');
+Route::post('/puntodeinteres/getPoint', [interestPointController::class, 'getInterestPoint'])-> name('post.InterestPoint');
+Route::get('/puntodeinteres/getPoint', [interestPointController::class, 'getInterestPoint'])-> name('get.InterestPoint');

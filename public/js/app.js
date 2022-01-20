@@ -5661,7 +5661,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     idpoint: Number
   },
   methods: {
-    getAllData: function getAllData() {
+    getInterestPoint: function getInterestPoint() {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -5669,15 +5669,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                axios.post("/puntodeinteres/getPoint", null, {
+                axios.get("/puntodeinteres/getPoint", null, {
                   params: {
-                    idpoint: _this.idpoint,
-                    _token: document.getElementsByName("_token").nodeValue
+                    id: _this.idpoint
                   }
                 }).then(function (response) {
-                  return response.status;
+                  console.log(response.data);
                 })["catch"](function (err) {
-                  return console.warn(err);
+                  return console.log(err.message);
                 });
 
               case 1:
@@ -5690,7 +5689,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   created: function created() {
-    this.getAllData();
+    this.getInterestPoint();
   }
 });
 
@@ -5738,6 +5737,16 @@ try {
 
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common['X-CSRF-TOKEN'] = window.Laravel.csrfToken;
+var token = document.head.querySelector('meta[name="csrf-token"]');
+
+if (token) {
+  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+} else {
+  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+}
+
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

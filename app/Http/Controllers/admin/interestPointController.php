@@ -45,8 +45,8 @@ class interestPointController extends Controller
 
 
     public function getInterestPoint(){
-        $_token = $_POST['_token'];
-        $id = $_POST['id'];
+        $_token = $_REQUEST['_token'];
+        $id = $_REQUEST['id'];
         $result = interestPointModel::getInterestPoint($id);
         return response() -> json($result);
 
