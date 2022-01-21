@@ -5358,8 +5358,13 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/information.vue?vue&type=script&lang=js& ***!
   \******************************************************************************************************************************************************************************************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 //
 //
 //
@@ -5380,12 +5385,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    titulo: String,
+    desc: String,
+    texto: String,
+    poster: String
+  }
+});
 
 /***/ }),
 
@@ -5658,28 +5665,44 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    idpoint: Number
+    idpoint: Number,
+    createdAt: String,
+    updatedAt: String,
+    name: String,
+    desc: String,
+    text: String,
+    url: String,
+    poster: String
   },
   methods: {
     getInterestPoint: function getInterestPoint() {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                axios.get("/puntodeinteres/getPoint", null, {
-                  params: {
-                    id: _this.idpoint
-                  }
+                _context.next = 2;
+                return fetch("/api/puntodeinteres/getPoint", {
+                  method: "post",
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                    "id": _this.idpoint
+                  })
                 }).then(function (response) {
-                  console.log(response.data);
-                })["catch"](function (err) {
-                  return console.log(err.message);
+                  return response.json();
                 });
 
-              case 1:
+              case 2:
+                response = _context.sent;
+                console.log(response[0]);
+                _this.idpoint = response[0].id, _this.createdAt = response[0].createdAt, _this.updatedAt = response[0].updatedAt, _this.name = response[0].name, _this.desc = response[0].description, _this.text = response[0].text, _this.url = response[0].url, _this.poster = response[0].poster;
+
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -29587,9 +29610,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _information_vue_vue_type_template_id_73b04231_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./information.vue?vue&type=template&id=73b04231&scoped=true& */ "./resources/js/components/information.vue?vue&type=template&id=73b04231&scoped=true&");
 /* harmony import */ var _information_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./information.vue?vue&type=script&lang=js& */ "./resources/js/components/information.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
-/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _information_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _information_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[__WEBPACK_IMPORT_KEY__]
-/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -29827,11 +29847,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_information_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./information.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/information.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_information_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_information_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
-/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_information_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_information_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
-/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_information_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default())); 
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_information_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -30263,53 +30279,31 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "information" } }, [
-      _c("div", { staticClass: "pointContent" }, [
-        _c("div", { staticClass: "contentHeader" }, [
-          _c("div", { staticClass: "contentTitle" }, [
-            _c("h1", [_vm._v("Panzerkampwagen VI Tiger I")]),
-            _vm._v(" "),
-            _c("p", { attrs: { id: "desc" } }, [
-              _vm._v(
-                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod maiores eum accusantium libero optio quos laborum deleniti necessitatibus vitae."
-              ),
-            ]),
-            _vm._v(" "),
-            _c("p", { attrs: { id: "type" } }, [
-              _vm._v('En una palabra: "Tanques chulos "'),
-            ]),
-          ]),
+  return _c("div", { attrs: { id: "information" } }, [
+    _c("div", { staticClass: "pointContent" }, [
+      _c("div", { staticClass: "contentHeader" }, [
+        _c("div", { staticClass: "contentTitle" }, [
+          _c("h1", [_vm._v(_vm._s(this.titulo))]),
           _vm._v(" "),
-          _c("div", { staticClass: "contentThumbnail" }, [
-            _c("img", {
-              attrs: {
-                src: "https://upload.wikimedia.org/wikipedia/commons/6/6e/Bundesarchiv_Bild_101I-299-1805-16%2C_Nordfrankreich%2C_Panzer_VI_%28Tiger_I%29_cropped.jpg",
-                alt: "Miniatura del punto",
-              },
-            }),
-          ]),
+          _c("p", { attrs: { id: "desc" } }, [_vm._v(_vm._s(this.desc))]),
+          _vm._v(" "),
+          _c("p", { attrs: { id: "type" } }, [_vm._v('"Tanques chulos "')]),
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "contentText" }, [
-          _c("div", { staticClass: "entryText" }, [
-            _c("p", [
-              _vm._v(
-                "\n          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa ab natus placeat ad dolores corrupti alias atque ut nesciunt quibusdam quas reiciendis doloremque fuga sed explicabo distinctio, consequuntur saepe vero.\n          Repudiandae inventore exercitationem tenetur, similique adipisci laborum veniam sed suscipit labore quia dolor et eligendi nam distinctio. Asperiores error nisi reprehenderit quasi ad adipisci exercitationem natus deleniti, voluptas, tempore architecto.\n          Impedit ea totam praesentium dolor aliquid cum id quaerat quae, error harum, repudiandae dolorum nulla similique reprehenderit assumenda. Error, est ad vel placeat reprehenderit minima. Nostrum dolores itaque repellendus adipisci.\n        "
-              ),
-            ]),
-          ]),
+        _c("div", { staticClass: "contentThumbnail" }, [
+          _c("img", {
+            attrs: { src: this.poster, alt: "Miniatura del punto" },
+          }),
         ]),
       ]),
-    ])
-  },
-]
+      _vm._v(" "),
+      _c("div", { staticClass: "contentText" }, [
+        _vm._v("\n      " + _vm._s(this.texto) + "\n    "),
+      ]),
+    ]),
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -30528,7 +30522,14 @@ var render = function () {
         1
       ),
       _vm._v(" "),
-      _c("information-component"),
+      _c("information-component", {
+        attrs: {
+          titulo: this.name,
+          desc: this.desc,
+          texto: this.text,
+          poster: this.poster,
+        },
+      }),
       _vm._v(" "),
       _c("multimedia-component"),
     ],
