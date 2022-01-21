@@ -26,16 +26,10 @@ export default {
             }).then(response => {
                const datos = response.json()
                console.log(datos)
-               console.log(datos[0])
-                for(let i = 0; i < datos.length; i++)
-                    console.log(datos[i])
-
             })
            
        },
 
-
-       
     }
 }
 </script>
