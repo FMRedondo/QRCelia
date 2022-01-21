@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\admin\interestPointController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\admin\interestPointController;
+
 
 
 /*
@@ -20,5 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/puntodeinteres/getPoint', [interestPointController::class, 'getInterestPoint'])-> name('front.InterestPoint');
+Route::post('/puntodeinteres/getPoint', [interestPointController::class, 'getInterestPoint']);
 Route::post('/puntodeinteres/getResources', [interestPointController::class, 'getResourcesFromPoint'])-> name('front.resourcesFromPoint');
+Route::post('/puntosInteres/getPoints', [interestPointController::class, 'getInterestPoints']);

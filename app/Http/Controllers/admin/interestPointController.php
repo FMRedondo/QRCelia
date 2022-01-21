@@ -45,7 +45,7 @@ class interestPointController extends Controller
 
 
     public function getInterestPoint(Request $request){
-        $id = $request -> id;
+        $id =  $request -> id;
         $result = interestPointModel::getInterestPoint($id);
         return response() -> json($result);
 

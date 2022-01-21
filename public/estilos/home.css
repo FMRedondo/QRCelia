@@ -15,6 +15,10 @@
     margin: 0 auto;
 }
 
+.header{
+    background: transparent !important;
+}
+
 .negrita{
     font-weight: bolder;
     font-style: italic;
