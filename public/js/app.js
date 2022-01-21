@@ -5786,8 +5786,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     'Content-Type': 'application/json'
                   }
                 }).then(function (response) {
-                  var datos = response.json();
-                  console.log(datos);
+                  return response.json();
+                }).then(function (response) {
+                  console.log(response);
+
+                  for (var i = 0; i < response.length; i++) {
+                    console.log(response[i].id);
+                    console.log(response[i].name);
+                  }
                 });
 
               case 2:

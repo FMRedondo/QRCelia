@@ -23,12 +23,20 @@ export default {
                     'Content-Type': 'application/json'
                    },
                    
-            }).then(response => {
-               const datos = response.json()
-               console.log(datos)
+            }).then(response => response.json()).then(response => {
+                console.log(response)
+                for(let i = 0; i < response.length; i++){
+                    console.log(response[i].id)
+                     console.log(response[i].name)
+                }
+                    
+                
             })
-           
-       },
+                
+            
+            
+               
+        },
 
     }
 }
