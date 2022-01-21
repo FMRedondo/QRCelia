@@ -1,7 +1,17 @@
 <template>
     <div>
         <header-component></header-component>
-        <gallery-component></gallery-component>
+        <div id="gallery">
+            <div class="swiper gallery">
+                <div id="swiper-wrapper-photos" class="swiper-wrapper">
+                    <gallery-component v-for="photo in this.images" :key="photo"></gallery-component>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        
         <div class="wrapper">
             <separador-component texto='información'></separador-component>
         </div>
@@ -20,8 +30,8 @@ export default{
         desc: String,
         text: String,
         url: String,
-        poster: String
-
+        poster: String,
+        images: Array
     },
 
     methods: {
@@ -36,7 +46,6 @@ export default{
                 })
             })
             .then(response => response.json())
-            console.log(response[0]);
                 this.idpoint = response[0].id,
                 this.createdAt = response[0].createdAt,
                 this.updatedAt =response[0].updatedAt,
@@ -46,11 +55,31 @@ export default{
                 this.url = response[0].url,
                 this.poster = response[0].poster
         },
+
+        async getResources(type){
+            const response = await fetch("/api/puntodeinteres/getResources",{
+                method: "post",
+                headers:{
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "id": this.idpoint,
+                    "type": type
+                })
+            })
+            .then(response => response.json())
+                const resources = []; 
+                for (let i = 0; i < response.length; i++) {
+                    resources.push(response[i].url);
+                } 
+                this.images = resources;
+        }
     },
 
-        created() {
-            this.getInterestPoint();
-        }
+    created() {
+        this.getInterestPoint();
+        this.getResources("image");
+    }
 }
 </script>
 

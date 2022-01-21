@@ -21,6 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
 Route::post('/puntodeinteres/getPoint', [interestPointController::class, 'getInterestPoint']);
+Route::post('/puntodeinteres/getResources', [interestPointController::class, 'getResourcesFromPoint'])-> name('front.resourcesFromPoint');
 Route::post('/puntosInteres/getPoints', [interestPointController::class, 'getInterestPoints']);

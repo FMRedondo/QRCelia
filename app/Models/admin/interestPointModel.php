@@ -44,4 +44,10 @@ class interestPointModel extends Model
         $result = DB::insert($sql);
         return DB::getPdo() -> lastInsertId();
     }
+
+    public static function getResourcesFromPoint($id, $type){
+        $sql = "SELECT * FROM resources INNER JOIN point_has_resources ON resources.id = point_has_resources.idResource WHERE (point_has_resources.idPoint = $id AND resources.type = '$type')";
+        $result = DB::select($sql);
+        return $result;
+    }
 }
