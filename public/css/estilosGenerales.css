@@ -33,8 +33,8 @@
 }
 
 .primerElemento{
-    margin-top: 100px;
-    padding-top: 2em;
+    margin-top: 100px !important; 
+    padding-top: 2em !important;
 }
 
 /* Animacion para boton pulsar */

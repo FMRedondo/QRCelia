@@ -12,12 +12,31 @@
 
         <nav class="nav" id="nav">
             <i class="far fa-times-circle closeNav" @click="cerrarMenu"></i>
-            <a href="#" @mouseover="imagenMenu('inicio')"  @mouseleave="quitarImagen">Inicio</a>
-            <a href="#" @mouseover="imagenMenu('puntos')" @mouseleave="quitarImagen">Puntos de interés</a>
-            <a href="#" @mouseover="imagenMenu('misterioso')" @mouseleave="quitarImagen">QR Misterioso</a>
-            <a href="#" @mouseover="imagenMenu('creditos')" @mouseleave="quitarImagen">Créditos</a>
+            <a href="/" @mouseover="imagenMenu('inicio')"  @mouseleave="quitarImagen">Inicio</a>
+            <a href="/puntosDeInteres" @mouseover="imagenMenu('puntos')" @mouseleave="quitarImagen">Puntos de interés</a>
+            <a href="/QRMisterioso" @mouseover="imagenMenu('misterioso')" @mouseleave="quitarImagen">QR Misterioso</a>
+            <a href="/creditos" @mouseover="imagenMenu('creditos')" @mouseleave="quitarImagen">Créditos</a>
         </nav>
-
+        <nav class='navMovil' id='navMovil'>
+           <div class="wrapper">
+                <div class="icono">
+                <i class="fa-solid fa-house activo"></i>
+                <a href="/" @mouseover="imagenMenu('inicio')"  @mouseleave="quitarImagen" class="activo">Inicio</a>
+            </div>
+           <div class="icono">
+               <i class="fa-solid fa-signs-post"></i>
+                <a href="/puntosDeInteres" @mouseover="imagenMenu('puntos')" @mouseleave="quitarImagen">Puntos de interés</a>
+           </div>
+           <div class="icono">
+                <i class="fa-solid fa-question"></i>
+                <a href="/QRMisterioso" @mouseover="imagenMenu('misterioso')" @mouseleave="quitarImagen">QR Misterioso</a>
+           </div>
+            <div class="icono">
+                <i class="fa-solid fa-users"></i>
+                <a href="/creditos" @mouseover="imagenMenu('creditos')" @mouseleave="quitarImagen">Créditos</a>
+            </div>
+           </div>
+        </nav>
    </header>
 </template>
 
@@ -101,6 +120,7 @@
         top: 0;
         left: 0;
         z-index: 9999;
+        background-color: #30475E;
     }
 
     .header .wrapper{
@@ -126,7 +146,7 @@
     }
 
     .titulo span{
-        color: red;
+        color: #CBAF87;
         text-transform: uppercase;
     }
 
@@ -192,5 +212,79 @@
         top: 0.5em;
         right: 1.5em;
     }
+
+    .navMovil{
+        display: none;
+    }
+
+
+    @media (max-width: 650px){
+        .navMovil{
+            display: block;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #30475E;
+        }
+
+        .navMovil .wrapper{
+            padding: 0.5em;
+            display: flex;
+            gap: 1em;
+            justify-content: space-between;
+        }
+
+        .navMovil a{
+            color: white;
+            font-weight: bolder;
+            text-decoration: none;
+            transform: translateY(-0.5em);
+        }
+
+        .activo{
+            color: #CBAF87 !important;
+           
+        }
+
+        .nav{
+            display: none;
+        }
+
+        button{
+            display: none;
+        }
+
+        .icono{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5em;
+        }
+
+        .icono i{
+            font-size: 1.2em;
+            margin-bottom: 0.2em;
+        }
+
+        .icono a{
+            font-size: 0.8em;
+        }
+
+        .logo img{
+            width: 3em;
+        }
+
+        .header > .wrapper{
+            justify-content: center;
+            text-align: center !important;
+        }
+
+    
+
+
+    } 
     
 </style>
