@@ -11,13 +11,14 @@
     <link rel="stylesheet" href="/css/estilosGenerales.css">
     <link rel="stylesheet" href="/estilos/puntoDeInteres.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Si y solo si</title>
 </head>
 <body>
-    @csrf
     <section id="app">
       <interestpoint-page v-on:scroll.native="scrollNav" :idpoint=@php echo $id;@endphp></interestpoint-page>        
     </section>
+    <script>window.Laravel = {_token: '{{ csrf_token() }}'}</script>
     <script src="https://kit.fontawesome.com/75e57fedbe.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="{{ mix('/js/app.js') }}"></script>
