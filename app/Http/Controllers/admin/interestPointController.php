@@ -70,4 +70,11 @@ class interestPointController extends Controller
         interestPointModel::updateInterestPoint($id, $field, $value);
         //return $date;
     }
+
+    public function getResourcesFromPoint(Request $request){
+        $id = $request -> id;
+        $type = $request -> type;
+        $result = interestPointModel::getResourcesFromPoint($id, $type);
+        return response() -> json($result);
+    }
 }
