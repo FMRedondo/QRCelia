@@ -113,9 +113,6 @@
     .header{
         width: 100%;
         height: 100px;
-        position: fixed;
-        top: 0;
-        left: 0;
         z-index: 9999;
         background-color: transparent;
     }
@@ -123,7 +120,7 @@
     .header .wrapper{
         display: flex;
         justify-content: space-between;
-        margin-top: 1em;
+        padding-top: 1em;
     }
 
     .logo{

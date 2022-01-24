@@ -5887,7 +5887,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       'id': response[i].id,
                       'name': response[i].name,
                       'poster': response[i].poster,
-                      'text': response[i].text,
+                      'text': response[i].text.substr(0, 150) + "...",
                       'description': response[i].description,
                       'enlace': "/puntodeinteres/" + response[i].id
                     };
@@ -11037,7 +11037,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.oculto[data-v-798ca618]{\n    /*animation: ocultarMenu 200ms infinite;*/\n    transition: ease-in-out 20ms;\n    display: flex !important;\n}\n.ocultarDatos[data-v-798ca618]{\n    display: flex !important;\n}\n.header[data-v-798ca618]{\n    width: 100%;\n    height: 100px;\n    position: fixed;\n    top: 0;\n    left: 0;\n    z-index: 9999;\n    background-color: transparent;\n}\n.header .wrapper[data-v-798ca618]{\n    display: flex;\n    justify-content: space-between;\n    margin-top: 1em;\n}\n.logo[data-v-798ca618]{\n    width: 10%;\n    display: flex;\n    align-items: center;\n    gap: 1em;\n}\n.logo img[data-v-798ca618]{\n    width:30%;\n}\n.titulo[data-v-798ca618]{\n    font-size: 2.2em;\n    color: white;\n}\n.titulo span[data-v-798ca618]{\n    color: #CBAF87;\n    text-transform: uppercase;\n}\n.header .btnMenu[data-v-798ca618]{\n    width: 50%;\n    display: flex;\n    gap: 1.5em;\n    align-items: center;\n    justify-content: flex-end;\n}\n.header .btnMenu a[data-v-798ca618]{\n    text-decoration: none;\n    color: red;\n    font-weight: bolder;\n    font-size: 1.3em;\n}\nbutton[data-v-798ca618]{\n    border: none;\n    background-color: transparent;\n    color: white;\n    font-size: 2.2em;\n    font-weight: bolder;\n    display: flex;\n    justify-content: center;\n    align-content: center;\n}\n.nav[data-v-798ca618]{\n    width: 100%;\n    height: 100vh;\n    background-color: black;\n    position: fixed;\n    top: 0;\n    right: 0;\n    display: none;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    gap: 2em;\n    font-size: 3.5em;\n    padding: 2em;\n    background-repeat: no-repeat !important;\n    background-size: cover !important;\n    display: none;\n}\n.nav a[data-v-798ca618]{\n    color: white;\n    text-decoration: none;\n}\n.nav a:hover + .nav[data-v-798ca618]{\n    background-color: purple !important;\n}\n.closeNav[data-v-798ca618]{\n    position: fixed;\n    top: 0.5em;\n    right: 1.5em;\n}\n.navMovil[data-v-798ca618]{\n    display: none;\n}\n@media (max-width: 650px){\n.navMovil[data-v-798ca618]{\n        display: block;\n        position: fixed;\n        left: 0;\n        bottom: 0;\n        width: 100%;\n        background-color: #30475E;\n}\n.navMovil .wrapper[data-v-798ca618]{\n        padding: 0.5em;\n        display: flex;\n        gap: 1em;\n        justify-content: space-between;\n}\n.navMovil a[data-v-798ca618]{\n        color: white;\n        font-weight: bolder;\n        text-decoration: none;\n        transform: translateY(-0.5em);\n}\n.activo[data-v-798ca618]{\n        color: #CBAF87 !important;\n}\n.nav[data-v-798ca618]{\n        display: none;\n}\nbutton[data-v-798ca618]{\n        display: none;\n}\n.icono[data-v-798ca618]{\n        display: flex;\n        flex-direction: column;\n        text-align: center;\n        align-items: center;\n        justify-content: center;\n        gap: 0.5em;\n}\n.icono i[data-v-798ca618]{\n        font-size: 1.2em;\n        margin-bottom: 0.2em;\n}\n.icono a[data-v-798ca618]{\n        font-size: 0.8em;\n}\n.logo img[data-v-798ca618]{\n        width: 3em;\n}\n.header > .wrapper[data-v-798ca618]{\n        justify-content: center;\n        text-align: center !important;\n}\n} \n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.oculto[data-v-798ca618]{\n    /*animation: ocultarMenu 200ms infinite;*/\n    transition: ease-in-out 20ms;\n    display: flex !important;\n}\n.ocultarDatos[data-v-798ca618]{\n    display: flex !important;\n}\n.header[data-v-798ca618]{\n    width: 100%;\n    height: 100px;\n    z-index: 9999;\n    background-color: transparent;\n}\n.header .wrapper[data-v-798ca618]{\n    display: flex;\n    justify-content: space-between;\n    padding-top: 1em;\n}\n.logo[data-v-798ca618]{\n    width: 10%;\n    display: flex;\n    align-items: center;\n    gap: 1em;\n}\n.logo img[data-v-798ca618]{\n    width:30%;\n}\n.titulo[data-v-798ca618]{\n    font-size: 2.2em;\n    color: white;\n}\n.titulo span[data-v-798ca618]{\n    color: #CBAF87;\n    text-transform: uppercase;\n}\n.header .btnMenu[data-v-798ca618]{\n    width: 50%;\n    display: flex;\n    gap: 1.5em;\n    align-items: center;\n    justify-content: flex-end;\n}\n.header .btnMenu a[data-v-798ca618]{\n    text-decoration: none;\n    color: red;\n    font-weight: bolder;\n    font-size: 1.3em;\n}\nbutton[data-v-798ca618]{\n    border: none;\n    background-color: transparent;\n    color: white;\n    font-size: 2.2em;\n    font-weight: bolder;\n    display: flex;\n    justify-content: center;\n    align-content: center;\n}\n.nav[data-v-798ca618]{\n    width: 100%;\n    height: 100vh;\n    background-color: black;\n    position: fixed;\n    top: 0;\n    right: 0;\n    display: none;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    gap: 2em;\n    font-size: 3.5em;\n    padding: 2em;\n    background-repeat: no-repeat !important;\n    background-size: cover !important;\n    display: none;\n}\n.nav a[data-v-798ca618]{\n    color: white;\n    text-decoration: none;\n}\n.nav a:hover + .nav[data-v-798ca618]{\n    background-color: purple !important;\n}\n.closeNav[data-v-798ca618]{\n    position: fixed;\n    top: 0.5em;\n    right: 1.5em;\n}\n.navMovil[data-v-798ca618]{\n    display: none;\n}\n@media (max-width: 650px){\n.navMovil[data-v-798ca618]{\n        display: block;\n        position: fixed;\n        left: 0;\n        bottom: 0;\n        width: 100%;\n        background-color: #30475E;\n}\n.navMovil .wrapper[data-v-798ca618]{\n        padding: 0.5em;\n        display: flex;\n        gap: 1em;\n        justify-content: space-between;\n}\n.navMovil a[data-v-798ca618]{\n        color: white;\n        font-weight: bolder;\n        text-decoration: none;\n        transform: translateY(-0.5em);\n}\n.activo[data-v-798ca618]{\n        color: #CBAF87 !important;\n}\n.nav[data-v-798ca618]{\n        display: none;\n}\nbutton[data-v-798ca618]{\n        display: none;\n}\n.icono[data-v-798ca618]{\n        display: flex;\n        flex-direction: column;\n        text-align: center;\n        align-items: center;\n        justify-content: center;\n        gap: 0.5em;\n}\n.icono i[data-v-798ca618]{\n        font-size: 1.2em;\n        margin-bottom: 0.2em;\n}\n.icono a[data-v-798ca618]{\n        font-size: 0.8em;\n}\n.logo img[data-v-798ca618]{\n        width: 3em;\n}\n.header > .wrapper[data-v-798ca618]{\n        justify-content: center;\n        text-align: center !important;\n}\n} \n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11109,7 +11109,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.interestPoints[data-v-1a281fd6]{\n    background-color: rgba(0, 0, 0, 0.7);\n    margin: 0 !important;\n    padding: 0 !important;\n    position: relative;\n}\n.interestPoints[data-v-1a281fd6]::before{\n    content: \"\";\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    display: block;\n    background-image: url(/img/celiaRambla.jpg);\n    background-repeat: no-repeat;\n    background-position: center;\n    background-size: cover;\n    z-index: -1;\n}\n.datos[data-v-1a281fd6]{\n    width: 100%;\n    display: flex;\n    flex-wrap: wrap;\n    gap: 2em;\n    justify-content: space-between;\n    align-items: center;\n}\n.datos .puntoInteres[data-v-1a281fd6]{\n    width: 30%;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.interestPoints[data-v-1a281fd6]{\n    background-color: rgba(0, 0, 0, 0.7);\n    margin: 0 !important;\n    padding: 0 !important;\n    position: relative;\n}\n.interestPoints[data-v-1a281fd6]::before{\n    content: \"\";\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    display: block;\n    background-image: url(/img/celiaRambla.jpg);\n    background-repeat: no-repeat;\n    background-position: center;\n    background-size: cover;\n    z-index: -1;\n}\n.datos[data-v-1a281fd6]{\n    width: 100%;\n    display: flex;\n    flex-wrap: wrap;\n    gap: 2em;\n    justify-content: space-between;\n    align-items: center;\n}\n.datos .puntoInteres[data-v-1a281fd6]{\n    width: 30%;\n}\n@media (max-width: 1500px){\n.datos .puntoInteres[data-v-1a281fd6]{\n        width: 45%;\n}\n}\n@media (max-width: 800px){\n.datos .puntoInteres[data-v-1a281fd6]{\n        width: 80%;\n}\n}\n@media (max-width: 500px){\n.datos .puntoInteres[data-v-1a281fd6]{\n        width: 100%;\n}\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -30880,30 +30880,32 @@ var render = function () {
     [
       _c("header-component"),
       _vm._v(" "),
-      _c("separador-component", {
-        staticClass: "primerElemento",
-        attrs: { texto: "Puntos de interés" },
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "wrapper" }, [
-        _c(
-          "div",
-          { staticClass: "datos" },
-          _vm._l(this.datos, function (point, index) {
-            return _c("punto-interes", {
-              key: index,
-              attrs: {
-                titulo: point.name,
-                imagen: point.poster,
-                texto: point.text,
-                descripcion: point.description,
-                enlace: point.enlace,
-              },
-            })
-          }),
-          1
-        ),
-      ]),
+      _c(
+        "div",
+        { staticClass: "wrapper" },
+        [
+          _c("separador-component", { attrs: { texto: "Puntos de interés" } }),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "datos" },
+            _vm._l(this.datos, function (point, index) {
+              return _c("punto-interes", {
+                key: index,
+                attrs: {
+                  titulo: point.name,
+                  imagen: point.poster,
+                  texto: point.text,
+                  descripcion: point.description,
+                  enlace: point.enlace,
+                },
+              })
+            }),
+            1
+          ),
+        ],
+        1
+      ),
     ],
     1
   )
