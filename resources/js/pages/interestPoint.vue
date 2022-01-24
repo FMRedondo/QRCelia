@@ -4,7 +4,9 @@
         <div id="gallery">
             <div class="swiper gallery">
                 <div id="swiper-wrapper-photos" class="swiper-wrapper">
-                    <gallery-component v-for="photo in this.images" :key="photo"></gallery-component>
+                    <div v-for="(image,index) in this.images" :key="index" class="swiper-slide">
+                        <img :src="image">
+                    </div>
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
@@ -31,7 +33,12 @@ export default{
         text: String,
         url: String,
         poster: String,
-        images: Array
+        images: Array,
+        image: String
+    },
+
+    data: () => {
+        return this.images;
     },
 
     methods: {
