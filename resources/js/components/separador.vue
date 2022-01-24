@@ -13,7 +13,7 @@
         justify-content: center;
         align-content: center;
         align-items: center;
-        margin: 1em auto;
+        margin-bottom: 2em;
     }
 
     .contenido{
@@ -22,14 +22,14 @@
 
     .linea{
         display: block;
-        background-color: black;
+        background-color: white;
         width: 20%;
         height: 3px;
     }
 
     .texto{
-        border: 2px solid black;
-        color: black;
+        border: 2px solid white;
+        color: white;
         padding: 1em;
         text-transform: uppercase;
         font-weight: bolder;

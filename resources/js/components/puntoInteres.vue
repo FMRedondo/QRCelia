@@ -12,10 +12,13 @@
 
 <style scoped>
     .puntoInteres{
-        width: 30%;
+        width: 100%;
         margin-bottom: 1em;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         transition: ease-in-out 200ms;
+        background-color: white;
+        overflow: hidden;
+
     }
 
     .puntoInteres:hover{
@@ -66,7 +69,7 @@
 
     @media (max-width: 1300px){
         .puntoInteres{
-            width: 45%;
+            width: 100%;
         }
     }
 

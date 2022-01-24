@@ -43,9 +43,6 @@
 <script>
 
     export default{
-        created () {
-            window.addEventListener('scroll', this.scrollNav);
-        },
 
         methods: {
             desplegarMenu: (event) => {
@@ -120,7 +117,7 @@
         top: 0;
         left: 0;
         z-index: 9999;
-        background-color: #30475E;
+        background-color: transparent;
     }
 
     .header .wrapper{
@@ -143,6 +140,7 @@
 
     .titulo{
         font-size: 2.2em;
+        color: white;
     }
 
     .titulo span{
