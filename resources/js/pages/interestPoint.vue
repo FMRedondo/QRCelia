@@ -14,11 +14,43 @@
             </div>
         </div>
         
+        <audio-component></audio-component>
+
         <div class="wrapper">
             <separador-component texto='información'></separador-component>
         </div>
+
         <information-component :titulo="this.name" :desc="this.desc" :texto="this.text" :poster="this.poster"></information-component>
-        <multimedia-component></multimedia-component>
+        
+
+        <div id="multimedia">
+            <div class="videosPanel">
+                <div class="wrapper">
+                    <separador-component texto='multimedia' color='white'></separador-component>
+                </div>
+                <div class="swiper swiper-videos videos">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <video v-for="(video,index) in this.videos" :key="index" controls>
+                                <source :src="video" type="video/mp4">
+                                <span class="error">Tu navegador no es compatible con este recurso</span>
+                            </video>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+
+            <div class="audioPanel">
+                <div class="audio-card">
+                    <img src="/img/audio.png" alt="">
+                    <button id="1" class="buttonPlay">
+                        <i class="fa-solid fa-play"></i>
+                    </button>
+                </div>
+            </div>
+            
+        </div>
     </div>
 </template>
 
@@ -34,8 +66,9 @@ export default{
         url: String,
         poster: String,
         images: Array,
-        image: String
-    },
+        videos: Array,
+        audios: Array
+        },
 
     data: () => {
         return this.images;
@@ -79,13 +112,20 @@ export default{
                 for (let i = 0; i < response.length; i++) {
                     resources.push(response[i].url);
                 } 
-                this.images = resources;
+                if (type == "image")
+                    this.images = resources; 
+                if (type == "video")
+                    this.videos = resources;
+                if (type == "audio")
+                    this.audios = resources;
         }
     },
 
     created() {
         this.getInterestPoint();
         this.getResources("image");
+        this.getResources("video");
+
     }
 }
 </script>
