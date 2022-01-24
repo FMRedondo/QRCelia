@@ -5299,18 +5299,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    url: String
+    audio: String
   },
   methods: {
     playAudio: function playAudio() {
       var button = document.getElementById("audioButton");
       var icon = document.getElementById("audioIcon");
-      icon.style.backgroundColor = "white";
+      alert(document.getElementById("audioPlayer").src);
+      var audio = new Audio(document.getElementById("audioPlayer").src);
+
+      if (audio.duration > 0) {
+        audio.play();
+        icon.classList.remove("fa-play");
+        icon.classList.add("fa-pause");
+      } else {
+        icon.classList.remove("fa-pause");
+        icon.classList.add("fa-play");
+      }
     }
-  },
-  created: function created() {}
+  }
 });
 
 /***/ }),
@@ -5439,13 +5453,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     titulo: String,
     desc: String,
     texto: String,
     poster: String
+  },
+  created: function created() {
+    document.getElementsByClassName("contentText").innerHTML = this.texto;
   }
 });
 
@@ -5703,18 +5719,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     idpoint: Number,
@@ -5727,7 +5731,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     poster: String,
     images: Array,
     videos: Array,
-    audios: Array
+    audio: String
   },
   data: function data() {
     return _this.images;
@@ -5800,7 +5804,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 if (type == "image") _this3.images = resources;
                 if (type == "video") _this3.videos = resources;
-                if (type == "audio") _this3.audios = resources;
+                if (type == "audio") _this3.audio = resources;
 
               case 8:
               case "end":
@@ -5815,6 +5819,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     this.getInterestPoint();
     this.getResources("image");
     this.getResources("video");
+    this.getResources("audio");
   }
 });
 
@@ -11013,7 +11018,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#audioButton{\n        z-index: 999;\n        padding: 1.5em;\n        position: fixed;\n        left: 1%; \n        bottom: 50%;\n        background-color: var(--colorPrimario);\n        border-radius: 50%;\n        cursor: pointer;\n        -webkit-animation: music 3s infinite;\n                animation: music 3s infinite;\n}\n#audioIcon{\n        color: var(--colorSecundario);\n        font-size: 2em;\n}\n@-webkit-keyframes music {\n25%{\n        transform: translateY(1em);\n}\n50%{\n        transform: translateY(0);\n}\n75%{\n        transform: translateY(1em);\n}\n100%{\n        transform: translateY(0);\n}\n}\n@keyframes music {\n25%{\n        transform: translateY(1em);\n}\n50%{\n        transform: translateY(0);\n}\n75%{\n        transform: translateY(1em);\n}\n100%{\n        transform: translateY(0);\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#audioButton{\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        z-index: 999;\n        width: 4em;\n        height: 4em;\n        position: fixed;\n        left: 1%; \n        bottom: 50%;\n        background-color: var(--colorPrimario);\n        border-radius: 50%;\n        cursor: pointer;\n        -webkit-animation: music 3s infinite;\n                animation: music 3s infinite;\n}\n#audioIcon{\n        color: white;\n        font-size: 2em;\n}\n@-webkit-keyframes music {\n25%{\n        transform: translateY(1em);\n}\n50%{\n        transform: translateY(0);\n}\n75%{\n        transform: translateY(1em);\n}\n100%{\n        transform: translateY(0);\n}\n}\n@keyframes music {\n25%{\n        transform: translateY(1em);\n}\n50%{\n        transform: translateY(0);\n}\n75%{\n        transform: translateY(1em);\n}\n100%{\n        transform: translateY(0);\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -30399,25 +30404,24 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    {
+      attrs: { id: "audioButton" },
+      on: {
+        click: function ($event) {
+          return _vm.playAudio()
+        },
+      },
+    },
+    [
+      _c("audio", { attrs: { src: this.audio, id: "audioPlayer" } }),
+      _vm._v(" "),
+      _c("i", { staticClass: "fa-solid fa-play", attrs: { id: "audioIcon" } }),
+    ]
+  )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { attrs: { id: "audioButton", onclick: "playAudio()", playing: "true" } },
-      [
-        _c("i", {
-          staticClass: "fa-solid fa-headphones-simple",
-          attrs: { id: "audioIcon" },
-        }),
-      ]
-    )
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -30639,7 +30643,7 @@ var render = function () {
           _vm._v(" "),
           _c("p", { attrs: { id: "desc" } }, [_vm._v(_vm._s(this.desc))]),
           _vm._v(" "),
-          _c("p", { attrs: { id: "type" } }, [_vm._v('"Tanques chulos "')]),
+          _c("p", { attrs: { id: "type" } }, [_vm._v('"Tanques chulos"')]),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "contentThumbnail" }, [
@@ -30649,9 +30653,7 @@ var render = function () {
         ]),
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "contentText" }, [
-        _vm._v("\n      " + _vm._s(this.texto) + "\n    "),
-      ]),
+      _c("div", { staticClass: "contentText" }),
     ]),
   ])
 }
@@ -30753,105 +30755,98 @@ var render = function () {
     [
       _c("header-component"),
       _vm._v(" "),
-      _c("div", { attrs: { id: "gallery" } }, [
-        _c("div", { staticClass: "swiper gallery" }, [
-          _c(
-            "div",
-            {
-              staticClass: "swiper-wrapper",
-              attrs: { id: "swiper-wrapper-photos" },
-            },
-            _vm._l(this.images, function (image, index) {
-              return _c("div", { key: index, staticClass: "swiper-slide" }, [
-                _c("img", { attrs: { src: image } }),
-              ])
-            }),
-            0
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "swiper-button-next" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "swiper-button-prev" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "swiper-pagination" }),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("audio-component"),
-      _vm._v(" "),
       _c(
         "div",
         { staticClass: "wrapper" },
-        [_c("separador-component", { attrs: { texto: "información" } })],
-        1
-      ),
-      _vm._v(" "),
-      _c("information-component", {
-        attrs: {
-          titulo: this.name,
-          desc: this.desc,
-          texto: this.text,
-          poster: this.poster,
-        },
-      }),
-      _vm._v(" "),
-      _c("div", { attrs: { id: "multimedia" } }, [
-        _c("div", { staticClass: "videosPanel" }, [
-          _c(
-            "div",
-            { staticClass: "wrapper" },
-            [
-              _c("separador-component", {
-                attrs: { texto: "multimedia", color: "white" },
-              }),
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "swiper swiper-videos videos" }, [
-            _c("div", { staticClass: "swiper-wrapper" }, [
+        [
+          _c("div", { attrs: { id: "gallery" } }, [
+            _c("div", { staticClass: "swiper gallery" }, [
               _c(
                 "div",
-                { staticClass: "swiper-slide" },
-                _vm._l(this.videos, function (video, index) {
-                  return _c("video", { key: index, attrs: { controls: "" } }, [
-                    _c("source", { attrs: { src: video, type: "video/mp4" } }),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "error" }, [
-                      _vm._v("Tu navegador no es compatible con este recurso"),
-                    ]),
-                  ])
+                {
+                  staticClass: "swiper-wrapper",
+                  attrs: { id: "swiper-wrapper-photos" },
+                },
+                _vm._l(this.images, function (image, index) {
+                  return _c(
+                    "div",
+                    { key: index, staticClass: "swiper-slide" },
+                    [_c("img", { attrs: { src: image } })]
+                  )
                 }),
                 0
               ),
+              _vm._v(" "),
+              _c("div", { staticClass: "swiper-button-next" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "swiper-button-prev" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "swiper-pagination" }),
             ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "swiper-pagination" }),
           ]),
-        ]),
-        _vm._v(" "),
-        _vm._m(0),
-      ]),
+          _vm._v(" "),
+          _c("audio-component", { attrs: { audio: this.audio } }),
+          _vm._v(" "),
+          _c("separador-component", { attrs: { texto: "información" } }),
+          _vm._v(" "),
+          _c("information-component", {
+            attrs: {
+              titulo: this.name,
+              desc: this.desc,
+              texto: this.text,
+              poster: this.poster,
+            },
+          }),
+          _vm._v(" "),
+          _c("div", { attrs: { id: "multimedia" } }, [
+            _c(
+              "div",
+              { staticClass: "videosPanel" },
+              [
+                _c("separador-component", {
+                  attrs: { texto: "multimedia", color: "white" },
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "swiper swiper-videos videos" }, [
+                  _c("div", { staticClass: "swiper-wrapper" }, [
+                    _c(
+                      "div",
+                      { staticClass: "swiper-slide" },
+                      _vm._l(this.videos, function (video, index) {
+                        return _c(
+                          "video",
+                          { key: index, attrs: { controls: "" } },
+                          [
+                            _c("source", {
+                              attrs: { src: video, type: "video/mp4" },
+                            }),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "error" }, [
+                              _vm._v(
+                                "Tu navegador no es compatible con este recurso"
+                              ),
+                            ]),
+                          ]
+                        )
+                      }),
+                      0
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "swiper-pagination" }),
+                ]),
+              ],
+              1
+            ),
+          ]),
+        ],
+        1
+      ),
     ],
     1
   )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "audioPanel" }, [
-      _c("div", { staticClass: "audio-card" }, [
-        _c("img", { attrs: { src: "/img/audio.png", alt: "" } }),
-        _vm._v(" "),
-        _c("button", { staticClass: "buttonPlay", attrs: { id: "1" } }, [
-          _c("i", { staticClass: "fa-solid fa-play" }),
-        ]),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

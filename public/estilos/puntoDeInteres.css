@@ -11,10 +11,16 @@
 #multimedia .separacion .linea{
     background-color: white !important;
 }
+
 #multimedia .separacion .texto{
     border: 2px solid white !important;
     color: white !important;
 }
+
+h1, p, h2, h3{
+    color: white;
+}
+
 
 /* ESTILOS DE CARRUSELES VIDEO/AUDIOS */
 .swiper-videos {
@@ -169,6 +175,7 @@
     width: 90%;
     text-align: justify;
     margin: 0 auto;
+    color: white;
 }
 
 .contentText p{

@@ -1,33 +1,30 @@
 <template>
     <div>
         <header-component></header-component>
-        <div id="gallery">
-            <div class="swiper gallery">
-                <div id="swiper-wrapper-photos" class="swiper-wrapper">
-                    <div v-for="(image,index) in this.images" :key="index" class="swiper-slide">
-                        <img :src="image">
-                    </div>
-                </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-        
-        <audio-component></audio-component>
-
         <div class="wrapper">
-            <separador-component texto='información'></separador-component>
-        </div>
+            <div id="gallery">
+                <div class="swiper gallery">
+                    <div id="swiper-wrapper-photos" class="swiper-wrapper">
+                        <div v-for="(image,index) in this.images" :key="index" class="swiper-slide">
+                            <img :src="image">
+                        </div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        
+        <audio-component :audio="this.audio"></audio-component>
+
+        <separador-component texto='información'></separador-component>
 
         <information-component :titulo="this.name" :desc="this.desc" :texto="this.text" :poster="this.poster"></information-component>
         
 
         <div id="multimedia">
             <div class="videosPanel">
-                <div class="wrapper">
-                    <separador-component texto='multimedia' color='white'></separador-component>
-                </div>
+                <separador-component texto='multimedia' color='white'></separador-component>
                 <div class="swiper swiper-videos videos">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
@@ -40,17 +37,8 @@
                     <div class="swiper-pagination"></div>
                 </div>
             </div>
-
-            <div class="audioPanel">
-                <div class="audio-card">
-                    <img src="/img/audio.png" alt="">
-                    <button id="1" class="buttonPlay">
-                        <i class="fa-solid fa-play"></i>
-                    </button>
-                </div>
-            </div>
-            
         </div>
+    </div>
     </div>
 </template>
 
@@ -67,7 +55,7 @@ export default{
         poster: String,
         images: Array,
         videos: Array,
-        audios: Array
+        audio: String
         },
 
     data: () => {
@@ -117,7 +105,7 @@ export default{
                 if (type == "video")
                     this.videos = resources;
                 if (type == "audio")
-                    this.audios = resources;
+                    this.audio = resources;
         }
     },
 
@@ -125,6 +113,7 @@ export default{
         this.getInterestPoint();
         this.getResources("image");
         this.getResources("video");
+        this.getResources("audio");
 
     }
 }

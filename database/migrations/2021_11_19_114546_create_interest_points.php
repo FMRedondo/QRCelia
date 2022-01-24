@@ -17,7 +17,7 @@ class CreateInterestPoints extends Migration
             $table -> id();
             $table -> string('name');
             $table -> string('description');
-            $table -> string('text');
+            $table -> longText('text');
             $table -> string('url');
             $table -> string('poster');
             $table -> string('author');
