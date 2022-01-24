@@ -1,8 +1,8 @@
 <template>
     <section class="interestPoints">
         <header-component></header-component>
-        <separador-component texto='Puntos de interés' class="primerElemento"></separador-component>
         <div class="wrapper">
+            <separador-component texto='Puntos de interés'></separador-component>
             <div class="datos" > 
                 <punto-interes v-for="(point, index) in this.datos" :key="index" :titulo=point.name :imagen=point.poster :texto=point.text :descripcion=point.description :enlace=point.enlace ></punto-interes>
             </div>
@@ -40,7 +40,7 @@ export default {
                        'id'          : response[i].id,
                        'name'        : response[i].name,
                        'poster'      : response[i].poster,
-                       'text'        : response[i].text,
+                       'text'        : response[i].text.substr(0, 150) + "...",
                        'description' : response[i].description,
                        'enlace'      : "/puntodeinteres/" + response[i].id
                     }
@@ -92,6 +92,22 @@ export default {
 
     .datos .puntoInteres{
         width: 30%;
+    }
+    @media (max-width: 1500px){
+        .datos .puntoInteres{
+            width: 45%;
+        }
+    }
+     @media (max-width: 800px){
+        .datos .puntoInteres{
+            width: 80%;
+        }
+    }
+
+    @media (max-width: 500px){
+        .datos .puntoInteres{
+            width: 100%;
+        }
     }
 
 </style>
