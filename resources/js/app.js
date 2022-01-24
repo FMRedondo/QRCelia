@@ -9,9 +9,8 @@ Vue.component('header-component', require('./components/header.vue').default);
 Vue.component('separador-component', require('./components/separador.vue').default);
 Vue.component('punto-interes', require('./components/puntoInteres.vue').default);
 Vue.component('header-component', require('./components/header.vue').default);
-Vue.component('gallery-component', require('./components/gallery.vue').default);
 Vue.component('information-component', require('./components/information.vue').default);
-Vue.component('multimedia-component', require('./components/multimedia.vue').default);
+Vue.component('audio-component', require('./components/audio.vue').default);
 
 
 
