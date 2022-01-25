@@ -57,11 +57,7 @@ export default{
         videos: Array,
         audio: String
         },
-
-    data: () => {
-        return this.images;
-    },
-
+        
     methods: {
         async getInterestPoint() {
             const response = await fetch("/api/puntodeinteres/getPoint",{
