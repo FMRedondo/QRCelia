@@ -4,7 +4,7 @@
         <div class="contenidoPunto">
             <h3>{{titulo}}</h3>
             <p class="descripcion">{{descripcion}}</p>
-            <p>{{texto}}</p>
+            <p class="texto">{{texto}}</p>
             <a v-bind:href="enlace">Leer más</a>
         </div>
     </div>
@@ -19,6 +19,10 @@
         background-color: white;
         overflow: hidden;
 
+    }
+
+    .texto{
+        color: black;
     }
 
     .puntoInteres:hover{

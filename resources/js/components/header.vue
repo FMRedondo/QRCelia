@@ -115,6 +115,8 @@
         height: 100px;
         z-index: 9999;
         background-color: transparent;
+        position: relative;
+        z-index: 9;
     }
 
     .header .wrapper{
