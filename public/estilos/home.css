@@ -1,4 +1,4 @@
-.home{
+#app{
     width: 100%;
     height: 100vh;
     background-image: url("/img/celiaRambla.jpg");
@@ -34,6 +34,9 @@
     flex-direction: column;
     padding: 2em;
     text-align: center;
+    position: absolute;
+    top:0;
+    left: 0;
 }
 
 .datosBanner{

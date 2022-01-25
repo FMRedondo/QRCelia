@@ -14,7 +14,7 @@ function load() {
 
         success: function (response) {
             $table = `
-                <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+            <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
                 <div class="w-full overflow-x-auto">
                     <table class="w-full">
                         <thead>
@@ -93,6 +93,7 @@ $(".btnAddUser").click(showAddUser);
 function showAddUser() {
     $(".addPanel").toggle();
     $(".UserName").val("");
+    $(".backPanel").show();
 }
    
 // Funcion para añadir una nueva user
@@ -101,11 +102,16 @@ function addUser(){
     let name = $(".userName").val();
     let email = $(".userEmail").val();
     let password = $(".userPassword").val();
+    let password2 = $(".userPassword2").val();
 
+    if(password!=password2){
+        alert("La contraseña debe coincidir");
+    }else{
 
-    var params = {
-        "name": name,"email": email,"password": password,
-        "_token": $('meta[name="csrf-token"]').attr('content')
+        var params = {
+            "name": name,"email": email,"password": password,
+            "_token": $('meta[name="csrf-token"]').attr('content')
+        }
     }
 
     $.ajax({
@@ -118,14 +124,14 @@ function addUser(){
             $(".addPanel").toggle();
 
                 var newContent = `
-            <tr class="text-gray-700" id="${response.id}">
-                <td class="px-4 py-3 border">
-                    <div class="flex items-center text-sm">
-                        <div class="relative w-8 h-8 mr-3 rounded-full md:block">
-                            <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true">
+                <tr class="text-gray-700" id="${response.id}">
+                    <td class="px-4 py-3 border">
+                        <div class="flex items-center text-sm" style="overflow:scroll";>
+                            <div class="relative w-8 h-8 mr-3 rounded-full md:block">
+                                <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true">
+                                </div>
                             </div>
-                        </div>
-                        <div>
+                            <div>
                             <p class="font-semibold text-black regUserName">${data.name}</p>
                         </div>
                     </div>
@@ -151,7 +157,7 @@ function addUser(){
             $(".btnDelUser").click(showDelUser);
             $(".btnShowEditUser").off();
             $(".btnShowEditUser").click(showEditUser);
-
+            $(".backPanel").hide();
 
          },
 
@@ -167,6 +173,7 @@ function addUser(){
 $(".btnDelUser").click(showDelUser);
 function showDelUser() {
     $(".delUserPanel").show();
+    $(".backPanel").show();
     let id = $(this).data("id");
 
     // Funcion para borrar categorias
@@ -184,6 +191,7 @@ function showDelUser() {
                     let route = "table tbody #" + id;
                     $(route).remove();
                     $(".delUserPanel").hide();
+                    $(".backPanel").show();
                 },
                 error: function (response) {
                     alert("Error en la peticion");            
@@ -192,6 +200,7 @@ function showDelUser() {
         }
         if (!($(this).data("val")))
             $(".delUserPanel").hide();
+            $(".backPanel").show();
     })
 }
 
@@ -261,10 +270,14 @@ function searchUsers() {
 }
 
 
-// Funcion para editar una categoria
+
+
+
+
+
+// Funcion para editar usuarios
 $(".btnShowEditUser").click(showEditUser);
 function showEditUser() {
-    var error = false;
     var id = $(this).data("id");
     var content = ``;
     
@@ -273,9 +286,11 @@ function showEditUser() {
         "_token": $('meta[name="csrf-token"]').attr('content')
     }
 
+  
+ 
+
     $.ajax({
         data: params,
-        dataType: 'json',
         url: '/admin/usuarios/getUser',
         type: 'post',
 
@@ -287,11 +302,19 @@ function showEditUser() {
                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="pen-to-square" class="svg-inline--fa fa-pen-to-square w-16 h-16 flex items-center mx-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#0069d9" stroke="#0069d9">
                         <path d="M383.1 448H63.1V128h156.1l64-64H63.1C28.65 64 0 92.65 0 128v320c0 35.35 28.65 64 63.1 64h319.1c35.34 0 63.1-28.65 63.1-64l-.0039-220.1l-63.1 63.99V448zM497.9 42.19l-28.13-28.14c-18.75-18.75-49.14-18.75-67.88 0l-38.62 38.63l96.01 96.01l38.62-38.63C516.7 91.33 516.7 60.94 497.9 42.19zM147.3 274.4l-19.04 95.22c-1.678 8.396 5.725 15.8 14.12 14.12l95.23-19.04c4.646-.9297 8.912-3.213 12.26-6.562l186.8-186.8l-96.01-96.01L153.8 262.2C150.5 265.5 148.2 269.8 147.3 274.4z"></path>
                     </svg>
-                        <h2 class="text-xl font-bold py-4 ">Modificar Usuario</h2>
+                        <h2 class="text-xl font-bold py-4 ">Modificar usuario</h2>
                         <div class='form-group mb-4'>  
                             <label class='mb-2'>Nombre:</label>  
-                            <input type='text' class='form-control typeName typeNameMod rounded-pill'  data-field='name' value='${response[0].name}' name='typeNameMod'>  
+                            <input type='text' class='form-control userName userNameMod rounded-pill'  data-field='name' value='${response[0].name}' name='userNameMod'>  
+                        </div>
+                        <div class='form-group mb-4'>  
+                            <label class='mb-2'>Email:</label>  
+                            <input type='text' class='form-control userMail userMailMod rounded-pill'  data-field='name' value='${response[0].email}' name='userMailMod'>  
                         </div>  
+                        <div class='form-group mb-4'>  
+                            <label class='mb-2'>Contraseña:</label>  
+                            <input type='password' class='form-control userPassword userPasswordMod rounded-pill'  data-field='name' value='${response[0].password}' name='userPasswordMod'>  
+                        </div>    
                     </div>
                     <div class="p-3  mt-2 text-center space-x-4 md:block">
                         <button class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100 btnWindow closeWindow btnAddUser btnWindowModify closeWindowModifyUser" data-val='false'>Cancelar</button>
@@ -301,50 +324,52 @@ function showEditUser() {
             </div>
             `;
 
-            $(".delUserPanel").after(content);
-            $(".modifyUserPanel").show();
-            $(".btnWindowModify").click(function () {
-                if (!($(this).data("val"))) {
-                    $(".modifyUserPanel").remove();
+            $(".delPanel").after(content);
+            $(".modifyPanel").show();
+            $(".backPanel").show();
+
+            $(".userNameMod").change(function() {
+                var newName = $(".userNameMod").val();
+                var newMail = $(".userMailMod").val();
+                var newPassword = $(".userPasswordMod").val();
+                var params = {
+                    "id": id,
+                    "field": $(this).data("field"),
+                    "value": newName, newMail, newPassword,
+                    "_token": $('meta[name="csrf-token"]').attr('content')
                 }
+                    
+                $.ajax({
+                    data: params,
+                    url: '/admin/usuarios/editUser',
+                    type: 'post',
+    
+                    success: function (response) {
+                        let route = "table tbody #" + id + " .regUserName";
+                        $(route).text(newName);
+                        $(route).text(newMail);
+                        $(route).text(newPassword);
+                        route = "table tbody #" + id + " .regUserUpdated"
+                        $(route).text(response);
+                    },
+    
+                    error: function (response) {
+                        alert("Error en la peticion");
+                        console.log(response);
+                    },
+                });
+            });
+
+            $(".btnWindowModify").click(function () {
+                    $(".modifyPanel").remove();
+                    $(".backPanel").hide();
             })
+
         },
 
         error: function (response) {
             alert("Error en la peticion");
-            error = true;
         },
 
     });
-
-    if (!error) {
-        $(".userNameMod").change(function() {
-            let newName = $(".userNameMod").val();
-            var params = {
-                "id": id,
-                "field": $(this).data("field"),
-                "value": newName,
-                "_token": $('meta[name="csrf-token"]').attr('content')
-            }
-                
-            $.ajax({
-                data: params,
-                url: '/admin/usuarios/editUser',
-                type: 'post',
-
-                success: function (response) {
-                    let route = "table tbody #" + id + " .regUserName";
-                    $(route).text(newName);
-                    ruta = "table tbody #" + id + " .regUserUpdated"
-                    $(route).text(response);
-                    $(".modifyuserPanel").remove();
-                },
-
-                error: function (response) {
-                    alert("Error en la peticion");
-                    console.log(response);
-                },
-            });
-        });
-    }
 }
