@@ -5925,13 +5925,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js")["default"];
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js")["default"]; //componentes
+
 Vue.component('header-component', __webpack_require__(/*! ./components/header.vue */ "./resources/js/components/header.vue")["default"]);
 Vue.component('separador-component', __webpack_require__(/*! ./components/separador.vue */ "./resources/js/components/separador.vue")["default"]);
 Vue.component('punto-interes', __webpack_require__(/*! ./components/puntoInteres.vue */ "./resources/js/components/puntoInteres.vue")["default"]);
 Vue.component('header-component', __webpack_require__(/*! ./components/header.vue */ "./resources/js/components/header.vue")["default"]);
 Vue.component('information-component', __webpack_require__(/*! ./components/information.vue */ "./resources/js/components/information.vue")["default"]);
-Vue.component('audio-component', __webpack_require__(/*! ./components/audio.vue */ "./resources/js/components/audio.vue")["default"]);
+Vue.component('audio-component', __webpack_require__(/*! ./components/audio.vue */ "./resources/js/components/audio.vue")["default"]); //paginas
+
 Vue.component('interestpoints-page', __webpack_require__(/*! ./pages/interestPoints.vue */ "./resources/js/pages/interestPoints.vue")["default"]);
 Vue.component('interestpoint-page', __webpack_require__(/*! ./pages/interestPoint.vue */ "./resources/js/pages/interestPoint.vue")["default"]);
 var app = new Vue({
