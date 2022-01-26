@@ -21,6 +21,7 @@ class CreateInterestPoints extends Migration
             $table -> string('url');
             $table -> string('poster');
             $table -> string('author');
+            $table -> number('asociado');
             $table -> timestamps();
         });
     }

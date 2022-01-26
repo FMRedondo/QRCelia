@@ -1,13 +1,13 @@
 <template>
    <header class="header" id="header">
        <div class="wrapper">
-           <div class="logo">
-           <img src="/img/escudoCelia.png" alt="logo IES Celia Viñas">
-           <h1 class="titulo"><span>qr</span>Celia</h1>
-       </div>
-       <div class="btnMenu">
-          <button @click="desplegarMenu" ><i class="fas fa-bars"></i></button>
-       </div>
+           <a class="logo" href="/">
+                <img src="/img/escudoCelia.png" alt="logo IES Celia Viñas">
+                <h1 class="titulo"><span>qr</span>Celia</h1>
+            </a>
+            <div class="btnMenu">
+                <button @click="desplegarMenu" ><i class="fas fa-bars"></i></button>
+            </div>
        </div>
 
         <nav class="nav" id="nav">
@@ -20,7 +20,7 @@
         <nav class='navMovil' id='navMovil'>
            <div class="wrapper">
                 <div class="icono">
-                <i class="fa-solid fa-house activo"></i>
+                <i class="fa-solid fa-house "></i>
                 <a href="/" @mouseover="imagenMenu('inicio')"  @mouseleave="quitarImagen" class="activo">Inicio</a>
             </div>
            <div class="icono">
@@ -88,11 +88,8 @@
                     header.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
                 } else if(window.scrollY > 1){
                     header.style.backgroundColor = "rgba(0, 0, 0, 1)";
-                }
-
-                
+                } 
             }
-            
         }
     }
 
@@ -195,7 +192,7 @@
     }
 
     .nav a{
-        color: white;
+        color: black !important;
         text-decoration: none;
     }
 
@@ -212,6 +209,10 @@
 
     .navMovil{
         display: none;
+    }
+
+    .logo:focus{
+        border: none !important;
     }
 
 
@@ -240,7 +241,7 @@
         }
 
         .activo{
-            color: #CBAF87 !important;
+            color: var(--colorPrimario) !important;
            
         }
 
@@ -264,6 +265,7 @@
         .icono i{
             font-size: 1.2em;
             margin-bottom: 0.2em;
+            color: #CBAF87;
         }
 
         .icono a{

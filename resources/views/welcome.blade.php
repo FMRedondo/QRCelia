@@ -17,8 +17,9 @@
                     Descubre la historia del <br><span class="negrita"> I.E.S Celia Viñas </span>
                 </p>
                 <p class="textoBanner">
-                    En su caso siglo de historia, dentro de sus paredes han ocurrido multid de historias y aún existen pruebas y restos de dichas ocurrencias.
-                    aunque este edificio, fue construdido en 1923, comenzó a ser instituto en 1951. ¿Sabías que antes de ese año, en 1937, sufrio daños por parte de un bombardeo alemán?
+                    En su caso siglo de historia, dentro de sus paredes han ocurrido multitud de historias y aún existen pruebas 
+                    y restos de dichas ocurrencias. Aunque este edificio, fue construido en 1923, comenzó a ser instituto en 1951. 
+                    ¿Sabías que antes de ese año, en 1937, sufrió daños por parte de un bombardeo alemán?
                 </p>
                 <div class="botones">
                     <a href="/puntosInteres" class="boton">Descubre más</a>

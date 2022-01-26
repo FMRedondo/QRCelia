@@ -8,6 +8,7 @@
     --colorSecundario:#30475E;
     --colorClaro:#F5F5F5;
     --colorOscuro:#121212;
+    text-decoration: none;
 }
 
 #app{
