@@ -3,7 +3,15 @@
         <header-component></header-component>
         <div class="wrapper">
             <separador-component texto='Puntos de interés'></separador-component>
-            <div class="datos" > 
+            <div id="carga">
+                    <carga-punto></carga-punto>
+                    <carga-punto></carga-punto>
+                    <carga-punto></carga-punto>
+                    <carga-punto></carga-punto>
+                    <carga-punto></carga-punto>
+                    <carga-punto></carga-punto>
+                </div>
+            <div class="datos" >
                 <punto-interes v-for="(point, index) in this.datos" :key="index" :titulo=point.name :imagen=point.poster :texto=point.text :descripcion=point.description :enlace=point.enlace ></punto-interes>
             </div>
         </div>
@@ -48,9 +56,14 @@ export default {
                     datos.push(punto)
                 }
 
-                this.datos = datos    
+                this.datos = datos
+                
+                const carga = document.getElementById("carga")
+                carga.remove()
                 return this.datos;
-            })    
+
+            
+            })
         },
     }
 }
@@ -74,39 +87,41 @@ export default {
         display: block;
         background-image: url(/img/celiaRambla.jpg);
         background-repeat: no-repeat;
-        background-position: center;
         background-size: cover;
         z-index: -1;
+        background-attachment: fixed;
     }
 
 
-    .datos{
+    .datos, #carga{
         width: 100%;
         display: flex;
         flex-wrap: wrap;
         gap: 2em;
-        justify-content: space-between;
-        align-items: center;
         padding-bottom: 3em;
 
     }
 
-    .datos .puntoInteres{
+    #carga{
+        width: 100%;
+    }
+
+    .datos .puntoInteres, #carga .cargas{
         width: 30%;
     }
     @media (max-width: 1500px){
-        .datos .puntoInteres{
+        .datos .puntoInteres, #carga .cargas{
             width: 45%;
         }
     }
      @media (max-width: 800px){
-        .datos .puntoInteres{
+        .datos .puntoInteres, #carga .cargas{
             width: 80%;
         }
     }
 
     @media (max-width: 500px){
-        .datos .puntoInteres{
+        .datos .puntoInteres, #carga .cargas{
             width: 100%;
         }
     }

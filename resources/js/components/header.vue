@@ -272,7 +272,7 @@
             font-size: 0.8em;
         }
 
-        .logo img{
+        .logo img{ 
             width: 3em;
         }
 
@@ -280,9 +280,6 @@
             justify-content: center;
             text-align: center !important;
         }
-
-    
-
 
     } 
     
