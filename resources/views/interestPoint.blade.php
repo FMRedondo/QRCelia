@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/estilos/puntoDeInteres.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Si y solo si</title>
+    <title>QRCelia</title>
 </head>
 <body>
     <section id="app">
