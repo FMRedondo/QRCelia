@@ -5306,20 +5306,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    audio: String
+    audio: Array
   },
   methods: {
     playAudio: function playAudio() {
       var button = document.getElementById("audioButton");
       var icon = document.getElementById("audioIcon");
-      alert(document.getElementById("audioPlayer").src);
-      var audio = new Audio(document.getElementById("audioPlayer").src);
+      var audio = document.getElementById("audioPlayer");
 
-      if (audio.duration > 0) {
+      if (audio.paused) {
+        button.style.animationPlayState = "paused";
         audio.play();
         icon.classList.remove("fa-play");
         icon.classList.add("fa-pause");
       } else {
+        button.style.animationPlayState = 'running';
+        audio.pause();
         icon.classList.remove("fa-pause");
         icon.classList.add("fa-play");
       }
@@ -5671,8 +5673,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-var _this = undefined;
-
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -5737,12 +5737,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     videos: Array,
     audio: String
   },
-  data: function data() {
-    return _this.images;
-  },
   methods: {
     getInterestPoint: function getInterestPoint() {
-      var _this2 = this;
+      var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
         var response;
@@ -5757,7 +5754,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     'Content-Type': 'application/json'
                   },
                   body: JSON.stringify({
-                    "id": _this2.idpoint
+                    "id": _this.idpoint
                   })
                 }).then(function (response) {
                   return response.json();
@@ -5765,7 +5762,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 response = _context.sent;
-                _this2.idpoint = response[0].id, _this2.createdAt = response[0].createdAt, _this2.updatedAt = response[0].updatedAt, _this2.name = response[0].name, _this2.desc = response[0].description, _this2.text = response[0].text, _this2.url = response[0].url, _this2.poster = response[0].poster;
+                _this.idpoint = response[0].id, _this.createdAt = response[0].createdAt, _this.updatedAt = response[0].updatedAt, _this.name = response[0].name, _this.desc = response[0].description, _this.text = response[0].text, _this.url = response[0].url, _this.poster = response[0].poster;
 
               case 4:
               case "end":
@@ -5776,7 +5773,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     getResources: function getResources(type) {
-      var _this3 = this;
+      var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
         var response, resources, i;
@@ -5791,7 +5788,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     'Content-Type': 'application/json'
                   },
                   body: JSON.stringify({
-                    "id": _this3.idpoint,
+                    "id": _this2.idpoint,
                     "type": type
                   })
                 }).then(function (response) {
@@ -5806,9 +5803,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   resources.push(response[i].url);
                 }
 
-                if (type == "image") _this3.images = resources;
-                if (type == "video") _this3.videos = resources;
-                if (type == "audio") _this3.audio = resources;
+                if (type == "image") _this2.images = resources;
+                if (type == "video") _this2.videos = resources;
+                if (type == "audio") _this2.audio = resources;
 
               case 8:
               case "end":
@@ -5928,13 +5925,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js")["default"];
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js")["default"]; //componentes
+
 Vue.component('header-component', __webpack_require__(/*! ./components/header.vue */ "./resources/js/components/header.vue")["default"]);
 Vue.component('separador-component', __webpack_require__(/*! ./components/separador.vue */ "./resources/js/components/separador.vue")["default"]);
 Vue.component('punto-interes', __webpack_require__(/*! ./components/puntoInteres.vue */ "./resources/js/components/puntoInteres.vue")["default"]);
 Vue.component('header-component', __webpack_require__(/*! ./components/header.vue */ "./resources/js/components/header.vue")["default"]);
 Vue.component('information-component', __webpack_require__(/*! ./components/information.vue */ "./resources/js/components/information.vue")["default"]);
-Vue.component('audio-component', __webpack_require__(/*! ./components/audio.vue */ "./resources/js/components/audio.vue")["default"]);
+Vue.component('audio-component', __webpack_require__(/*! ./components/audio.vue */ "./resources/js/components/audio.vue")["default"]); //paginas
+
 Vue.component('interestpoints-page', __webpack_require__(/*! ./pages/interestPoints.vue */ "./resources/js/pages/interestPoints.vue")["default"]);
 Vue.component('interestpoint-page', __webpack_require__(/*! ./pages/interestPoint.vue */ "./resources/js/pages/interestPoint.vue")["default"]);
 var app = new Vue({
@@ -43080,7 +43079,7 @@ Vue.compile = compileToFunctions;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
+module.exports = JSON.parse('{"_args":[["axios@0.21.4","/home/diurno/Escritorio/QRCelia"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"/home/diurno/Escritorio/QRCelia","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
 
 /***/ })
 

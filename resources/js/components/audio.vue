@@ -51,24 +51,26 @@
 <script>
 export default{
     props: {
-        audio: String
+        audio: Array
     },
 
     methods:{
         playAudio() {
-            var button = document.getElementById("audioButton");
-            var icon = document.getElementById("audioIcon");
-            alert(document.getElementById("audioPlayer").src)
-            var audio = new Audio(document.getElementById("audioPlayer").src);
-            if (audio.duration > 0) {
+            const button = document.getElementById("audioButton");
+            const icon = document.getElementById("audioIcon");
+            const audio = document.getElementById("audioPlayer");
+            if (audio.paused) {
+                button.style.animationPlayState = "paused";
                 audio.play();
                 icon.classList.remove("fa-play");
                 icon.classList.add("fa-pause");
             }else{
+                button.style.animationPlayState = 'running';
+                audio.pause();
                 icon.classList.remove("fa-pause");
                 icon.classList.add("fa-play");
             }
-        }
-    }
+        },
+    },
 }
 </script>

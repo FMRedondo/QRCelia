@@ -22,7 +22,8 @@ class customUsersController extends Controller
     public function getUser(){
         $id = $_POST['id'];
         $result = customUsersModel::getUser($id);
-        return $result;
+        return response()->json($result);
+
     }
 
     public function addUser(){

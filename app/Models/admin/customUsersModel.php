@@ -17,9 +17,10 @@ class customUsersModel extends Model
     }
 
     public static function getUser($id){
-        $sql = "SELECT * FROM users WEHERE (id = $id)";
+        $sql = "SELECT * FROM users WHERE (id = $id)";
         $result = DB::select($sql);
         return $result;
+   
     }
 
     public static function deleteUser($id){

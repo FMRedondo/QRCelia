@@ -35,20 +35,21 @@
     <div class="contenidoPrincipal"></div>
 
     <!-- Cartel para añadir una categoria -->
-    <div class="w-50 m-auto p-5  mx-auto my-auto rounded-xl shadow-lg  bg-white addPanel">
-        <div class="">
-        <div class="text-center p-5 flex-auto justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" data-prefix="fas" data-icon="circle-plus" class="svg-inline--fa fa-circle-plus w-16 h-16 flex items-center mx-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#218838" stroke="#218838">
-            <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256C397.4 512 512 397.4 512 256S397.4 0 256 0zM352 280H280V352c0 13.2-10.8 24-23.1 24C242.8 376 232 365.2 232 352V280H160C146.8 280 136 269.2 136 256c0-13.2 10.8-24 24-24H232V160c0-13.2 10.8-24 24-24C269.2 136 280 146.8 280 160v72h72C365.2 232 376 242.8 376 256C376 269.2 365.2 280 352 280z"></path>
-            </svg>
-            <h2 class="text-xl font-bold py-4 ">Añadir Usuario</h2>
-            <div class='form-group mb-4'>  
+    <div class="w-50 m-auto mx-auto my-auto rounded-xl shadow-lg  bg-white addPanel" style="top: 10% !important;">
+      <div class="text-center p-5 flex-auto justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" data-prefix="fas" data-icon="circle-plus" class="svg-inline--fa fa-circle-plus w-16 h-16 flex items-center mx-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#218838" stroke="#218838">
+          <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256C397.4 512 512 397.4 512 256S397.4 0 256 0zM352 280H280V352c0 13.2-10.8 24-23.1 24C242.8 376 232 365.2 232 352V280H160C146.8 280 136 269.2 136 256c0-13.2 10.8-24 24-24H232V160c0-13.2 10.8-24 24-24C269.2 136 280 146.8 280 160v72h72C365.2 232 376 242.8 376 256C376 269.2 365.2 280 352 280z"></path>
+        </svg>
+          <h2 class="text-xl font-bold py-4 ">Añadir nueva categoria</h2>
+          <div class='form-group mb-4'>   
                 <label class='mb-2'>Nombre:</label>  
                 <input type='text' class='form-control userName rounded-pill' placeholder='Introduce el nombre del Usuario' name='userName'>  
                 <label class='mb-2'>Email:</label>  
                 <input type='text' class='form-control userEmail rounded-pill' placeholder='Introduce el email del Usuario' name='userEmail'>  
                 <label class='mb-2'>Password:</label>  
                 <input type='text' class='form-control userPassword rounded-pill' placeholder='Introduce la contraseña del Usuario' name='userPassword'>  
+                <label class='mb-2'>Confirma la contraseña:</label>  
+                <input type='text' class='form-control userPassword2 rounded-pill' placeholder='Introduce la contraseña del Usuario' name='userPassword2'>  
             
             </div>  
         </div>
@@ -82,7 +83,7 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/estilosGenerales.css">
+<link rel="stylesheet" href="/css/estilosGenerales.css">
     <link rel="stylesheet" href="/css/adminLTE.css">
     <link rel="stylesheet" href="/css/panel.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
