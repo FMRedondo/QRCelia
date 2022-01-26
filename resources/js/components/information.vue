@@ -5,13 +5,12 @@
         <div class="contentTitle">
           <h1>{{this.titulo}}</h1>
           <p id="desc">{{this.desc}}</p>
-          <p id="type">"Tanques chulos"</p>
         </div>
         <div class="contentThumbnail">
-          <img :src="this.poster" alt="Miniatura del punto">
+          <img :src="this.poster" alt="Miniatura">
         </div>
       </div>
-      <div class="contentText">
+      <div class="contentText" v-html="this.texto">
       </div> 
     </div>
   </div>
@@ -27,7 +26,6 @@ export default{
     },
     
     created(){
-      document.getElementsByClassName("contentText").innerHTML = this.texto
     }
 }
 </script>
