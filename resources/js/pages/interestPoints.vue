@@ -22,7 +22,9 @@
 export default {
     name: 'interestPoints',
     created () {
-      this.obtenerDatos()
+        document.addEventListener('DOMContentLoaded', () => {
+             this.obtenerDatos()
+        })
     },
 
     props: {
@@ -40,8 +42,6 @@ export default {
                    },
                    
             }).then(response => response.json()).then(response => {
-               // // var id, name, img, desc, text, enlace = [];
-                //var id= []; var name = []; var img = []; var desc = []; var text = [];
                 var datos = [];
                 for(let i = 0; i < response.length; i++){
                     var punto = {

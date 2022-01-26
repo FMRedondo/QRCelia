@@ -5867,14 +5867,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'interestPoints',
   created: function created() {
-    this.obtenerDatos();
+    var _this = this;
+
+    document.addEventListener('DOMContentLoaded', function () {
+      _this.obtenerDatos();
+    });
   },
   props: {
     datos: Array
   },
   methods: {
     obtenerDatos: function obtenerDatos() {
-      var _this = this;
+      var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
@@ -5891,8 +5895,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }).then(function (response) {
                   return response.json();
                 }).then(function (response) {
-                  // // var id, name, img, desc, text, enlace = [];
-                  //var id= []; var name = []; var img = []; var desc = []; var text = [];
                   var datos = [];
 
                   for (var i = 0; i < response.length; i++) {
@@ -5907,10 +5909,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     datos.push(punto);
                   }
 
-                  _this.datos = datos;
+                  _this2.datos = datos;
                   var carga = document.getElementById("carga");
                   carga.remove();
-                  return _this.datos;
+                  return _this2.datos;
                 });
 
               case 2:
