@@ -1,9 +1,11 @@
 <template>
     <section class="comentarios ultimoElemento" id="comentarios" v-bind:data-id="about">
         <separador-component texto='comentarios'></separador-component>
-        <p>Porfavor, si tienes alguna duda o segurencia sobre la web no dude en enviarnos tu sugerencia o contactar en el aula 8. Muchas gracias!</p>
-        <textarea type="text" name="comentario" id="comentario" required></textarea>
-        <button id="btn" v-on:click="enviarComentario()"><span>Enviar</span></button>
+        <div class="contenidoComentario">
+            <p>Porfavor, si tienes alguna duda o segurencia sobre la web no dude en enviarnos tu sugerencia o contactar en el aula 8. Muchas gracias!</p>
+            <textarea type="text" name="comentario" id="comentario" required></textarea>
+            <button id="btn" v-on:click="enviarComentario()"><span>Enviar</span></button>
+        </div>
     </section>
 </template>
 
@@ -69,6 +71,10 @@ export default {
         position: relative;
         z-index: 1;
         overflow: hidden;
+        width: 30%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
     }
 
     #btn::after{
@@ -96,5 +102,20 @@ export default {
         z-index: 3;
     }
 
+    .contenidoComentario{
+        width: 75%;
+        margin: 0 auto
+    }
+
+
+    @media (max-width: 950px){
+        .contenidoComentario{
+            width: 100%;
+        }
+
+        #btn{
+            width: 100%;
+        }
+    }
 
 </style>
