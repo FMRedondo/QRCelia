@@ -22,8 +22,8 @@
                     ¿Sabías que antes de ese año, en 1937, sufrió daños por parte de un bombardeo alemán?
                 </p>
                 <div class="botones">
-                    <a href="/puntosInteres" class="boton">Descubre más</a>
-                    <a href="/QRMisterioso" class="boton">QR Misterioso</a>
+                    <a href="/puntosInteres" class="boton"><span>Descubre más</span></a>
+                    <a href="/QRMisterioso" class="boton"><span>QR Misterioso</span></a>
                 </div>
             </div>
         </div>
