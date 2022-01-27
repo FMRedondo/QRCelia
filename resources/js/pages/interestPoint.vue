@@ -119,7 +119,6 @@ export default{
         this.getResources("image");
         this.getResources("video");
         this.getResources("audio");
-
     }
 }
 </script>
@@ -149,7 +148,7 @@ export default{
   padding: 16px;
   color: white;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 3em;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
