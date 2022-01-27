@@ -1,29 +1,25 @@
 <template>
-    <div>
+    <section id="contentSection">
         <img src="/img/celiaRambla.jpg" class="imagenFondo">
         <header-component></header-component>
         <div class="wrapper">
 
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <img src="/img/celiaRambla.jpg">
+                </div>
+                <div class="mySlides fade">
+                    <img src="/img//home/misterio.jpeg">
+                </div>
+                <div class="mySlides fade">
+                    <img src="/img/home/puntos.jpg">
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                
             </div>
-            <div class="swiper-slide">
-                <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-            </div>
-            <div class="swiper-slide">
-                <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-            </div>
-            <div class="swiper-slide">
-                <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-            </div>
-        </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
-        </div>
-                    
+                                    
             <audio-component  :audio="this.audio" v-if="this.audio.length != ``"></audio-component>
 
             <separador-component texto='información'></separador-component>
@@ -50,7 +46,8 @@
             -->
 
         </div>
-    </div>
+        <comentarios :about='this.idpoint'></comentarios>
+    </section>
 </template>
 
 <script>
@@ -122,14 +119,19 @@ export default{
         this.getResources("image");
         this.getResources("video");
         this.getResources("audio");
+
     }
 }
 </script>
 
 <style>
+.slideshow-container {
+    height: 80vh;
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+}
 
-<<<<<<< HEAD
-=======
 .mySlides {
   display: none;
 }
@@ -147,7 +149,7 @@ export default{
   padding: 16px;
   color: white;
   font-weight: bold;
-  font-size: 3em;
+  font-size: 18px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
@@ -189,5 +191,4 @@ export default{
   from {opacity: .4}
   to {opacity: 1}
 }
->>>>>>> 199b3d8d3b56a923e3d9d1c6be9310ca5b55b188
 </style>
