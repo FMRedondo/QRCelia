@@ -18,7 +18,6 @@
         transition: ease-in-out 200ms;
         background-color: white;
         overflow: hidden;
-
     }
 
     .texto{

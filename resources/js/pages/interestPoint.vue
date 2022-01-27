@@ -1,8 +1,9 @@
 <template>
-    <div>
+    <div class="imagenFondo">
         <header-component></header-component>
         <div class="wrapper">
-            <div id="gallery">
+            
+            <div id="gallery" v-if="this.images.length > 0">
                 <div class="swiper gallery">
                     <div id="swiper-wrapper-photos" class="swiper-wrapper">
                         <div v-for="(image,index) in this.images" :key="index" class="swiper-slide">
@@ -14,33 +15,31 @@
                     <div class="swiper-pagination-images"></div>
                 </div>
             </div>
-        </div>
         
-        <audio-component :audio="this.audio"></audio-component>
+            <audio-component  :audio="this.audio" v-if="this.audio.length != ``"></audio-component>
 
-        <div class="wrapper content-wrapper">
-        <separador-component texto='información'></separador-component>
+            <separador-component texto='información'></separador-component>
 
-        <information-component :titulo="this.name" :desc="this.desc" :texto="this.text" :poster="this.poster"></information-component>
-        
-
-        <div id="multimedia" v-if="this.videos.length > 0">
-            <div class="videosPanel">
-                <separador-component texto='multimedia' color='white'></separador-component>
-                <div class="swiper swiper-videos videos">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide" v-for="(video,index) in this.videos" :key="index">
-                            <video controls>
-                                <source :src="video" type="video/mp4">
-                                <span class="error">Tu navegador no es compatible con este recurso</span>
-                            </video>
+            <information-component :titulo="this.name" :desc="this.desc" :texto="this.text" :poster="this.poster"></information-component>
+            
+            <div id="multimedia" v-if="this.videos.length > 0">
+                <div class="videosPanel">
+                    <separador-component texto='multimedia' color='white'></separador-component>
+                    <div class="swiper swiper-videos videos">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" v-for="(video,index) in this.videos" :key="index">
+                                <video controls>
+                                    <source :src="video" type="video/mp4">
+                                    <span class="error">Tu navegador no es compatible con este recurso</span>
+                                </video>
+                            </div>
                         </div>
+                        <div class="swiper-pagination-videos"></div>
                     </div>
-                    <div class="swiper-pagination-videos"></div>
                 </div>
             </div>
+            
         </div>
-    </div>
     </div>
 </template>
 
@@ -104,7 +103,7 @@ export default{
                     this.videos = resources;
                 if (type == "audio")
                     this.audio = resources;
-        }
+        },
     },
 
     created() {
@@ -118,42 +117,5 @@ export default{
 </script>
 
 <style scoped>
-/* ESTILOS DE CARRUSELES VIDEO */
-.videosPanel {
-    background-color: #2D2D2D;
-    padding: 3em 0;
-}
-
-.videosPanel .swiper-videos {
-    width: 50%;
-}
- 
-.videosPanel .swiper-slide {
-    background-position: center;
-    background-size: cover;
-    width: 50% !important;
-    box-shadow: 0px 0px 0px transparent;
-}
- 
-.videosPanel .swiper-slide video {
-    display: block;
-    width: 100%;
-}
- 
-.videosPanel .swiper-slide-active {
-    opacity: 100;
-}
- 
-.videosPanel .swiper-slide-visible{
-    box-shadow: none !important;
-}
- 
-.videosPanel .swiper-pagination-bullet{
-    display: none;
-}
-
-.videosPanel .swiper-wrapper{
-    margin-top: 2em;
-}
 
 </style>

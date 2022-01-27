@@ -1,4 +1,5 @@
-var gallery_swiper = new Swiper(".gallery", {
+window.addEventListener('DOMContentLoaded', (event) => {
+  var gallery_swiper = new Swiper(".gallery", {
     spaceBetween: 30,
     effect: "fade",
     navigation: {
@@ -11,19 +12,20 @@ var gallery_swiper = new Swiper(".gallery", {
     },
   });
 
-var video_swiper = new Swiper(".videos", {
-    effect: "coverflow",
-    grabCursor: true,
-    centeredSlides: true,
-    slidesPerView: "auto",
-    coverflowEffect: {
-        rotate: 50,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows: true,
-    },
-    pagination: {
-        el: ".swiper-pagination-videos",
-    },
+  var video_swiper = new Swiper(".videos", {
+      effect: "coverflow",
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: "auto",
+      coverflowEffect: {
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
+      },
+      pagination: {
+          el: ".swiper-pagination-videos",
+      },
+  });
 });
