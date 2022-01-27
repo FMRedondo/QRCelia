@@ -5342,6 +5342,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
 //
 //
 //
@@ -5357,9 +5367,37 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     enviarComentario: function enviarComentario() {
-      var mensaje = document.getElementById('comentario').value;
-      var idPunto = document.getElementById('comentarios');
-      alert(this.about);
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var mensaje;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                mensaje = document.getElementById('comentario').value;
+                _context.next = 3;
+                return fetch('/api/comentarios/addComment', {
+                  method: 'POST',
+                  headers: {
+                    "Accept": "application/json",
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                    content: mensaje,
+                    id: _this.about
+                  })
+                }).then(function (response) {
+                  alert(response);
+                });
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
     }
   }
 });
@@ -11103,7 +11141,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.comentarios[data-v-03fca292]{\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n}\n#comentario[data-v-03fca292]{\n    width: 100% !important;\n    height: 10em !important;\n    border: none;\n    margin-bottom: 2em;\n    border: 2px solid #C6A878;\n    transition: ease-in-out 300ms;\n    border-radius: 5px;\n}\n#comentario[data-v-03fca292]:focus{\n    outline: none;\n    border: 2px solid var(--colorPrimario);\n}\np[data-v-03fca292]{\n    color: white;\n    margin-bottom: 1em;\n    text-align: justify;\n}\n#btn[data-v-03fca292]{\n    padding: 1em;\n    text-align: center;\n    background-color: #C6A878;\n    border: none;\n    color: white;\n    position: relative;\n    z-index: 1;\n    overflow: hidden;\n}\n#btn[data-v-03fca292]::after{\n    content: \"\";\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    z-index: 2;\n    left: calc( -100% - 80px);\n    background: var(--colorPrimario);\n    border-bottom: 80px solid var(--colorPrimario);\n    border-right: 80px solid transparent;\n    transition: 300ms ease-in-out;\n}\n#btn[data-v-03fca292]:hover::after{\n    left: 0;\n    cursor: pointer;\n}\nspan[data-v-03fca292]{\n    position: relative;\n    z-index: 3;\n}\n\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.comentarios[data-v-03fca292]{\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n}\n#comentario[data-v-03fca292]{\n    width: 100% !important;\n    height: 10em !important;\n    border: none;\n    margin-bottom: 2em;\n    border: 2px solid #C6A878;\n    transition: ease-in-out 300ms;\n    border-radius: 5px;\n}\n#comentario[data-v-03fca292]:focus{\n    outline: none;\n    border: 2px solid var(--colorPrimario);\n}\np[data-v-03fca292]{\n    color: white;\n    margin-bottom: 1em;\n    text-align: justify;\n}\n#btn[data-v-03fca292]{\n    padding: 1em;\n    text-align: center;\n    background-color: #C6A878;\n    border: none;\n    color: white;\n    position: relative;\n    z-index: 1;\n    overflow: hidden;\n    width: 30%;\n    margin: 0 auto;\n    display: flex;\n    justify-content: center;\n}\n#btn[data-v-03fca292]::after{\n    content: \"\";\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    z-index: 2;\n    left: calc( -100% - 80px);\n    background: var(--colorPrimario);\n    border-bottom: 80px solid var(--colorPrimario);\n    border-right: 80px solid transparent;\n    transition: 300ms ease-in-out;\n}\n#btn[data-v-03fca292]:hover::after{\n    left: 0;\n    cursor: pointer;\n}\nspan[data-v-03fca292]{\n    position: relative;\n    z-index: 3;\n}\n.contenidoComentario[data-v-03fca292]{\n    width: 75%;\n    margin: 0 auto\n}\n@media (max-width: 950px){\n.contenidoComentario[data-v-03fca292]{\n        width: 100%;\n}\n#btn[data-v-03fca292]{\n        width: 100%;\n}\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -30859,33 +30897,35 @@ var render = function () {
     [
       _c("separador-component", { attrs: { texto: "comentarios" } }),
       _vm._v(" "),
-      _c("p", [
-        _vm._v(
-          "Porfavor, si tienes alguna duda o segurencia sobre la web no dude en enviarnos tu sugerencia o contactar en el aula 8. Muchas gracias!"
-        ),
-      ]),
-      _vm._v(" "),
-      _c("textarea", {
-        attrs: {
-          type: "text",
-          name: "comentario",
-          id: "comentario",
-          required: "",
-        },
-      }),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          attrs: { id: "btn" },
-          on: {
-            click: function ($event) {
-              return _vm.enviarComentario()
+      _c("div", { staticClass: "contenidoComentario" }, [
+        _c("p", [
+          _vm._v(
+            "Porfavor, si tienes alguna duda o segurencia sobre la web no dude en enviarnos tu sugerencia o contactar en el aula 8. Muchas gracias!"
+          ),
+        ]),
+        _vm._v(" "),
+        _c("textarea", {
+          attrs: {
+            type: "text",
+            name: "comentario",
+            id: "comentario",
+            required: "",
+          },
+        }),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            attrs: { id: "btn" },
+            on: {
+              click: function ($event) {
+                return _vm.enviarComentario()
+              },
             },
           },
-        },
-        [_c("span", [_vm._v("Enviar")])]
-      ),
+          [_c("span", [_vm._v("Enviar")])]
+        ),
+      ]),
     ],
     1
   )

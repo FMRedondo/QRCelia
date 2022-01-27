@@ -39,8 +39,8 @@ class CommentModel extends Model
         return $result;
     }
 
-    public static function addComments($content){
-        $sql = "INSERT INTO comments (content) VALUE($content)";
+    public static function addComments($content, $id){
+        $sql = "INSERT INTO comments (content, idPunto) VALUE ('$content', $id)";
         DB::insert($sql);
     }
 

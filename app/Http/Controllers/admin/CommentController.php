@@ -14,9 +14,10 @@ class CommentController extends Controller
         return view('admin/comentarios');
     }
 
-    public function addComment(){
-        $content = $_POST['content'];
-        CommentModel::addComments($content);
+    public function addComment(Request $request){
+        $content = $request -> content;
+        $id = $request -> id;
+        CommentModel::addComments($content, $id);
     }
 
     public function deleteComment(){
