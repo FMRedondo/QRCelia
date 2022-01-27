@@ -13,10 +13,18 @@ export default {
         about: String,
     },
     methods: {
-        enviarComentario(){
+        async enviarComentario(){
             const mensaje = document.getElementById('comentario').value 
-            const idPunto = document.getElementById('comentarios')
-            alert(this.about)
+            await fetch('/api/comentarios/addComment',{
+                method: 'POST',
+                headers:{
+                   "Accept": "application/json",
+                   'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({content: mensaje, id: this.about})
+            }).then((response) => {
+                alert(response)
+            })
         }
     },
 }

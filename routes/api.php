@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\interestPointController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\CommentController;
 
 
 
@@ -24,3 +25,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/puntodeinteres/getPoint', [interestPointController::class, 'getInterestPoint']);
 Route::post('/puntodeinteres/getResources', [interestPointController::class, 'getResourcesFromPoint'])-> name('front.resourcesFromPoint');
 Route::post('/puntosInteres/getPoints', [interestPointController::class, 'getInterestPoints']);
+
+Route::post('/comentarios/addComment', [CommentController::class, 'addComment'])-> name('add.comments');
