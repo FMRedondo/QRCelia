@@ -122,11 +122,72 @@ export default{
         this.getResources("image");
         this.getResources("video");
         this.getResources("audio");
-
     }
 }
 </script>
 
 <style>
 
+<<<<<<< HEAD
+=======
+.mySlides {
+  display: none;
+}
+
+.mySlides:first-child {
+  display: block;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 3em;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.active {
+  background-color: #717171;
+}
+
+.mySlides img{
+    height: 80vh;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 0.3s;
+  animation-name: fade;
+  animation-duration: 0.3s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+>>>>>>> 199b3d8d3b56a923e3d9d1c6be9310ca5b55b188
 </style>
