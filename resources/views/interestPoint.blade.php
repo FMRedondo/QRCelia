@@ -16,7 +16,7 @@
 </head>
 <body>
     <section id="app">
-      <interestpoint-page v-on:scroll.native="scrollNav" :idpoint=@php echo $id;@endphp></interestpoint-page>        
+        <interestpoint-page v-on:scroll.native="scrollNav" :idpoint=@php echo $id;@endphp></interestpoint-page>        
     </section>
     <script src="https://kit.fontawesome.com/75e57fedbe.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

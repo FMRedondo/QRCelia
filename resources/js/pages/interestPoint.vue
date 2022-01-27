@@ -1,27 +1,36 @@
 <template>
-    <div class="imagenFondo">
+    <div>
+        <img src="/img/celiaRambla.jpg" class="imagenFondo">
         <header-component></header-component>
         <div class="wrapper">
-            
-            <div id="gallery" v-if="this.images.length > 0">
-                <div class="swiper gallery">
-                    <div id="swiper-wrapper-photos" class="swiper-wrapper">
-                        <div v-for="(image,index) in this.images" :key="index" class="swiper-slide">
-                            <img :src="image">
-                        </div>
-                    </div>
-                    <div class="swiper-button-next-images"></div>
-                    <div class="swiper-button-prev-images"></div>
-                    <div class="swiper-pagination-images"></div>
-                </div>
+
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
             </div>
-        
+            <div class="swiper-slide">
+                <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+            </div>
+            <div class="swiper-slide">
+                <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+            </div>
+            <div class="swiper-slide">
+                <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+            </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+        </div>
+                    
             <audio-component  :audio="this.audio" v-if="this.audio.length != ``"></audio-component>
 
             <separador-component texto='información'></separador-component>
 
             <information-component :titulo="this.name" :desc="this.desc" :texto="this.text" :poster="this.poster"></information-component>
             
+            <!--
             <div id="multimedia" v-if="this.videos.length > 0">
                 <div class="videosPanel">
                     <separador-component texto='multimedia' color='white'></separador-component>
@@ -38,12 +47,14 @@
                     </div>
                 </div>
             </div>
-            
+            -->
+
         </div>
     </div>
 </template>
 
 <script>
+
 export default{
     props: {
         idpoint: Number,
@@ -116,6 +127,6 @@ export default{
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>
