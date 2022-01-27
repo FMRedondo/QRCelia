@@ -149,7 +149,7 @@ export default{
   color: white;
   font-weight: bold;
   font-size: 3em;
-  transition: 0.6s ease;
+  transition: 0.3s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
 }
@@ -171,6 +171,8 @@ export default{
     height: 80vh;
     width: 100%;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
 }
 
 /* Fading animation */
