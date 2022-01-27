@@ -75,7 +75,7 @@
 .boton span{
     position: relative;
     z-index: 99;
-    transition: ease-in-out 800ms;
+    transition: ease-in-out 350ms;
 }
 
 .boton:after{
@@ -88,7 +88,7 @@
     background: var(--colorPrimario);
     border-bottom: 80px solid var(--colorPrimario);
     border-right: 80px solid transparent;
-    transition: 700ms ease-in-out;
+    transition: 300ms ease-in-out;
 }
 
 .boton:last-child::after{
@@ -101,7 +101,7 @@
     background: var(--colorPrimario);
     border-bottom: 80px solid var(--colorPrimario);
     border-right: 80px solid transparent;
-    transition: 700ms ease-in-out;
+    transition: 300ms ease-in-out;
 }
 
 .boton:hover::after{
@@ -116,7 +116,6 @@
 }
 
 .boton:hover{
-    color: var(--colorSecundario);
     border: 2px solid var(--colorPrimario);
 }
 
