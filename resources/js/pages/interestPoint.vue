@@ -104,8 +104,8 @@ export default{
 <style>
 /* SLIDER DE IMAGENES */
 .slideshow-container {
-    height: 80vh;
-    width: 100%;
+    height: 70vh;
+    width: 75%;
     position: relative;
     margin: 3em auto;
 }
@@ -146,7 +146,7 @@ export default{
 }
 
 .slide-images img{
-    height: 80vh;
+    height: 70vh;
     width: 100%;
     margin: 0 auto;
     display: flex;

@@ -63,7 +63,7 @@ h1, p, h2, h3{
 .contentThumbnail{
     display: flex;
     justify-content: center;
-    width: 80%;
+    width: 75%;
     padding: 1em;
 }
 
@@ -76,6 +76,7 @@ h1, p, h2, h3{
     padding: 2em 0;
     text-align: justify;
     margin: 0 auto;
+    width: 75%;
     color: white;
 }
 
