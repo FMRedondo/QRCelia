@@ -1,29 +1,25 @@
 <template>
-    <div>
+    <section id="contentSection">
         <img src="/img/celiaRambla.jpg" class="imagenFondo">
         <header-component></header-component>
         <div class="wrapper">
 
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <img src="/img/celiaRambla.jpg">
+                </div>
+                <div class="mySlides fade">
+                    <img src="/img//home/misterio.jpeg">
+                </div>
+                <div class="mySlides fade">
+                    <img src="/img/home/puntos.jpg">
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                
             </div>
-            <div class="swiper-slide">
-                <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-            </div>
-            <div class="swiper-slide">
-                <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-            </div>
-            <div class="swiper-slide">
-                <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-            </div>
-        </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
-        </div>
-                    
+                                    
             <audio-component  :audio="this.audio" v-if="this.audio.length != ``"></audio-component>
 
             <separador-component texto='información'></separador-component>
@@ -50,8 +46,8 @@
             -->
 
         </div>
-        <comentarios></comentarios>
-    </div>
+        <comentarios :about='this.idpoint'></comentarios>
+    </section>
 </template>
 
 <script>
@@ -129,5 +125,70 @@ export default{
 </script>
 
 <style>
+.slideshow-container {
+    height: 80vh;
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+}
 
+.mySlides {
+  display: none;
+}
+
+.mySlides:first-child {
+  display: block;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.active {
+  background-color: #717171;
+}
+
+.mySlides img{
+    height: 80vh;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 0.3s;
+  animation-name: fade;
+  animation-duration: 0.3s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
 </style>

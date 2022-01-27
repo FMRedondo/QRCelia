@@ -7,7 +7,6 @@
 .wrapper{
     width: 90%;
     margin: 0 auto;
-    background-color: rgba(0, 0, 0, 0.7);
 }
 
 #multimedia .separacion .linea{
@@ -27,7 +26,11 @@ h1, p, h2, h3{
     background-attachment: fixed;
 }
 
-/* GALERIA CON EL SWIPER 
+#contentSection{
+    background-color: rgba(0, 0, 0, 0.7);  
+}
+
+/* GALERIA CON EL SWIPER */
 #gallery{
     width: auto;
     height: 90vh;
@@ -61,7 +64,6 @@ h1, p, h2, h3{
     z-index: 10;
     padding: 3em 0 0 0;
 }
-*/
 
 /* INFORMACION */
 .contentHeader{
@@ -107,7 +109,6 @@ h1, p, h2, h3{
 
 .contentText{
     padding: 2em 0;
-    width: 90%;
     text-align: justify;
     margin: 0 auto;
     color: white;
@@ -128,18 +129,4 @@ h1, p, h2, h3{
     background-position-y:center;
 }
 
-/*ESTO ESTA HECHO POLVO*/
-.swiper {
-    width: 100%;
-    height: 100%;
-}
-  
-.swiper-slide {
-    background-position: center;
-    background-size: cover;
-}
-  
-.swiper-slide img {
-    display: block;
-    width: 100%;
-}
+/* CARRUSEL IMAGENES */
