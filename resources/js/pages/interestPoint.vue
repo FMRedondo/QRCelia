@@ -4,20 +4,12 @@
         <header-component></header-component>
         <div class="wrapper">
 
-            <div class="slideshow-container">
-                <div class="mySlides fade">
-                    <img src="/img/celiaRambla.jpg">
+            <div class="slideshow-container" v-if="this.images.length > 0">
+                <div class="slide-images fade" v-for="(image,index) in this.images" :key="index">
+                    <img :src="image">
                 </div>
-                <div class="mySlides fade">
-                    <img src="/img//home/misterio.jpeg">
-                </div>
-                <div class="mySlides fade">
-                    <img src="/img/home/puntos.jpg">
-                </div>
-
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                
             </div>
                                     
             <audio-component  :audio="this.audio" v-if="this.audio.length != ``"></audio-component>
@@ -25,33 +17,17 @@
             <separador-component texto='información'></separador-component>
 
             <information-component :titulo="this.name" :desc="this.desc" :texto="this.text" :poster="this.poster"></information-component>
-            
-            <!--
-            <div id="multimedia" v-if="this.videos.length > 0">
-                <div class="videosPanel">
-                    <separador-component texto='multimedia' color='white'></separador-component>
-                    <div class="swiper swiper-videos videos">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide" v-for="(video,index) in this.videos" :key="index">
-                                <video controls>
-                                    <source :src="video" type="video/mp4">
-                                    <span class="error">Tu navegador no es compatible con este recurso</span>
-                                </video>
-                            </div>
-                        </div>
-                        <div class="swiper-pagination-videos"></div>
-                    </div>
-                </div>
-            </div>
-            -->
+                    
+            <separador-component texto='Videos'></separador-component>
 
+
+
+            <comentarios :about='this.idpoint'></comentarios>
         </div>
-        <comentarios :about='this.idpoint'></comentarios>
     </section>
 </template>
 
 <script>
-
 export default{
     props: {
         idpoint: Number,
@@ -119,24 +95,24 @@ export default{
         this.getResources("image");
         this.getResources("video");
         this.getResources("audio");
-
     }
 }
 </script>
 
 <style>
+/* SLIDER DE IMAGENES */
 .slideshow-container {
     height: 80vh;
     width: 100%;
     position: relative;
-    margin: 0 auto;
+    margin: 3em auto;
 }
 
-.mySlides {
+.slide-images {
   display: none;
 }
 
-.mySlides:first-child {
+.slide-images:first-child {
   display: block;
 }
 
@@ -149,13 +125,8 @@ export default{
   padding: 16px;
   color: white;
   font-weight: bold;
-<<<<<<< HEAD
   font-size: 3em;
   transition: 0.3s ease;
-=======
-  font-size: 18px;
-  transition: 0.6s ease;
->>>>>>> 990260a4a39917e4dc4f925a597ff4028b1ac50f
   border-radius: 0 3px 3px 0;
   user-select: none;
 }
@@ -173,7 +144,7 @@ export default{
   background-color: #717171;
 }
 
-.mySlides img{
+.slide-images img{
     height: 80vh;
     width: 100%;
     margin: 0 auto;
@@ -181,7 +152,6 @@ export default{
     justify-content: center;
 }
 
-/* Fading animation */
 .fade {
   -webkit-animation-name: fade;
   -webkit-animation-duration: 0.3s;
@@ -189,6 +159,12 @@ export default{
   animation-duration: 0.3s;
 }
 
+/* SLIDER DE VIDEOS */
+
+
+
+
+/* ANIMACIONES */
 @-webkit-keyframes fade {
   from {opacity: .4}
   to {opacity: 1}

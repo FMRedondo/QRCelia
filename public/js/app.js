@@ -5739,29 +5739,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     idpoint: Number,
@@ -11205,9 +11182,23 @@ ___CSS_LOADER_EXPORT___.push([module.id, "\n.separacion[data-v-9efaa2cc]{\n    d
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/interestPoint.vue?vue&type=style&index=0&lang=css& ***!
   \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ (() => {
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-throw new Error("Module build failed (from ./node_modules/postcss-loader/dist/cjs.js):\nSyntaxError\n\n(152:9) C:\\Users\\ManfredVC\\Documents\\GitHub\\QRCelia\\resources\\js\\pages\\interestPoint.vue Unknown word\n\n \u001b[90m 150 | \u001b[39m  color\u001b[33m:\u001b[39m white\u001b[33m;\u001b[39m\n \u001b[90m 151 | \u001b[39m  font-weight\u001b[33m:\u001b[39m bold\u001b[33m;\u001b[39m\n\u001b[1m\u001b[31m>\u001b[39m\u001b[22m\u001b[90m 152 | \u001b[39m<<<<<<< HEAD\n \u001b[90m     | \u001b[39m        \u001b[1m\u001b[31m^\u001b[39m\u001b[22m\n \u001b[90m 153 | \u001b[39m  font-size\u001b[33m:\u001b[39m 3em\u001b[33m;\u001b[39m\n \u001b[90m 154 | \u001b[39m  transition\u001b[33m:\u001b[39m 0.3s ease\u001b[33m;\u001b[39m\n");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* SLIDER DE IMAGENES */\n.slideshow-container {\r\n    height: 80vh;\r\n    width: 100%;\r\n    position: relative;\r\n    margin: 3em auto;\n}\n.slide-images {\r\n  display: none;\n}\n.slide-images:first-child {\r\n  display: block;\n}\n.prev, .next {\r\n  cursor: pointer;\r\n  position: absolute;\r\n  top: 50%;\r\n  width: auto;\r\n  margin-top: -22px;\r\n  padding: 16px;\r\n  color: white;\r\n  font-weight: bold;\r\n  font-size: 3em;\r\n  transition: 0.3s ease;\r\n  border-radius: 0 3px 3px 0;\r\n  -webkit-user-select: none;\r\n     -moz-user-select: none;\r\n      -ms-user-select: none;\r\n          user-select: none;\n}\n.next {\r\n  right: 0;\r\n  border-radius: 3px 0 0 3px;\n}\n.prev:hover, .next:hover {\r\n  background-color: rgba(0,0,0,0.8);\n}\n.active {\r\n  background-color: #717171;\n}\n.slide-images img{\r\n    height: 80vh;\r\n    width: 100%;\r\n    margin: 0 auto;\r\n    display: flex;\r\n    justify-content: center;\n}\n.fade {\r\n  -webkit-animation-name: fade;\r\n  -webkit-animation-duration: 0.3s;\r\n  animation-name: fade;\r\n  animation-duration: 0.3s;\n}\r\n\r\n/* SLIDER DE VIDEOS */\r\n\r\n\r\n\r\n\r\n/* ANIMACIONES */\n@-webkit-keyframes fade {\nfrom {opacity: .4}\nto {opacity: 1}\n}\n@keyframes fade {\nfrom {opacity: .4}\nto {opacity: 1}\n}\r\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
 
 /***/ }),
 
@@ -31241,7 +31232,40 @@ var render = function () {
         "div",
         { staticClass: "wrapper" },
         [
-          _vm._m(0),
+          this.images.length > 0
+            ? _c(
+                "div",
+                { staticClass: "slideshow-container" },
+                [
+                  _vm._l(this.images, function (image, index) {
+                    return _c(
+                      "div",
+                      { key: index, staticClass: "slide-images fade" },
+                      [_c("img", { attrs: { src: image } })]
+                    )
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "prev",
+                      attrs: { onclick: "plusSlides(-1)" },
+                    },
+                    [_vm._v("❮")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "next",
+                      attrs: { onclick: "plusSlides(1)" },
+                    },
+                    [_vm._v("❯")]
+                  ),
+                ],
+                2
+              )
+            : _vm._e(),
           _vm._v(" "),
           this.audio.length != ""
             ? _c("audio-component", { attrs: { audio: this.audio } })
@@ -31257,43 +31281,18 @@ var render = function () {
               poster: this.poster,
             },
           }),
+          _vm._v(" "),
+          _c("separador-component", { attrs: { texto: "Videos" } }),
+          _vm._v(" "),
+          _c("comentarios", { attrs: { about: this.idpoint } }),
         ],
         1
       ),
-      _vm._v(" "),
-      _c("comentarios", { attrs: { about: this.idpoint } }),
     ],
     1
   )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "slideshow-container" }, [
-      _c("div", { staticClass: "mySlides fade" }, [
-        _c("img", { attrs: { src: "/img/celiaRambla.jpg" } }),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "mySlides fade" }, [
-        _c("img", { attrs: { src: "/img//home/misterio.jpeg" } }),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "mySlides fade" }, [
-        _c("img", { attrs: { src: "/img/home/puntos.jpg" } }),
-      ]),
-      _vm._v(" "),
-      _c("a", { staticClass: "prev", attrs: { onclick: "plusSlides(-1)" } }, [
-        _vm._v("❮"),
-      ]),
-      _vm._v(" "),
-      _c("a", { staticClass: "next", attrs: { onclick: "plusSlides(1)" } }, [
-        _vm._v("❯"),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
