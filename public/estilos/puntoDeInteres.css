@@ -9,11 +9,11 @@
     margin: 0 auto;
 }
 
-#multimedia .separacion .linea{
+.separacion .linea{
     background-color: white !important;
 }
 
-#multimedia .separacion .texto{
+.separacion .texto{
     border: 2px solid white !important;
     color: white !important;
 }
@@ -28,41 +28,6 @@ h1, p, h2, h3{
 
 #contentSection{
     background-color: rgba(0, 0, 0, 0.7);  
-}
-
-/* GALERIA CON EL SWIPER */
-#gallery{
-    width: auto;
-    height: 90vh;
-    margin: 0 auto;
-    overflow: hidden;
-}
-
-#gallery .swiper {
-    width: 100%;
-    height: 100%;
-}
-
-#gallery .swiper-slide {
-    background-position: center;
-    background-size: cover;
-}
-
-#gallery .swiper-slide img {
-    display: block;
-    width: 80%;
-    height: 80vh;
-    overflow: hidden;
-    margin: 0 auto;
-}
-
-#gallery .pointContent{
-    width: 70%;
-    height: 100%;
-    background-color: white;
-    margin: 100px auto 0 auto;
-    z-index: 10;
-    padding: 3em 0 0 0;
 }
 
 /* INFORMACION */

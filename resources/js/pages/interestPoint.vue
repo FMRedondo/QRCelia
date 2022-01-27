@@ -91,10 +91,12 @@ export default{
     },
 
     created() {
-        this.getInterestPoint();
-        this.getResources("image");
-        this.getResources("video");
-        this.getResources("audio");
+        window.addEventListener('DOMContentLoaded', (event) => {
+            this.getInterestPoint();
+        });
+            this.getResources("image");
+            this.getResources("video");
+            this.getResources("audio");
     }
 }
 </script>
@@ -117,18 +119,17 @@ export default{
 }
 
 .prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 3em;
-  transition: 0.3s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    width: auto;
+    padding: 0 16px 0 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 3em;
+    transition: 0.3s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
 }
 
 .next {
@@ -174,4 +175,43 @@ export default{
   from {opacity: .4}
   to {opacity: 1}
 }
+
+@media (max-width: 1050px) {
+    .slideshow-container {
+        height: 50vh;
+    }
+
+    .slide-images img{
+        height: 50vh;
+    }
+}
+
+@media (max-width: 750px) {
+    .slideshow-container {
+        height: 35vh;
+    }
+
+    .slide-images img{
+        height: 35vh;
+    }
+
+    .prev, .next {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 500px) {
+    .slideshow-container {
+        height: 25vh;
+    }
+
+    .slide-images img{
+        height: 25vh;
+    }
+
+    .prev, .next {
+        font-size: 1.5em;
+    }
+}
+
 </style>
