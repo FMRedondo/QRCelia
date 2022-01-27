@@ -31204,8 +31204,6 @@ var render = function () {
               poster: this.poster,
             },
           }),
-          _vm._v(" "),
-          _c("comentarios"),
         ],
         1
       ),

@@ -48,7 +48,7 @@
                 </div>
             </div>
             -->
-            <comentarios></comentarios>
+
         </div>
     </div>
 </template>
