@@ -48,9 +48,8 @@
                 </div>
             </div>
             -->
-
+            <comentarios></comentarios>
         </div>
-        <comentarios></comentarios>
     </div>
 </template>
 
