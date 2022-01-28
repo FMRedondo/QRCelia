@@ -70,7 +70,14 @@ export default{
                 icon.classList.remove("fa-pause");
                 icon.classList.add("fa-play");
             }
+
+            audio.addEventListener("ended", function(){
+                audio.currentTime = 0;
+                icon.classList.remove("fa-pause");
+                icon.classList.add("fa-play")
+            });
         },
+        
     },
 }
 </script>
