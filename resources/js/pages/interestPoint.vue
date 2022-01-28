@@ -1,6 +1,5 @@
 <template>
     <section id="contentSection">
-        <img src="/img/celiaRambla.jpg" class="imagenFondo">
         <header-component></header-component>
         <div class="wrapper">
 
@@ -8,8 +7,8 @@
                 <div class="slide-images fade" v-for="(image,index) in this.images" :key="index">
                     <img :src="image">
                 </div>
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                <a class="prev" v-if="this.images.length > 1" onclick="plusIMG(-1)">&#10094;</a>
+                <a class="next" v-if="this.images.length > 1" onclick="plusIMG(1)">&#10095;</a>
             </div>
                                     
             <audio-component  :audio="this.audio" v-if="this.audio.length != ``"></audio-component>
@@ -18,9 +17,18 @@
 
             <information-component :titulo="this.name" :desc="this.desc" :texto="this.text" :poster="this.poster"></information-component>
                     
-            <separador-component texto='Videos'></separador-component>
+            <separador-component v-if="this.videos.length > 0" texto='Videos'></separador-component>
 
-
+            <div class="slideVideo-container" v-if="this.videos.length > 0">
+                <div class="slide-videos fade" v-for="(videos,index) in this.videos" :key="index">
+                    <video controls>
+                        <source :src="videos">
+                        Tu navegador no es compatible con este formato de video. Por favor, actualízalo.
+                    </video>
+                </div>
+                <a class="videoPrev" v-if="this.videos.length > 1" onclick="plusVideos(-1)">&#10094;</a>
+                <a class="videoNext" v-if="this.videos.length > 1" onclick="plusVideos(1)">&#10095;</a>
+            </div>
 
             <comentarios :about='this.idpoint'></comentarios>
         </div>
@@ -103,27 +111,27 @@ export default{
 
 <style>
 /* SLIDER DE IMAGENES */
-.slideshow-container {
+.slideshow-container, .slideVideo-container {
     height: 70vh;
     width: 75%;
     position: relative;
     margin: 3em auto;
 }
 
-.slide-images {
+.slide-images, .slide-videos {
   display: none;
 }
 
-.slide-images:first-child {
+.slide-images:first-child, .slide-videos:first-child {
   display: block;
 }
 
-.prev, .next {
+.prev, .next, .videoPrev, .videoNext {
     cursor: pointer;
     position: absolute;
     top: 45%;
     width: auto;
-    padding: 0 16px 0 16px;
+    padding: 10px;
     color: white;
     font-weight: bold;
     font-size: 3em;
@@ -132,12 +140,12 @@ export default{
     user-select: none;
 }
 
-.next {
+.next, .videoNext {
   right: 0;
   border-radius: 3px 0 0 3px;
 }
 
-.prev:hover, .next:hover {
+.prev:hover, .next:hover, .videoPrev:hover, .videoNext:hover {
   background-color: rgba(0,0,0,0.8);
 }
 
@@ -146,6 +154,14 @@ export default{
 }
 
 .slide-images img{
+    height: 70vh;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.slide-videos video{
     height: 70vh;
     width: 100%;
     margin: 0 auto;
@@ -177,22 +193,26 @@ export default{
 }
 
 @media (max-width: 1050px) {
-    .slideshow-container {
+    .slideshow-container, .slideVideo-container {
         height: 50vh;
+        width: 100%;
     }
 
-    .slide-images img{
+    .slide-images img, .slide-videos video{
         height: 50vh;
+        width: 100%;
     }
 }
 
 @media (max-width: 750px) {
-    .slideshow-container {
+    .slideshow-container, .slideVideo-container {
         height: 35vh;
+        width: 100%;
     }
 
-    .slide-images img{
+    .slide-images img, .slide-videos video{
         height: 35vh;
+        width: 100%;
     }
 
     .prev, .next {
@@ -201,15 +221,17 @@ export default{
 }
 
 @media (max-width: 500px) {
-    .slideshow-container {
+    .slideshow-container, .slideVideo-container{
         height: 25vh;
+        width: 100%;
     }
 
-    .slide-images img{
+    .slide-images img, .slide-videos video{
         height: 25vh;
+        width: 100%;
     }
 
-    .prev, .next {
+    .prev, .next, .videoPrev, .videoNext {
         font-size: 1.5em;
     }
 }

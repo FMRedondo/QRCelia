@@ -1,31 +1,65 @@
-var slideIndex = 1;
-showSlides(slideIndex);
+/* SLIDE DE IMAGENES */
+var indexIMG = 1;
+  showIMG(indexIMG);
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
+function plusIMG(n) {
+  showIMG(indexIMG += n);
 }
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
+function currentIMG(n) {
+  showIMG(indexIMG = n);
 }
 
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("slide-images");
-  if (n > slides.length)
-    slideIndex = 1
+function showIMG(n) {
+  let i = 0;
+  var images = document.getElementsByClassName("slide-images");
+  if (n > images.length)
+    indexIMG = 1
 
   if (n < 1)
-    slideIndex = slides.length
+    indexIMG = images.length
 
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
+  for (i = 0; i < images.length; i++) {
+    images[i].style.display = "none";
   }
 
-  for (i = 0; i < slides.length; i++) {
-      slides[i].className = slides[i].className.replace(" active", "");
+  for (i = 0; i < images.length; i++) {
+    images[i].className = images[i].className.replace(" active", "");
   }
   
-  slides[slideIndex-1].style.display = "block";
-  slides[slideIndex-1].className += " active";
+  images[indexIMG-1].style.display = "block";
+  images[indexIMG-1].className += " active";
+}
+
+/* SLIDE DE VIDEOS */
+var indexVID = 1;
+  showVideos(indexVID);
+
+function plusVideos(n) {
+  showVideos(indexVID += n);
+}
+
+function plusVideos(n) {
+  showVideos(indexVID = n);
+}
+
+function showVideos(n) {
+  let i = 0;
+  var videos = document.getElementsByClassName("slide-videos");
+  if (n > videos.length)
+    indexVID = 1
+
+  if (n < 1)
+    indexVID = videos.length
+
+  for (i = 0; i < videos.length; i++) {
+    videos[i].style.display = "none";
+  }
+
+  for (i = 0; i < videos.length; i++) {
+    videos[i].className = videos[i].className.replace(" active", "");
+  }
+  
+  videos[indexVID-1].style.display = "block";
+  videos[indexVID-1].className += " active";
 }
