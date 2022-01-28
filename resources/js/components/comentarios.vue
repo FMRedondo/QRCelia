@@ -2,11 +2,11 @@
     <section class="comentarios ultimoElemento" id="comentarios" v-bind:data-id="about">
         <separador-component texto='comentarios'></separador-component>
         <div class="contenidoComentario">
-            <p>Porfavor, si tienes alguna duda o segurencia sobre la web no dude en enviarnos tu sugerencia o contactar en el aula 8. Muchas gracias!</p>
+            <p class="textoComentario">Porfavor, si tienes alguna duda o segurencia sobre la web no dude en enviarnos tu sugerencia o contactar en el aula 8. Muchas gracias!</p>
             <textarea type="text" name="comentario" id="comentario" required></textarea>
             <button id="btn" v-on:click="enviarComentario()"><span>Enviar</span></button>
         </div>
-    </section>
+    </section> 
 </template>
 
 <script>
@@ -17,7 +17,8 @@ export default {
     methods: {
         async enviarComentario(){
             const mensaje = document.getElementById('comentario').value 
-            await fetch('/api/comentarios/addComment',{
+            if (!mensaje.length <= 0){
+                await fetch('/api/comentarios/addComment',{
                 method: 'POST',
                 headers:{
                    "Accept": "application/json",
@@ -25,15 +26,59 @@ export default {
                 },
                 body: JSON.stringify({content: mensaje, id: this.about})
             }).then((response) => {
-                alert(response)
+                const contenido = `
+                    <div id='mensajeAlerta'>
+                       <div class='iconoAlerta'>
+                            <i class="fa-regular fa-circle-check"></i>
+                       </div>
+                       <div class=''contentAlert>
+                            <p class='tituloAlert'>Muchas gracias!</p>
+                            <p class='textoAlert'>Gracias por colaborar en este proyecto sobre nuestro instituto</p>
+                       </div>
+                    </div>
+                `
+                const panel = document.getElementById("comentarios")
+                panel.innerHTML += contenido
+
+                /*const timer = setTimeout(() => {
+                    const ventana = document.getElementById("mensajeAlerta")
+                    ventana.remove()
+                }, 3000);
+                */
+
             })
+            }
         }
     },
 }
 </script>
 
 
-<style scoped>
+<style>
+
+    /* MENSAJE DE ALERTA  */
+
+    #mensajeAlerta{
+        display: flex;
+        position: fixed;
+        color: black !important;
+    }
+
+    .iconoAlerta{
+        width: 30%;
+        background-color: #38C172;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contentAlert{
+        width: 70%;
+        display: flex;
+        align-items: center;
+        background-color: #A2F5BF;
+    }
+
 
     .comentarios{
         width: 100%;
@@ -57,7 +102,7 @@ export default {
     }
 
     p{
-        color: white;
+        color: black;
         margin-bottom: 1em;
         text-align: justify;
     }
@@ -105,6 +150,10 @@ export default {
     .contenidoComentario{
         width: 75%;
         margin: 0 auto
+    }
+
+    .textoComentario{
+        color: white;
     }
 
 

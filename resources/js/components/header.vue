@@ -25,7 +25,7 @@
             </div>
            <div class="icono">
                <i class="fa-solid fa-signs-post"></i>
-                <a href="/puntosDeInteres" @mouseover="imagenMenu('puntos')" @mouseleave="quitarImagen">Puntos de interés</a>
+                <a href="/puntosInteres" @mouseover="imagenMenu('puntos')" @mouseleave="quitarImagen">Puntos de interés</a>
            </div>
            <div class="icono">
                 <i class="fa-solid fa-question"></i>

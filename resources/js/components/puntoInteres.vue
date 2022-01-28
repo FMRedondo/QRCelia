@@ -11,6 +11,10 @@
 </template>
 
 <style scoped>
+    .texto *{
+        color: black !important;
+    }
+
     .puntoInteres{
         width: 100%;
         margin-bottom: 1em;
@@ -21,7 +25,7 @@
     }
 
     .texto{
-        color: black;
+        color: black !important;
     }
 
     .puntoInteres:hover{
@@ -66,6 +70,9 @@
         color: var(--colorSecundario);
     }
 
+    .texto *{
+        color: black !important;
+    }
 
     /* RESPONSIVE */
 

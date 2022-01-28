@@ -42,6 +42,8 @@
 .datosBanner{
     font-size: 4em;
     font-weight: bolder;
+    text-align: center;
+    color: white;
 }
 
 .textoBanner{
@@ -49,6 +51,7 @@
     font-size: 1.15em;
     margin-top: 1.5em;
     text-align: justify;
+    color: white;
 }
 
 .botones{
