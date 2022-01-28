@@ -31388,7 +31388,7 @@ var render = function () {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "datos" },
+            { staticClass: "datos ultimoElemento" },
             _vm._l(this.datos, function (point, index) {
               return _c("punto-interes", {
                 key: index,

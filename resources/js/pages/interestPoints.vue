@@ -4,14 +4,14 @@
         <div class="wrapper">
             <separador-component texto='Puntos de interés'></separador-component>
             <div id="carga">
-                    <carga-punto></carga-punto>
-                    <carga-punto></carga-punto>
-                    <carga-punto></carga-punto>
-                    <carga-punto></carga-punto>
-                    <carga-punto></carga-punto>
-                    <carga-punto></carga-punto>
-                </div>
-            <div class="datos" >
+                <carga-punto></carga-punto>
+                <carga-punto></carga-punto>
+                <carga-punto></carga-punto>
+                <carga-punto></carga-punto>
+                <carga-punto></carga-punto>
+                <carga-punto></carga-punto>
+            </div>
+            <div class="datos ultimoElemento" >
                 <punto-interes v-for="(point, index) in this.datos" :key="index" :titulo=point.name :imagen=point.poster :texto=point.text :descripcion=point.description :enlace=point.enlace ></punto-interes>
             </div>
         </div>
