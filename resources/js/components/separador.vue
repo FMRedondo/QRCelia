@@ -36,6 +36,10 @@
         text-align: center;
     }
 
+    .mt{
+        margin-top: 3em;
+    }
+
      @media (max-width: 1100px){
         .linea{
             width: 10%;

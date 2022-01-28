@@ -17,3 +17,7 @@ Route::get('/puntosInteres', function () {
 Route::get('/puntodeinteres/{id}', function () {
     return view('interestPoint');
 });
+
+Route::get('/creditos', function () {
+    return view('creditos');
+});
