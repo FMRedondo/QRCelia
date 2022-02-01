@@ -31798,6 +31798,16 @@ var render = function () {
                   texto: "texto a elegir por jodamaru",
                 },
               }),
+              _vm._v(" "),
+              _c("persona", {
+                attrs: {
+                  nombre: "Abdelah",
+                  imagen: "https://thispersondoesnotexist.com/image",
+                  textoAlt: "Abdelah",
+                  profesion: "Locutor",
+                  texto: "texto a elegir por Abdelah",
+                },
+              }),
             ],
             1
           ),

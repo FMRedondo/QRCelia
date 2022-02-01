@@ -54,11 +54,12 @@
 }
 
 .bigPanel{
-    width: 90% !important;
-    left: 5% !important;
-    height: 85% !important;
-    top: 10% !important;
+    width: 80% !important;
+    left: 10% !important;
+    height: 92% !important;
+    top: 5% !important;
     padding: 0 !important;
+    overflow-y: scroll;
 }
 
 .resourceCard:hover{
@@ -87,6 +88,11 @@
     right: 10px;
     z-index: 9999999;
 }
+
+.mostrarPanel{
+    display: block !important;
+}
+
 
 
 @media (max-width: 795px) {

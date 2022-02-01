@@ -84,6 +84,17 @@ const index = () => {
             btnEdit[i].addEventListener('click', datosPuntoInteres)
 
         // FALTA HACER EL EVEVENTO PARA LA ACUALIZACION DE LOS DATOS
+
+        const addbtn = document.getElementById("addbtn")
+        addbtn.addEventListener('click', mostrarAñadirPunto)
+
+        const closeWindows = document.getElementById("closeWindows")
+        closeWindows.addEventListener('click', () => {
+            const backpanel = document.getElementById('backpanel')
+            const addPanel = document.getElementById('addPanel')
+            addPanel.classList.toggle("mostrarPanel")
+            backpanel.classList.toggle("mostrarPanel")
+        })
     })
 };
 
@@ -181,9 +192,41 @@ const actualizarDatos = (element) => ajax(
 })
 
 
+const  mostrarAñadirPunto = (element) => {
+   const backpanel = document.getElementById('backpanel')
+   const addPanel = document.getElementById('addPanel')
+   const savePoint = document.getElementById("savePoint")
+   addPanel.classList.toggle("mostrarPanel")
+   backpanel.classList.toggle("mostrarPanel")
+   // quitarle el scroll al document
+
+   savePoint.addEventListener('click', añadirPunto)   
+}
 
 
+const añadirPunto = (event) => {
+    event.preventDefault();
+    let nombre = document.getElementById("typeName").value
+    let desc   = document.getElementById("typeDesc").value
+    let texto  = document.getElementById("texto").value
 
+    ajax({'name': nombre, 'description': desc, 'text': texto, '_token': token}, '/admin/puntosInteres/addPoint', 'POST',  ( response ) => {
+        alert("Se ha subido correctamente")
+        console.log(response)
+    })
 
+    var formData = new FormData()
+    var poster = $("#poster")[0].files[0];
+    formData.append('poster', poster)
+    $.ajax({
+        url: '/admin/puntosInteres/subirPoster',
+        type: 'get',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+            alert(response)
+        }
+    });
 
-
+}

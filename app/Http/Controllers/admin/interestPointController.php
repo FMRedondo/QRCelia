@@ -21,15 +21,23 @@ class interestPointController extends Controller
         $name           = $_POST['name'];
         $description    = $_POST['description'];
         $text           = $_POST['text'];
-        $poster         = $_POST['poster'];
         $date           = DATE("Y-m-d H:i:s");
-        $_token         = $_POST['token'];
+        $_token         = $_POST['_token'];
 
-        $result = interestPointModel::addInterestPoint($name, $description, $text, $poster, $date);
+        $result = interestPointModel::addInterestPoint($name, $description, $text, $date);
         return response() -> json([
             'id' => $result,
             'date' => $date
         ]);
+    }
+
+    public function subirPoster(Request $request){
+        $file = $request -> file('poster');
+        $url = "img/puntosInteres/";
+        $nombreArchivo = time() . "-" . $file -> getClientOriginalName();
+        $subida = $request -> file('poster') -> move($url, $nombreArchivo);
+        echo $nombreArchivo;
+
     }
 
 

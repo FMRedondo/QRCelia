@@ -16,6 +16,7 @@
          <separador-component texto='Colaboradores especiales' class="mt"></separador-component>
              <div class="personas">
                  <persona nombre="Jodamaru" imagen="https://thispersondoesnotexist.com/image" textoAlt='Jodamaru' profesion='Editor de videos' texto='texto a elegir por jodamaru'></persona>
+                 <persona nombre="Abdelah" imagen="https://thispersondoesnotexist.com/image" textoAlt='Abdelah' profesion='Locutor' texto='texto a elegir por Abdelah'></persona>
              </div>
          <div class="ultimoElemento"></div>
        </div>
