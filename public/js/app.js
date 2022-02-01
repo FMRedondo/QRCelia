@@ -11292,7 +11292,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.oculto[data-v-798ca618]{\n    /*animation: ocultarMenu 200ms infinite;*/\n    transition: ease-in-out 20ms;\n    display: flex !important;\n}\n.ocultarDatos[data-v-798ca618]{\n    display: flex !important;\n}\n.header[data-v-798ca618]{\n    width: 100%;\n    height: 100px;\n    z-index: 9999;\n    background-color: transparent;\n    position: relative;\n    z-index: 9;\n}\n.header .wrapper[data-v-798ca618]{\n    display: flex;\n    justify-content: space-between;\n    padding-top: 1em;\n}\n.logo[data-v-798ca618]{\n    width: 10%;\n    display: flex;\n    align-items: center;\n    gap: 1em;\n}\n.logo img[data-v-798ca618]{\n    width:30%;\n}\n.titulo[data-v-798ca618]{\n    font-size: 2.2em;\n    color: white;\n}\n.titulo span[data-v-798ca618]{\n    color: #CBAF87;\n    text-transform: uppercase;\n}\n.header .btnMenu[data-v-798ca618]{\n    width: 50%;\n    display: flex;\n    gap: 1.5em;\n    align-items: center;\n    justify-content: flex-end;\n}\n.header .btnMenu a[data-v-798ca618]{\n    text-decoration: none;\n    color: red;\n    font-weight: bolder;\n    font-size: 1.3em;\n}\nbutton[data-v-798ca618]{\n    border: none;\n    background-color: transparent;\n    color: white;\n    font-size: 2.2em;\n    font-weight: bolder;\n    display: flex;\n    justify-content: center;\n    align-content: center;\n}\n.nav[data-v-798ca618]{\n    width: 100%;\n    height: 100vh;\n    background-color: black;\n    position: fixed;\n    top: 0;\n    right: 0;\n    display: none;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    gap: 2em;\n    font-size: 3.5em;\n    padding: 2em;\n    background-repeat: no-repeat !important;\n    background-size: cover !important;\n    display: none;\n}\n.nav a[data-v-798ca618]{\n    color: black !important;\n    text-decoration: none;\n}\n.nav a:hover + .nav[data-v-798ca618]{\n    background-color: purple !important;\n}\n.closeNav[data-v-798ca618]{\n    position: fixed;\n    top: 0.5em;\n    right: 1.5em;\n}\n.navMovil[data-v-798ca618]{\n    display: none;\n}\n.logo[data-v-798ca618]:focus{\n    border: none !important;\n}\n@media (max-width: 650px){\n.navMovil[data-v-798ca618]{\n        display: block;\n        position: fixed;\n        left: 0;\n        bottom: 0;\n        width: 100%;\n        background-color: #30475E;\n}\n.navMovil .wrapper[data-v-798ca618]{\n        padding: 0.5em;\n        display: flex;\n        gap: 1em;\n        justify-content: space-between;\n}\n.navMovil a[data-v-798ca618]{\n        color: white;\n        font-weight: bolder;\n        text-decoration: none;\n        transform: translateY(-0.5em);\n}\n.activo[data-v-798ca618]{\n        color: var(--colorPrimario) !important;\n}\n.nav[data-v-798ca618]{\n        display: none;\n}\nbutton[data-v-798ca618]{\n        display: none;\n}\n.icono[data-v-798ca618]{\n        display: flex;\n        flex-direction: column;\n        text-align: center;\n        align-items: center;\n        justify-content: center;\n        gap: 0.5em;\n}\n.icono i[data-v-798ca618]{\n        font-size: 1.2em;\n        margin-bottom: 0.2em;\n        color: #CBAF87;\n}\n.icono a[data-v-798ca618]{\n        font-size: 0.8em;\n}\n.logo img[data-v-798ca618]{ \n        width: 3em;\n}\n.header > .wrapper[data-v-798ca618]{\n        justify-content: center;\n        text-align: center !important;\n}\n} \n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.oculto[data-v-798ca618]{\n    /*animation: ocultarMenu 200ms infinite;*/\n    transition: ease-in-out 20ms;\n    display: flex !important;\n}\n.ocultarDatos[data-v-798ca618]{\n    display: flex !important;\n}\n.header[data-v-798ca618]{\n    width: 100%;\n    height: 100px;\n    z-index: 9999;\n    background-color: transparent;\n    position: relative;\n    z-index: 9;\n}\n.header .wrapper[data-v-798ca618]{\n    display: flex;\n    justify-content: space-between;\n    padding-top: 1em;\n    width: 80%;\n    margin: 0 auto;\n}\n.logo[data-v-798ca618]{\n    width: 10%;\n    display: flex;\n    align-items: center;\n    gap: 1em;\n}\n.logo img[data-v-798ca618]{\n    width:30%;\n}\n.titulo[data-v-798ca618]{\n    font-size: 2.2em;\n    color: white;\n}\n.titulo span[data-v-798ca618]{\n    color: #CBAF87;\n    text-transform: uppercase;\n}\n.header .btnMenu[data-v-798ca618]{\n    width: 50%;\n    display: flex;\n    gap: 1.5em;\n    align-items: center;\n    justify-content: flex-end;\n}\n.header .btnMenu a[data-v-798ca618]{\n    text-decoration: none;\n    color: red;\n    font-weight: bolder;\n    font-size: 1.3em;\n}\nbutton[data-v-798ca618]{\n    border: none;\n    background-color: transparent;\n    color: white;\n    font-size: 2.2em;\n    font-weight: bolder;\n    display: flex;\n    justify-content: center;\n    align-content: center;\n}\n.nav[data-v-798ca618]{\n    width: 100%;\n    height: 100vh;\n    background-color: black;\n    position: fixed;\n    top: 0;\n    right: 0;\n    display: none;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    gap: 2em;\n    font-size: 3.5em;\n    padding: 2em;\n    background-repeat: no-repeat !important;\n    background-size: cover !important;\n    display: none;\n}\n.nav a[data-v-798ca618]{\n    color: black !important;\n    text-decoration: none;\n}\n.nav a:hover + .nav[data-v-798ca618]{\n    background-color: purple !important;\n}\n.closeNav[data-v-798ca618]{\n    position: fixed;\n    top: 0.5em;\n    right: 1.5em;\n}\n.navMovil[data-v-798ca618]{\n    display: none;\n}\n.logo[data-v-798ca618]:focus{\n    border: none !important;\n}\n@media (max-width: 650px){\n.navMovil[data-v-798ca618]{\n        display: block;\n        position: fixed;\n        left: 0;\n        bottom: 0;\n        width: 100%;\n        background-color: #30475E;\n}\n.navMovil .wrapper[data-v-798ca618]{\n        padding: 0.5em;\n        display: flex;\n        gap: 1em;\n        justify-content: space-between;\n}\n.navMovil a[data-v-798ca618]{\n        color: white;\n        font-weight: bolder;\n        text-decoration: none;\n        transform: translateY(-0.5em);\n}\n.activo[data-v-798ca618]{\n        color: var(--colorPrimario) !important;\n}\n.nav[data-v-798ca618]{\n        display: none;\n}\nbutton[data-v-798ca618]{\n        display: none;\n}\n.icono[data-v-798ca618]{\n        display: flex;\n        flex-direction: column;\n        text-align: center;\n        align-items: center;\n        justify-content: center;\n        gap: 0.5em;\n}\n.icono i[data-v-798ca618]{\n        font-size: 1.2em;\n        margin-bottom: 0.2em;\n        color: #CBAF87;\n}\n.icono a[data-v-798ca618]{\n        font-size: 0.8em;\n}\n.logo img[data-v-798ca618]{ \n        width: 3em;\n}\n.header > .wrapper[data-v-798ca618]{\n        justify-content: center;\n        text-align: center !important;\n}\n} \n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11388,7 +11388,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.creditos[data-v-7d1cfe86]{\n    background-color: rgba(0, 0, 0, 0.7);\n    min-height: 100vh;\n}\n.wrapper[data-v-7d1cfe86]{\n    width: 80%;\n    margin: 0 auto;\n}\n.margenAbajo[data-v-7d1cfe86]{\n    padding-bottom: 3em;\n}\n\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.creditos[data-v-7d1cfe86]{\n    background-color: rgba(0, 0, 0, 0.7);\n    margin: 0 !important;\n    padding: 0 !important;\n    position: relative;\n}\n.creditos[data-v-7d1cfe86]::before{\n    content: \"\";\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    display: block;\n    background-image: url(/img/celiaRambla.jpg);\n    background-repeat: no-repeat;\n    background-size: cover;\n    z-index: -1;\n    background-attachment: fixed;\n}\n.wrapper[data-v-7d1cfe86]{\n    width: 80%;\n    margin: 0 auto;\n}\n.margenAbajo[data-v-7d1cfe86]{\n    padding-bottom: 3em;\n}\n.personas[data-v-7d1cfe86]{\n    width: 100%;\n    display: flex;\n    flex-wrap: wrap;\n    gap: 2em;\n}\n.personas .persona[data-v-7d1cfe86]{\n    width: 30%;\n}\n@media (max-width: 1600px){\n.personas[data-v-7d1cfe86]{\n        justify-content: center;\n}\n.personas .persona[data-v-7d1cfe86]{\n        width: 45%;\n}\n}\n@media (max-width: 950px){\n.personas .persona[data-v-7d1cfe86]{\n        width: 80%;\n}\n}\n@media (max-width: 650px){\n.personas .persona[data-v-7d1cfe86]{\n        width: 100%;\n}\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -31701,56 +31701,105 @@ var render = function () {
         [
           _c("separador-component", { attrs: { texto: "Desarrolladores" } }),
           _vm._v(" "),
-          _c("persona", {
-            attrs: {
-              nombre: "FMRedondo",
-              imagen: "https://avatars.githubusercontent.com/u/65115094?v=4",
-              textoAlt: "FMRedondo",
-              profesion: "Desarrollador",
-              texto:
-                "FMRedondo es un desarrollador web de QRCelial el cual explota a don francisco javier porque si :)",
-            },
-          }),
-          _vm._v(" "),
-          _c("persona", {
-            attrs: {
-              nombre: "Javi",
-              imagen: "https://avatars.githubusercontent.com/u/74726752?v=4",
-              textoAlt: "Javi",
-              profesion: "Desarrollador",
-              texto:
-                "Enamorado de la pakisima y explotado por FMRedondo. Felix, si esta aqui el mando jajaj",
-            },
-          }),
+          _c(
+            "div",
+            { staticClass: "personas" },
+            [
+              _c("persona", {
+                attrs: {
+                  nombre: "FMRedondo",
+                  imagen:
+                    "https://avatars.githubusercontent.com/u/65115094?v=4",
+                  textoAlt: "FMRedondi",
+                  profesion: "Desarrollador",
+                  texto:
+                    "Desarrollador web que esta explotando a javi para que programe todo QRCelia",
+                },
+              }),
+              _vm._v(" "),
+              _c("persona", {
+                attrs: {
+                  nombre: "Javi",
+                  imagen:
+                    "https://avatars.githubusercontent.com/u/74726752?v=4",
+                  textoAlt: "Javi",
+                  profesion: "Desarrollador",
+                  texto:
+                    "Enamorado de la pakisima y explotado por FMRedondo. Felix, si esta aqui el mando jajaj",
+                },
+              }),
+              _vm._v(" "),
+              _c("persona", {
+                attrs: {
+                  nombre: "Pablo",
+                  imagen:
+                    "https://avatars.githubusercontent.com/u/43436415?v=4",
+                  textoAlt: "Pablo",
+                  profesion: "Desarrollador",
+                  texto: "Desarrollador de QRCelia",
+                },
+              }),
+            ],
+            1
+          ),
           _vm._v(" "),
           _c("separador-component", {
             staticClass: "mt",
             attrs: { texto: "profesores" },
           }),
           _vm._v(" "),
-          _c("persona", {
-            attrs: {
-              nombre: "Félix Expósito López",
-              imagen: "https://thispersondoesnotexist.com/image",
-              textoAlt: "felix",
-              profesion: "Profesor",
-              texto:
-                "Tutor de el alumnado de 2 de DAW y profesor de interfaces y frontend",
-            },
+          _c(
+            "div",
+            { staticClass: "personas" },
+            [
+              _c("persona", {
+                attrs: {
+                  nombre: "Félix Expósito López",
+                  imagen: "/img/creditos/felix.png",
+                  textoAlt: "felix",
+                  profesion: "Profesor",
+                  texto:
+                    "Tutor de el alumnado de 2 de DAW y profesor de interfaces y frontend",
+                },
+              }),
+              _vm._v(" "),
+              _c("persona", {
+                attrs: {
+                  nombre: "Alfredo Moreno Vozmediano",
+                  imagen: "https://thispersondoesnotexist.com/image",
+                  textoAlt: "alfredo",
+                  profesion: "Profesor",
+                  texto:
+                    "Encagargado del seguimiento del proyecto y profesor de backend",
+                },
+              }),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("separador-component", {
+            staticClass: "mt",
+            attrs: { texto: "Colaboradores especiales" },
           }),
           _vm._v(" "),
-          _c("persona", {
-            attrs: {
-              nombre: "Alfredo Moreno Vozmediano",
-              imagen: "https://thispersondoesnotexist.com/image",
-              textoAlt: "alfredo",
-              profesion: "Profesor",
-              texto:
-                "Encagargado del seguimiento del proyecto y profesor de backend",
-            },
-          }),
+          _c(
+            "div",
+            { staticClass: "personas" },
+            [
+              _c("persona", {
+                attrs: {
+                  nombre: "Jodamaru",
+                  imagen: "https://thispersondoesnotexist.com/image",
+                  textoAlt: "Jodamaru",
+                  profesion: "Editor de videos",
+                  texto: "texto a elegir por jodamaru",
+                },
+              }),
+            ],
+            1
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "margenAbajo" }),
+          _c("div", { staticClass: "ultimoElemento" }),
         ],
         1
       ),

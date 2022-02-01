@@ -120,6 +120,8 @@
         display: flex;
         justify-content: space-between;
         padding-top: 1em;
+        width: 80%;
+        margin: 0 auto;
     }
 
     .logo{
@@ -214,7 +216,6 @@
     .logo:focus{
         border: none !important;
     }
-
 
     @media (max-width: 650px){
         .navMovil{
