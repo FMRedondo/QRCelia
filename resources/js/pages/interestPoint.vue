@@ -21,10 +21,7 @@
 
             <div class="slideVideo-container" v-if="this.videos.length > 0">
                 <div class="slide-videos fade" v-for="(videos,index) in this.videos" :key="index">
-                    <video controls>
-                        <source :src="videos">
-                        Tu navegador no es compatible con este formato de video. Por favor, actualízalo.
-                    </video>
+                    <video :src="videos" controls></video>
                 </div>
                 <a class="videoPrev" v-if="this.videos.length > 1" onclick="plusVideos(-1)">&#10094;</a>
                 <a class="videoNext" v-if="this.videos.length > 1" onclick="plusVideos(1)">&#10095;</a>
