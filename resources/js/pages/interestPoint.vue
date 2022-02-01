@@ -107,6 +107,9 @@ export default{
 </script>
 
 <style>
+#contentSection{
+    min-height: 100%;
+}
 /* SLIDER DE IMAGENES */
 .slideshow-container, .slideVideo-container {
     height: 70vh;

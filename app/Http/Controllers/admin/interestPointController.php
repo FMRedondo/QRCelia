@@ -17,12 +17,12 @@ class interestPointController extends Controller
         return view('admin/verPuntoInteres');
     }
 
-    public function addInterestPoint(){
-        $name           = $_POST['name'];
-        $description    = $_POST['description'];
-        $text           = $_POST['text'];
+    public function addInterestPoint(Request $request){
+        $name           = $request['name'];
+        $description    = $request['description'];
+        $text           = $request['text'];
         $date           = DATE("Y-m-d H:i:s");
-        $_token         = $_POST['_token'];
+        $_token         = $request['_token'];
 
         $result = interestPointModel::addInterestPoint($name, $description, $text, $date);
         return response() -> json([

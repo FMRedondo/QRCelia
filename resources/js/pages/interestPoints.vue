@@ -77,6 +77,7 @@ export default {
         margin: 0 !important;
         padding: 0 !important;
         position: relative;
+        min-height: 100%;
     }
 
     .interestPoints::before{
