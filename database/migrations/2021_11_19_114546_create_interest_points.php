@@ -18,10 +18,9 @@ class CreateInterestPoints extends Migration
             $table -> string('name');
             $table -> string('description');
             $table -> longText('text');
-            $table -> string('url');
             $table -> string('poster');
             $table -> string('author');
-            $table -> number('asociado');
+            $table -> bigInteger('asociado');
             $table -> timestamps();
         });
     }
