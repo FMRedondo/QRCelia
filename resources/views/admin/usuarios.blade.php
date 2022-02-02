@@ -79,6 +79,8 @@
         </div>
     </div>
 
+    <div class='backPanel' id="backpanel"></div>
+
     </section>
 @stop
 
