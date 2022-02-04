@@ -27,3 +27,5 @@ Route::post('/puntodeinteres/getResources', [interestPointController::class, 'ge
 Route::post('/puntosInteres/getPoints', [interestPointController::class, 'getInterestPoints']);
 
 Route::post('/comentarios/addComment', [CommentController::class, 'addComment'])-> name('add.comments');
+
+Route::post('/puntosInteres/subirPoster', [interestPointController::class, 'subirPoster'])-> name('subir.poster');

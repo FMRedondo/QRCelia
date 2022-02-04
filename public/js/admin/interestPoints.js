@@ -141,6 +141,12 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
         </div>`;
 
     resourceList.innerHTML = content;
+    var editor = CKEDITOR.replace('editor1', { 
+		filebrowserImageUploadUrl :"/picture/editor/upload/1",
+		removePlugins:'elementspath,resize',
+		codeSnippet_theme: 'zenburn',
+		height:'600'
+	}); 
     const modifyPanel = document.querySelector(".modifyPanel ")
     const backPanel = document.querySelector(".backPanel")
     backPanel.style.display = "block"
@@ -208,7 +214,8 @@ const añadirPunto = (event) => {
     event.preventDefault();
     let nombre = document.getElementById("typeName").value
     let desc   = document.getElementById("typeDesc").value
-    let texto  = document.getElementById("texto").value
+    let texto  = CKEDITOR.instances['texto'].getData();
+    alert(texto)
 
     ajax({'name': nombre, 'description': desc, 'text': texto, '_token': token}, '/admin/puntosInteres/addPoint', 'POST',  ( response ) => {
         alert("Se ha subido correctamente")
@@ -216,17 +223,13 @@ const añadirPunto = (event) => {
     })
 
     var formData = new FormData()
-    var poster = $("#poster")[0].files[0];
-    formData.append('poster', poster)
-    $.ajax({
-        url: '/admin/puntosInteres/subirPoster',
-        type: 'get',
-        data: formData,
-        contentType: false,
-        processData: false,
-        success: function(response) {
-            alert(response)
-        }
-    });
+    var poster = document.getElementById('poster').files;
+    formData.append('poster', poster[0])
+    fetch('/api/puntosInteres/subirPoster', {
+        method: 'post',
+        body: formData
+    }).then (response => {
+        console.log(response)
+    })
 
 }

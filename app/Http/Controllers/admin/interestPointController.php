@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\admin\interestPointModel;
+use Illuminate\Support\Facades\DB;
 
 class interestPointController extends Controller
 {
@@ -17,7 +18,7 @@ class interestPointController extends Controller
         return view('admin/verPuntoInteres');
     }
 
-    public function addInterestPoint(){
+    public function addInterestPoint(Request $request){
         $name           = $_POST['name'];
         $description    = $_POST['description'];
         $text           = $_POST['text'];
@@ -25,18 +26,23 @@ class interestPointController extends Controller
         $_token         = $_POST['_token'];
 
         $result = interestPointModel::addInterestPoint($name, $description, $text, $date);
+        $this -> subirPoster($request, $result);
+
         return response() -> json([
             'id' => $result,
             'date' => $date
         ]);
+
     }
 
-    public function subirPoster(Request $request){
+    public function subirPoster(Request $request, $id){
         $file = $request -> file('poster');
-        $url = "img/puntosInteres/";
+         $url = "img/puntosInteres/";
         $nombreArchivo = time() . "-" . $file -> getClientOriginalName();
         $subida = $request -> file('poster') -> move($url, $nombreArchivo);
-        echo $nombreArchivo;
+
+        interestPointModel::updateInterestPoint($id, 'poster', $nombreArchivo);
+        
 
     }
 
