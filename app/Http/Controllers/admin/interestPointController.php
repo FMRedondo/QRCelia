@@ -23,7 +23,7 @@ class interestPointController extends Controller
         $description    = $_POST['description'];
         $text           = $_POST['text'];
         $date           = DATE("Y-m-d H:i:s");
-        $_token         = $_POST['_token'];
+        $_token         = $request['_token'];
 
         $result = interestPointModel::addInterestPoint($name, $description, $text, $date);
         $this -> subirPoster($request, $result);

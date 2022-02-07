@@ -18,8 +18,8 @@ class CreateResources extends Migration
             $table->enum('type',['image','audio','video']);
             $table->string('name');
             $table->string('url');
-            $table->string('autor');
-            $table->string('user');
+            $table->string('autor') -> nullable();
+            $table->string('user') -> nullable();
             $table->timestamps();
         });
     }

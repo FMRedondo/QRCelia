@@ -141,12 +141,8 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
         </div>`;
 
     resourceList.innerHTML = content;
-    var editor = CKEDITOR.replace('editor1', { 
-		filebrowserImageUploadUrl :"/picture/editor/upload/1",
-		removePlugins:'elementspath,resize',
-		codeSnippet_theme: 'zenburn',
-		height:'600'
-	}); 
+    
+
     const modifyPanel = document.querySelector(".modifyPanel ")
     const backPanel = document.querySelector(".backPanel")
     backPanel.style.display = "block"
@@ -161,6 +157,8 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
     const inputActualizar  = document.getElementsByClassName("editInput");
         for(let i = 0; i < inputActualizar.length; i++)
             inputActualizar[i].addEventListener('change', actualizarDatos)
+
+    var editor = CKEDITOR.replace('editor1')
 
 });
 

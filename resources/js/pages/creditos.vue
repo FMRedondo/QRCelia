@@ -11,7 +11,7 @@
          <separador-component texto='profesores' class="mt"></separador-component>
          <div class="personas">
              <persona nombre="Félix Expósito López" imagen="/img/creditos/felix.png" textoAlt='felix' profesion='Profesor' texto='Tutor de el alumnado de 2 de DAW y profesor de interfaces y frontend'></persona>
-            <persona nombre="Alfredo Moreno Vozmediano" imagen="https://thispersondoesnotexist.com/image" textoAlt='alfredo' profesion='Profesor' texto='Encagargado del seguimiento del proyecto y profesor de backend'></persona>
+            <persona nombre="Alfredo Moreno Vozmediano" imagen="https://avatars.githubusercontent.com/u/25744642?v=4" textoAlt='alfredo' profesion='Profesor' texto='Encagargado del seguimiento del proyecto y profesor de backend'></persona>
          </div>
          <separador-component texto='Colaboradores especiales' class="mt"></separador-component>
              <div class="personas">

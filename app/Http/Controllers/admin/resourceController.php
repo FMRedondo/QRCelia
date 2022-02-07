@@ -32,7 +32,7 @@ class ResourceController extends Controller
         $name = $_POST['name'];
         $url = $_POST['url'];
         $autor = $_POST['autor'];
-        $user = $_POST['user'];
+        $user = auth()->user()-> name;
         $date = DATE("Y-m-d H:i:s");
         $result = ResourceModel::addResource($type,$name,$url,$autor,$user,$date);
         return response()->json([

@@ -89,6 +89,9 @@ function showAddType() {
     $(".addPanel").toggle();
     $(".typeName").val("");
     $(".backPanel").show();
+    $(".closeWindowAddType").click(function () {
+        $(".backPanel").hide();
+    })
 }
 
 // Funcion para añadir una nueva categoria
@@ -139,8 +142,7 @@ function addType(){
             $(".btnDelType").click(showDelType);
             $(".btnShowEditType").off();
             $(".btnShowEditType").click(showEditType);
-            $(".backPanel").hide();
-         },
+        },
 
          error: function (response) {
             alert("Error en la peticion");

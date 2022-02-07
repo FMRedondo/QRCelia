@@ -13,7 +13,6 @@ function currentIMG(n) {
 function showIMG(n) {
   let i = 0;
   var images = document.getElementsByClassName("slide-images");
-  console.log(images);
   if (n > images.length)
     indexIMG = 1
 
@@ -47,7 +46,6 @@ function currentVideos(n) {
 function showVideos(n) {
   let i = 0;
   var videos = document.getElementsByClassName("slide-videos");
-  console.log(videos);
   if (n > videos.length)
     indexVID = 1
 
