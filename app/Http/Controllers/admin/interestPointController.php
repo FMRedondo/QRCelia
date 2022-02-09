@@ -35,13 +35,13 @@ class interestPointController extends Controller
 
     }
 
-    public function subirPoster(Request $request, $id){
+    public function subirPoster(Request $request){
         $file = $request -> file('poster');
          $url = "img/puntosInteres/";
         $nombreArchivo = time() . "-" . $file -> getClientOriginalName();
         $subida = $request -> file('poster') -> move($url, $nombreArchivo);
 
-        interestPointModel::updateInterestPoint($id, 'poster', $nombreArchivo);
+        //interestPointModel::updateInterestPoint($id, 'poster', $nombreArchivo);
         
 
     }

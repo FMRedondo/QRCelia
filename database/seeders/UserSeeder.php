@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class UserSeeder extends Seeder
 {
@@ -14,10 +14,11 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+        User::create([
             'name' => 'admin',
-            'email' => 'admin@qrcelia.celia',
-            'password' => bcrypt('qrcelia'),
-        ]);
+            'email' => 'admin@qrcelia.com',
+            'password' => bcrypt('CeliaAdministrador')
+        ]) ->assignRole('administrador');
+       
     }
 }

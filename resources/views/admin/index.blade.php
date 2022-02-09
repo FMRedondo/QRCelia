@@ -7,6 +7,7 @@
 
 @section('content')
 
+
     <section class="atajos">
         <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2 atajo graficaContenido">
             <canvas id="contenidoPuntos" width="100%" height="50%"></canvas>

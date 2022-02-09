@@ -193,13 +193,15 @@ const añadirPunto = (event) => {
     event.preventDefault();
     let nombre = document.getElementById("typeName").value
     let desc   = document.getElementById("typeDesc").value
-    let texto  = CKEDITOR.instances['texto'].getData();
+    let texto  = CKEDITOR.instances['texto'].getData()
     alert(texto)
-
+/*
     ajax({'name': nombre, 'description': desc, 'text': texto, '_token': token}, '/admin/puntosInteres/addPoint', 'POST',  ( response ) => {
         alert("Se ha subido correctamente")
         console.log(response)
     })
+
+    */
 
     var formData = new FormData()
     var poster = document.getElementById('poster').files;
@@ -210,5 +212,7 @@ const añadirPunto = (event) => {
     }).then (response => {
         console.log(response)
     })
+
+    
 
 }
