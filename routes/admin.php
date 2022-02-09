@@ -12,60 +12,60 @@ use App\Http\Controllers\admin\resourceUploadController;
 
 Route::get('/', function () {
     return view('admin/index');
-});
+})-> middleware('can:ver_administracion');
 
 Route::get('/ajustes', function () {
     return view('admin/ajustes');
-});
+})-> middleware('can:ver_administracion');
 
 Route::get('/personalizar', function () {
     return view('admin/personalizar');
-});
+})-> middleware('can:ver_administracion');
 
 Route::get('/roles', function () {
     return view('admin/roles');
-});
+})-> middleware('can:ver_administracion');
 
-Route::get('/verDatosContenido', [panelesController::class, 'datosPanelContenido'])-> name('verContenido.panel');
-
-
-Route::get('/puntosInteres', [interestPointController::class, 'index'])-> name('show.interestPoints'); 
-Route::get('/puntosInteres/getPoints', [interestPointController::class, 'getInterestPoints'])-> name('get.interestPoints');
-Route::post('/verPuntoInteres', [interestPointController::class, 'verEditarPuntosInteres'])-> name('verEditar.interestPoints');
-Route::post('/puntosInteres/getPoint', [interestPointController::class, 'getInterestPoint'])-> name('get.interestPoint');
-Route::post('/puntosInteres/editPoint', [interestPointController::class, 'updateInterestPoint'])-> name('update.interestPoint');
-Route::post('/puntosInteres/addPoint', [interestPointController::class, 'addInterestPoint'])-> name('add.interestPoint');
+Route::get('/verDatosContenido', [panelesController::class, 'datosPanelContenido'])-> name('verContenido.panel')-> middleware('can:ver_administracion');
 
 
-Route::get('/comentarios', [CommentController::class, 'index'])-> name('show.viewComments');
-Route::get('/comentarios/getComments', [CommentController::class, 'getComments'])-> name('show.comments');
-Route::post('/comentarios/searchcomments', [CommentController::class, 'searchcomments'])-> name('search.comments');
-Route::post('/comentarios/deleteComments', [CommentController::class, 'deleteComment'])-> name('delete.comments');
-
-Route::get('/categorias', [TypeController::class, 'index'])-> name('show.viewTypes');
-Route::get('/categorias/getTypes', [TypeController::class, 'getTypes'])-> name('show.types');
-Route::post('/categorias/addType', [TypeController::class, 'addType'])-> name('add.type');
-Route::post('/categorias/deleteType', [TypeController::class, 'deleteType'])-> name('delete.type');
-Route::post('/categorias/searchType', [TypeController::class, 'searchType'])-> name('search.type');
-Route::post('/categorias/getType', [TypeController::class, 'getType']) -> name('get.type');
-Route::post('/categorias/editType', [TypeController::class, 'updateType']) -> name('edit.type');
-
-Route::get('/recursos', [ResourceController::class, 'index'])-> name('show.viewResources');
-Route::post('/recursos', [resourceUploadController::class, 'addResource'])-> name('upload.resource');
-Route::get('/recursos/getResources', [ResourceController::class, 'getResources'])-> name('show.resource');
-Route::post('/recursos/addResource', [ResourceController::class, 'addResource'])-> name('add.resource');
-Route::post('/recursos/deleteResource', [ResourceController::class, 'deleteResource'])-> name('delete.resource');
-Route::post('/recursos/searchResource', [ResourceController::class, 'searchResource'])-> name('search.resource');
-Route::post('/recursos/getResource', [ResourceController::class, 'getResource']) -> name('get.resource');
-Route::post('/recursos/editResource', [ResourceController::class, 'updateResource']) -> name('edit.resource');
-Route::post('/recursos/searchByType', [ResourceController::class, 'searchByType'])-> name('searchByType.resource');
-Route::post('/recursos/changeResource', [ResourceController::class, 'changeResource'])-> name('changeResource.resource');
+Route::get('/puntosInteres', [interestPointController::class, 'index'])-> name('show.interestPoints')-> middleware('can:ver_administracion'); 
+Route::get('/puntosInteres/getPoints', [interestPointController::class, 'getInterestPoints'])-> name('get.interestPoints')-> middleware('can:ver_administracion');
+Route::post('/verPuntoInteres', [interestPointController::class, 'verEditarPuntosInteres'])-> name('verEditar.interestPoints')-> middleware('can:ver_administracion');
+Route::post('/puntosInteres/getPoint', [interestPointController::class, 'getInterestPoint'])-> name('get.interestPoint')-> middleware('can:ver_administracion');
+Route::post('/puntosInteres/editPoint', [interestPointController::class, 'updateInterestPoint'])-> name('update.interestPoint')-> middleware('can:ver_administracion');
+Route::post('/puntosInteres/addPoint', [interestPointController::class, 'addInterestPoint'])-> name('add.interestPoint')-> middleware('can:ver_administracion');
 
 
-Route::get('/usuarios', [customUsersController::class, 'index'])-> name('show.viewUsers');
-Route::get('/usuarios/getUsers', [customUsersController::class, 'getUsers'])-> name('show.users');
-Route::post('/usuarios/addUser', [customUsersController::class, 'addUser'])-> name('add.user');
-Route::post('/usuarios/deleteUser', [customUsersController::class, 'deleteUser'])-> name('delete.user');
-Route::post('/usuarios/searchUsers', [customUsersController::class, 'searchUsers'])-> name('search.users');
-Route::post('/usuarios/getUser', [customUsersController::class, 'getUser']) -> name('get.user');
-Route::post('/usuarios/editUser', [customUsersController::class, 'updateUser']) -> name('edit.user');
+Route::get('/comentarios', [CommentController::class, 'index'])-> name('show.viewComments')-> middleware('can:ver_administracion');
+Route::get('/comentarios/getComments', [CommentController::class, 'getComments'])-> name('show.comments')-> middleware('can:ver_administracion');
+Route::post('/comentarios/searchcomments', [CommentController::class, 'searchcomments'])-> name('search.comments')-> middleware('can:ver_administracion');
+Route::post('/comentarios/deleteComments', [CommentController::class, 'deleteComment'])-> name('delete.comments')-> middleware('can:ver_administracion');
+
+Route::get('/categorias', [TypeController::class, 'index'])-> name('show.viewTypes')-> middleware('can:ver_administracion');
+Route::get('/categorias/getTypes', [TypeController::class, 'getTypes'])-> name('show.types')-> middleware('can:ver_administracion');
+Route::post('/categorias/addType', [TypeController::class, 'addType'])-> name('add.type')-> middleware('can:ver_administracion');
+Route::post('/categorias/deleteType', [TypeController::class, 'deleteType'])-> name('delete.type')-> middleware('can:ver_administracion');
+Route::post('/categorias/searchType', [TypeController::class, 'searchType'])-> name('search.type')-> middleware('can:ver_administracion');
+Route::post('/categorias/getType', [TypeController::class, 'getType']) -> name('get.type')-> middleware('can:ver_administracion');
+Route::post('/categorias/editType', [TypeController::class, 'updateType']) -> name('edit.type')-> middleware('can:ver_administracion');
+
+Route::get('/recursos', [ResourceController::class, 'index'])-> name('show.viewResources')-> middleware('can:ver_administracion');
+Route::post('/recursos', [resourceUploadController::class, 'addResource'])-> name('upload.resource')-> middleware('can:ver_administracion');
+Route::get('/recursos/getResources', [ResourceController::class, 'getResources'])-> name('show.resource')-> middleware('can:ver_administracion');
+Route::post('/recursos/addResource', [ResourceController::class, 'addResource'])-> name('add.resource')-> middleware('can:ver_administracion');
+Route::post('/recursos/deleteResource', [ResourceController::class, 'deleteResource'])-> name('delete.resource')-> middleware('can:ver_administracion');
+Route::post('/recursos/searchResource', [ResourceController::class, 'searchResource'])-> name('search.resource')-> middleware('can:ver_administracion');
+Route::post('/recursos/getResource', [ResourceController::class, 'getResource']) -> name('get.resource')-> middleware('can:ver_administracion');
+Route::post('/recursos/editResource', [ResourceController::class, 'updateResource']) -> name('edit.resource')-> middleware('can:ver_administracion');
+Route::post('/recursos/searchByType', [ResourceController::class, 'searchByType'])-> name('searchByType.resource')-> middleware('can:ver_administracion');
+Route::post('/recursos/changeResource', [ResourceController::class, 'changeResource'])-> name('changeResource.resource')-> middleware('can:ver_administracion');
+
+
+Route::get('/usuarios', [customUsersController::class, 'index'])-> name('show.viewUsers')-> middleware('can:ver_administracion');
+Route::get('/usuarios/getUsers', [customUsersController::class, 'getUsers'])-> name('show.users')-> middleware('can:ver_administracion');
+Route::post('/usuarios/addUser', [customUsersController::class, 'addUser'])-> name('add.user')-> middleware('can:ver_administracion');
+Route::post('/usuarios/deleteUser', [customUsersController::class, 'deleteUser'])-> name('delete.user')-> middleware('can:ver_administracion');
+Route::post('/usuarios/searchUsers', [customUsersController::class, 'searchUsers'])-> name('search.users')-> middleware('can:ver_administracion');
+Route::post('/usuarios/getUser', [customUsersController::class, 'getUser']) -> name('get.user')-> middleware('can:ver_administracion');
+Route::post('/usuarios/editUser', [customUsersController::class, 'updateUser']) -> name('edit.user')-> middleware('can:ver_administracion');
