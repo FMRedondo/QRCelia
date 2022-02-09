@@ -23,7 +23,7 @@
                 </p>
                 <div class="botones">
                     <a href="/puntosInteres" class="boton"><span>Descubre más</span></a>
-                    <a href="/QRMisterioso" class="boton"><span>QR Misterioso</span></a>
+                    <!-- <a href="/QRMisterioso" class="boton"><span>QR Misterioso</span></a> -->
                 </div>
             </div>
         </div>

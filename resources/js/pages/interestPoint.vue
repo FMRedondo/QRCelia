@@ -27,7 +27,7 @@
                 <a class="videoNext" v-if="this.videos.length > 1" onclick="plusVideos(1)">&#10095;</a>
             </div>
 
-            <comentarios :about='this.idpoint'></comentarios>
+            <!-- <comentarios :about='this.idpoint'></comentarios> -->
         </div>
     </section>
 </template>

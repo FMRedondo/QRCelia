@@ -50,26 +50,7 @@ const index = () => {
                         </h2>
                         <p class="description text-gray-600 font-light text-md mb-3" id=${data.description} data-field='description'>
                         ${data.description}
-                        </p>
-                        <div class="py-4 border-t border-b text-xs text-gray-700">
-                            <div class="grid grid-cols-6 gap-1">
-                                <div class="col-span-2">
-                                    Beds:
-                                    <span
-                                        class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-400 rounded-full">3</span>
-                                </div>
-                                <div class="col-span-2">
-                                    Bathrooms:
-                                    <span
-                                        class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-green-400 rounded-full">2</span>
-                                </div>
-                                <div class="col-span-2">
-                                    Area:
-                                    <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-blue-400 rounded-full">110m <sup>2</sup></span>
-                                </div>
-                            </div>
-                        </div>
-        
+                        </p>        
                         <div class="flex items-center mt-2 flex-row-reverse">
                             <button class="btn btn-success rounded-circle flex editButton fa-solid fa-pen-to-square" data-id=${data.id}></button>
                         </div>

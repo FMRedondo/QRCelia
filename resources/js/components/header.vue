@@ -5,16 +5,18 @@
                 <img src="/img/escudoCelia.png" alt="logo IES Celia Viñas">
                 <h1 class="titulo"><span>qr</span>Celia</h1>
             </a>
+            <!--
             <div class="btnMenu">
                 <button @click="desplegarMenu" ><i class="fas fa-bars"></i></button>
             </div>
+            -->
        </div>
 
         <nav class="nav" id="nav">
             <i class="far fa-times-circle closeNav" @click="cerrarMenu"></i>
             <a href="/" @mouseover="imagenMenu('inicio')"  @mouseleave="quitarImagen">Inicio</a>
             <a href="/puntosDeInteres" @mouseover="imagenMenu('puntos')" @mouseleave="quitarImagen">Puntos de interés</a>
-            <a href="/QRMisterioso" @mouseover="imagenMenu('misterioso')" @mouseleave="quitarImagen">QR Misterioso</a>
+            <!-- <a href="/QRMisterioso" @mouseover="imagenMenu('misterioso')" @mouseleave="quitarImagen">QR Misterioso</a> -->
             <a href="/creditos" @mouseover="imagenMenu('creditos')" @mouseleave="quitarImagen">Créditos</a>
         </nav>
         <nav class='navMovil' id='navMovil'>
@@ -29,7 +31,7 @@
            </div>
            <div class="icono">
                 <i class="fa-solid fa-question"></i>
-                <a href="/QRMisterioso" @mouseover="imagenMenu('misterioso')" @mouseleave="quitarImagen">QR Misterioso</a>
+                <!-- <a href="/QRMisterioso" @mouseover="imagenMenu('misterioso')" @mouseleave="quitarImagen">QR Misterioso</a> -->
            </div>
             <div class="icono">
                 <i class="fa-solid fa-users"></i>

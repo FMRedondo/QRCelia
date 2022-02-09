@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\admin\interestPointModel;
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\admin\qrCodeController;
 
 class interestPointController extends Controller
 {
@@ -26,7 +26,7 @@ class interestPointController extends Controller
         $_token         = $request['_token'];
 
         $result = interestPointModel::addInterestPoint($name, $description, $text, $date);
-        $this -> subirPoster($request, $result);
+        //$this -> subirPoster($request, $result);
 
         return response() -> json([
             'id' => $result,
@@ -61,8 +61,8 @@ class interestPointController extends Controller
     public function getInterestPoint(Request $request){
         $id =  $request -> id;
         $result = interestPointModel::getInterestPoint($id);
+        //$qr = qrCodeController::generateQR("https://iescelia.org/qrcelia/puntodeinteres/".$id);
         return response() -> json($result);
-
     }
 
 
