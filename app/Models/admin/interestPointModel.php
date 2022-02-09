@@ -50,4 +50,10 @@ class interestPointModel extends Model
         $result = DB::select($sql);
         return $result;
     }
+
+    public static function getIdsFromPoints(){
+        $sql = "SELECT id FROM interest_points";
+        $result = DB::select($sql);
+        return $result;
+    }
 }

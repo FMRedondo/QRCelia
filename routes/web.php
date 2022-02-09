@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\interestPointController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,3 +22,4 @@ Route::get('/puntodeinteres/{id}', function () {
 Route::get('/creditos', function () {
     return view('creditos');
 });
+

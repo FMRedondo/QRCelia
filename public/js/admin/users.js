@@ -64,7 +64,7 @@ function load() {
                         </td>                 
 
                         <td class="px-4 py-3 text-xs border">
-                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regUserPassword"> ${data.password} </span>
+                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regUserPassword"> ********** </span>
                         </td>
 
                         <td class="px-4 py-3 text-sm border d-flex flex-row justify-content-around">
@@ -77,7 +77,7 @@ function load() {
             })
             $(".btnShowEditUser").click(showEditUser);
             $(".btnDelUser").click(showDelUser);
-            $(".searchUser").keyup(searchUser);
+            $(".searchUsers").keyup(searchUsers);
         },
 
         error: function (response){
@@ -126,32 +126,32 @@ function addUser(){
                 var newContent = `
                 <tr class="text-gray-700" id="${response.id}">
                     <td class="px-4 py-3 border">
-                        <div class="flex items-center text-sm" style="overflow:scroll";>
+                        <div class="flex items-center text-sm">
                             <div class="relative w-8 h-8 mr-3 rounded-full md:block">
                                 <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true">
                                 </div>
                             </div>
                             <div>
-                            <p class="font-semibold text-black regUserName">${data.name}</p>
+                                <p class="font-semibold text-black regUserName">${name}</p>
+                            </div>
                         </div>
-                    </div>
-                </td>
+                    </td>
 
-                <td class="px-4 py-3 text-xs border">
-                    <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regUserEmail"> ${data.email} </span>
-                </td>                 
+                    <td class="px-4 py-3 text-xs border">
+                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regUserEmail"> ${email} </span>
+                    </td>                 
 
-                <td class="px-4 py-3 text-xs border">
-                    <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regUserPassword"> ${data.password} </span>
-                </td>
+                    <td class="px-4 py-3 text-xs border">
+                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regUserPassword"> ********** </span>
+                    </td>
 
-                <td class="px-4 py-3 text-sm border d-flex flex-row justify-content-around">
-                    <button type="button" class="btn btn-primary btnShowEditUser" data-id='${data.id}'>Modificar</button>
-                    <button type="button" class="btn btn-danger btnDelUser" data-id='${data.id}'>Eliminar</button>
-                </td>
-            </tr>
-        
-        `;
+                    <td class="px-4 py-3 text-sm border d-flex flex-row justify-content-around">
+                        <button type="button" class="btn btn-primary btnShowEditUser" data-id='${response.id}'>Modificar</button>
+                        <button type="button" class="btn btn-danger btnDelUser" data-id='${response.id}'>Eliminar</button>
+                    </td>
+                </tr>
+            `;
+
             $("tbody").append(newContent);
             $(".btnShowEditUser").click(showEditUser);
             $(".btnDelUser").click(showDelUser);
@@ -192,6 +192,7 @@ function showDelUser() {
                     $(route).remove();
                     $(".delUserPanel").hide();
                     $(".backPanel").show();
+                    $(".backPanel").hide();
                 },
                 error: function (response) {
                     alert("Error en la peticion");            
@@ -200,7 +201,7 @@ function showDelUser() {
         }
         if (!($(this).data("val")))
             $(".delUserPanel").hide();
-            $(".backPanel").show();
+            $(".backPanel").hide();
     })
 }
 

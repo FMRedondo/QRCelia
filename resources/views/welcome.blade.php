@@ -1,3 +1,8 @@
+@php
+    namespace interestPointController;
+    use App\Http\Controllers\admin\interestPointController;
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +28,7 @@
                 </p>
                 <div class="botones">
                     <a href="/puntosInteres" class="boton"><span>Descubre más</span></a>
-                    <!-- <a href="/QRMisterioso" class="boton"><span>QR Misterioso</span></a> -->
+                    <a href="/puntodeinteres/{!! interestPointController::getRandomPoint() !!}" class="boton"><span>QR Misterioso</span></a>
                 </div>
             </div>
         </div>

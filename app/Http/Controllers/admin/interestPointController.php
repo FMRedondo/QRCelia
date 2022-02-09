@@ -91,4 +91,9 @@ class interestPointController extends Controller
         $result = interestPointModel::getResourcesFromPoint($id, $type);
         return response() -> json($result);
     }
+
+    public function getRandomPoint(){
+        $points = interestPointModel::getIdsFromPoints();
+        return array_rand($points, 1);
+    }
 }
