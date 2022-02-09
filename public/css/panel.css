@@ -60,6 +60,7 @@
     top: 5% !important;
     padding: 0 !important;
     overflow-y: scroll;
+    z-index: 99999999;
 }
 
 .resourceCard:hover{
@@ -67,6 +68,10 @@
     box-shadow: 5px 5px 38px 10px rgba(0,0,0,0.85);
 }
 
+.closeModifyWindow{
+    position: relative;
+    z-index: 99999999;
+}
 
 .backPanel{
     display: none;

@@ -189,19 +189,18 @@ const  mostrarAñadirPunto = (element) => {
 }
 
 
-const añadirPunto = (event) => {
+ const añadirPunto = async (event) => {
     event.preventDefault();
     let nombre = document.getElementById("typeName").value
     let desc   = document.getElementById("typeDesc").value
-    let texto  = CKEDITOR.instances['texto'].getData()
-    alert(texto)
+    let texto  = new String(CKEDITOR.instances['texto'].getData())
+
 /*
     ajax({'name': nombre, 'description': desc, 'text': texto, '_token': token}, '/admin/puntosInteres/addPoint', 'POST',  ( response ) => {
         alert("Se ha subido correctamente")
-        console.log(response)
     })
 
-    */
+    
 
     var formData = new FormData()
     var poster = document.getElementById('poster').files;
@@ -212,7 +211,26 @@ const añadirPunto = (event) => {
     }).then (response => {
         console.log(response)
     })
+*/
 
-    
+    var formData = new FormData()
+    var poster = document.getElementById('poster').files;
+    formData.append('poster', poster[0])
+    formData.append('name', nombre)
+    formData.append('description', desc)
+    formData.append('text', texto)
+    formData.append('_token', token)
+
+    await fetch('/admin/puntosInteres/addPoint', {
+        method: 'post',
+        header:{
+            "processData": false,  
+            "contentType": false  
+        },
+        body: formData
+    }).then (response => {
+       alert(response)
+       console.log(response)
+    })
 
 }
