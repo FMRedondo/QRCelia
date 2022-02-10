@@ -18,7 +18,7 @@
                  <persona nombre="Jose David Martinez (Jodamaru)" imagen="https://avatars.githubusercontent.com/u/16970714?v=4" textoAlt='Jodamaru' profesion='Editor de vídeos' texto='Editor de vídeos, piloto de dron y desarrollador CeliaCity. No lo saqueis de fiesta le duelen las rodillas 🎶'></persona>
                  <persona nombre="Abdellah" imagen="https://avatars.githubusercontent.com/u/48606104?v=4" textoAlt='Abdellah' profesion='Locutor' texto='Locutor de QRCelia y desarrollador de CeliaCity. Siempre esta contento 😊 '></persona>
                  <persona nombre="Francisco Javier Juárez (paco)" imagen="https://avatars.githubusercontent.com/u/72700788?v=4" textoAlt='paco' profesion='' texto='Desarrollador de CeliaCity. Administrador, guapo y siempre se queda dormido 😴 '></persona>
-                 <persona nombre="Cristian Rosca" imagen="https://avatars.githubusercontent.com/u/70913113?v=4" textoAlt='Cristian Rosca' profesion='' texto='Desarrollador de CeliaCity y administrador de las fiestas en casa de Josamaru. Lo vamos a enderezar 🧛‍♀️'></persona>
+                 <persona nombre="Cristian Rosca" imagen="https://avatars.githubusercontent.com/u/70913113?v=4" textoAlt='Cristian Rosca' profesion='' texto='Desarrollador de CeliaCity y administrador de las fiestas en casa de Jodamaru. Lo vamos a enderezar 🧛‍♀️'></persona>
              </div>
          <div class="ultimoElemento"></div>
        </div>
