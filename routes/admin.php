@@ -41,6 +41,7 @@ Route::post('/verPuntoInteres', [interestPointController::class, 'verEditarPunto
 Route::post('/puntosInteres/getPoint', [interestPointController::class, 'getInterestPoint'])-> name('get.interestPoint')-> middleware('can:ver_administracion');
 Route::post('/puntosInteres/editPoint', [interestPointController::class, 'updateInterestPoint'])-> name('update.interestPoint')-> middleware('can:ver_administracion');
 Route::post('/puntosInteres/addPoint', [interestPointController::class, 'addInterestPoint'])-> name('add.interestPoint')-> middleware('can:ver_administracion');
+Route::post('/puntosInteres/searchPoints', [interestPointController::class, 'searchInterestPoints'])-> name('search.interestPoint')-> middleware('can:ver_administracion');
 
 Route::get('/comentarios', [CommentController::class, 'index'])-> name('show.viewComments')-> middleware('can:ver_administracion');
 Route::get('/comentarios/getComments', [CommentController::class, 'getComments'])-> name('show.comments')-> middleware('can:ver_administracion');

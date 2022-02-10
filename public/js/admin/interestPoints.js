@@ -212,3 +212,40 @@ const  mostrarAñadirPunto = (element) => {
     })
 
 }
+
+
+/*
+ *  BUSCAR PUNTOS DE INTERES
+*/
+
+const searchPoint = document.getElementById('searchPoint')
+searchPoint.addEventListener('keyup', elemento => {
+    let busqueda = elemento.target.value
+    ajax({'search': busqueda, '_token': token}, '/admin/puntosInteres/searchPoints', 'POST', response => {
+        const contenidoVista = document.querySelector(".contenidoPuntos")
+        contenidoVista.innerHTML = "";
+        response.forEach(data => {
+            let contenidoTabla = `
+                <div id="card${data.id}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32" style="width: 30%">
+                <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-4"
+                    src="/img/puntosInteres/${data.poster}" alt="${data.name}" />
+                <div class="p-4">
+                    <h2 class="name text-lg text-gray-900 font-medium title-font mb-2 whitespace-nowrap truncate" id=${data.name} data-field='name'>
+                        ${data.name}
+                    </h2>
+                    <p class="description text-gray-600 font-light text-md mb-3" id=${data.description} data-field='description'>
+                    ${data.description}
+                    </p>        
+                    <div class="flex items-center mt-2 flex-row-reverse">
+                        <button class="btn btn-success rounded-circle flex editButton fa-solid fa-pen-to-square" data-id=${data.id}></button>
+                    </div>
+                </div>    
+            </div>`;
+    
+            contenidoVista.innerHTML += contenidoTabla;
+        });
+    })
+
+})
+
+

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\admin\interestPointModel;
 use App\Http\Controllers\admin\qrCodeController;
+use GrahamCampbell\ResultType\Result;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class interestPointController extends Controller
 {
@@ -74,9 +76,9 @@ class interestPointController extends Controller
     }
 
 
-    public function searchInterestPoints(){
-        $search = $_POST['search'];
-        $_token = $_POST['token'];
+    public function searchInterestPoints(Request $request){
+        $search = $request -> search;
+        $_token = $request -> _token;
         $result = interestPointModel::searchInterestPoints($search);
         return response() -> json($result);
     }
