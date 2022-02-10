@@ -1,3 +1,31 @@
+#loadSection{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: url("/img/celiaRambla.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: 99999999999999;
+}
+
+#loadSection .backShadow{
+    background-color: rgba(0, 0, 0, 0.7);
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.backShadow i{
+    font-size: 20em;
+    color: white;
+    z-index: 90;
+}
+
+
 .header{
     background-color: rgba(0, 0, 0, 0.7);
     color: white !important;

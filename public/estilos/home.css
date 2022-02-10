@@ -134,6 +134,10 @@
     .datos{
         width: 100%;
     }
+
+    .boton span{
+        z-index: 8;
+    }
 }
 
 @media (max-width: 650px){

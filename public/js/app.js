@@ -5369,7 +5369,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    about: String
+    about: Number
   },
   methods: {
     enviarComentario: function enviarComentario() {
@@ -5400,14 +5400,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     id: _this.about
                   })
                 }).then(function (response) {
-                  var contenido = "\n                    <div id='mensajeAlerta'>\n                       <div class='iconoAlerta'>\n                            <i class=\"fa-regular fa-circle-check\"></i>\n                       </div>\n                       <div class=''contentAlert>\n                            <p class='tituloAlert'>Muchas gracias!</p>\n                            <p class='textoAlert'>Gracias por colaborar en este proyecto sobre nuestro instituto</p>\n                       </div>\n                    </div>\n                ";
-                  var panel = document.getElementById("comentarios");
+                  var contenido = "\n                    <div id='mensajeAlerta'>\n                       <div class='iconoAlerta'>\n                            <i class=\"fa-regular fa-circle-check\"></i>\n                       </div>\n                       <div class=\"contentAlert\">\n                            <p class='tituloAlert'>\xA1Muchas gracias!</p>\n                            <p class='textoAlert'>Gracias por colaborar en este proyecto sobre nuestro instituto</p>\n                            <p class='textoAlert'>Si deseas saber m\xE1s sobre el proyecto puedes visitar el aula 8 y preguntar</p>\n                       </div>\n                    </div>\n                ";
+                  var panel = document.getElementById("app");
                   panel.innerHTML += contenido;
-                  /*const timer = setTimeout(() => {
-                      const ventana = document.getElementById("mensajeAlerta")
-                      ventana.remove()
+                  var ventana = document.getElementById("mensajeAlerta");
+                  var timer = setTimeout(function () {
+                    ventana.classList.add("dissapear");
                   }, 3000);
-                  */
                 });
 
               case 4:
@@ -5485,14 +5484,15 @@ __webpack_require__.r(__webpack_exports__);
     desplegarMenu: function desplegarMenu(event) {
       var menu = document.getElementById('nav');
       menu.classList.toggle('oculto');
-      var enlacesMenu = document.getElementsByClassName("enlaces");
-      enlacesMenu.addEventListener("click", function () {
-        alert("ee");
-      });
+      var navContainer = document.getElementsByClassName("navContainer");
+      navContainer[0].style.position = 'absolute';
+      navContainer[0].classList.toggle('oculto');
     },
     cerrarMenu: function cerrarMenu(event) {
       var menu = document.getElementById('nav');
       menu.classList.toggle('oculto');
+      var navContainer = document.getElementsByClassName("navContainer");
+      navContainer[0].classList.toggle('oculto');
     },
     quitarImagen: function quitarImagen(event) {
       var nav = document.getElementById('nav');
@@ -5897,6 +5897,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     idpoint: Number,
@@ -5916,7 +5917,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var response;
+        var response, loadScreen;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -5937,8 +5938,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 response = _context.sent;
                 _this.idpoint = response[0].id, _this.createdAt = response[0].createdAt, _this.updatedAt = response[0].updatedAt, _this.name = response[0].name, _this.desc = response[0].description, _this.text = response[0].text, _this.url = response[0].url, _this.poster = response[0].poster;
+                loadScreen = document.getElementById("loadSection");
+                loadScreen.remove();
 
-              case 4:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -11263,7 +11266,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* MENSAJE DE ALERTA  */\n#mensajeAlerta{\n    display: flex;\n    position: fixed;\n    color: black !important;\n}\n.iconoAlerta{\n    width: 30%;\n    background-color: #38C172;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.contentAlert{\n    width: 70%;\n    display: flex;\n    align-items: center;\n    background-color: #A2F5BF;\n}\n.comentarios{\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n}\n#comentario{\n    width: 100% !important;\n    height: 10em !important;\n    border: none;\n    margin-bottom: 2em;\n    border: 2px solid #C6A878;\n    transition: ease-in-out 300ms;\n    border-radius: 5px;\n}\n#comentario:focus{\n    outline: none;\n    border: 2px solid var(--colorPrimario);\n}\np{\n    color: black;\n    margin-bottom: 1em;\n    text-align: justify;\n}\n#btn{\n    padding: 1em;\n    text-align: center;\n    background-color: #C6A878;\n    border: none;\n    color: white;\n    position: relative;\n    z-index: 1;\n    overflow: hidden;\n    width: 30%;\n    margin: 0 auto;\n    display: flex;\n    justify-content: center;\n}\n#btn::after{\n    content: \"\";\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    z-index: 2;\n    left: calc( -100% - 80px);\n    background: var(--colorPrimario);\n    border-bottom: 80px solid var(--colorPrimario);\n    border-right: 80px solid transparent;\n    transition: 300ms ease-in-out;\n}\n#btn:hover::after{\n    left: 0;\n    cursor: pointer;\n}\nspan{\n    position: relative;\n    z-index: 3;\n}\n.contenidoComentario{\n    width: 75%;\n    margin: 0 auto\n}\n.textoComentario{\n    color: white;\n}\n@media (max-width: 950px){\n.contenidoComentario{\n        width: 100%;\n}\n#btn{\n        width: 100%;\n}\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* MENSAJE DE ALERTA  */\n#mensajeAlerta{\n    display: flex;\n    position: fixed;\n    flex-direction: column;\n    width: 50%;\n    top: 18%;\n    left: 25%;\n    color: black !important;\n    z-index: 9999999; \n    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);\n}\n.iconoAlerta{\n    width: 100%;\n    padding: 1.5em;\n    background-color: #38C172;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    border-radius: 2em 2em 0 0;\n}\n.iconoAlerta i {\n    font-size: 5em;\n    color: whitesmoke;\n}\n.contentAlert{\n    width: 100%;\n    height: 100%;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    background-color: #A2F5BF;\n    padding: 1em;\n    font-size: 1.5em;\n    border-radius: 0 0 2em 2em;\n}\n.tituloAlert{\n    font-size: 2em;\n}\n.comentarios{\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n}\n#comentario{\n    width: 100% !important;\n    height: 10em !important;\n    border: none;\n    margin-bottom: 2em;\n    border: 2px solid #C6A878;\n    transition: ease-in-out 300ms;\n    border-radius: 5px;\n}\n#comentario:focus{\n    outline: none;\n    border: 2px solid var(--colorPrimario);\n}\np{\n    color: black;\n    margin-bottom: 1em;\n    text-align: justify;\n}\n#btn{\n    padding: 1em;\n    text-align: center;\n    background-color: #C6A878;\n    border: none;\n    color: white;\n    position: relative;\n    z-index: 1;\n    overflow: hidden;\n    width: 30%;\n    margin: 0 auto;\n    display: flex;\n    justify-content: center;\n}\n#btn::after{\n    content: \"\";\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    z-index: 2;\n    left: calc( -100% - 80px);\n    background: var(--colorPrimario);\n    border-bottom: 80px solid var(--colorPrimario);\n    border-right: 80px solid transparent;\n    transition: 300ms ease-in-out;\n}\n#btn:hover::after{\n    left: 0;\n    cursor: pointer;\n}\nspan{\n    position: relative;\n    z-index: 3;\n}\n.contenidoComentario{\n    width: 75%;\n    margin: 0 auto\n}\n.textoComentario{\n    color: white;\n}\n.dissapear{\n    -webkit-animation-name: desaparece;\n            animation-name: desaparece;\n    -webkit-animation-duration: 1s;\n            animation-duration: 1s;\n    -webkit-animation-iteration-count: 1;\n            animation-iteration-count: 1;\n    -webkit-animation-fill-mode: forwards;\n            animation-fill-mode: forwards;\n}\n@media (max-width: 950px){\n.contenidoComentario{\n        width: 100%;\n}\n#btn{\n        width: 100%;\n}\n}\n@-webkit-keyframes desaparece{\n0%{\n        opacity: 1;\n}\n25%{\n        opacity: 0.75;\n}\n50%{\n        opacity: 0.5;\n}\n75%{\n        opacity: 0.25;\n}\n100%{\n        opacity: 0;\n        display: none;\n}\n}\n@keyframes desaparece{\n0%{\n        opacity: 1;\n}\n25%{\n        opacity: 0.75;\n}\n50%{\n        opacity: 0.5;\n}\n75%{\n        opacity: 0.25;\n}\n100%{\n        opacity: 0;\n        display: none;\n}\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11287,7 +11290,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.oculto[data-v-798ca618]{\n    /*animation: ocultarMenu 200ms infinite;*/\n    transition: ease-in-out 20ms;\n    display: flex !important;\n}\n.ocultarDatos[data-v-798ca618]{\n    display: flex !important;\n}\n.header[data-v-798ca618]{\n    width: 100%;\n    height: 100px;\n    z-index: 9999;\n    background-color: transparent;\n    position: relative;\n    z-index: 9;\n}\n.header .wrapper[data-v-798ca618]{\n    display: flex;\n    justify-content: space-between;\n    padding-top: 1em;\n    width: 80%;\n    margin: 0 auto;\n}\n.logo[data-v-798ca618]{\n    width: 10%;\n    display: flex;\n    align-items: center;\n    gap: 1em;\n    position: relative;\n    z-index: 99999;\n}\n.wrapper[data-v-798ca618]{\n    width: 80%;\n}\n.logo img[data-v-798ca618]{\n    width:30%;\n}\n.titulo[data-v-798ca618]{\n    font-size: 2.2em;\n    color: white;\n}\n.titulo span[data-v-798ca618]{\n    color: #CBAF87;\n    text-transform: uppercase;\n}\n.header .btnMenu[data-v-798ca618]{\n    width: 50%;\n    display: flex;\n    gap: 1.5em;\n    align-items: center;\n    justify-content: flex-end;\n}\n.header .btnMenu a[data-v-798ca618]{\n    text-decoration: none;\n    color: red;\n    font-weight: bolder;\n    font-size: 1.3em;\n}\nbutton[data-v-798ca618]{\n    border: none;\n    background-color: transparent;\n    color: white;\n    font-size: 2.2em;\n    font-weight: bolder;\n    display: flex;\n    justify-content: center;\n    align-content: center;\n}\n.navContainer[data-v-798ca618]{\n    position: relative !important;\n    z-index: 999999 !important;\n    top: 0 !important;\n    left: 0 !important;\n    width: 100%;\n    min-height: calc(100vh - 100px);\n}\n.nav[data-v-798ca618]{\n    width: 50%;\n    height: 100vh;\n    background-color: rgba(0, 0, 0, 0.7); \n    -webkit-backdrop-filter: blur(3px); \n            backdrop-filter: blur(3px);\n    position: fixed;\n    top: 0;\n    right: 0;\n    display: none;\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n    align-items: center;\n    gap: 1em;\n    font-size: 2em;\n    padding: 2em;\n    background-repeat: no-repeat !important;\n    background-size: cover !important;\n    display: none;\n    z-index: 999999999 !important;\n    text-align: right;\n}\n.nav a[data-v-798ca618]{\n    color: white !important;\n    text-decoration: none;\n    text-align: right;\n    transition: ease-in-out 100ms;\n}\n.nav a[data-v-798ca618]:hover{\n    color: #C6A878 !important;\n}\n.nav a:hover + .nav[data-v-798ca618]{\n    background-color: purple !important;\n}\n.closeNav[data-v-798ca618]{\n    position: fixed;\n    top: 1em;\n    right: 6em;\n}\n.navMovil[data-v-798ca618]{\n    display: none;\n}\n.logo[data-v-798ca618]:focus{\n    border: none !important;\n}\n@media (max-width: 650px){\n.navMovil[data-v-798ca618]{\n        display: block;\n        position: fixed;\n        left: 0;\n        bottom: 0;\n        width: 100%;\n        background-color: #30475E;\n}\n.navMovil .wrapper[data-v-798ca618]{\n        padding: 0.5em;\n        display: flex;\n        gap: 1em;\n        justify-content: space-between;\n}\n.navMovil a[data-v-798ca618]{\n        color: white;\n        font-weight: bolder;\n        text-decoration: none;\n        transform: translateY(-0.5em);\n}\n.activo[data-v-798ca618]{\n        color: var(--colorPrimario) !important;\n}\n.nav[data-v-798ca618]{\n        display: none;\n}\nbutton[data-v-798ca618]{\n        display: none;\n}\n.icono[data-v-798ca618]{\n        display: flex;\n        flex-direction: column;\n        text-align: center;\n        align-items: center;\n        justify-content: center;\n        gap: 0.5em;\n}\n.icono i[data-v-798ca618]{\n        font-size: 1.2em;\n        margin-bottom: 0.2em;\n        color: #CBAF87;\n}\n.icono a[data-v-798ca618]{\n        font-size: 0.8em;\n}\n.logo img[data-v-798ca618]{ \n        width: 3em;\n}\n.header > .wrapper[data-v-798ca618]{\n        justify-content: center;\n        text-align: center !important;\n}\n} \n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.oculto[data-v-798ca618]{\n    /*animation: ocultarMenu 200ms infinite;*/\n    transition: ease-in-out 20ms;\n    display: flex !important;\n}\n.ocultarDatos[data-v-798ca618]{\n    display: flex !important;\n}\n.header[data-v-798ca618]{\n    width: 100%;\n    height: 100px;\n    z-index: 9999;\n    background-color: transparent;\n    position: relative;\n    z-index: 9;\n}\n.header .wrapper[data-v-798ca618]{\n    display: flex;\n    justify-content: space-between;\n    padding-top: 1em;\n    width: 80%;\n    margin: 0 auto;\n}\n.logo[data-v-798ca618]{\n    width: 10%;\n    display: flex;\n    align-items: center;\n    gap: 1em;\n    position: relative;\n    z-index: 99999;\n}\n.wrapper[data-v-798ca618]{\n    width: 80%;\n}\n.logo img[data-v-798ca618]{\n    width:30%;\n}\n.titulo[data-v-798ca618]{\n    font-size: 2.2em;\n    color: white;\n}\n.titulo span[data-v-798ca618]{\n    color: #CBAF87;\n    text-transform: uppercase;\n}\n.header .btnMenu[data-v-798ca618]{\n    width: 50%;\n    display: flex;\n    gap: 1.5em;\n    align-items: center;\n    justify-content: flex-end;\n}\n.header .btnMenu a[data-v-798ca618]{\n    text-decoration: none;\n    color: red;\n    font-weight: bolder;\n    font-size: 1.3em;\n}\nbutton[data-v-798ca618]{\n    border: none;\n    background-color: transparent;\n    color: white;\n    font-size: 2.2em;\n    font-weight: bolder;\n    display: flex;\n    justify-content: center;\n    align-content: center;\n}\n.header .navContainer[data-v-798ca618]{\n    display: none;\n    position: relative;\n    z-index: 999999 !important;\n    top: 0 !important;\n    left: 0 !important;\n    width: 100%;\n    min-height: calc(100vh - 100px);\n}\n.nav[data-v-798ca618]{\n    width: 50%;\n    height: 100vh;\n    background-color: rgba(0, 0, 0, 0.7); \n    -webkit-backdrop-filter: blur(3px); \n            backdrop-filter: blur(3px);\n    position: fixed;\n    top: 0;\n    right: 0;\n    display: none;\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n    align-items: center;\n    gap: 1em;\n    font-size: 2em;\n    padding: 2em;\n    background-repeat: no-repeat !important;\n    background-size: cover !important;\n    display: none;\n    z-index: 999999999 !important;\n    text-align: right;\n}\n.nav a[data-v-798ca618]{\n    color: white !important;\n    text-decoration: none;\n    text-align: right;\n    transition: ease-in-out 100ms;\n}\n.nav a[data-v-798ca618]:hover{\n    color: #C6A878 !important;\n}\n.nav a:hover + .nav[data-v-798ca618]{\n    background-color: purple !important;\n}\n.closeNav[data-v-798ca618]{\n    position: fixed;\n    top: 1em;\n    right: 6em;\n}\n.navMovil[data-v-798ca618]{\n    display: none;\n}\n.logo[data-v-798ca618]:focus{\n    border: none !important;\n}\n@media (max-width: 1285px){\n#nav[data-v-798ca618]{\n        width: 100%;\n}\n.closeNav[data-v-798ca618]{\n        align-items: flex-end;\n}\n}\n@media (max-width: 650px){\n.navMovil[data-v-798ca618]{\n        display: block;\n        position: fixed;\n        left: 0;\n        bottom: 0;\n        width: 100%;\n        background-color: #30475E;\n}\n.navMovil .wrapper[data-v-798ca618]{\n        padding: 0.5em;\n        display: flex;\n        gap: 1em;\n        justify-content: space-between;\n}\n.navMovil a[data-v-798ca618]{\n        color: white;\n        font-weight: bolder;\n        text-decoration: none;\n        transform: translateY(-0.5em);\n}\n.activo[data-v-798ca618]{\n        color: var(--colorPrimario) !important;\n}\n.nav[data-v-798ca618]{\n        display: none;\n}\nbutton[data-v-798ca618]{\n        display: none;\n}\n.icono[data-v-798ca618]{\n        display: flex;\n        flex-direction: column;\n        text-align: center;\n        align-items: center;\n        justify-content: center;\n        gap: 0.5em;\n}\n.icono i[data-v-798ca618]{\n        font-size: 1.2em;\n        margin-bottom: 0.2em;\n        color: #CBAF87;\n}\n.icono a[data-v-798ca618]{\n        font-size: 0.8em;\n}\n.logo img[data-v-798ca618]{ \n        width: 3em;\n}\n.header > .wrapper[data-v-798ca618]{\n        justify-content: center;\n        text-align: center !important;\n}\n} \n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11407,7 +11410,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#contentSection{\n    min-height: 100%;\n}\n/* SLIDER DE IMAGENES */\n.slideshow-container, .slideVideo-container {\n    height: 70vh;\n    width: 75%;\n    position: relative;\n    margin: 3em auto;\n}\n.slide-images, .slide-videos {\n  display: none;\n}\n.slide-images:first-child, .slide-videos:first-child {\n  display: block;\n}\n.prev, .next, .videoPrev, .videoNext {\n    cursor: pointer;\n    position: absolute;\n    top: 45%;\n    width: auto;\n    padding: 10px;\n    color: white;\n    font-weight: bold;\n    font-size: 3em;\n    transition: 0.3s ease;\n    border-radius: 0 3px 3px 0;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n}\n.next, .videoNext {\n  right: 0;\n  border-radius: 3px 0 0 3px;\n}\n.prev:hover, .next:hover, .videoPrev:hover, .videoNext:hover {\n  background-color: rgba(0,0,0,0.8);\n}\n.active {\n  background-color: #717171;\n}\n.slide-images img{\n    height: 70vh;\n    width: 100%;\n    margin: 0 auto;\n    display: flex;\n    justify-content: center;\n}\n.slide-videos video{\n    height: 70vh;\n    width: 100%;\n    margin: 0 auto;\n    display: flex;\n    justify-content: center;\n}\n.fade {\n  -webkit-animation-name: fade;\n  -webkit-animation-duration: 0.3s;\n  animation-name: fade;\n  animation-duration: 0.3s;\n}\n\n/* SLIDER DE VIDEOS */\n\n\n\n\n/* ANIMACIONES */\n@-webkit-keyframes fade {\nfrom {opacity: .4}\nto {opacity: 1}\n}\n@keyframes fade {\nfrom {opacity: .4}\nto {opacity: 1}\n}\n@media (max-width: 1050px) {\n.slideshow-container, .slideVideo-container {\n        height: 50vh;\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\n        height: 50vh;\n        width: 100%;\n}\n}\n@media (max-width: 750px) {\n.slideshow-container, .slideVideo-container {\n        height: 35vh;\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\n        height: 35vh;\n        width: 100%;\n}\n.prev, .next {\n        font-size: 1.5em;\n}\n}\n@media (max-width: 500px) {\n.slideshow-container, .slideVideo-container{\n        height: 25vh;\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\n        height: 25vh;\n        width: 100%;\n}\n.prev, .next, .videoPrev, .videoNext {\n        font-size: 1.5em;\n}\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#contentSection{\r\n    min-height: 100%;\n}\r\n/* SLIDER DE IMAGENES */\n.slideshow-container, .slideVideo-container {\r\n    height: 70vh;\r\n    width: 75%;\r\n    position: relative;\r\n    margin: 3em auto;\n}\n.slide-images, .slide-videos {\r\n  display: none;\n}\n.slide-images:first-child, .slide-videos:first-child {\r\n  display: block;\n}\n.prev, .next, .videoPrev, .videoNext {\r\n    cursor: pointer;\r\n    position: absolute;\r\n    top: 45%;\r\n    width: auto;\r\n    padding: 10px;\r\n    color: white;\r\n    font-weight: bold;\r\n    font-size: 3em;\r\n    transition: 0.3s ease;\r\n    border-radius: 0 3px 3px 0;\r\n    -webkit-user-select: none;\r\n       -moz-user-select: none;\r\n        -ms-user-select: none;\r\n            user-select: none;\n}\n.next, .videoNext {\r\n  right: 0;\r\n  border-radius: 3px 0 0 3px;\n}\n.prev:hover, .next:hover, .videoPrev:hover, .videoNext:hover {\r\n  background-color: rgba(0,0,0,0.8);\n}\n.active {\r\n  background-color: #717171;\n}\n.slide-images img{\r\n    height: 70vh;\r\n    width: 100%;\r\n    margin: 0 auto;\r\n    display: flex;\r\n    justify-content: center;\n}\n.slide-videos video{\r\n    height: 70vh;\r\n    width: 100%;\r\n    margin: 0 auto;\r\n    display: flex;\r\n    justify-content: center;\n}\n.fade {\r\n  -webkit-animation-name: fade;\r\n  -webkit-animation-duration: 0.3s;\r\n  animation-name: fade;\r\n  animation-duration: 0.3s;\n}\r\n\r\n/* SLIDER DE VIDEOS */\r\n\r\n\r\n\r\n\r\n/* ANIMACIONES */\n@-webkit-keyframes fade {\nfrom {opacity: .4}\nto {opacity: 1}\n}\n@keyframes fade {\nfrom {opacity: .4}\nto {opacity: 1}\n}\n@media (max-width: 1050px) {\n.slideshow-container, .slideVideo-container {\r\n        height: 50vh;\r\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\r\n        height: 50vh;\r\n        width: 100%;\n}\n}\n@media (max-width: 750px) {\n.slideshow-container, .slideVideo-container {\r\n        height: 35vh;\r\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\r\n        height: 35vh;\r\n        width: 100%;\n}\n.prev, .next {\r\n        font-size: 1.5em;\n}\n}\n@media (max-width: 500px) {\n.slideshow-container, .slideVideo-container{\r\n        height: 25vh;\r\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\r\n        height: 25vh;\r\n        width: 100%;\n}\n.prev, .next, .videoPrev, .videoNext {\r\n        font-size: 1.5em;\n}\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -31767,7 +31770,7 @@ var render = function () {
                   textoAlt: "Cristian Rosca",
                   profesion: "",
                   texto:
-                    "Desarrollador de CeliaCity y administrador de las fiestas en casa de Josamaru. Lo vamos a enderezar 🧛‍♀️",
+                    "Desarrollador de CeliaCity y administrador de las fiestas en casa de Jodamaru. Lo vamos a enderezar 🧛‍♀️",
                 },
               }),
             ],
@@ -31824,7 +31827,11 @@ var render = function () {
                     return _c(
                       "div",
                       { key: index, staticClass: "slide-images fade" },
-                      [_c("img", { attrs: { src: image } })]
+                      [
+                        _c("img", {
+                          attrs: { src: "img/puntosdeInteres/" + image },
+                        }),
+                      ]
                     )
                   }),
                   _vm._v(" "),
@@ -31865,7 +31872,7 @@ var render = function () {
               titulo: this.name,
               desc: this.desc,
               texto: this.text,
-              poster: this.poster,
+              poster: "img/puntosdeInteres/" + this.poster,
             },
           }),
           _vm._v(" "),
@@ -31911,6 +31918,8 @@ var render = function () {
                 2
               )
             : _vm._e(),
+          _vm._v(" "),
+          _c("comentarios", { attrs: { about: this.idpoint } }),
         ],
         1
       ),
@@ -44167,7 +44176,7 @@ Vue.compile = compileToFunctions;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_args":[["axios@0.21.4","/home/diurno/Escritorio/QRCelia"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"/home/diurno/Escritorio/QRCelia","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
 
 /***/ })
 
