@@ -19,27 +19,33 @@ class interestPointController extends Controller
     }
 
     public function addInterestPoint(Request $request){
-        $name           = $_POST['name'];
+       /* $name           = $_POST['name'];
         $description    = $_POST['description'];
         $text           = $_POST['text'];
         $date           = DATE("Y-m-d H:i:s");
         $_token         = $request['_token'];
-
+        */
+/*
         $result = interestPointModel::addInterestPoint($name, $description, $text, $date);
-        //$this -> subirPoster($request, $result);
+        $this -> subirPoster($request -> poster, $result);
 
         return response() -> json([
             'id' => $result,
             'date' => $date
         ]);
+        */
+        //header('Access-Control-Allow-Origin: *');
+        //header('Access-Control-Allow-Headers: *');
+
+        echo "holaa";
 
     }
 
-    public function subirPoster(Request $request){
-        $file = $request -> file('poster');
+    public function subirPoster($archivo, $idPunto){
+        $file = $archivo;
          $url = "img/puntosInteres/";
         $nombreArchivo = time() . "-" . $file -> getClientOriginalName();
-        $subida = $request -> file('poster') -> move($url, $nombreArchivo);
+        //$subida = $request -> file('poster') -> move($url, $nombreArchivo);
 
         //interestPointModel::updateInterestPoint($id, 'poster', $nombreArchivo);
         

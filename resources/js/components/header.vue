@@ -5,37 +5,39 @@
                 <img src="/img/escudoCelia.png" alt="logo IES Celia Viñas">
                 <h1 class="titulo"><span>qr</span>Celia</h1>
             </a>
-            <!--
+           
             <div class="btnMenu">
                 <button @click="desplegarMenu" ><i class="fas fa-bars"></i></button>
             </div>
-            -->
+            
        </div>
 
-        <nav class="nav" id="nav">
-            <i class="far fa-times-circle closeNav" @click="cerrarMenu"></i>
-            <a href="/" @mouseover="imagenMenu('inicio')"  @mouseleave="quitarImagen">Inicio</a>
-            <a href="/puntosDeInteres" @mouseover="imagenMenu('puntos')" @mouseleave="quitarImagen">Puntos de interés</a>
-            <!-- <a href="/QRMisterioso" @mouseover="imagenMenu('misterioso')" @mouseleave="quitarImagen">QR Misterioso</a> -->
-            <a href="/creditos" @mouseover="imagenMenu('creditos')" @mouseleave="quitarImagen">Créditos</a>
-        </nav>
+        <div class="wrapper navContainer">
+            <nav class="nav" id="nav">
+                <i class="far fa-times-circle closeNav" @click="cerrarMenu"></i>
+                <a href="/" @mouseover="imagenMenu('inicio')"  @mouseleave="quitarImagen">Inicio</a>
+                <a href="/puntosInteres" @mouseover="imagenMenu('puntos')" @mouseleave="quitarImagen">Puntos de interés</a>
+                <!-- <a href="/QRMisterioso" @mouseover="imagenMenu('misterioso')" @mouseleave="quitarImagen">QR Misterioso</a> -->
+                <a href="/creditos" @mouseover="imagenMenu('creditos')" @mouseleave="quitarImagen">Créditos</a>
+            </nav>
+        </div>
         <nav class='navMovil' id='navMovil'>
            <div class="wrapper">
                 <div class="icono">
                 <i class="fa-solid fa-house "></i>
-                <a href="/" @mouseover="imagenMenu('inicio')"  @mouseleave="quitarImagen" class="activo">Inicio</a>
+                <a href="/" class="activo">Inicio</a>
             </div>
            <div class="icono">
                <i class="fa-solid fa-signs-post"></i>
-                <a href="/puntosInteres" @mouseover="imagenMenu('puntos')" @mouseleave="quitarImagen">Puntos de interés</a>
+                <a >Puntos de interés</a>
            </div>
-           <div class="icono">
+           <!--<div class="icono">
                 <i class="fa-solid fa-question"></i>
-                <!-- <a href="/QRMisterioso" @mouseover="imagenMenu('misterioso')" @mouseleave="quitarImagen">QR Misterioso</a> -->
-           </div>
+                 <a href="/QRMisterioso" @mouseover="imagenMenu('misterioso')" @mouseleave="quitarImagen">QR Misterioso</a> 
+           </div> -->
             <div class="icono">
                 <i class="fa-solid fa-users"></i>
-                <a href="/creditos" @mouseover="imagenMenu('creditos')" @mouseleave="quitarImagen">Créditos</a>
+                <a href="/creditos">Créditos</a>
             </div>
            </div>
         </nav>
@@ -52,27 +54,6 @@
                menu.classList.toggle('oculto');
                const enlacesMenu = document.getElementsByClassName("enlaces");
                enlacesMenu.addEventListener("click" , () => {alert("ee")})
-            },
-
-            imagenMenu: (tipo) => {
-              const nav = document.getElementById('nav');
-              //nav.style.background = 'green';
-
-                if(tipo == 'inicio')
-                    nav.style.backgroundImage  = "url('/img/home/home.jpg')";
-
-
-                if(tipo == 'puntos')
-                    nav.style.backgroundImage  = "url('/img/home/escudo.jpg')";
-                
-
-                if(tipo == 'misterioso')
-                    nav.style.backgroundImage  = "url('/img/home/misterio.jpeg')";
-
-                if(tipo == 'creditos')
-                    nav.style.backgroundImage  = "url('/img/home/puntos.jpeg')";
-
-                    nav.style.transition = " 6t1s";
             },
             cerrarMenu: (event) =>{
                 const menu = document.getElementById('nav');
@@ -131,6 +112,12 @@
         display: flex;
         align-items: center;
         gap: 1em;
+        position: relative;
+        z-index: 99999;
+    }
+
+    .wrapper{
+        width: 80%;
     }
 
     .logo img{
@@ -174,30 +161,48 @@
         align-content: center;
     }
 
+    .navContainer{
+        position: relative !important;
+        z-index: 999999 !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100%;
+        min-height: calc(100vh - 100px);
+    }
 
     .nav{
-        width: 100%;
+        width: 50%;
         height: 100vh;
-        background-color: black;
+        background-color: rgba(0, 0, 0, 0.7); 
+        backdrop-filter: blur(3px);
         position: fixed;
         top: 0;
         right: 0;
         display: none;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
+        flex-direction: column;
         align-items: center;
-        gap: 2em;
-        font-size: 3.5em;
+        gap: 1em;
+        font-size: 2em;
         padding: 2em;
         background-repeat: no-repeat !important;
         background-size: cover !important;
         display: none;
+        z-index: 999999999 !important;
+        text-align: right;
 
     }
 
     .nav a{
-        color: black !important;
+        color: white !important;
         text-decoration: none;
+        text-align: right;
+        transition: ease-in-out 100ms;
+    }
+
+    .nav a:hover{
+        color: #C6A878 !important;
     }
 
     .nav a:hover + .nav{
@@ -207,8 +212,8 @@
 
     .closeNav{
         position: fixed;
-        top: 0.5em;
-        right: 1.5em;
+        top: 1em;
+        right: 6em;
     }
 
     .navMovil{

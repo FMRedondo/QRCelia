@@ -5478,6 +5478,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   methods: {
     desplegarMenu: function desplegarMenu(event) {
@@ -5487,15 +5489,6 @@ __webpack_require__.r(__webpack_exports__);
       enlacesMenu.addEventListener("click", function () {
         alert("ee");
       });
-    },
-    imagenMenu: function imagenMenu(tipo) {
-      var nav = document.getElementById('nav'); //nav.style.background = 'green';
-
-      if (tipo == 'inicio') nav.style.backgroundImage = "url('/img/home/home.jpg')";
-      if (tipo == 'puntos') nav.style.backgroundImage = "url('/img/home/escudo.jpg')";
-      if (tipo == 'misterioso') nav.style.backgroundImage = "url('/img/home/misterio.jpeg')";
-      if (tipo == 'creditos') nav.style.backgroundImage = "url('/img/home/puntos.jpeg')";
-      nav.style.transition = " 6t1s";
     },
     cerrarMenu: function cerrarMenu(event) {
       var menu = document.getElementById('nav');
@@ -11294,7 +11287,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.oculto[data-v-798ca618]{\n    /*animation: ocultarMenu 200ms infinite;*/\n    transition: ease-in-out 20ms;\n    display: flex !important;\n}\n.ocultarDatos[data-v-798ca618]{\n    display: flex !important;\n}\n.header[data-v-798ca618]{\n    width: 100%;\n    height: 100px;\n    z-index: 9999;\n    background-color: transparent;\n    position: relative;\n    z-index: 9;\n}\n.header .wrapper[data-v-798ca618]{\n    display: flex;\n    justify-content: space-between;\n    padding-top: 1em;\n    width: 80%;\n    margin: 0 auto;\n}\n.logo[data-v-798ca618]{\n    width: 10%;\n    display: flex;\n    align-items: center;\n    gap: 1em;\n}\n.logo img[data-v-798ca618]{\n    width:30%;\n}\n.titulo[data-v-798ca618]{\n    font-size: 2.2em;\n    color: white;\n}\n.titulo span[data-v-798ca618]{\n    color: #CBAF87;\n    text-transform: uppercase;\n}\n.header .btnMenu[data-v-798ca618]{\n    width: 50%;\n    display: flex;\n    gap: 1.5em;\n    align-items: center;\n    justify-content: flex-end;\n}\n.header .btnMenu a[data-v-798ca618]{\n    text-decoration: none;\n    color: red;\n    font-weight: bolder;\n    font-size: 1.3em;\n}\nbutton[data-v-798ca618]{\n    border: none;\n    background-color: transparent;\n    color: white;\n    font-size: 2.2em;\n    font-weight: bolder;\n    display: flex;\n    justify-content: center;\n    align-content: center;\n}\n.nav[data-v-798ca618]{\n    width: 100%;\n    height: 100vh;\n    background-color: black;\n    position: fixed;\n    top: 0;\n    right: 0;\n    display: none;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    gap: 2em;\n    font-size: 3.5em;\n    padding: 2em;\n    background-repeat: no-repeat !important;\n    background-size: cover !important;\n    display: none;\n}\n.nav a[data-v-798ca618]{\n    color: black !important;\n    text-decoration: none;\n}\n.nav a:hover + .nav[data-v-798ca618]{\n    background-color: purple !important;\n}\n.closeNav[data-v-798ca618]{\n    position: fixed;\n    top: 0.5em;\n    right: 1.5em;\n}\n.navMovil[data-v-798ca618]{\n    display: none;\n}\n.logo[data-v-798ca618]:focus{\n    border: none !important;\n}\n@media (max-width: 650px){\n.navMovil[data-v-798ca618]{\n        display: block;\n        position: fixed;\n        left: 0;\n        bottom: 0;\n        width: 100%;\n        background-color: #30475E;\n}\n.navMovil .wrapper[data-v-798ca618]{\n        padding: 0.5em;\n        display: flex;\n        gap: 1em;\n        justify-content: space-between;\n}\n.navMovil a[data-v-798ca618]{\n        color: white;\n        font-weight: bolder;\n        text-decoration: none;\n        transform: translateY(-0.5em);\n}\n.activo[data-v-798ca618]{\n        color: var(--colorPrimario) !important;\n}\n.nav[data-v-798ca618]{\n        display: none;\n}\nbutton[data-v-798ca618]{\n        display: none;\n}\n.icono[data-v-798ca618]{\n        display: flex;\n        flex-direction: column;\n        text-align: center;\n        align-items: center;\n        justify-content: center;\n        gap: 0.5em;\n}\n.icono i[data-v-798ca618]{\n        font-size: 1.2em;\n        margin-bottom: 0.2em;\n        color: #CBAF87;\n}\n.icono a[data-v-798ca618]{\n        font-size: 0.8em;\n}\n.logo img[data-v-798ca618]{ \n        width: 3em;\n}\n.header > .wrapper[data-v-798ca618]{\n        justify-content: center;\n        text-align: center !important;\n}\n} \n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.oculto[data-v-798ca618]{\n    /*animation: ocultarMenu 200ms infinite;*/\n    transition: ease-in-out 20ms;\n    display: flex !important;\n}\n.ocultarDatos[data-v-798ca618]{\n    display: flex !important;\n}\n.header[data-v-798ca618]{\n    width: 100%;\n    height: 100px;\n    z-index: 9999;\n    background-color: transparent;\n    position: relative;\n    z-index: 9;\n}\n.header .wrapper[data-v-798ca618]{\n    display: flex;\n    justify-content: space-between;\n    padding-top: 1em;\n    width: 80%;\n    margin: 0 auto;\n}\n.logo[data-v-798ca618]{\n    width: 10%;\n    display: flex;\n    align-items: center;\n    gap: 1em;\n    position: relative;\n    z-index: 99999;\n}\n.wrapper[data-v-798ca618]{\n    width: 80%;\n}\n.logo img[data-v-798ca618]{\n    width:30%;\n}\n.titulo[data-v-798ca618]{\n    font-size: 2.2em;\n    color: white;\n}\n.titulo span[data-v-798ca618]{\n    color: #CBAF87;\n    text-transform: uppercase;\n}\n.header .btnMenu[data-v-798ca618]{\n    width: 50%;\n    display: flex;\n    gap: 1.5em;\n    align-items: center;\n    justify-content: flex-end;\n}\n.header .btnMenu a[data-v-798ca618]{\n    text-decoration: none;\n    color: red;\n    font-weight: bolder;\n    font-size: 1.3em;\n}\nbutton[data-v-798ca618]{\n    border: none;\n    background-color: transparent;\n    color: white;\n    font-size: 2.2em;\n    font-weight: bolder;\n    display: flex;\n    justify-content: center;\n    align-content: center;\n}\n.navContainer[data-v-798ca618]{\n    position: relative !important;\n    z-index: 999999 !important;\n    top: 0 !important;\n    left: 0 !important;\n    width: 100%;\n    min-height: calc(100vh - 100px);\n}\n.nav[data-v-798ca618]{\n    width: 50%;\n    height: 100vh;\n    background-color: rgba(0, 0, 0, 0.7); \n    -webkit-backdrop-filter: blur(3px); \n            backdrop-filter: blur(3px);\n    position: fixed;\n    top: 0;\n    right: 0;\n    display: none;\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n    align-items: center;\n    gap: 1em;\n    font-size: 2em;\n    padding: 2em;\n    background-repeat: no-repeat !important;\n    background-size: cover !important;\n    display: none;\n    z-index: 999999999 !important;\n    text-align: right;\n}\n.nav a[data-v-798ca618]{\n    color: white !important;\n    text-decoration: none;\n    text-align: right;\n    transition: ease-in-out 100ms;\n}\n.nav a[data-v-798ca618]:hover{\n    color: #C6A878 !important;\n}\n.nav a:hover + .nav[data-v-798ca618]{\n    background-color: purple !important;\n}\n.closeNav[data-v-798ca618]{\n    position: fixed;\n    top: 1em;\n    right: 6em;\n}\n.navMovil[data-v-798ca618]{\n    display: none;\n}\n.logo[data-v-798ca618]:focus{\n    border: none !important;\n}\n@media (max-width: 650px){\n.navMovil[data-v-798ca618]{\n        display: block;\n        position: fixed;\n        left: 0;\n        bottom: 0;\n        width: 100%;\n        background-color: #30475E;\n}\n.navMovil .wrapper[data-v-798ca618]{\n        padding: 0.5em;\n        display: flex;\n        gap: 1em;\n        justify-content: space-between;\n}\n.navMovil a[data-v-798ca618]{\n        color: white;\n        font-weight: bolder;\n        text-decoration: none;\n        transform: translateY(-0.5em);\n}\n.activo[data-v-798ca618]{\n        color: var(--colorPrimario) !important;\n}\n.nav[data-v-798ca618]{\n        display: none;\n}\nbutton[data-v-798ca618]{\n        display: none;\n}\n.icono[data-v-798ca618]{\n        display: flex;\n        flex-direction: column;\n        text-align: center;\n        align-items: center;\n        justify-content: center;\n        gap: 0.5em;\n}\n.icono i[data-v-798ca618]{\n        font-size: 1.2em;\n        margin-bottom: 0.2em;\n        color: #CBAF87;\n}\n.icono a[data-v-798ca618]{\n        font-size: 0.8em;\n}\n.logo img[data-v-798ca618]{ \n        width: 3em;\n}\n.header > .wrapper[data-v-798ca618]{\n        justify-content: center;\n        text-align: center !important;\n}\n} \n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11414,7 +11407,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#contentSection{\n    min-height: 100%;\n}\n/* SLIDER DE IMAGENES */\n.slideshow-container, .slideVideo-container {\n    height: 70vh;\n    width: 75%;\n    position: relative;\n    margin: 3em auto;\n}\n.slide-images, .slide-videos {\n  display: none;\n}\n.slide-images:first-child, .slide-videos:first-child {\n  display: block;\n}\n.prev, .next, .videoPrev, .videoNext {\n    cursor: pointer;\n    position: absolute;\n    top: 45%;\n    width: auto;\n    padding: 10px;\n    color: white;\n    font-weight: bold;\n    font-size: 3em;\n    transition: 0.3s ease;\n    border-radius: 0 3px 3px 0;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n}\n.next, .videoNext {\n  right: 0;\n  border-radius: 3px 0 0 3px;\n}\n.prev:hover, .next:hover, .videoPrev:hover, .videoNext:hover {\n  background-color: rgba(0,0,0,0.8);\n}\n.active {\n  background-color: #717171;\n}\n.slide-images img{\n    height: 70vh;\n    width: 100%;\n    margin: 0 auto;\n    display: flex;\n    justify-content: center;\n}\n.slide-videos video{\n    height: 70vh;\n    width: 100%;\n    margin: 0 auto;\n    display: flex;\n    justify-content: center;\n}\n.fade {\n  -webkit-animation-name: fade;\n  -webkit-animation-duration: 0.3s;\n  animation-name: fade;\n  animation-duration: 0.3s;\n}\n\n/* SLIDER DE VIDEOS */\n\n\n\n\n/* ANIMACIONES */\n@-webkit-keyframes fade {\nfrom {opacity: .4}\nto {opacity: 1}\n}\n@keyframes fade {\nfrom {opacity: .4}\nto {opacity: 1}\n}\n@media (max-width: 1050px) {\n.slideshow-container, .slideVideo-container {\n        height: 50vh;\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\n        height: 50vh;\n        width: 100%;\n}\n}\n@media (max-width: 750px) {\n.slideshow-container, .slideVideo-container {\n        height: 35vh;\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\n        height: 35vh;\n        width: 100%;\n}\n.prev, .next {\n        font-size: 1.5em;\n}\n}\n@media (max-width: 500px) {\n.slideshow-container, .slideVideo-container{\n        height: 25vh;\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\n        height: 25vh;\n        width: 100%;\n}\n.prev, .next, .videoPrev, .videoNext {\n        font-size: 1.5em;\n}\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#contentSection{\r\n    min-height: 100%;\n}\r\n/* SLIDER DE IMAGENES */\n.slideshow-container, .slideVideo-container {\r\n    height: 70vh;\r\n    width: 75%;\r\n    position: relative;\r\n    margin: 3em auto;\n}\n.slide-images, .slide-videos {\r\n  display: none;\n}\n.slide-images:first-child, .slide-videos:first-child {\r\n  display: block;\n}\n.prev, .next, .videoPrev, .videoNext {\r\n    cursor: pointer;\r\n    position: absolute;\r\n    top: 45%;\r\n    width: auto;\r\n    padding: 10px;\r\n    color: white;\r\n    font-weight: bold;\r\n    font-size: 3em;\r\n    transition: 0.3s ease;\r\n    border-radius: 0 3px 3px 0;\r\n    -webkit-user-select: none;\r\n       -moz-user-select: none;\r\n        -ms-user-select: none;\r\n            user-select: none;\n}\n.next, .videoNext {\r\n  right: 0;\r\n  border-radius: 3px 0 0 3px;\n}\n.prev:hover, .next:hover, .videoPrev:hover, .videoNext:hover {\r\n  background-color: rgba(0,0,0,0.8);\n}\n.active {\r\n  background-color: #717171;\n}\n.slide-images img{\r\n    height: 70vh;\r\n    width: 100%;\r\n    margin: 0 auto;\r\n    display: flex;\r\n    justify-content: center;\n}\n.slide-videos video{\r\n    height: 70vh;\r\n    width: 100%;\r\n    margin: 0 auto;\r\n    display: flex;\r\n    justify-content: center;\n}\n.fade {\r\n  -webkit-animation-name: fade;\r\n  -webkit-animation-duration: 0.3s;\r\n  animation-name: fade;\r\n  animation-duration: 0.3s;\n}\r\n\r\n/* SLIDER DE VIDEOS */\r\n\r\n\r\n\r\n\r\n/* ANIMACIONES */\n@-webkit-keyframes fade {\nfrom {opacity: .4}\nto {opacity: 1}\n}\n@keyframes fade {\nfrom {opacity: .4}\nto {opacity: 1}\n}\n@media (max-width: 1050px) {\n.slideshow-container, .slideVideo-container {\r\n        height: 50vh;\r\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\r\n        height: 50vh;\r\n        width: 100%;\n}\n}\n@media (max-width: 750px) {\n.slideshow-container, .slideVideo-container {\r\n        height: 35vh;\r\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\r\n        height: 35vh;\r\n        width: 100%;\n}\n.prev, .next {\r\n        font-size: 1.5em;\n}\n}\n@media (max-width: 500px) {\n.slideshow-container, .slideVideo-container{\r\n        height: 25vh;\r\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\r\n        height: 25vh;\r\n        width: 100%;\n}\n.prev, .next, .videoPrev, .videoNext {\r\n        font-size: 1.5em;\n}\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -31347,117 +31340,68 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("header", { staticClass: "header", attrs: { id: "header" } }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("nav", { staticClass: "nav", attrs: { id: "nav" } }, [
-      _c("i", {
-        staticClass: "far fa-times-circle closeNav",
-        on: { click: _vm.cerrarMenu },
-      }),
+    _c("div", { staticClass: "wrapper" }, [
+      _vm._m(0),
       _vm._v(" "),
-      _c(
-        "a",
-        {
-          attrs: { href: "/" },
-          on: {
-            mouseover: function ($event) {
-              return _vm.imagenMenu("inicio")
-            },
-            mouseleave: _vm.quitarImagen,
-          },
-        },
-        [_vm._v("Inicio")]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          attrs: { href: "/puntosDeInteres" },
-          on: {
-            mouseover: function ($event) {
-              return _vm.imagenMenu("puntos")
-            },
-            mouseleave: _vm.quitarImagen,
-          },
-        },
-        [_vm._v("Puntos de interés")]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          attrs: { href: "/creditos" },
-          on: {
-            mouseover: function ($event) {
-              return _vm.imagenMenu("creditos")
-            },
-            mouseleave: _vm.quitarImagen,
-          },
-        },
-        [_vm._v("Créditos")]
-      ),
-    ]),
-    _vm._v(" "),
-    _c("nav", { staticClass: "navMovil", attrs: { id: "navMovil" } }, [
-      _c("div", { staticClass: "wrapper" }, [
-        _c("div", { staticClass: "icono" }, [
-          _c("i", { staticClass: "fa-solid fa-house " }),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "activo",
-              attrs: { href: "/" },
-              on: {
-                mouseover: function ($event) {
-                  return _vm.imagenMenu("inicio")
-                },
-                mouseleave: _vm.quitarImagen,
-              },
-            },
-            [_vm._v("Inicio")]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "icono" }, [
-          _c("i", { staticClass: "fa-solid fa-signs-post" }),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              attrs: { href: "/puntosInteres" },
-              on: {
-                mouseover: function ($event) {
-                  return _vm.imagenMenu("puntos")
-                },
-                mouseleave: _vm.quitarImagen,
-              },
-            },
-            [_vm._v("Puntos de interés")]
-          ),
-        ]),
-        _vm._v(" "),
-        _vm._m(1),
-        _vm._v(" "),
-        _c("div", { staticClass: "icono" }, [
-          _c("i", { staticClass: "fa-solid fa-users" }),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              attrs: { href: "/creditos" },
-              on: {
-                mouseover: function ($event) {
-                  return _vm.imagenMenu("creditos")
-                },
-                mouseleave: _vm.quitarImagen,
-              },
-            },
-            [_vm._v("Créditos")]
-          ),
+      _c("div", { staticClass: "btnMenu" }, [
+        _c("button", { on: { click: _vm.desplegarMenu } }, [
+          _c("i", { staticClass: "fas fa-bars" }),
         ]),
       ]),
     ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "wrapper navContainer" }, [
+      _c("nav", { staticClass: "nav", attrs: { id: "nav" } }, [
+        _c("i", {
+          staticClass: "far fa-times-circle closeNav",
+          on: { click: _vm.cerrarMenu },
+        }),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            attrs: { href: "/" },
+            on: {
+              mouseover: function ($event) {
+                return _vm.imagenMenu("inicio")
+              },
+              mouseleave: _vm.quitarImagen,
+            },
+          },
+          [_vm._v("Inicio")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            attrs: { href: "/puntosInteres" },
+            on: {
+              mouseover: function ($event) {
+                return _vm.imagenMenu("puntos")
+              },
+              mouseleave: _vm.quitarImagen,
+            },
+          },
+          [_vm._v("Puntos de interés")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            attrs: { href: "/creditos" },
+            on: {
+              mouseover: function ($event) {
+                return _vm.imagenMenu("creditos")
+              },
+              mouseleave: _vm.quitarImagen,
+            },
+          },
+          [_vm._v("Créditos")]
+        ),
+      ]),
+    ]),
+    _vm._v(" "),
+    _vm._m(1),
   ])
 }
 var staticRenderFns = [
@@ -31465,16 +31409,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "wrapper" }, [
-      _c("a", { staticClass: "logo", attrs: { href: "/" } }, [
-        _c("img", {
-          attrs: { src: "/img/escudoCelia.png", alt: "logo IES Celia Viñas" },
-        }),
-        _vm._v(" "),
-        _c("h1", { staticClass: "titulo" }, [
-          _c("span", [_vm._v("qr")]),
-          _vm._v("Celia"),
-        ]),
+    return _c("a", { staticClass: "logo", attrs: { href: "/" } }, [
+      _c("img", {
+        attrs: { src: "/img/escudoCelia.png", alt: "logo IES Celia Viñas" },
+      }),
+      _vm._v(" "),
+      _c("h1", { staticClass: "titulo" }, [
+        _c("span", [_vm._v("qr")]),
+        _vm._v("Celia"),
       ]),
     ])
   },
@@ -31482,8 +31424,28 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "icono" }, [
-      _c("i", { staticClass: "fa-solid fa-question" }),
+    return _c("nav", { staticClass: "navMovil", attrs: { id: "navMovil" } }, [
+      _c("div", { staticClass: "wrapper" }, [
+        _c("div", { staticClass: "icono" }, [
+          _c("i", { staticClass: "fa-solid fa-house " }),
+          _vm._v(" "),
+          _c("a", { staticClass: "activo", attrs: { href: "/" } }, [
+            _vm._v("Inicio"),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "icono" }, [
+          _c("i", { staticClass: "fa-solid fa-signs-post" }),
+          _vm._v(" "),
+          _c("a", [_vm._v("Puntos de interés")]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "icono" }, [
+          _c("i", { staticClass: "fa-solid fa-users" }),
+          _vm._v(" "),
+          _c("a", { attrs: { href: "/creditos" } }, [_vm._v("Créditos")]),
+        ]),
+      ]),
     ])
   },
 ]
@@ -31687,7 +31649,7 @@ var render = function () {
                   textoAlt: "FMRedondi",
                   profesion: "Desarrollador",
                   texto:
-                    "Desarrollador web que esta explotando a javi para que programe todo QRCelia",
+                    "Desarrollador de QRCelia, autodidacta y apasionado por el desarrollo. Enamorado de su bestia 206 🚕",
                 },
               }),
               _vm._v(" "),
@@ -31699,7 +31661,7 @@ var render = function () {
                   textoAlt: "Javi",
                   profesion: "Desarrollador",
                   texto:
-                    "Enamorado de la pakisima y explotado por FMRedondo. Felix, si esta aqui el mando jajaj",
+                    "Desarrollador de QRCelia, resolutivo y autodidacta. Busca cualquier excusa para irse de fiesta 🕺",
                 },
               }),
               _vm._v(" "),
@@ -31733,7 +31695,7 @@ var render = function () {
                   textoAlt: "felix",
                   profesion: "Profesor",
                   texto:
-                    "Tutor de el alumnado de 2 de DAW y profesor de interfaces y frontend",
+                    "Tutor de el alumnado de 2 de DAW y profesor de interfaces y frontend. Nos enseña fundamentos y odia la DUAL 😡 ",
                 },
               }),
               _vm._v(" "),
@@ -31745,7 +31707,7 @@ var render = function () {
                   textoAlt: "alfredo",
                   profesion: "Profesor",
                   texto:
-                    "Encagargado del seguimiento del proyecto y profesor de backend",
+                    "Encargado del seguimiento del proyecto, profesor de backend y galardonado escritor. Tiembla cada vez que lo llamamos 🤦‍♂️",
                 },
               }),
             ],
@@ -31763,21 +31725,49 @@ var render = function () {
             [
               _c("persona", {
                 attrs: {
-                  nombre: "Jodamaru",
-                  imagen: "https://thispersondoesnotexist.com/image",
+                  nombre: "Jose David Martinez (Jodamaru)",
+                  imagen:
+                    "https://avatars.githubusercontent.com/u/16970714?v=4",
                   textoAlt: "Jodamaru",
-                  profesion: "Editor de videos",
-                  texto: "texto a elegir por jodamaru",
+                  profesion: "Editor de vídeos",
+                  texto:
+                    "Editor de vídeos, piloto de dron y desarrollador CeliaCity. No lo saqueis de fiesta le duelen las rodillas 🎶",
                 },
               }),
               _vm._v(" "),
               _c("persona", {
                 attrs: {
-                  nombre: "Abdelah",
-                  imagen: "https://thispersondoesnotexist.com/image",
-                  textoAlt: "Abdelah",
+                  nombre: "Abdellah",
+                  imagen:
+                    "https://avatars.githubusercontent.com/u/48606104?v=4",
+                  textoAlt: "Abdellah",
                   profesion: "Locutor",
-                  texto: "texto a elegir por Abdelah",
+                  texto:
+                    "Locutor de QRCelia y desarrollador de CeliaCity. Siempre esta contento 😊 ",
+                },
+              }),
+              _vm._v(" "),
+              _c("persona", {
+                attrs: {
+                  nombre: "Francisco Javier Juárez (paco)",
+                  imagen:
+                    "https://avatars.githubusercontent.com/u/72700788?v=4",
+                  textoAlt: "paco",
+                  profesion: "",
+                  texto:
+                    "Desarrollador de CeliaCity. Administrador, guapo y siempre se queda dormido 😴 ",
+                },
+              }),
+              _vm._v(" "),
+              _c("persona", {
+                attrs: {
+                  nombre: "Cristian Rosca",
+                  imagen:
+                    "https://avatars.githubusercontent.com/u/70913113?v=4",
+                  textoAlt: "Cristian Rosca",
+                  profesion: "",
+                  texto:
+                    "Desarrollador de CeliaCity y administrador de las fiestas en casa de Josamaru. Lo vamos a enderezar 🧛‍♀️",
                 },
               }),
             ],
@@ -44177,7 +44167,7 @@ Vue.compile = compileToFunctions;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_args":[["axios@0.21.4","/home/diurno/Escritorio/QRCelia"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"/home/diurno/Escritorio/QRCelia","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
 
 /***/ })
 
