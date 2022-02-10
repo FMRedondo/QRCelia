@@ -99,6 +99,10 @@
 }
 
 
+.oculto{
+    display: none !important;
+}
+
 
 @media (max-width: 795px) {
 }

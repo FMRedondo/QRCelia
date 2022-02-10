@@ -97,7 +97,7 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
             </div>
         </div>
 
-        <div class="modifyPanelContent w-100 d-flex" style="height:90%;">
+        <div class="modifyPanelContent w-100 d-flex" id='modifyPanelContent' style="height:90%;">
             <div class="w-50 d-flex justify-content-center align-items-center">
                 <div class="w-100">
                 <img src=/img/puntosInteres/${response[0].poster} style='width:90%; margin:0 auto'>
@@ -117,6 +117,10 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
                 <div class="mb-4">
                      <label for="resourceUser" class="form-label">Contenido</label>
                      <textarea class="ckeditor editInput" name="editor1" id="editor1" data-id=${response[0].id} rows="10" cols="88" data-field="text">${response[0].text}</textarea>
+                </div>
+
+                <div class='recursos'>
+                    <button class='imagenes' id='imagenesEnlazadas'>Imagenes</button>
                 </div>
             </div>
         </div>`;
@@ -141,7 +145,9 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
 
     var editor = CKEDITOR.replace('editor1')
 
-});
+    const btnImagenes = document.getElementById('imagenesEnlazadas')
+    btnImagenes.addEventListener('click', imagenesRelacionadas)
+})
 
 
 const actualizarDatos = (element) => ajax(
@@ -249,3 +255,8 @@ searchPoint.addEventListener('keyup', elemento => {
 })
 
 
+const imagenesRelacionadas = (elemento) => {
+    const modifyPanelContent = document.querySelector("#modifyPanelContent")
+    modifyPanelContent.classList.toggle('oculto')
+    
+}
