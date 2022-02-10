@@ -37,11 +37,20 @@ class interestPointController extends Controller
 
     public function subirPoster(Request $request){
         $file = $request -> file('poster');
-        $fecha = $request -> fecha;
+        $name           = $request -> nombre;
+        $description    = $request -> description;
+        $text           = $request -> texto;
+        $nombreArchivo  = $request -> nombreArchivo;
         $url = "img/puntosInteres/";
-        $nombreArchivo = $fecha . "-" . $file -> getClientOriginalName();
+        $nombreArchivo = time() . "-" . $file -> getClientOriginalName();
         $subida = $request -> file('poster') -> move($url, $nombreArchivo);
-        echo $nombreArchivo;
+        $date           = DATE("Y-m-d H:i:s");
+
+        $result = interestPointModel::addInterestPoint($name, $description, $text, $nombreArchivo, $date);
+        return response() -> json([
+            'id' => $result,
+            'date' => $date
+        ]);
 
     }
 
