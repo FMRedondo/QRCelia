@@ -5,11 +5,11 @@
                 <img src="/img/escudoCelia.png" alt="logo IES Celia Viñas">
                 <h1 class="titulo"><span>qr</span>Celia</h1>
             </a>
-            <!--
+           
             <div class="btnMenu">
                 <button @click="desplegarMenu" ><i class="fas fa-bars"></i></button>
             </div>
-            -->
+            
        </div>
 
         <nav class="nav" id="nav">

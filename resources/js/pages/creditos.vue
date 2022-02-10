@@ -4,19 +4,19 @@
        <div class="wrapper">
          <separador-component texto='Desarrolladores'></separador-component>
         <div class="personas">
-             <persona nombre="FMRedondo" imagen="https://avatars.githubusercontent.com/u/65115094?v=4" textoAlt='FMRedondi' profesion='Desarrollador' texto='Desarrollador web que esta explotando a javi para que programe todo QRCelia'></persona>
-             <persona nombre="Javi" imagen="https://avatars.githubusercontent.com/u/74726752?v=4" textoAlt='Javi' profesion='Desarrollador' texto='Enamorado de la pakisima y explotado por FMRedondo. Felix, si esta aqui el mando jajaj'></persona>
+             <persona nombre="FMRedondo" imagen="https://avatars.githubusercontent.com/u/65115094?v=4" textoAlt='FMRedondi' profesion='Desarrollador' texto='Desarrollador de QRCelia, autodidacta y apasionado por el desarrollo. Enamorado de su bestia 206 🚕'></persona>
+             <persona nombre="Javi" imagen="https://avatars.githubusercontent.com/u/74726752?v=4" textoAlt='Javi' profesion='Desarrollador' texto='Desarrollador de QRCelia, resolutivo y autodidacta. Busca cualquier excusa para irse de fiesta 🕺'></persona>
              <persona nombre="Pablo" imagen="https://avatars.githubusercontent.com/u/43436415?v=4" textoAlt='Pablo' profesion='Desarrollador' texto='Desarrollador de QRCelia'></persona>
         </div>
          <separador-component texto='profesores' class="mt"></separador-component>
          <div class="personas">
-             <persona nombre="Félix Expósito López" imagen="/img/creditos/felix.png" textoAlt='felix' profesion='Profesor' texto='Tutor de el alumnado de 2 de DAW y profesor de interfaces y frontend'></persona>
-            <persona nombre="Alfredo Moreno Vozmediano" imagen="https://avatars.githubusercontent.com/u/25744642?v=4" textoAlt='alfredo' profesion='Profesor' texto='Encagargado del seguimiento del proyecto y profesor de backend'></persona>
+             <persona nombre="Félix Expósito López" imagen="/img/creditos/felix.png" textoAlt='felix' profesion='Profesor' texto='Tutor de el alumnado de 2 de DAW y profesor de interfaces y frontend. Nos enseña fundamentos y odia la DUAL 😡 '></persona>
+            <persona nombre="Alfredo Moreno Vozmediano" imagen="https://avatars.githubusercontent.com/u/25744642?v=4" textoAlt='alfredo' profesion='Profesor' texto='Encargado del seguimiento del proyecto, profesor de backend y galardonado escritor. Tiembla cada vez que lo llamamos 🤦‍♂️'></persona>
          </div>
          <separador-component texto='Colaboradores especiales' class="mt"></separador-component>
              <div class="personas">
-                 <persona nombre="Jodamaru" imagen="https://thispersondoesnotexist.com/image" textoAlt='Jodamaru' profesion='Editor de videos' texto='texto a elegir por jodamaru'></persona>
-                 <persona nombre="Abdelah" imagen="https://thispersondoesnotexist.com/image" textoAlt='Abdelah' profesion='Locutor' texto='texto a elegir por Abdelah'></persona>
+                 <persona nombre="Jose David Martinez (Jodamaru)" imagen="https://avatars.githubusercontent.com/u/16970714?v=4" textoAlt='Jodamaru' profesion='Editor de vídeos' texto='Editor de vídeos, piloto de dron y desarrollador CeliaCity. No lo saqueis de fiesta le duelen las rodillas 🎶'></persona>
+                 <persona nombre="Abdellah" imagen="https://avatars.githubusercontent.com/u/48606104?v=4" textoAlt='Abdellah' profesion='Locutor' texto='Locutor de QRCelia y desarrollador de CeliaCity. Siempre esta contento 😊 '></persona>
              </div>
          <div class="ultimoElemento"></div>
        </div>
