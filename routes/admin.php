@@ -8,7 +8,8 @@ use App\Http\Controllers\admin\panelesController;
 use App\Http\Controllers\admin\customUsersController;
 use App\Http\Controllers\admin\interestPointController;
 use App\Http\Controllers\admin\resourceUploadController;
-
+use App\Http\Controllers\admin\rolUserController;
+use Spatie\Permission\Models\Role;
 
 Route::get('/', function () {
     return view('admin/index');
@@ -25,6 +26,11 @@ Route::get('/personalizar', function () {
 Route::get('/roles', function () {
     return view('admin/roles');
 })-> middleware('can:ver_administracion');
+
+Route::get('/roles/getUsersAndRoles', [rolUserController::class, 'getUsersAndRoles'])-> name('getUsersAndRoles.user')-> middleware('can:ver_administracion');
+Route::post('/roles/addRol', [rolUserController::class, 'addRol'])-> name('addRol.user')-> middleware('can:ver_administracion');
+Route::post('/roles/removeRol', [rolUserController::class, 'removeRol'])-> name('removeRol.user')-> middleware('can:ver_administracion');
+
 
 Route::get('/verDatosContenido', [panelesController::class, 'datosPanelContenido'])-> name('verContenido.panel')-> middleware('can:ver_administracion');
 

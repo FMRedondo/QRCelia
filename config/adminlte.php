@@ -277,7 +277,7 @@ return [
             'icon' => 'fas fa-fw fa-users',
         ],
         [
-            'text' => 'Roles y Permisos',
+            'text' => 'Asignar roles',
             'url'  => 'admin/roles',
             'icon' => 'fas fa-fw fa-lock',
         ],

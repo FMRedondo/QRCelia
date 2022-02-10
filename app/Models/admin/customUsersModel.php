@@ -47,6 +47,13 @@ class customUsersModel extends Model
         return $id;
     }
 
+    public static function getUsersAndRoles(){
+        $sql = "SELECT users.id, users.name, users.email, model_has_roles.role_id FROM users LEFT JOIN model_has_roles ON users.id = model_has_roles.model_id";
+        $result = DB::select($sql);
+        return $result;
+
+    }
+
 
 
 

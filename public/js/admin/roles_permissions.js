@@ -5,10 +5,12 @@ function load() {
     var params = []
     $.ajax({
         data: params,
-        url: '/admin/usuarios/getUsers',
+        url: '/admin/roles/getUsersAndRoles',
+        contentType: "application/json",
         type: 'get',
 
         success: function (response) {
+            console.log(response);
             let $table = `
             <div class="w-full mb-8 rounded-lg shadow-lg">
                 <div class="w-full">
@@ -30,33 +32,77 @@ function load() {
             $(".contenidoPrincipal").append($table);
 
             response.forEach(function (data) {
-                let tableContent = `
-                    <tr class="text-gray-700" id="${data.id}">
-                        <td class="px-4 py-3 border">
-                            <div class="flex items-center text-sm">
-                                <div class="relative w-8 h-8 mr-3 rounded-full md:block">
-                                    <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true">
+                let tableContent = ``;
+                console.log(data);
+                    let ruta = "#" + data.id + " .inputTD"
+                    tableContent = `
+                        <tr class="text-gray-700" id="${data.id}">
+                            <td class="px-4 py-3 border">
+                                <div class="flex items-center text-sm">
+                                    <div class="relative w-8 h-8 mr-3 rounded-full md:block">
+                                        <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true">
+                                        </div>
                                     </div>
-                                 </div>
-                                <div>
-                                    <p class="font-semibold text-black regUserName">${data.name}</p>
-                                    <span class="py-1 leading-tight text-green-700 bg-green-100 rounded-sm regUserEmail"> ${data.email} </span>
+                                    <div>
+                                        <p class="font-semibold text-black regUserName">${data.name}</p>
+                                        <span class="py-1 leading-tight text-green-700 bg-green-100 rounded-sm regUserEmail"> ${data.email} </span>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>            
+                            </td>
+                            <td class="inputTD px-4 py-3 text-xs border">
 
-                        <td class="px-4 py-3 text-xs border">
-                            <input class="switchToggle" type="checkbox" id="adminToggle${data.id}">
-                        </td>
+                            </td>
+                        </tr>
+                    `;
 
-                    </tr>
-                `;
                 $("tbody").append(tableContent);
+                let input = ``;
+                if (data.role_id === 1) {
+                    input = `
+                        <input class="switchToggle" type="checkbox" checked data-rol="administrador" data-id="${data.id}">
+                    `;
+                }else{
+                    input = `
+                        <input class="switchToggle" type="checkbox" data-rol="administrador" data-id="${data.id}">
+                    `;
+                }
+
+                $(ruta).append(input);
+            })
+
+            $(".switchToggle").change(function() {
+                var params = {
+                    "idUsuario": $(this).data("id"),
+                    "nombreRol": $(this).data("rol"),
+                    "_token": $('meta[name="csrf-token"]').attr('content'),
+                }
+                if ($(this).is(':checked')) {
+                    $.ajax({
+                        data: params,
+                        url: '/admin/roles/addRol',
+                        type: 'post',
+
+                        error: function (response) {
+                            alert("Error en la peticion");
+                        }
+                    })
+                }else{
+                    $.ajax({
+                        data: params,
+                        url: '/admin/roles/removeRol',
+                        type: 'post',
+
+                        error: function (response) {
+                            alert("Error en la peticion");
+                        }
+                    })                    
+                }
             })
         },
 
         error: function (response){
             alert("Error en la peticion");
+            console.log(response);
         }
     });
 }
