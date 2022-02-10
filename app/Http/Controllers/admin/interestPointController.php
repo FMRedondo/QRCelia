@@ -34,6 +34,8 @@ class interestPointController extends Controller
             'date' => $date
         ]);
         */
+        //header('Access-Control-Allow-Origin: *');
+        //header('Access-Control-Allow-Headers: *');
 
         echo "holaa";
 

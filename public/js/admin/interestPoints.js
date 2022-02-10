@@ -191,7 +191,7 @@ const  mostrarAñadirPunto = (element) => {
 
  const añadirPunto = async (event) => {
     event.preventDefault();
-    let nombre = document.getElementById("typeName").value
+    var nombre = document.getElementById("typeName").value
     let desc   = document.getElementById("typeDesc").value
     let texto  = new String(CKEDITOR.instances['texto'].getData())
 
@@ -215,21 +215,19 @@ const  mostrarAñadirPunto = (element) => {
 
     var formData = new FormData()
     var poster = document.getElementById('poster').files;
-    formData.append('poster', poster[0])
     formData.append('name', nombre)
-    formData.append('description', desc)
-    formData.append('text', texto)
+    //formData.append('description', desc)
+    //formData.append('text', texto)
     formData.append('_token', token)
+    //formData.append('poster', poster)
 
     await fetch('/admin/puntosInteres/addPoint', {
         method: 'post',
-        header:{
-            "processData": false,  
-            "contentType": false  
+        headers:{  
+            'Content-Type': 'multipart/form-data',
         },
         body: formData
     }).then (response => {
-       alert(response)
        console.log(response)
     })
 
