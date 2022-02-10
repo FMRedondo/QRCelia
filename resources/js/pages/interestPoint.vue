@@ -1,11 +1,12 @@
 <template>
     <section id="contentSection">
+        
         <header-component></header-component>
         <div class="wrapper">
 
             <div class="slideshow-container" v-if="this.images.length > 0">
                 <div class="slide-images fade" v-for="(image,index) in this.images" :key="index">
-                    <img :src="image">
+                    <img :src="'img/puntosdeInteres/' + image">
                 </div>
                 <a class="prev" v-if="this.images.length > 1" onclick="plusIMG(-1)">&#10094;</a>
                 <a class="next" v-if="this.images.length > 1" onclick="plusIMG(1)">&#10095;</a>
@@ -15,7 +16,7 @@
 
             <separador-component texto='información'></separador-component>
 
-            <information-component :titulo="this.name" :desc="this.desc" :texto="this.text" :poster="this.poster"></information-component>
+            <information-component :titulo="this.name" :desc="this.desc" :texto="this.text" :poster="'img/puntosdeInteres/' + this.poster"></information-component>
                     
             <separador-component v-if="this.videos.length > 0" texto='Videos'></separador-component>
 
@@ -27,7 +28,7 @@
                 <a class="videoNext" v-if="this.videos.length > 1" onclick="plusVideos(1)">&#10095;</a>
             </div>
 
-            <!-- <comentarios :about='this.idpoint'></comentarios> -->
+            <comentarios :about='this.idpoint'></comentarios>
         </div>
     </section>
 </template>
@@ -68,6 +69,8 @@ export default{
                 this.text = response[0].text,
                 this.url = response[0].url,
                 this.poster = response[0].poster
+                                const loadScreen = document.getElementById("loadSection")
+                loadScreen.remove()
         },
 
         async getResources(type){
@@ -84,7 +87,7 @@ export default{
             .then(response => response.json())
                 const resources = []; 
                 for (let i = 0; i < response.length; i++) {
-                    resources.push(response[i].url);
+                    resources.push((response[i].url));
                 } 
                 if (type == "image")
                     this.images = resources; 
@@ -102,7 +105,7 @@ export default{
             this.getResources("image");
             this.getResources("video");
             this.getResources("audio");
-    }
+    },
 }
 </script>
 

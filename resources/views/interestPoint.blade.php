@@ -14,9 +14,17 @@
     <title>QRCelia</title>
 </head>
 <body>
+
+    <div id="loadSection">
+        <div class="backShadow">
+            <i class="fa-solid fa-spinner fa-spin"></i>
+        </div>
+    </div>
+
     <main id="app">
         <interestpoint-page v-on:scroll.native="scrollNav" :idpoint=@php echo $id;@endphp></interestpoint-page>        
     </main>
+
     <script src="https://kit.fontawesome.com/75e57fedbe.js" crossorigin="anonymous"></script>
     <script src="{{ mix('/js/app.js') }}"></script>
     <script src="/js/front/sliders.js"></script>

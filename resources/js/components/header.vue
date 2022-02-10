@@ -50,14 +50,17 @@
 
         methods: {
             desplegarMenu: (event) => {
-               const menu = document.getElementById('nav');
-               menu.classList.toggle('oculto');
-               const enlacesMenu = document.getElementsByClassName("enlaces");
-               enlacesMenu.addEventListener("click" , () => {alert("ee")})
+                const menu = document.getElementById('nav');
+                menu.classList.toggle('oculto');
+                const navContainer = document.getElementsByClassName("navContainer");
+                navContainer[0].style.position = 'absolute';
+                navContainer[0].classList.toggle('oculto');
             },
             cerrarMenu: (event) =>{
                 const menu = document.getElementById('nav');
                 menu.classList.toggle('oculto');
+                const navContainer = document.getElementsByClassName("navContainer");
+                navContainer[0].classList.toggle('oculto')
             },
 
             quitarImagen: (event) => {
@@ -161,8 +164,9 @@
         align-content: center;
     }
 
-    .navContainer{
-        position: relative !important;
+    .header .navContainer{
+        display: none;
+        position: relative;
         z-index: 999999 !important;
         top: 0 !important;
         left: 0 !important;
@@ -222,6 +226,16 @@
 
     .logo:focus{
         border: none !important;
+    }
+
+    @media (max-width: 1285px){
+        #nav{
+            width: 100%;
+        }
+
+        .closeNav{
+            align-items: flex-end;
+        }
     }
 
     @media (max-width: 650px){

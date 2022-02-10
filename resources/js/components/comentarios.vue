@@ -12,7 +12,7 @@
 <script>
 export default {
     props:{
-        about: String,
+        about: Number,
     },
     methods: {
         async enviarComentario(){
@@ -31,20 +31,20 @@ export default {
                        <div class='iconoAlerta'>
                             <i class="fa-regular fa-circle-check"></i>
                        </div>
-                       <div class=''contentAlert>
-                            <p class='tituloAlert'>Muchas gracias!</p>
+                       <div class="contentAlert">
+                            <p class='tituloAlert'>¡Muchas gracias!</p>
                             <p class='textoAlert'>Gracias por colaborar en este proyecto sobre nuestro instituto</p>
+                            <p class='textoAlert'>Si deseas saber más sobre el proyecto puedes visitar el aula 8 y preguntar</p>
                        </div>
                     </div>
                 `
-                const panel = document.getElementById("comentarios")
+                const panel = document.getElementById("app")
                 panel.innerHTML += contenido
 
-                /*const timer = setTimeout(() => {
-                    const ventana = document.getElementById("mensajeAlerta")
-                    ventana.remove()
+                const ventana = document.getElementById("mensajeAlerta")
+                const timer = setTimeout(() => {
+                    ventana.classList.add("dissapear");
                 }, 3000);
-                */
 
             })
             }
@@ -57,26 +57,48 @@ export default {
 <style>
 
     /* MENSAJE DE ALERTA  */
-
     #mensajeAlerta{
         display: flex;
         position: fixed;
+        flex-direction: column;
+        width: 50%;
+        top: 18%;
+        left: 25%;
         color: black !important;
+        z-index: 9999999;
+        -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+        box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
     }
 
     .iconoAlerta{
-        width: 30%;
+        width: 100%;
+        padding: 1.5em;
         background-color: #38C172;
         display: flex;
         justify-content: center;
         align-items: center;
+        border-radius: 2em 2em 0 0;
+    }
+
+    .iconoAlerta i {
+        font-size: 5em;
+        color: whitesmoke;
     }
 
     .contentAlert{
-        width: 70%;
+        width: 100%;
+        height: 100%;
         display: flex;
+        flex-direction: column;
         align-items: center;
         background-color: #A2F5BF;
+        padding: 1em;
+        font-size: 1.5em;
+        border-radius: 0 0 2em 2em;
+    }
+
+    .tituloAlert{
+        font-size: 2em;
     }
 
 
@@ -156,6 +178,13 @@ export default {
         color: white;
     }
 
+    .dissapear{
+        animation-name: desaparece;
+        animation-duration: 1s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+
 
     @media (max-width: 950px){
         .contenidoComentario{
@@ -164,6 +193,25 @@ export default {
 
         #btn{
             width: 100%;
+        }
+    }
+
+    @keyframes desaparece{
+        0%{
+            opacity: 1;
+        }
+        25%{
+            opacity: 0.75;
+        }
+        50%{
+            opacity: 0.5;
+        }
+        75%{
+            opacity: 0.25;
+        }
+        100%{
+            opacity: 0;
+            display: none;
         }
     }
 
