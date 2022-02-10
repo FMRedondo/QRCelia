@@ -92,7 +92,7 @@ class interestPointController extends Controller
         return response() -> json($result);
     }
 
-    public function getRandomPoint(){
+    public static function getRandomPoint(){
         $points = interestPointModel::getIdsFromPoints();
         return array_rand($points, 1);
     }
