@@ -19,36 +19,29 @@ class interestPointController extends Controller
     }
 
     public function addInterestPoint(Request $request){
-       /* $name           = $_POST['name'];
+        $name           = $_POST['name'];
         $description    = $_POST['description'];
         $text           = $_POST['text'];
+        $nombreArchivo  = $request -> nombreArchivo;
         $date           = DATE("Y-m-d H:i:s");
-        $_token         = $request['_token'];
-        */
-/*
-        $result = interestPointModel::addInterestPoint($name, $description, $text, $date);
-        $this -> subirPoster($request -> poster, $result);
+        $_token         = $_POST['_token'];
+        $archivo = $request -> fecha . "-" . $nombreArchivo;
 
+        $result = interestPointModel::addInterestPoint($name, $description, $text, $archivo, $date);
         return response() -> json([
             'id' => $result,
             'date' => $date
         ]);
-        */
-        //header('Access-Control-Allow-Origin: *');
-        //header('Access-Control-Allow-Headers: *');
-
-        echo "holaa";
 
     }
 
-    public function subirPoster($archivo, $idPunto){
-        $file = $archivo;
-         $url = "img/puntosInteres/";
-        $nombreArchivo = time() . "-" . $file -> getClientOriginalName();
-        //$subida = $request -> file('poster') -> move($url, $nombreArchivo);
-
-        //interestPointModel::updateInterestPoint($id, 'poster', $nombreArchivo);
-        
+    public function subirPoster(Request $request){
+        $file = $request -> file('poster');
+        $fecha = $request -> fecha;
+        $url = "img/puntosInteres/";
+        $nombreArchivo = $fecha . "-" . $file -> getClientOriginalName();
+        $subida = $request -> file('poster') -> move($url, $nombreArchivo);
+        echo $nombreArchivo;
 
     }
 

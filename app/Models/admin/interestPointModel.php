@@ -39,8 +39,8 @@ class interestPointModel extends Model
         return $result;
     }
 
-    public static function addInterestPoint($name, $description, $text, $date){
-        $sql = "INSERT INTO interest_points (name, description, text, created_at, updated_at) VALUES ('$name', '$description', '$text', '$date', '$date')";
+    public static function addInterestPoint($name, $description, $text,$archivo, $date){
+        $sql = "INSERT INTO interest_points (name, description, text, poster, created_at, updated_at) VALUES ('$name', '$description', '$text', '$archivo', '$date', '$date')";
         $result = DB::insert($sql);
         return DB::getPdo() -> lastInsertId();
     }

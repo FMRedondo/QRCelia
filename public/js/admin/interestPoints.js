@@ -100,7 +100,7 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
         <div class="modifyPanelContent w-100 d-flex" style="height:90%;">
             <div class="w-50 d-flex justify-content-center align-items-center">
                 <div class="w-100">
-                <img src=${response[0].poster} style='width:90%; margin:0 auto'>
+                <img src=/img/puntosInteres/${response[0].poster} style='width:90%; margin:0 auto'>
                 </div>
             </div>
             <div class="w-50 d-flex flex-column p-5">
@@ -194,41 +194,26 @@ const  mostrarAñadirPunto = (element) => {
     var nombre = document.getElementById("typeName").value
     let desc   = document.getElementById("typeDesc").value
     let texto  = new String(CKEDITOR.instances['texto'].getData())
+    let nombreArchivo = document.getElementById('poster').files[0].name;
+    let fecha = "eee";
 
-/*
-    ajax({'name': nombre, 'description': desc, 'text': texto, '_token': token}, '/admin/puntosInteres/addPoint', 'POST',  ( response ) => {
+
+    ajax({'name': nombre, 'description': desc, 'text': texto, 'nombreArchivo': nombreArchivo,'fecha': fecha, '_token': token}, '/admin/puntosInteres/addPoint', 'POST',  ( response ) => {
         alert("Se ha subido correctamente")
     })
 
-    
-
     var formData = new FormData()
     var poster = document.getElementById('poster').files;
+    formData.append('poster', poster)
+
+    var poster = document.getElementById('poster').files;
     formData.append('poster', poster[0])
+    formData.append('fecha', fecha)
     fetch('/api/puntosInteres/subirPoster', {
         method: 'post',
         body: formData
     }).then (response => {
         console.log(response)
-    })
-*/
-
-    var formData = new FormData()
-    var poster = document.getElementById('poster').files;
-    formData.append('name', nombre)
-    //formData.append('description', desc)
-    //formData.append('text', texto)
-    formData.append('_token', token)
-    //formData.append('poster', poster)
-
-    await fetch('/admin/puntosInteres/addPoint', {
-        method: 'post',
-        headers:{  
-            'Content-Type': 'multipart/form-data',
-        },
-        body: formData
-    }).then (response => {
-       console.log(response)
     })
 
 }
