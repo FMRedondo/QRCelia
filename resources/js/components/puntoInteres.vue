@@ -1,6 +1,6 @@
 <template>
     <div class="puntoInteres">
-        <img v-bind:src="imagen" alt="IES CELIA VIÑAS">
+        <img v-bind:src="'/img/puntosInteres/' + imagen" alt="IES CELIA VIÑAS">
         <div class="contenidoPunto">
             <h3>{{titulo}}</h3>
             <p class="descripcion">{{descripcion}}</p>
