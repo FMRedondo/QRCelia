@@ -77,7 +77,7 @@
 
 .boton span{
     position: relative;
-    z-index: 99;
+    z-index: 9;
     transition: ease-in-out 350ms;
 }
 
