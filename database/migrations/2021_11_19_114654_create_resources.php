@@ -14,7 +14,7 @@ class CreateResources extends Migration
     public function up()
     {
         Schema::create('resources', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->enum('type',['image','audio','video']);
             $table->string('name');
             $table->string('url');

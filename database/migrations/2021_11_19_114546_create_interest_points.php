@@ -14,13 +14,13 @@ class CreateInterestPoints extends Migration
     public function up()
     {
         Schema::create('interest_points', function (Blueprint $table) {
-            $table -> id();
+            $table->increments('id');
             $table -> string('name');
             $table -> string('description');
             $table -> longText('text');
             $table -> string('poster') -> nullable();
             $table -> string('author') -> nullable();
-            $table -> bigInteger('asociado') -> nullable();
+            $table -> integer('asociado') -> nullable();
             $table -> timestamps();
         });
     }

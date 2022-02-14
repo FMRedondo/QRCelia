@@ -104,6 +104,10 @@ class interestPointController extends Controller
 
     public static function getRandomPoint(){
         $points = interestPointModel::getIdsFromPoints();
-        return array_rand($points, 1);
+        if (!empty($points)) {
+            return array_rand($points, 1);
+        }else{
+            return false;
+        }
     }
 }
