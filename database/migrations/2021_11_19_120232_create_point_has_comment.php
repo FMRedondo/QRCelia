@@ -14,10 +14,10 @@ class CreatePointHasComment extends Migration
     public function up()
     {
         Schema::create('point_has_comment', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table -> timestamps();
-            $table -> unsignedInteger('idPoint');
-            $table -> unsignedInteger('idComment');
+            $table -> unsignedBigInteger('idPoint');
+            $table -> unsignedBigInteger('idComment');
         });
     }
 

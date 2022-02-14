@@ -14,9 +14,9 @@ class UserModifyResource extends Migration
     public function up()
     {
         Schema::create('user_modify_resource', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('idUser');
-            $table->unsignedInteger('idResource');
+            $table->id();
+            $table->unsignedBigInteger('idUser');
+            $table->unsignedBigInteger('idResource');
         });
     }
 

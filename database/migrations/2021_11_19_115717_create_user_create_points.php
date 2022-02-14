@@ -14,10 +14,10 @@ class CreateUserCreatePoints extends Migration
     public function up()
     {
         Schema::create('user_create_points', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table -> timestamps();
-            $table -> unsignedInteger('idUser');
-            $table -> unsignedInteger('idPoint');
+            $table -> unsignedBigInteger('idUser');
+            $table -> unsignedBigInteger('idPoint');
         });
     }
 
