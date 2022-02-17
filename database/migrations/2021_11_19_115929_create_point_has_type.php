@@ -14,9 +14,9 @@ class CreatePointHasType extends Migration
     public function up()
     {
         Schema::create('point_has_type', function (Blueprint $table) {
-            $table->id();
-            $table -> unsignedBigInteger('idPoint');
-            $table -> unsignedBigInteger('idType');
+            $table -> id();
+            $table -> string('idPoint');
+            $table -> string('idType');
         });
     }
 

@@ -15,8 +15,8 @@ class PointHasResources extends Migration
     {
         Schema::create('point_has_resources', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('idPoint');
-            $table->unsignedBigInteger('idResource');
+            $table->integer('idPoint');
+            $table->integer('idResource');
         });
     }
 
