@@ -214,7 +214,16 @@ const  mostrarAñadirPunto = (element) => {
         method: 'post',
         body: formData
     }).then (response => {
-        console.log(response)
+        const backpanel = document.getElementById('backpanel')
+        const addPanel = document.getElementById('addPanel')
+        
+        backpanel.classList.toggle("mostrarPanel")
+        addPanel.classList.toggle("mostrarPanel")
+
+        nombre.value = ""
+        desc.value   = ""
+        texto.value  = ""
+        fecha.value  = ""
     })
 
 }
@@ -254,7 +263,9 @@ searchPoint.addEventListener('keyup', elemento => {
 
 })
 
-
+/**
+ * imagenes asociadas a un punto de interes
+ */
 const imagenesRelacionadas = (elemento) => {
     const modifyPanelContent = document.querySelector("#modifyPanelContent")
     modifyPanelContent.classList.toggle('oculto')
