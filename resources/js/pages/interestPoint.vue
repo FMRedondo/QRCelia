@@ -6,23 +6,23 @@
 
             <div class="slideshow-container" v-if="this.images.length > 0">
                 <div class="slide-images fade" v-for="(image,index) in this.images" :key="index">
-                    <img :src="'img/puntosdeInteres/' + image">
+                    <img :src="'/img/puntosdeInteres/' + image">
                 </div>
                 <a class="prev" v-if="this.images.length > 1" onclick="plusIMG(-1)">&#10094;</a>
                 <a class="next" v-if="this.images.length > 1" onclick="plusIMG(1)">&#10095;</a>
             </div>
                                     
-            <audio-component  :audio="this.audio" v-if="this.audio.length != ``"></audio-component>
+            <audio-component  :audio="'/resources/audio/' + this.audio" v-if="this.audio.length != ``"></audio-component>
 
             <separador-component texto='información'></separador-component>
 
-            <information-component :titulo="this.name" :desc="this.desc" :texto="this.text" :poster="'img/puntosdeInteres/' + this.poster"></information-component>
+            <information-component :titulo="this.name" :desc="this.desc" :texto="this.text" :poster="'/img/puntosdeInteres/' + this.poster"></information-component>
                     
             <separador-component v-if="this.videos.length > 0" texto='Videos'></separador-component>
 
             <div class="slideVideo-container" v-if="this.videos.length > 0">
                 <div class="slide-videos fade" v-for="(videos,index) in this.videos" :key="index">
-                    <video :src="videos" controls></video>
+                    <video :src="'/resources/video/' + videos" controls></video>
                 </div>
                 <a class="videoPrev" v-if="this.videos.length > 1" onclick="plusVideos(-1)">&#10094;</a>
                 <a class="videoNext" v-if="this.videos.length > 1" onclick="plusVideos(1)">&#10095;</a>
@@ -69,7 +69,7 @@ export default{
                 this.text = response[0].text,
                 this.url = response[0].url,
                 this.poster = response[0].poster
-                                const loadScreen = document.getElementById("loadSection")
+                const loadScreen = document.getElementById("loadSection")
                 loadScreen.remove()
         },
 
