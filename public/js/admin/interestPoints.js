@@ -41,7 +41,7 @@ const index = () => {
             contenidoVista.innerHTML = "";
             response.forEach(data => {
                 let contenidoTabla = `
-                    <div id="card${data.id}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32" style="width: 30%">
+                    <div id="card${data.id}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32" style="width: 30%" >
                     <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-4"
                         src="/img/puntosInteres/${data.poster}" alt="${data.name}" />
                     <div class="p-4">
@@ -51,7 +51,8 @@ const index = () => {
                         <p class="description text-gray-600 font-light text-md mb-3" id=${data.description} data-field='description'>
                         ${data.description}
                         </p>        
-                        <div class="flex items-center mt-2 flex-row-reverse">
+                        <div class="d-flex flex  mt-2 flex-row-reverse gap-3 ">
+                            <button class="btn btn-danger rounded-circle flex removeButton fa-solid fa-trash " data-id=${data.id}></button>
                             <button class="btn btn-success rounded-circle flex editButton fa-solid fa-pen-to-square" data-id=${data.id}></button>
                         </div>
                     </div>    
@@ -63,6 +64,10 @@ const index = () => {
         const btnEdit = document.getElementsByClassName("editButton");
         for(let i = 0; i < btnEdit.length; i++)
             btnEdit[i].addEventListener('click', datosPuntoInteres)
+
+        const btnDelete = document.getElementsByClassName('removeButton')
+        for(let i = 0; i < btnDelete.length; i++)
+            btnDelete[i].addEventListener('click', eliminarPunto)
 
         // FALTA HACER EL EVEVENTO PARA LA ACUALIZACION DE LOS DATOS
 
@@ -289,6 +294,20 @@ searchPoint.addEventListener('keyup', elemento => {
     })
 
 })
+
+
+const eliminarPunto = elemento => {
+    
+    ajax({'id': elemento.target.getAttribute('data-id'), '_token': token}, '/admin/puntosInteres/eliminarPunto', 'POST', response => {
+        let puntoInteres = document.getElementById(`card${elemento.target.getAttribute('data-id')}`)
+        puntoInteres.remove()
+        //$(`.contenidoPuntos ${elemento.target.getAttribute('data-id')}`).remove()
+    })
+    
+
+    console.log(document.querySelector(`.contenidoPuntos #${elemento.target.getAttribute('data-id')}`))
+}
+
 
 /**
  * imagenes asociadas a un punto de interes

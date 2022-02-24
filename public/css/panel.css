@@ -41,7 +41,7 @@
 	justify-content: flex-end;
 }
 
-.editButton{
+.editButton, .removeButton{
     width: 3em;
     height: 3em;
     display: flex;

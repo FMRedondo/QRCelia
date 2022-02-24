@@ -311,7 +311,7 @@ function showEditResource() {
                     resource = `
                     <div class="imgThumbnail" style="height: 35em !important;">
                         <video controls style="padding: 2em;">
-                            <source src="${data.url}" type="video/mp4">
+                            <source src="/resources/video/${data.url}" type="video/mp4">
                             Tu navegador no soporta la visualización del video. Actualizalo.
                         </video>
                     </div>
@@ -321,7 +321,7 @@ function showEditResource() {
                     resource = `
                     <div class="d-flex justify-content-center mb-5 pb-5">
                         <audio controls>
-                            <source src="${data.url}">
+                            <source src="/resources/audio/${data.url}">
                         </audio>
                     </div>
                     `;

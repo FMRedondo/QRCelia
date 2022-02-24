@@ -57,10 +57,9 @@ class interestPointController extends Controller
 
     }
 
-
-    public function deleteInterestPoint(){
-        $id = $_POST['id'];
-        $_token = $_POST['token'];
+    public function deleteInterestPoint(Request $request){
+        $id = $request -> id;
+        $_token = $request -> _token;
         interestPointModel::deleteInterestPoint($id);
     }
 
