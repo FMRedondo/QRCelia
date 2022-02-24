@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\admin\TypeModel;
 use Illuminate\Support\Facades\Date;
 use App\Models\admin\resourceModel;
+use SebastianBergmann\Environment\Console;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class ResourceController extends Controller
@@ -73,5 +74,31 @@ class ResourceController extends Controller
         $date = DATE("Y-m-d H:i:s");
         ResourceModel::changeResource($newUrl, $idResource, $date);
         return $date;
+    }
+
+    public function verPuntosInteresEnlazados(){
+        $PUNTOS_ENLAZADOS = [];
+        $todosPuntosInteres     =  resourceModel::getResources();
+        // $puntosIngteresEnlazados = resourceModel::getLinkedResources(1);
+
+        foreach($todosPuntosInteres as $point){
+            $punto = [
+                'id' => $point -> id,
+                'nombre' => $point -> name,
+                'url' => $point -> url,
+                'enlazado' => false
+            ];
+
+            array_push($PUNTOS_ENLAZADOS, $punto);
+        }
+
+        for($i = 0; $i < count($PUNTOS_ENLAZADOS); $i++){
+            $id = $PUNTOS_ENLAZADOS[$i]['id'];
+            foreach($puntosIngteresEnlazados as $resorce){
+               $idPunto = $resorce -> idPoint;
+               echo "$idPunto -> $id <br>";
+            }
+        }
+        return $PUNTOS_ENLAZADOS;
     }
 }

@@ -296,5 +296,8 @@ searchPoint.addEventListener('keyup', elemento => {
 const imagenesRelacionadas = (elemento) => {
     const modifyPanelContent = document.querySelector("#modifyPanelContent")
     modifyPanelContent.classList.toggle('oculto')
+    // petcion para ver todos las iamgenes y ver las que estan enlazadas a este punto de interes
+
+    
     
 }

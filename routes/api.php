@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\interestPointController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\CommentController;
+use App\Http\Controllers\admin\ResourceController;
 
 
 
@@ -29,3 +30,5 @@ Route::post('/puntosInteres/getPoints', [interestPointController::class, 'getInt
 Route::post('/comentarios/addComment', [CommentController::class, 'addComment'])-> name('add.comments');
 
 Route::post('/puntosInteres/subirPoster', [interestPointController::class, 'subirPoster'])-> name('subir.poster');
+
+Route::post('/puntosInteres/verImagenesEnlazadas', [ResourceController::class, 'verPuntosInteresEnlazados'])-> name('ver.imagenes.enlazadas');
