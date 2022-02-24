@@ -103,4 +103,8 @@ class ResourceController extends Controller
 
         return $PUNTOS_ENLAZADOS;
     }
+
+    public function pruebas(){
+        echo "hola pruebas!";
+    }
 }
