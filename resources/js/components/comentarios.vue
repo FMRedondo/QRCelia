@@ -4,7 +4,11 @@
         <div class="contenidoComentario">
             <p class="textoComentario">Porfavor, si tienes alguna duda o segurencia sobre la web no dude en enviarnos tu sugerencia o contactar en el aula 8. Muchas gracias!</p>
             <textarea type="text" name="comentario" id="comentario" required></textarea>
-            <button id="btn" v-on:click="enviarComentario()"><span>Enviar</span></button>
+            <button class="g-recaptcha"
+            data-sitekey="reCAPTCHA_site_key"
+            data-callback='onSubmit'
+            id="btn"
+            v-on:click="enviarComentario()"><span>Enviar</span></button>
         </div>
     </section> 
 </template>
@@ -15,7 +19,7 @@ export default {
         about: Number,
     },
     methods: {
-        async enviarComentario(){
+        async enviarComentario(token){
             const mensaje = document.getElementById('comentario').value 
             if (!mensaje.length <= 0){
                 await fetch('/api/comentarios/addComment',{

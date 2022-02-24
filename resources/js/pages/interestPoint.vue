@@ -6,7 +6,7 @@
 
             <div class="slideshow-container" v-if="this.images.length > 0">
                 <div class="slide-images fade" v-for="(image,index) in this.images" :key="index">
-                    <img :src="'/img/puntosdeInteres/' + image">
+                    <img :src="'/img/puntosInteres/' + image">
                 </div>
                 <a class="prev" v-if="this.images.length > 1" onclick="plusIMG(-1)">&#10094;</a>
                 <a class="next" v-if="this.images.length > 1" onclick="plusIMG(1)">&#10095;</a>
@@ -16,7 +16,7 @@
 
             <separador-component texto='información'></separador-component>
 
-            <information-component :titulo="this.name" :desc="this.desc" :texto="this.text" :poster="'/img/puntosdeInteres/' + this.poster"></information-component>
+            <information-component :titulo="this.name" :desc="this.desc" :texto="this.text" :poster="'/img/puntosInteres/' + this.poster"></information-component>
                     
             <separador-component v-if="this.videos.length > 0" texto='Videos'></separador-component>
 

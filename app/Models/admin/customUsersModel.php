@@ -30,7 +30,8 @@ class customUsersModel extends Model
 
 
     public static function updateUser($id, $field, $value){
-        $sql = "UPDATE users SET $field = $value WHERE (id = $id)";
+        $date = DATE("Y-m-d H:i:s");
+        $sql = "UPDATE users SET $field = '$value', updated_at = '$date' WHERE (id = $id)";
         $result = DB::update($sql);
     }
 

@@ -1,9 +1,3 @@
-@php
-    namespace interestPointController;
-    use App\Http\Controllers\admin\interestPointController;
-    $randomId = interestPointController::getRandomPoint();
-@endphp
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,9 +23,7 @@
                 </p>
                 <div class="botones">
                     <a href="/puntosInteres" class="boton"><span>Descubre más</span></a>
-                    @if ($randomId)
-                        <a href="/puntodeinteres/{!! $randomId !!}" class="boton"><span>QR Misterioso</span></a>
-                    @endif
+                    <a href="/qrmisterioso" class="boton"><span>QR Misterioso</span></a>
                 </div>
             </div>
         </div>

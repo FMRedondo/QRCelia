@@ -19,6 +19,10 @@ Route::get('/puntodeinteres/{id}', function () {
     return view('interestPoint');
 });
 
+Route::get('/qrmisterioso', function () {
+    return view('qrmisterioso');
+});
+
 Route::get('/creditos', function () {
     return view('creditos');
 });

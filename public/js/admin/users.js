@@ -92,9 +92,18 @@ function load() {
 $(".btnAddUser").click(showAddUser);
 function showAddUser() {
     $(".addPanel").toggle();
-    $(".UserName").val("");
     $(".backPanel").show();
 }
+
+//Cerrar ventana añadir
+$(".closeWindowAddUser").click(function () {
+    $(".addPanel").hide();
+    $(".backPanel").hide();
+    $(".userName").val("");
+    $(".userEmail").val("");
+    $(".userPassword").val("");
+    $(".userPassword2").val("");
+})
    
 // Funcion para añadir una nueva user
 $(".btnSendAddUser").click(addUser);
@@ -105,67 +114,78 @@ function addUser(){
     let password2 = $(".userPassword2").val();
 
     if(password!=password2){
-        alert("La contraseña debe coincidir");
-    }else{
+        const error = `
+        <div class="alert alert-danger" id="errorPassword" role="alert">
+            ERROR, las contraseñas no coinciden
+         </div>
+        `;
 
+        const panelMensaje = $(".addPanel")
+        panelMensaje.append(error);
+
+        const animacion = setInterval(() => {
+         $("#errorPassword").remove()
+        }, 3000)
+
+
+    }else{
         var params = {
             "name": name,"email": email,"password": password,
             "_token": $('meta[name="csrf-token"]').attr('content')
         }
-    }
 
-    $.ajax({
-        data: params,
-        url: '/admin/usuarios/addUser',
-        type: 'post',
-
-        success: function (response) {
-        
-            $(".addPanel").toggle();
-
-                var newContent = `
-                <tr class="text-gray-700" id="${response.id}">
-                    <td class="px-4 py-3 border">
-                        <div class="flex items-center text-sm">
-                            <div class="relative w-8 h-8 mr-3 rounded-full md:block">
-                                <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true">
+        $.ajax({
+            data: params,
+            url: '/admin/usuarios/addUser',
+            type: 'post',
+    
+            success: function (response) {
+            
+                $(".addPanel").toggle();
+    
+                    var newContent = `
+                    <tr class="text-gray-700" id="${response.id}">
+                        <td class="px-4 py-3 border">
+                            <div class="flex items-center text-sm">
+                                <div class="relative w-8 h-8 mr-3 rounded-full md:block">
+                                    <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true">
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-black regUserName">${name}</p>
                                 </div>
                             </div>
-                            <div>
-                                <p class="font-semibold text-black regUserName">${name}</p>
-                            </div>
-                        </div>
-                    </td>
-
-                    <td class="px-4 py-3 text-xs border">
-                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regUserEmail"> ${email} </span>
-                    </td>                 
-
-                    <td class="px-4 py-3 text-xs border">
-                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regUserPassword"> ********** </span>
-                    </td>
-
-                    <td class="px-4 py-3 text-sm border d-flex flex-row justify-content-around">
-                        <button type="button" class="btn btn-primary btnShowEditUser" data-id='${response.id}'>Modificar</button>
-                        <button type="button" class="btn btn-danger btnDelUser" data-id='${response.id}'>Eliminar</button>
-                    </td>
-                </tr>
-            `;
-
-            $("tbody").append(newContent);
-            $(".btnShowEditUser").click(showEditUser);
-            $(".btnDelUser").click(showDelUser);
-            $(".btnShowEditUser").off();
-            $(".btnShowEditUser").click(showEditUser);
-            $(".backPanel").hide();
-
-         },
-
-         error: function (response) {
-            alert("Error en la peticion");
-         } 
-
-    });
+                        </td>
+    
+                        <td class="px-4 py-3 text-xs border">
+                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regUserEmail"> ${email} </span>
+                        </td>                 
+    
+                        <td class="px-4 py-3 text-xs border">
+                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regUserPassword"> ********** </span>
+                        </td>
+    
+                        <td class="px-4 py-3 text-sm border d-flex flex-row justify-content-around">
+                            <button type="button" class="btn btn-primary btnShowEditUser" data-id='${response.id}'>Modificar</button>
+                            <button type="button" class="btn btn-danger btnDelUser" data-id='${response.id}'>Eliminar</button>
+                        </td>
+                    </tr>
+                `;
+    
+                $("tbody").append(newContent);
+                $(".btnShowEditUser").click(showEditUser);
+                $(".btnDelUser").click(showDelUser);
+                $(".btnShowEditUser").off();
+                $(".btnShowEditUser").click(showEditUser);
+                $(".backPanel").hide();
+    
+             },
+    
+             error: function (response) {
+                alert("Error en la peticion");
+             } 
+        });
+    }
 }
 
 // Funcion para mostrar la pestaña para borrar categorias
@@ -287,9 +307,6 @@ function showEditUser() {
         "_token": $('meta[name="csrf-token"]').attr('content')
     }
 
-  
- 
-
     $.ajax({
         data: params,
         url: '/admin/usuarios/getUser',
@@ -306,16 +323,16 @@ function showEditUser() {
                         <h2 class="text-xl font-bold py-4 ">Modificar usuario</h2>
                         <div class='form-group mb-4'>  
                             <label class='mb-2'>Nombre:</label>  
-                            <input type='text' class='form-control userName userNameMod rounded-pill'  data-field='name' value='${response[0].name}' name='userNameMod'>  
+                            <input type='text' class='modifyField form-control userName userNameMod rounded-pill'  data-field='name' value='${response[0].name}' name='userNameMod'>  
                         </div>
                         <div class='form-group mb-4'>  
                             <label class='mb-2'>Email:</label>  
-                            <input type='text' class='form-control userMail userMailMod rounded-pill'  data-field='name' value='${response[0].email}' name='userMailMod'>  
+                            <input type='text' class='modifyField form-control userMail userMailMod rounded-pill'  data-field='email' value='${response[0].email}' name='userMailMod'>  
                         </div>  
                         <div class='form-group mb-4'>  
                             <label class='mb-2'>Contraseña:</label>  
-                            <input type='password' class='form-control userPassword userPasswordMod rounded-pill'  data-field='name' value='${response[0].password}' name='userPasswordMod'>  
-                        </div>    
+                            <input type='password' class='modifyField form-control userPassword userPasswordMod rounded-pill'  data-field='password' name='userPasswordMod'>  
+                        </div>
                     </div>
                     <div class="p-3  mt-2 text-center space-x-4 md:block">
                         <button class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100 btnWindow closeWindow btnAddUser btnWindowModify closeWindowModifyUser" data-val='false'>Cancelar</button>
@@ -329,14 +346,14 @@ function showEditUser() {
             $(".modifyPanel").show();
             $(".backPanel").show();
 
-            $(".userNameMod").change(function() {
+            $(".modifyField").change(function() {
                 var newName = $(".userNameMod").val();
                 var newMail = $(".userMailMod").val();
                 var newPassword = $(".userPasswordMod").val();
                 var params = {
                     "id": id,
                     "field": $(this).data("field"),
-                    "value": newName, newMail, newPassword,
+                    "value": $(this).val(),
                     "_token": $('meta[name="csrf-token"]').attr('content')
                 }
                     
