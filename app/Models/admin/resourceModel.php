@@ -56,4 +56,10 @@ class resourceModel extends Model
         $sql = "UPDATE resources set url = '$newUrl', updated_at = '$date'  WHERE(id = $idResource)";
         DB::update($sql);
     }
+
+    public static function getLinkedResources($idRecurso){
+        $sql = "select * FROM point_has_resources WHERE idPoint = $idRecurso";
+        $result = DB::select($sql);
+        return $result;
+    }
 }

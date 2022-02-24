@@ -214,7 +214,43 @@ const  mostrarAñadirPunto = (element) => {
         method: 'post',
         body: formData
     }).then (response => {
-        console.log(response)
+        response = response.json()
+        const backpanel = document.getElementById('backpanel')
+        const addPanel = document.getElementById('addPanel')
+
+        backpanel.classList.toggle("mostrarPanel")
+        addPanel.classList.toggle("mostrarPanel")
+
+        nombre.value = ""
+        desc.value   = ""
+        texto.value  = ""
+        fecha.value  = ""
+
+       console.log(response)
+       console.log(response.id)
+
+        let contenidoTabla = `
+        <div id="card${response.id}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32" style="width: 30%">
+        <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-4"
+            src="/img/puntosInteres/${response.poster}" alt="${nombre}" />
+        <div class="p-4">
+            <h2 class="name text-lg text-gray-900 font-medium title-font mb-2 whitespace-nowrap truncate" id=${nombre} data-field='name'>
+                ${nombre}
+            </h2>
+            <p class="description text-gray-600 font-light text-md mb-3" id=${desc} data-field='description'>
+            ${desc}
+            </p>        
+            <div class="flex items-center mt-2 flex-row-reverse">
+                <button class="btn btn-success rounded-circle flex editButton fa-solid fa-pen-to-square" data-id=${response.id}></button>
+            </div>
+        </div>    
+    </div>`;
+    
+
+        const contenidoVista = document.querySelector(".contenidoPuntos")
+        contenidoVista.innerHTML += contenidoTabla;
+
+        
     })
 
 }
@@ -254,9 +290,14 @@ searchPoint.addEventListener('keyup', elemento => {
 
 })
 
-
+/**
+ * imagenes asociadas a un punto de interes
+ */
 const imagenesRelacionadas = (elemento) => {
     const modifyPanelContent = document.querySelector("#modifyPanelContent")
     modifyPanelContent.classList.toggle('oculto')
+    // petcion para ver todos las iamgenes y ver las que estan enlazadas a este punto de interes
+
+    
     
 }

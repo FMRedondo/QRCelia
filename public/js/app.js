@@ -5753,6 +5753,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     titulo: String,
@@ -11342,7 +11344,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.texto *[data-v-a465d11e]{\n    color: black !important;\n}\n.puntoInteres[data-v-a465d11e]{\n    width: 100%;\n    margin-bottom: 1em;\n    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);\n    transition: ease-in-out 200ms;\n    background-color: white;\n    overflow: hidden;\n}\n.texto[data-v-a465d11e]{\n    color: black !important;\n}\n.puntoInteres[data-v-a465d11e]:hover{\n    transform: translateY(-0.5em);\n}\n.puntoInteres img[data-v-a465d11e]{\n    width: 100%;\n}\n.contenidoPunto[data-v-a465d11e]{\n    padding: 1.5em;\n}\n.contenidoPunto h3[data-v-a465d11e]{\n    color: black;\n    text-transform: uppercase;\n    font-weight: bolder;\n    margin-bottom: 0.5em;\n}\n.descripcion[data-v-a465d11e]{\n    text-align: justify;\n    font-weight: bolder;\n    margin-bottom: 0.5em;\n    color: var(--colorSecundario);\n}\na[data-v-a465d11e]{\n    display: block;\n    width: 50%;\n    padding: 0.5em;\n    color: var(--colorPrimario);\n    font-weight: bolder;\n    text-decoration: none;\n    margin-top: 1em;\n    text-transform: uppercase;\n    transition: ease-in-out 200ms;\n}\na[data-v-a465d11e]:hover{\n    color: var(--colorSecundario);\n}\n.texto *[data-v-a465d11e]{\n    color: black !important;\n}\n\n/* RESPONSIVE */\n@media (max-width: 1300px){\n.puntoInteres[data-v-a465d11e]{\n        width: 100%;\n}\n}\n@media (max-width: 850px){\n.puntoInteres[data-v-a465d11e]{\n        width: 100%;\n        margin: 0 auto;\n}\n}\n\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.texto *[data-v-a465d11e]{\n    color: black !important;\n}\n.puntoInteres[data-v-a465d11e]{\n    width: 100%;\n    margin-bottom: 1em;\n    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);\n    transition: ease-in-out 200ms;\n    background-color: white;\n    overflow: hidden;\n}\n.texto[data-v-a465d11e]{\n    color: black !important;\n}\n.puntoInteres[data-v-a465d11e]:hover{\n    transform: translateY(-0.5em);\n}\n.puntoInteres img[data-v-a465d11e]{\n    width: 100%;\n    height: 250px;\n    -o-object-fit: fill;\n       object-fit: fill;\n}\n.contenidoPunto[data-v-a465d11e]{\n    padding: 1.5em;\n}\n.contenidoPunto h3[data-v-a465d11e]{\n    color: black;\n    text-transform: uppercase;\n    font-weight: bolder;\n    margin-bottom: 0.5em;\n}\n.descripcion[data-v-a465d11e]{\n    text-align: justify;\n    font-weight: bolder;\n    margin-bottom: 0.5em;\n    color: var(--colorSecundario);\n}\na[data-v-a465d11e]{\n    display: block;\n    width: 50%;\n    padding: 0.5em;\n    color: var(--colorPrimario);\n    font-weight: bolder;\n    text-decoration: none;\n    margin-top: 1em;\n    text-transform: uppercase;\n    transition: ease-in-out 200ms;\n}\na[data-v-a465d11e]:hover{\n    color: var(--colorSecundario);\n}\n.texto *[data-v-a465d11e]{\n    color: black !important;\n}\n\n/* RESPONSIVE */\n@media (max-width: 1300px){\n.puntoInteres[data-v-a465d11e]{\n        width: 100%;\n}\n}\n@media (max-width: 850px){\n.puntoInteres[data-v-a465d11e]{\n        width: 100%;\n        margin: 0 auto;\n}\n}\n\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
