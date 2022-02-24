@@ -23,7 +23,6 @@ class customUsersController extends Controller
         $id = $_POST['id'];
         $result = customUsersModel::getUser($id);
         return response()->json($result);
-
     }
 
     public function addUser(){
@@ -31,27 +30,27 @@ class customUsersController extends Controller
         $email = $_POST['email'];
         $password = $_POST['password'];
         $_token = $_POST['_token'];
-        $criptPass = Hash::make($password);
+        $criptPass = bcrypt($password);
         $result = customUsersModel::addUser($name,$email,$criptPass);
         return response()->json([
         'id'=> $result
-
         ]);
-
     }
 
 
     public function deleteUser(){
         $id = $_POST['id'];
-        $result = customUsersModel::deleteUser($id);
+        customUsersModel::deleteUser($id);
     }
 
-    public function updateUsers(){
+    public function updateUser(){
         $id = $_POST['id'];
         $field = $_POST['field'];
         $value = $_POST['value'];
+        if ($field = "password")
+            $value = bcrypt($value);
 
-        $result = customUsersModel::updateUser($id, $field, $value);
+        customUsersModel::updateUser($id, $field, $value);
     }
 
     public function searchUsers(){

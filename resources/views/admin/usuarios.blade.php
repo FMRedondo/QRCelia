@@ -46,10 +46,10 @@
                 <input type='text' class='form-control userName rounded-pill' placeholder='Introduce el nombre del Usuario' name='userName'>  
                 <label class='mb-2'>Email:</label>  
                 <input type='text' class='form-control userEmail rounded-pill' placeholder='Introduce el email del Usuario' name='userEmail'>  
-                <label class='mb-2'>Password:</label>  
-                <input type='text' class='form-control userPassword rounded-pill' placeholder='Introduce la contraseña del Usuario' name='userPassword'>  
+                <label class='mb-2'>Contraseña:</label>  
+                <input type='password' class='form-control userPassword rounded-pill' placeholder='Introduce la contraseña del Usuario' name='userPassword'>  
                 <label class='mb-2'>Confirma la contraseña:</label>  
-                <input type='text' class='form-control userPassword2 rounded-pill' placeholder='Introduce la contraseña del Usuario' name='userPassword2'>  
+                <input type='password' class='form-control userPassword2 rounded-pill' placeholder='Introduce la contraseña del Usuario' name='userPassword2'>  
             
             </div>  
         </div>

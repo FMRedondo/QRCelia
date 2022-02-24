@@ -25,7 +25,7 @@ function load() {
 
                 var thumbnail = ""
                 if (data.type == "image") {
-                    thumbnail = data.url;
+                    thumbnail = "/img/puntosInteres/" + data.url;
                 }
                 if (data.type == "video") {
                     thumbnail = "/img/video.png";
@@ -224,7 +224,7 @@ function searchResource() {
                 <div id="${data.id}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32" style="width: 30%">
                 <div class="imgThumbnail">
                     <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-4"
-                    src="${thumbnail}" alt="Image Size 720x400" />
+                    src="/img/${thumbnail}" alt="Image Size 720x400" />
                     <button type="button" class="btn btn-success rounded-circle flex editButton" data-id='${data.id}'>
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
@@ -303,7 +303,7 @@ function showEditResource() {
                 if (data.type == "image") {
                     resource = `
                     <div class="imgThumbnail" style="height: 35em !important; padding: 2em;">
-                        <img class="rounded w-full object-cover object-center" src="${data.url}" alt="Portada de recurso" />
+                        <img class="rounded w-full object-cover object-center" src="/img/puntosInteres/${data.url}" alt="Portada de recurso" />
                     </div>
                         `;
                 }
@@ -528,7 +528,7 @@ function showChangeResource() {
                     source = `
                         <div data-url="${data.url}" class="resourceCard c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden p-2 m-3" style="width: 25%">
                             <div class="imgThumbnail">
-                                <img class="rounded w-full object-cover object-center" src="${data.url}">
+                                <img class="rounded w-full object-cover object-center" src="/img/puntosInteres/${data.url}">
                             </div>
                         </div>   
                     `;
