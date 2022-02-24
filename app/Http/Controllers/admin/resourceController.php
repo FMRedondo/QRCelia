@@ -78,15 +78,16 @@ class ResourceController extends Controller
 
     public function verPuntosInteresEnlazados(){
         $PUNTOS_ENLAZADOS = [];
-        $todosPuntosInteres     =  resourceModel::getResources();
-        // $puntosIngteresEnlazados = resourceModel::getLinkedResources(1);
+        $todosPuntosInteres =  resourceModel::getResources();
+        $puntosEnlazados = resourceModel::getLinkedResources(1);
 
         foreach($todosPuntosInteres as $point){
             $punto = [
                 'id' => $point -> id,
                 'nombre' => $point -> name,
                 'url' => $point -> url,
-                'enlazado' => false
+                'enlazado' => false,
+                'tipo' => $point -> type,
             ];
 
             array_push($PUNTOS_ENLAZADOS, $punto);
@@ -94,11 +95,12 @@ class ResourceController extends Controller
 
         for($i = 0; $i < count($PUNTOS_ENLAZADOS); $i++){
             $id = $PUNTOS_ENLAZADOS[$i]['id'];
-            foreach($puntosIngteresEnlazados as $resorce){
-               $idPunto = $resorce -> idPoint;
-               echo "$idPunto -> $id <br>";
-            }
+            foreach($puntosEnlazados as $enlazado){
+                if($id == $enlazado -> idResource)
+                  $PUNTOS_ENLAZADOS[$i]['enlazado'] = true;
+            } 
         }
+
         return $PUNTOS_ENLAZADOS;
     }
 }
