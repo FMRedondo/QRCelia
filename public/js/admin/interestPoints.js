@@ -42,7 +42,7 @@ const index = () => {
             response.forEach(data => {
                 let contenidoTabla = `
                     <div id="card${data.id}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32" style="width: 30%" >
-                    <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-4"
+                    <img class="imagenPunto lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-4"
                         src="/img/puntosInteres/${data.poster}" alt="${data.name}" />
                     <div class="p-4">
                         <h2 class="name text-lg text-gray-900 font-medium title-font mb-2 whitespace-nowrap truncate" id=${data.name} data-field='name'>

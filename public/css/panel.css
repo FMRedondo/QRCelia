@@ -106,3 +106,8 @@
 
 @media (max-width: 795px) {
 }
+
+.imagenPunto{
+    height: 250px;
+    object-fit: fill;
+}
