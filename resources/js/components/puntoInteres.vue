@@ -34,6 +34,8 @@
 
     .puntoInteres img{
         width: 100%;
+        height: 250px;
+        object-fit: fill;
     }
 
     .contenidoPunto{

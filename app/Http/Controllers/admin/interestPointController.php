@@ -51,7 +51,8 @@ class interestPointController extends Controller
         $result = interestPointModel::addInterestPoint($name, $description, $text, $nombreArchivo, $date);
         return response() -> json([
             'id' => $result,
-            'date' => $date
+            'date' => $date,
+            'poster' => $nombreArchivo
         ]);
 
     }
