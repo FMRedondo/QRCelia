@@ -125,7 +125,7 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
                 </div>
 
                 <div class='recursos'>
-                    <button class='imagenes' id='imagenesEnlazadas'>Imagenes</button>
+                    <button class='imagenes' id='imagenesEnlazadas' data-id=${response[0].id}>Imagenes</button>
                 </div>
             </div>
         </div>`;
@@ -297,26 +297,29 @@ searchPoint.addEventListener('keyup', elemento => {
 
 
 const eliminarPunto = elemento => {
-    
     ajax({'id': elemento.target.getAttribute('data-id'), '_token': token}, '/admin/puntosInteres/eliminarPunto', 'POST', response => {
         let puntoInteres = document.getElementById(`card${elemento.target.getAttribute('data-id')}`)
         puntoInteres.remove()
-        //$(`.contenidoPuntos ${elemento.target.getAttribute('data-id')}`).remove()
     })
-    
-
-    console.log(document.querySelector(`.contenidoPuntos #${elemento.target.getAttribute('data-id')}`))
 }
 
 
 /**
  * imagenes asociadas a un punto de interes
  */
-const imagenesRelacionadas = (elemento) => {
+const imagenesRelacionadas =  async (elemento) => {
     const modifyPanelContent = document.querySelector("#modifyPanelContent")
     modifyPanelContent.classList.toggle('oculto')
-    // petcion para ver todos las iamgenes y ver las que estan enlazadas a este punto de interes
-
-    
-    
+    const imagenes = await ajax({'id': elemento.target.getAttribute('data-id')}, '/api/puntosInteres/verImagenesEnlazadas', 'POST', response => {
+        const modifyPanelContent = document.querySelector("#modifyPanelContent")
+        modifyPanelContent.insertAdjacentHTML("beforebegin", `<section id="imagenesRelacionadas"></section>`)
+        const contenidoImagenesRelacionaas = document.getElementById('imagenesRelacionadas')
+        console.log(response)
+        response.forEach(data => {
+            let contenido = `
+                <img src='/img/puntosInteres/${data.url}' alt='${data.nombre}' class='${data.enlazado}'>
+            `
+            contenidoImagenesRelacionaas.insertAdjacentHTML("beforeend", contenido)
+        })
+    })
 }

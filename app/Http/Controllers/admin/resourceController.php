@@ -76,10 +76,11 @@ class ResourceController extends Controller
         return $date;
     }
 
-    public function verPuntosInteresEnlazados(){
+    public function verPuntosInteresEnlazados(Request $request){
+        $id = $request -> id;
         $PUNTOS_ENLAZADOS = [];
         $todosPuntosInteres =  resourceModel::getResources();
-        $puntosEnlazados = resourceModel::getLinkedResources(1);
+        $puntosEnlazados = resourceModel::getLinkedResources($id);
 
         foreach($todosPuntosInteres as $point){
             $punto = [

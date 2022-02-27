@@ -111,3 +111,20 @@
     height: 250px;
     object-fit: fill;
 }
+
+#imagenesRelacionadas{
+    width: 90%;
+    margin: 2em auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: space-around;
+}
+
+#imagenesRelacionadas img{
+    width: 30%;
+}
+
+#imagenesRelacionadas img.true{
+    border: 2px solid red;
+}

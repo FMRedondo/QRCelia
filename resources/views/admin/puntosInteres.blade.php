@@ -83,7 +83,9 @@
     <i class="fa-solid fa-spinner fa-spin-pulse h1 d-flex justify-content-center m-auto mt-25"></i>
 </div>
 
-<div class="xl:w-1/3 md:w-1/2 p-4 d-flex flex-wrap" id="resourceList" style="gap:3em"></div>
+<div class="xl:w-1/3 md:w-1/2 p-4 d-flex flex-wrap" id="resourceList" style="gap:3em">
+<div id='imagenesRelacionadas'></div>
+</div>
 <div class='backPanel' id="backpanel"></div>
 <div class="mensaje" id="mensaje"></div>
 
