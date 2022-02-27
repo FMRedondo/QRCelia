@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\admin\TypeModel;
 use Illuminate\Support\Facades\Date;
 use App\Models\admin\resourceModel;
+use SebastianBergmann\CodeUnit\FunctionUnit;
 use SebastianBergmann\Environment\Console;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 
@@ -78,8 +79,9 @@ class ResourceController extends Controller
 
     public function verPuntosInteresEnlazados(Request $request){
         $id = $request -> id;
+        $tipo = $request -> tipo;
         $PUNTOS_ENLAZADOS = [];
-        $todosPuntosInteres =  resourceModel::getResources();
+        $todosPuntosInteres =  resourceModel::getResourcesType($tipo);
         $puntosEnlazados = resourceModel::getLinkedResources($id);
 
         foreach($todosPuntosInteres as $point){
@@ -103,5 +105,20 @@ class ResourceController extends Controller
         }
 
         return $PUNTOS_ENLAZADOS;
+    }
+
+    public function enlazarPuntoConRecurso(Request $request){
+        $idPunto = $request -> idPunto;
+        $idRecurso = $request -> idRecurso;
+        $enlazado = $request -> enlazado;
+        $_token = $request -> _token;
+        
+        if($enlazado == 'true'){
+            resourceModel::enlazePuntoConRecurso($idPunto, $idRecurso);
+        }
+        else{
+            resourceModel::quitarEnlazePuntoConRecurso($idPunto, $idRecurso);
+        }
+           
     }
 }

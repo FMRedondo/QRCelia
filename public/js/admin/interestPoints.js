@@ -125,7 +125,8 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
                 </div>
 
                 <div class='recursos'>
-                    <button class='imagenes' id='imagenesEnlazadas' data-id=${response[0].id}>Imagenes</button>
+                    <button class='imagenes' id='imagenesEnlazadas' data-id='${response[0].id}'>Imagenes</button>
+                    <button class='imagenes' id='videosEnlazadas' data-id='${response[0].id}'>videos</button>
                 </div>
             </div>
         </div>`;
@@ -152,6 +153,9 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
 
     const btnImagenes = document.getElementById('imagenesEnlazadas')
     btnImagenes.addEventListener('click', imagenesRelacionadas)
+
+    const btnVideos = document.getElementById('videosEnlazadas')
+    btnVideos.addEventListener('click', videosRelacionados)
 })
 
 
@@ -310,16 +314,58 @@ const eliminarPunto = elemento => {
 const imagenesRelacionadas =  async (elemento) => {
     const modifyPanelContent = document.querySelector("#modifyPanelContent")
     modifyPanelContent.classList.toggle('oculto')
-    const imagenes = await ajax({'id': elemento.target.getAttribute('data-id')}, '/api/puntosInteres/verImagenesEnlazadas', 'POST', response => {
+    const imagenes = await ajax({'id': elemento.target.getAttribute('data-id'), 'tipo': 'image'}, '/api/puntosInteres/verImagenesEnlazadas', 'POST', response => {
         const modifyPanelContent = document.querySelector("#modifyPanelContent")
         modifyPanelContent.insertAdjacentHTML("beforebegin", `<section id="imagenesRelacionadas"></section>`)
         const contenidoImagenesRelacionaas = document.getElementById('imagenesRelacionadas')
-        console.log(response)
         response.forEach(data => {
-            let contenido = `
-                <img src='/img/puntosInteres/${data.url}' alt='${data.nombre}' class='${data.enlazado}'>
-            `
+            let contenido = `<img src='/img/puntosInteres/${data.url}' alt='${data.nombre}' class='${data.enlazado}' data-id=${data.id} data-idPunto=${elemento.target.getAttribute('data-id')}>`
             contenidoImagenesRelacionaas.insertAdjacentHTML("beforeend", contenido)
         })
+
+        contenidoImagenesRelacionaas.addEventListener('click', modificarImagenesRelacionadas)
     })
+}
+
+
+const modificarImagenesRelacionadas =  async elemento => {
+    var enlazado = elemento.target.getAttribute('class')
+   // no lo reconoce como boolean por lo que no puedo hacer !enlazado para la asignacion :( me da toc, pero es lo que hay
+   var enlazado;
+    if(enlazado == 'true'){
+        elemento.target.setAttribute('class', 'false')
+        enlazado = 'false'
+    }
+    else{
+        elemento.target.setAttribute('class', 'true')
+        enlazado='true'
+    }
+
+    let idPunto = elemento.target.getAttribute('data-idPunto')
+    let idRecurso = elemento.target.getAttribute('data-id')
+       
+    await ajax({'idPunto': idPunto, 'idRecurso': idRecurso, 'enlazado': enlazado, '_token': token}, '/admin/puntosInteres/enlazarPuntoConRecurso', 'POST', response => {})
+}
+
+
+const videosRelacionados = async elemento => {
+    const modifyPanelContent = document.querySelector("#modifyPanelContent")
+    modifyPanelContent.classList.toggle('oculto')
+    
+    const videos = await ajax({'id': elemento.target.getAttribute('data-id'), 'tipo': 'video'}, '/api/puntosInteres/verImagenesEnlazadas', 'POST', response => {
+        const modifyPanelContent = document.querySelector("#modifyPanelContent")
+        modifyPanelContent.insertAdjacentHTML("beforebegin", `<section id="videosRelacionadas"></section>`)
+        const contenidoVideosRelacionaas = document.getElementById('videosRelacionadas')
+        response.forEach(data => {
+            let contenido = `<video src='/videos/${data.url}' alt='${data.nombre}' class='${data.enlazado}' data-id=${data.id} data-idPunto=${elemento.target.getAttribute('data-id')} controls><video>`
+            contenidoVideosRelacionaas.insertAdjacentHTML("beforeend", contenido)
+        })
+
+        contenidoVideosRelacionaas.addEventListener('click', modificarVideosRelacionados)
+    })
+}
+
+
+const modificarVideosRelacionados = () =>{
+    alert("hola")
 }

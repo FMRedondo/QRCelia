@@ -112,7 +112,7 @@
     object-fit: fill;
 }
 
-#imagenesRelacionadas{
+#imagenesRelacionadas, #videosRelacionadas{
     width: 90%;
     margin: 2em auto;
     display: flex;
@@ -121,10 +121,14 @@
     justify-content: space-around;
 }
 
-#imagenesRelacionadas img{
+#imagenesRelacionadas img, #videosRelacionadas video{
     width: 30%;
 }
 
-#imagenesRelacionadas img.true{
+#imagenesRelacionadas img.true, #videosRelacionadas video.true{
     border: 2px solid red;
+}
+
+#imagenesRelacionadas img.false, #videosRelacionadas video.false{
+    border: 2px solid transparent;
 }

@@ -5,6 +5,7 @@ namespace App\Models\admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use SebastianBergmann\Type\StaticType;
 
 class resourceModel extends Model
 {
@@ -13,6 +14,12 @@ class resourceModel extends Model
     
     public static function getResources(){
         $sql = "SELECT * FROM resources";
+        $result = DB::SELECT($sql);
+        return $result;
+    }
+
+    public static function getResourcesType($tipo){
+        $sql = "SELECT * FROM resources WHERE (type = '$tipo')";
         $result = DB::SELECT($sql);
         return $result;
     }
@@ -58,8 +65,19 @@ class resourceModel extends Model
     }
 
     public static function getLinkedResources($idRecurso){
-        $sql = "select * FROM point_has_resources WHERE idPoint = $idRecurso";
+        $sql = "SELECT * FROM point_has_resources WHERE (idPoint = $idRecurso)";
         $result = DB::select($sql);
         return $result;
+    }
+
+    public static function enlazePuntoConRecurso($idPunto, $idRecurso){
+        $sql = "INSERT INTO point_has_resources (idPoint, idResource) VALUES ($idPunto, $idRecurso)";
+        db::insert($sql);
+    }
+    
+
+    public static function quitarEnlazePuntoConRecurso($idPunto, $idRecurso){
+        $sql = "DELETE FROM point_has_resources WHERE (idPoint = $idPunto AND idResource = $idRecurso)";
+        db::delete($sql);
     }
 }
