@@ -30,5 +30,7 @@ Route::post('/puntosInteres/getPoints', [interestPointController::class, 'getInt
 Route::post('/comentarios/addComment', [CommentController::class, 'addComment'])-> name('add.comments');
 
 Route::post('/puntosInteres/subirPoster', [interestPointController::class, 'subirPoster'])-> name('subir.poster');
+Route::post('/recursos/addResource', [ResourceUploadController::class, 'addResource'])-> name('add.resource')-> middleware('can:ver_administracion');
+
 
 Route::post('/puntosInteres/verImagenesEnlazadas', [ResourceController::class, 'verPuntosInteresEnlazados'])-> name('ver.imagenes.enlazadas');

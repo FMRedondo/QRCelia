@@ -4,6 +4,8 @@
         <header-component></header-component>
         <div class="wrapper">
 
+            <title-component :titulo="this.name" :desc="this.desc"></title-component>
+
             <div class="slideshow-container" v-if="this.images.length > 0">
                 <div class="slide-images fade" v-for="(image,index) in this.images" :key="index">
                     <img :src="'/img/puntosInteres/' + image">
@@ -16,7 +18,7 @@
 
             <separador-component texto='información'></separador-component>
 
-            <information-component :titulo="this.name" :desc="this.desc" :texto="this.text" :poster="'/img/puntosInteres/' + this.poster"></information-component>
+            <information-component :texto="this.text" :poster="'/img/puntosInteres/' + this.poster"></information-component>
                     
             <separador-component v-if="this.videos.length > 0" texto='Videos'></separador-component>
 
