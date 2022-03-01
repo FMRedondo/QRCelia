@@ -5927,11 +5927,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-<<<<<<< HEAD
 //
 //
-=======
->>>>>>> 0ae20234a83690c4b0f68ff5ef2b79859529a9d0
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     idpoint: Number,
@@ -31958,7 +31955,6 @@ var render = function () {
         "div",
         { staticClass: "wrapper" },
         [
-<<<<<<< HEAD
           _c("information-component", {
             attrs: {
               titulo: this.name,
@@ -31970,12 +31966,6 @@ var render = function () {
           _vm._v(" "),
           _c("separador-component", { attrs: { texto: "Imagenes" } }),
           _vm._v(" "),
-=======
-          _c("title-component", {
-            attrs: { titulo: this.name, desc: this.desc },
-          }),
-          _vm._v(" "),
->>>>>>> 0ae20234a83690c4b0f68ff5ef2b79859529a9d0
           this.images.length > 0
             ? _c(
                 "div",
@@ -32025,18 +32015,6 @@ var render = function () {
               })
             : _vm._e(),
           _vm._v(" "),
-<<<<<<< HEAD
-=======
-          _c("separador-component", { attrs: { texto: "información" } }),
-          _vm._v(" "),
-          _c("information-component", {
-            attrs: {
-              texto: this.text,
-              poster: "/img/puntosInteres/" + this.poster,
-            },
-          }),
-          _vm._v(" "),
->>>>>>> 0ae20234a83690c4b0f68ff5ef2b79859529a9d0
           this.videos.length > 0
             ? _c("separador-component", { attrs: { texto: "Videos" } })
             : _vm._e(),

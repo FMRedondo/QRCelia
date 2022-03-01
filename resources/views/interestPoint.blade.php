@@ -28,5 +28,6 @@
     <script src="https://kit.fontawesome.com/75e57fedbe.js" crossorigin="anonymous"></script>
     <script src="{{ mix('/js/app.js') }}"></script>
     <script src="/js/front/sliders.js"></script>
+    <script src="/js/front/elegirAudioDefecto.js"></script>
 </body>
 </html>
