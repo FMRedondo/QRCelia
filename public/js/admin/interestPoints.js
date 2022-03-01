@@ -125,8 +125,9 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
                 </div>
 
                 <div class='recursos'>
-                    <button class='imagenes' id='imagenesEnlazadas' data-id='${response[0].id}'>Imagenes</button>
-                    <button class='imagenes' id='videosEnlazadas' data-id='${response[0].id}'>videos</button>
+                    <button class='imagenes' id='imagenesEnlazadas' data-id='${response[0].id}'><i class="fa-solid fa-photo-film"></i> Imagenes </button>
+                    <button class='imagenes' id='videosEnlazadas' data-id='${response[0].id}'><i class="fa-solid fa-video"></i> videos </button>
+                    <button class='imagenes' id='audiosRelacionado' data-id='${response[0].id}'><i class="fa-solid fa-volume-high"></i> Audios</button>
                 </div>
             </div>
         </div>`;
@@ -156,6 +157,9 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
 
     const btnVideos = document.getElementById('videosEnlazadas')
     btnVideos.addEventListener('click', videosRelacionados)
+
+    const btnAudios = document.getElementById('audiosRelacionado')
+    btnAudios.addEventListener('click', audiosRelacionados)
 })
 
 
@@ -308,12 +312,43 @@ const eliminarPunto = elemento => {
 }
 
 
+const cerrar = () => {
+    modifyPanelContent.classList.toggle('oculto')
+    document.getElementById('imagenesRelacionadas').remove()
+    const btnBorrar =  document.getElementById('volver')
+    btnBorrar.remove()
+    btnBorrar.removeEventListener('click', cerrar)
+}
+
+const cerrarVideos = () => {
+    modifyPanelContent.classList.toggle('oculto')
+    document.getElementById('videosRelacionadas').remove()
+    const btnBorrar =  document.getElementById('volver')
+    btnBorrar.remove()
+    btnBorrar.removeEventListener('click', cerrarVideos)
+}
+
+
+const cerrarAudios = () => {
+    modifyPanelContent.classList.toggle('oculto')
+    document.getElementById('audiosRelacionados').remove()
+    const btnBorrar =  document.getElementById('volver')
+    btnBorrar.remove()
+    btnBorrar.removeEventListener('click', cerrarVideos)
+}
+
 /**
  * imagenes asociadas a un punto de interes
  */
 const imagenesRelacionadas =  async (elemento) => {
     const modifyPanelContent = document.querySelector("#modifyPanelContent")
     modifyPanelContent.classList.toggle('oculto')
+
+    const botonCerrar = document.querySelector('.closeModifyWindow')
+    botonCerrar.insertAdjacentHTML("beforebegin", "<button id='volver'><i class='fa-solid fa-arrow-left'></i></button>")
+
+    document.getElementById('volver').addEventListener('click', cerrar)
+
     const imagenes = await ajax({'id': elemento.target.getAttribute('data-id'), 'tipo': 'image'}, '/api/puntosInteres/verImagenesEnlazadas', 'POST', response => {
         const modifyPanelContent = document.querySelector("#modifyPanelContent")
         modifyPanelContent.insertAdjacentHTML("beforebegin", `<section id="imagenesRelacionadas"></section>`)
@@ -326,7 +361,6 @@ const imagenesRelacionadas =  async (elemento) => {
         contenidoImagenesRelacionaas.addEventListener('click', modificarImagenesRelacionadas)
     })
 }
-
 
 const modificarImagenesRelacionadas =  async elemento => {
     var enlazado = elemento.target.getAttribute('class')
@@ -351,13 +385,18 @@ const modificarImagenesRelacionadas =  async elemento => {
 const videosRelacionados = async elemento => {
     const modifyPanelContent = document.querySelector("#modifyPanelContent")
     modifyPanelContent.classList.toggle('oculto')
+
+    const botonCerrar = document.querySelector('.closeModifyWindow')
+    botonCerrar.insertAdjacentHTML("beforebegin", "<button id='volver'><i class='fa-solid fa-arrow-left'></i></button>")
+
+    document.getElementById('volver').addEventListener('click', cerrarVideos)
     
     const videos = await ajax({'id': elemento.target.getAttribute('data-id'), 'tipo': 'video'}, '/api/puntosInteres/verImagenesEnlazadas', 'POST', response => {
         const modifyPanelContent = document.querySelector("#modifyPanelContent")
         modifyPanelContent.insertAdjacentHTML("beforebegin", `<section id="videosRelacionadas"></section>`)
         const contenidoVideosRelacionaas = document.getElementById('videosRelacionadas')
         response.forEach(data => {
-            let contenido = `<video src='/videos/${data.url}' alt='${data.nombre}' class='${data.enlazado}' data-id=${data.id} data-idPunto=${elemento.target.getAttribute('data-id')} controls><video>`
+            let contenido = `<video src='/videos/${data.url}' alt='${data.nombre}' class='${data.enlazado}' data-id=${data.id} data-idPunto=${elemento.target.getAttribute('data-id')} ><video>`
             contenidoVideosRelacionaas.insertAdjacentHTML("beforeend", contenido)
         })
 
@@ -366,6 +405,71 @@ const videosRelacionados = async elemento => {
 }
 
 
-const modificarVideosRelacionados = () =>{
-    alert("hola")
+const modificarVideosRelacionados = async elemento =>{
+    var enlazado = elemento.target.getAttribute('class')
+
+    var enlazado;
+    if(enlazado == 'true'){
+        elemento.target.setAttribute('class', 'false')
+        enlazado = 'false'
+    }
+    else{
+        elemento.target.setAttribute('class', 'true')
+        enlazado='true'
+    }
+
+    let idPunto = elemento.target.getAttribute('data-idPunto')
+    let idRecurso = elemento.target.getAttribute('data-id')
+       
+    await ajax({'idPunto': idPunto, 'idRecurso': idRecurso, 'enlazado': enlazado, '_token': token}, '/admin/puntosInteres/enlazarPuntoConRecurso', 'POST', response => {})
+    
+}
+
+const audiosRelacionados = async elemento => {
+    const modifyPanelContent = document.querySelector("#modifyPanelContent")
+    modifyPanelContent.classList.toggle('oculto')
+
+    const botonCerrar = document.querySelector('.closeModifyWindow')
+    botonCerrar.insertAdjacentHTML("beforebegin", "<button id='volver'><i class='fa-solid fa-arrow-left'></i></button>")
+
+    document.getElementById('volver').addEventListener('click', cerrarAudios)
+
+    const imagenes = await ajax({'id': elemento.target.getAttribute('data-id'), 'tipo': 'audio'}, '/api/puntosInteres/verImagenesEnlazadas', 'POST', response => {
+        const modifyPanelContent = document.querySelector("#modifyPanelContent")
+        modifyPanelContent.insertAdjacentHTML("beforebegin", `<section id="audiosRelacionados"></section>`)
+        const contenidoAudiosRelacionados = document.getElementById('audiosRelacionados')
+        response.forEach(data => {
+           /* let contenido = `<audio src='/audios/${data.url}' class='${data.enlazado}' data-id=${data.id} data-idPunto=${elemento.target.getAttribute('data-id')}>`*/
+              let contenido = `
+              <audio class='${data.enlazado}' data-id=${data.id} data-idPunto=${elemento.target.getAttribute('data-id')}>
+                <source src="/audios/${data.url}" type="audio/mp3">
+                Tu navegador no soporta HTML5 audio.
+              </audio>
+              `
+            contenidoAudiosRelacionados.insertAdjacentHTML("beforeend", contenido)
+        })
+
+        contenidoAudiosRelacionados.addEventListener('click', modificarAudiosRelacionados)
+    })
+}
+
+
+const modificarAudiosRelacionados = async elemento => {
+    var enlazado = elemento.target.getAttribute('class')
+   // no lo reconoce como boolean por lo que no puedo hacer !enlazado para la asignacion :( me da toc, pero es lo que hay
+   var enlazado;
+    if(enlazado == 'true'){
+        elemento.target.setAttribute('class', 'false')
+        enlazado = 'false'
+    }
+    else{
+        elemento.target.setAttribute('class', 'true')
+        enlazado='true'
+    }
+
+    let idPunto = elemento.target.getAttribute('data-idPunto')
+    let idRecurso = elemento.target.getAttribute('data-id')
+       
+    await ajax({'idPunto': idPunto, 'idRecurso': idRecurso, 'enlazado': enlazado, '_token': token}, '/admin/puntosInteres/enlazarPuntoConRecurso', 'POST', response => {})
+    
 }

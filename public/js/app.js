@@ -5904,6 +5904,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     idpoint: Number,
@@ -31834,6 +31838,17 @@ var render = function () {
         "div",
         { staticClass: "wrapper" },
         [
+          _c("information-component", {
+            attrs: {
+              titulo: this.name,
+              desc: this.desc,
+              texto: this.text,
+              poster: "/img/puntosInteres/" + this.poster,
+            },
+          }),
+          _vm._v(" "),
+          _c("separador-component", { attrs: { texto: "Imagenes" } }),
+          _vm._v(" "),
           this.images.length > 0
             ? _c(
                 "div",
@@ -31883,17 +31898,6 @@ var render = function () {
               })
             : _vm._e(),
           _vm._v(" "),
-          _c("separador-component", { attrs: { texto: "información" } }),
-          _vm._v(" "),
-          _c("information-component", {
-            attrs: {
-              titulo: this.name,
-              desc: this.desc,
-              texto: this.text,
-              poster: "/img/puntosInteres/" + this.poster,
-            },
-          }),
-          _vm._v(" "),
           this.videos.length > 0
             ? _c("separador-component", { attrs: { texto: "Videos" } })
             : _vm._e(),
@@ -31909,10 +31913,7 @@ var render = function () {
                       { key: index, staticClass: "slide-videos fade" },
                       [
                         _c("video", {
-                          attrs: {
-                            src: "/resources/video/" + videos,
-                            controls: "",
-                          },
+                          attrs: { src: "/videos/" + videos, controls: "" },
                         }),
                       ]
                     )

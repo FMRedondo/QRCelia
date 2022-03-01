@@ -4,6 +4,12 @@
         <header-component></header-component>
         <div class="wrapper">
 
+            <!-- <separador-component texto='información'></separador-component>  -->
+
+            <information-component :titulo="this.name" :desc="this.desc" :texto="this.text" :poster="'/img/puntosInteres/' + this.poster"></information-component>
+
+            <separador-component texto='Imagenes'></separador-component>
+
             <div class="slideshow-container" v-if="this.images.length > 0">
                 <div class="slide-images fade" v-for="(image,index) in this.images" :key="index">
                     <img :src="'/img/puntosInteres/' + image">
@@ -14,15 +20,13 @@
                                     
             <audio-component  :audio="'/resources/audio/' + this.audio" v-if="this.audio.length != ``"></audio-component>
 
-            <separador-component texto='información'></separador-component>
-
-            <information-component :titulo="this.name" :desc="this.desc" :texto="this.text" :poster="'/img/puntosInteres/' + this.poster"></information-component>
+            
                     
             <separador-component v-if="this.videos.length > 0" texto='Videos'></separador-component>
 
             <div class="slideVideo-container" v-if="this.videos.length > 0">
                 <div class="slide-videos fade" v-for="(videos,index) in this.videos" :key="index">
-                    <video :src="'/resources/video/' + videos" controls></video>
+                    <video :src="'/videos/' + videos" controls></video>
                 </div>
                 <a class="videoPrev" v-if="this.videos.length > 1" onclick="plusVideos(-1)">&#10094;</a>
                 <a class="videoNext" v-if="this.videos.length > 1" onclick="plusVideos(1)">&#10095;</a>
