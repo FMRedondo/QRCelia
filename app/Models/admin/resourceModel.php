@@ -9,8 +9,6 @@ use SebastianBergmann\Type\StaticType;
 
 class resourceModel extends Model
 {
-    use HasFactory;
-    protected $fillable = ["name", "file_path", "created_at", "updated_at"];
     
     public static function getResources(){
         $sql = "SELECT * FROM resources";
@@ -31,7 +29,7 @@ class resourceModel extends Model
     }
 
     public static function addResource($type,$name,$url,$autor,$user,$date){
-        $sql = "INSERT INTO resources (type,name,url,autor,user,created_at,updated_at) VALUES('$type','$name','$url','$autor','$user','$date','$date')";
+        $sql = "INSERT INTO resources (type,name,url,autor,user,created_at,updated_at) VALUES ('$type','$name','$url','$autor','$user', '$date' ,'$date')";
         DB::insert($sql);
         $id = DB::getPdo()->lastInsertId();
         return $id;
@@ -79,5 +77,10 @@ class resourceModel extends Model
     public static function quitarEnlazePuntoConRecurso($idPunto, $idRecurso){
         $sql = "DELETE FROM point_has_resources WHERE (idPoint = $idPunto AND idResource = $idRecurso)";
         db::delete($sql);
+    }
+
+    public static function añadirPosterComoRecurso($nombre, $url){
+        $sql = "INSERT INTO resources (type, name, url) VALUES ('image', '$nombre', '$url')";
+        DB::insert($sql);
     }
 }

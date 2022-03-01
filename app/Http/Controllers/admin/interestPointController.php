@@ -8,6 +8,7 @@ use App\Models\admin\interestPointModel;
 use App\Http\Controllers\admin\qrCodeController;
 use GrahamCampbell\ResultType\Result;
 use Symfony\Component\HttpFoundation\RequestStack;
+use App\Models\admin\resourceModel;
 
 class interestPointController extends Controller
 {
@@ -44,15 +45,16 @@ class interestPointController extends Controller
         $text           = $request -> texto;
         $nombreArchivo  = $request -> nombreArchivo;
         $url = "img/puntosInteres/";
-        $nombreArchivo = time() . "-" . $file -> getClientOriginalName();
-        $subida = $request -> file('poster') -> move($url, $nombreArchivo);
+        $nombreArchivoNuevo = time() . "-" . $file -> getClientOriginalName();
+        $subida = $request -> file('poster') -> move($url, $nombreArchivoNuevo);
         $date           = DATE("Y-m-d H:i:s");
 
-        $result = interestPointModel::addInterestPoint($name, $description, $text, $nombreArchivo, $date);
+        $result = interestPointModel::addInterestPoint($name, $description, $text, $nombreArchivoNuevo, $date);
+        resourceModel::añadirPosterComoRecurso($name, $nombreArchivoNuevo);
         return response() -> json([
             'id' => $result,
             'date' => $date,
-            'poster' => $nombreArchivo
+            'poster' => $nombreArchivoNuevo
         ]);
 
     }

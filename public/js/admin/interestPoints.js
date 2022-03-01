@@ -211,7 +211,7 @@ const  mostrarAñadirPunto = (element) => {
  const añadirPunto = async (event) => {
     event.preventDefault();
     
-    var nombre = document.getElementById("typeName").value
+    let nombre = document.getElementById("typeName").value
     let desc   = document.getElementById("typeDesc").value
     let texto  = new String(CKEDITOR.instances['texto'].getData())
     let fecha = new Date()
@@ -234,10 +234,9 @@ const  mostrarAñadirPunto = (element) => {
         backpanel.classList.toggle("mostrarPanel")
         addPanel.classList.toggle("mostrarPanel")
 
-        nombre.value = ""
-        desc.value   = ""
-        texto.value  = ""
-        fecha.value  = ""
+        document.getElementById("typeName").value = ""
+        document.getElementById("typeDesc").value = ""
+        CKEDITOR.instances['texto'].setData("")
 
        console.log(response)
        console.log(response.id)
