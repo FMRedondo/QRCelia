@@ -134,18 +134,29 @@ $("#btnSendAddResource").click(addResource);
 
 
 function addResource(){
+    var formData = new FormData();
+    var numImages = $('#resourceUpload').get(0).files.length
+    for (let i = 0; i < numImages; i++) {
+        formData.append("resource",$('#resourceUpload').get(0).files[i])     
+    }
+
     var params = {
         "_token": $('meta[name="csrf-token"]').attr('content'),
-        "resources": $('#resourceUpload').get(0).files,
+        "resources": formData.getAll("resource"),
     }
+
+    console.log(formData.getAll("resource"))
 
     $.ajax({
         data: params,
-        url: '/admin/recursos/addResource',
         type: 'post',
+        url: '/api/recursos/addResource',
+        dataType: false,
+        cache: false,
+        processData: false,
 
         success: function (response) {
-            
+            console.log(response)
         },
 
         error: function (response) {
@@ -276,6 +287,7 @@ function searchResource() {
 // Funcion para editar un recurso
 $(".editButton").click(showEditResource);
 function showEditResource() {
+    $(".backPanel").show();
     var id = $(this).data("id");
     var content = ``;
     
@@ -403,6 +415,7 @@ function showEditResource() {
                 setTimeout(function() {
                     $(".modifyPanel").hide();
                     $(".modifyPanel").remove();
+                    $(".backPanel").hide();
                 }, 400);
             });
 

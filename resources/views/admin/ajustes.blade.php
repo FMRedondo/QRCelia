@@ -7,7 +7,9 @@
 @stop
 
 @section('content')
-   <p>Aqui se eligen opciones que hacen cosas</p>
+    <div class="contenidoPrincipal">
+        
+    </div>
 @stop
 
 @section('css')

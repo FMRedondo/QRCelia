@@ -62,7 +62,6 @@ Route::post('/categorias/editType', [TypeController::class, 'updateType']) -> na
 Route::get('/recursos', [ResourceController::class, 'index'])-> name('show.viewResources')-> middleware('can:ver_administracion');
 Route::post('/recursos', [resourceUploadController::class, 'addResource'])-> name('upload.resource')-> middleware('can:ver_administracion');
 Route::get('/recursos/getResources', [ResourceController::class, 'getResources'])-> name('show.resource')-> middleware('can:ver_administracion');
-Route::post('/recursos/addResource', [ResourceController::class, 'addResource'])-> name('add.resource')-> middleware('can:ver_administracion');
 Route::post('/recursos/deleteResource', [ResourceController::class, 'deleteResource'])-> name('delete.resource')-> middleware('can:ver_administracion');
 Route::post('/recursos/searchResource', [ResourceController::class, 'searchResource'])-> name('search.resource')-> middleware('can:ver_administracion');
 Route::post('/recursos/getResource', [ResourceController::class, 'getResource']) -> name('get.resource')-> middleware('can:ver_administracion');

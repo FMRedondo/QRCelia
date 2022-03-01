@@ -5,7 +5,7 @@
             <h3>{{titulo}}</h3>
             <p class="descripcion">{{descripcion}}</p>
             <p class="texto" v-html="texto"></p>
-            <a v-bind:href="enlace">Leer más</a>
+            <a v-bind:href="enlace">Más</a>
         </div>
     </div>
 </template>
