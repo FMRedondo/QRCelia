@@ -4,15 +4,11 @@
         <header-component></header-component>
         <div class="wrapper">
 
-<<<<<<< HEAD
             <!-- <separador-component texto='información'></separador-component>  -->
 
             <information-component :titulo="this.name" :desc="this.desc" :texto="this.text" :poster="'/img/puntosInteres/' + this.poster"></information-component>
 
             <separador-component texto='Imagenes'></separador-component>
-=======
-            <title-component :titulo="this.name" :desc="this.desc"></title-component>
->>>>>>> 0ae20234a83690c4b0f68ff5ef2b79859529a9d0
 
             <div class="slideshow-container" v-if="this.images.length > 0">
                 <div class="slide-images fade" v-for="(image,index) in this.images" :key="index">
@@ -24,13 +20,7 @@
                                     
             <audio-component  :audio="'/resources/audio/' + this.audio" v-if="this.audio.length != ``"></audio-component>
 
-<<<<<<< HEAD
             
-=======
-            <separador-component texto='información'></separador-component>
-
-            <information-component :texto="this.text" :poster="'/img/puntosInteres/' + this.poster"></information-component>
->>>>>>> 0ae20234a83690c4b0f68ff5ef2b79859529a9d0
                     
             <separador-component v-if="this.videos.length > 0" texto='Videos'></separador-component>
 

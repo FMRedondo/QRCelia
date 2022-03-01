@@ -440,7 +440,7 @@ const audiosRelacionados = async elemento => {
         response.forEach(data => {
            /* let contenido = `<audio src='/audios/${data.url}' class='${data.enlazado}' data-id=${data.id} data-idPunto=${elemento.target.getAttribute('data-id')}>`*/
               let contenido = `
-              <audio class='${data.enlazado}' data-id=${data.id} data-idPunto=${elemento.target.getAttribute('data-id')}>
+              <audio class='${data.enlazado}' data-id=${data.id} data-idPunto=${elemento.target.getAttribute('data-id')} constrols>
                 <source src="/audios/${data.url}" type="audio/mp3">
                 Tu navegador no soporta HTML5 audio.
               </audio>
