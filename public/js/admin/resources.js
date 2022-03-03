@@ -6,6 +6,7 @@ load();
 
 // Mostrar una lista con todos los recursos
 function load() {
+    createAddPanel();
     var params = []
     $.ajax({
         data: params,
@@ -89,7 +90,7 @@ function load() {
     });
 }
 
-// Funcion para mostrar/cerrar pestaña para añadir nuevo tipo
+// Funcion para mostrar/cerrar pestaña para añadir nuevo recurso
 $(".btnAddResource").click(showAddResource);
 function showAddResource() {
     $(".addPanel").toggle();
@@ -97,14 +98,6 @@ function showAddResource() {
     $("#resourceUpload").prop('disabled', false);
     $("#resourceUpload").change(checkResourceUpload);
 }
-$(document).on('keyup', function(e) {
-    if (e.key == "Escape" && $(".addPanel").is(":visible")){
-        $(".addPanel").toggle();
-    }
-    if (e.key == "Escape" && $(".modifyPanel").is(":visible")){
-        $(".modifyPanel").remove();
-    }
-});
 
 //Preview para ver los archivos que has decidido subir
 function checkResourceUpload(){
@@ -130,9 +123,6 @@ function checkResourceUpload(){
 // Funcion para añadir un nuevo recurso
 $("#btnSendAddResource").click(addResource);
 
-// $('#resourceUpload').get(0).files
-
-
 async function addResource(e){
     e.preventDefault();
     var formData = new FormData();
@@ -144,11 +134,83 @@ async function addResource(e){
 
     await fetch('/api/recursos/addResource', {
         method: 'post',
-        headers: {
-            'Accept': 'application/json',
-        },
+       
         body: formData
-    }).then (function(response){ console.log(response.json())})
+    })
+    .then(response => response.json())
+    .then(data => {
+        const lista = document.getElementById("resourceList");
+        data.forEach( function(resource) {
+            var thumbnail = ""
+            if (resource.type == "image")
+                thumbnail = "/img/puntosInteres/" + resource.name;
+            
+            if (resource.type == "video")
+                thumbnail = "/img/video.png";
+
+            if (resource.type == "audio")
+                thumbnail = "/img/audio.png";
+
+            content = `
+            <div id="${resource.id}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32" style="width: 30%">
+                <div class="imgThumbnail">
+                    <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-4"
+                    src="${thumbnail}" alt="Image Size 720x400" />
+                    <button type="button" class="btn btn-success rounded-circle flex editButton" data-id='${resource.id}'>
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                </div>
+                <div class="p-4">
+                    <h2 class="name text-lg text-gray-900 font-medium title-font mb-4 whitespace-nowrap truncate">
+                        ${resource.name}
+                    </h2>
+                    <p class="autor text-gray-600 font-light text-md mb-3">
+                        Autor: ${resource.autor}
+                    </p>
+                    <p class="text-gray-600 font-light text-md mb-3">
+                        Tipo: ${resource.type}
+                    </p>
+
+                    <div class="py-4 border-t text-xs text-gray-700">
+                        <div class="d-flex flex-column">
+
+                            <div class="col-span-2 mb-2">
+                                Fecha de creación:
+                                <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-400 rounded-full">
+                                    ${resource.date}
+                                </span>
+                            </div>
+                             
+                            <div class="col-span-2 mb-2">
+                                Última modificación:
+                                <span class="resourceUpdated inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-400 rounded-full">
+                                    No disponible
+                                </span>
+                            </div>
+                            
+                        </div>
+                </div>
+            </div>    
+            `;
+            $("#resourceList").append(content);
+        });
+        $(".addPanel").remove();
+        $(".backPanel").hide();
+        createAddPanel();
+
+        const msj = `
+        <div id="successMSJ" class="alert alert-success" role="alert">
+            Recursos añadidos correctamente
+        </div>
+        `;
+
+        $(".content-wrapper").append(msj);
+        $("#successMSJ").show();
+
+        const animation = setInterval(() => {
+            $("#successMSJ").remove();
+        }, 3000)
+    })
 }
 
 // Funcion para mostrar la pestaña para borrar recursos
@@ -494,6 +556,7 @@ function showDeleteResource() {
         }
         if (!($(this).data("val")))
             $(".delPanel").remove();
+            $(".backPanel").hide();
     })
 }
 
@@ -602,3 +665,51 @@ $(".closeModifyWindow").click(() => {
     $(".addPanel").hide();
     $(".backPanel").hide();
 })
+
+
+// Crear ventana para añadir
+function createAddPanel(){
+    const content = `
+  <div class="w-50 m-auto mx-auto my-auto rounded-xl shadow-lg  bg-white addPanel" style="top: 10% !important;">
+    <div class="titleContent d-flex justify-content-between p-2">
+      <div class="text-center">
+        <h2 class="mt-1 text-3xl font-bold text-gray-900">Subir un nuevo recurso</h2>
+          <p class="mt-2 text-sm text-gray-400">Imágenes, videos y audios</p>
+      </div>
+      <div class="cerrarVentana">
+      <div class="closeModifyWindow" style="color:#dc3545;">
+          <i type="button" class="fa-solid fa-circle-xmark fa-3x"></i>
+      </div>
+      </div>
+    </div>
+    <form class="mt-2 space-y-3" enctype="multipart/form-data">
+      <div class="grid grid-cols-1 space-y-2">
+          <div class="flex items-center justify-center w-full">
+            <label class="flex flex-col rounded-lg w-full h-60 p-10 group text-center">
+              <div class="h-full w-full text-center flex flex-col items-center justify-center items-center" id="preview">
+                <div class="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10">
+                  <img class="has-mask h-36 object-center" src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg" alt="freepik image">
+                </div>
+                <p class="pointer-none text-gray-500 ">
+                  <span class="text-sm">Arrastra y suelta</span>
+                   los ficheros a esta ventana <br /> o
+                    <a href="" id="" class="text-blue-600 hover:underline">haz click y</a>
+                  seleccionalos</p>
+              </div>
+                <input type="file" id="resourceUpload" multiple name="resourceUpload" class="hidden">
+              </label>
+          </div>
+      </div>
+        <p class="text-sm text-gray-300">
+          <span>Tipos de archivo permitidos: muchos</span>
+        </p>
+      <div>
+        <button type="submit" id="btnSendAddResource" class="my-5 w-full flex justify-center bg-blue-500 text-gray-100 p-4  rounded-full tracking-wide font-semibold  focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300">
+          Subir archivos
+        </button>
+      </div>
+    </form>
+  </div>
+    `;
+    $(".content").append(content);
+}

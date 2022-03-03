@@ -11,7 +11,7 @@ class resourceUploadController extends Controller
 {
     // Funcion para subir recursos al servidor
     public function addResource(Request $request){
-        $extensions = [];
+        $resources = [];
         for ($i=0; $i < $request->numResources; $i++) { 
             $type = "";
             $file = $request->file("resource" . $i);
@@ -36,9 +36,11 @@ class resourceUploadController extends Controller
             $nombreArchivoNuevo = time() . "-" . $file -> getClientOriginalName();
             $subida = $request -> file("resource" . $i) -> move($url, $nombreArchivoNuevo);
 
-            resourceModel::addResource($type,$nombreArchivoNuevo,$nombreArchivoNuevo,$autor,$user,$date);
-            array_push($extensions, $type);
+
+            $id = resourceModel::addResource($type,$nombreArchivoNuevo,$nombreArchivoNuevo,$autor,$user,$date);
+            $resource = ["id" => $id, "type" => $type, "name" => $nombreArchivoNuevo, "autor" => $autor, "user" => $user,"date" => $date];
+            array_push($resources, $resource);
         }
-        return response()->json($extensions);
+        return response()->json($resources);
     }    
 }

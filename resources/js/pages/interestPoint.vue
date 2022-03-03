@@ -6,7 +6,7 @@
 
             <title-component :titulo="this.name" :desc="this.desc"></title-component> 
 
-            <separador-component texto='Imagenes'></separador-component>
+            <separador-component texto='Imagenes' v-if="this.images.length > 0"></separador-component>
 
             <div class="slideshow-container" v-if="this.images.length > 0">
                 <div class="slide-images fade" v-for="(image,index) in this.images" :key="index">
