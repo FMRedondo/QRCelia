@@ -42,7 +42,7 @@
       </div>
       </div>
     </div>
-    <form class="mt-2 space-y-3" method="POST" enctype="multipart/form-data">
+    <form class="mt-2 space-y-3" enctype="multipart/form-data">
       @csrf
       <div class="grid grid-cols-1 space-y-2">
           <div class="flex items-center justify-center w-full">

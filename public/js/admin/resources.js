@@ -133,37 +133,22 @@ $("#btnSendAddResource").click(addResource);
 // $('#resourceUpload').get(0).files
 
 
-function addResource(){
+async function addResource(e){
+    e.preventDefault();
     var formData = new FormData();
     var numImages = $('#resourceUpload').get(0).files.length
+    formData.append("numResources", numImages)
     for (let i = 0; i < numImages; i++) {
-        formData.append("resource",$('#resourceUpload').get(0).files[i])     
+        formData.append("resource"+i,$('#resourceUpload').get(0).files[i])     
     }
 
-    var params = {
-        "_token": $('meta[name="csrf-token"]').attr('content'),
-        "resources": formData.getAll("resource"),
-    }
-
-    console.log(formData.getAll("resource"))
-
-    $.ajax({
-        data: params,
-        type: 'post',
-        url: '/api/recursos/addResource',
-        dataType: false,
-        cache: false,
-        processData: false,
-
-        success: function (response) {
-            console.log(response)
+    await fetch('/api/recursos/addResource', {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json',
         },
-
-        error: function (response) {
-            console.log(response);
-            alert("Error en la peticion");
-        }
-    });
+        body: formData
+    }).then (function(response){ console.log(response.json())})
 }
 
 // Funcion para mostrar la pestaña para borrar recursos

@@ -4,9 +4,7 @@
         <header-component></header-component>
         <div class="wrapper">
 
-            <!-- <separador-component texto='información'></separador-component>  -->
-
-            <information-component :titulo="this.name" :desc="this.desc" :texto="this.text" :poster="'/img/puntosInteres/' + this.poster"></information-component>
+            <title-component :titulo="this.name" :desc="this.desc"></title-component> 
 
             <separador-component texto='Imagenes'></separador-component>
 
@@ -17,11 +15,13 @@
                 <a class="prev" v-if="this.images.length > 1" onclick="plusIMG(-1)">&#10094;</a>
                 <a class="next" v-if="this.images.length > 1" onclick="plusIMG(1)">&#10095;</a>
             </div>
-                                    
+
+            <separador-component texto='información'></separador-component>
+            
+            <information-component :texto="this.text" :poster="'/img/puntosInteres/' + this.poster"></information-component>
+
             <audio-component  :audio="'/resources/audio/' + this.audio" v-if="this.audio.length != ``"></audio-component>
 
-            
-                    
             <separador-component v-if="this.videos.length > 0" texto='Videos'></separador-component>
 
             <div class="slideVideo-container" v-if="this.videos.length > 0">
@@ -32,7 +32,7 @@
                 <a class="videoNext" v-if="this.videos.length > 1" onclick="plusVideos(1)">&#10095;</a>
             </div>
 
-            <comentarios :about='this.idpoint'></comentarios>
+            <!-- <comentarios :about='this.idpoint'></comentarios> -->
         </div>
     </section>
 </template>

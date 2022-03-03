@@ -31955,13 +31955,8 @@ var render = function () {
         "div",
         { staticClass: "wrapper" },
         [
-          _c("information-component", {
-            attrs: {
-              titulo: this.name,
-              desc: this.desc,
-              texto: this.text,
-              poster: "/img/puntosInteres/" + this.poster,
-            },
+          _c("title-component", {
+            attrs: { titulo: this.name, desc: this.desc },
           }),
           _vm._v(" "),
           _c("separador-component", { attrs: { texto: "Imagenes" } }),
@@ -32008,6 +32003,15 @@ var render = function () {
                 2
               )
             : _vm._e(),
+          _vm._v(" "),
+          _c("separador-component", { attrs: { texto: "información" } }),
+          _vm._v(" "),
+          _c("information-component", {
+            attrs: {
+              texto: this.text,
+              poster: "/img/puntosInteres/" + this.poster,
+            },
+          }),
           _vm._v(" "),
           this.audio.length != ""
             ? _c("audio-component", {
@@ -32061,8 +32065,6 @@ var render = function () {
                 2
               )
             : _vm._e(),
-          _vm._v(" "),
-          _c("comentarios", { attrs: { about: this.idpoint } }),
         ],
         1
       ),

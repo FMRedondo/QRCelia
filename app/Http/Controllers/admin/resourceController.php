@@ -27,22 +27,6 @@ class ResourceController extends Controller
         return response() -> json($result);
     }
 
-    // Funcion para añadir recursos
-    public function addResource(){
-        $_token = $_POST['_token'];
-        $type = $_POST['type'];
-        $name = $_POST['name'];
-        $url = $_POST['url'];
-        $autor = $_POST['autor'];
-        $user = auth()->user()-> name;
-        $date = DATE("Y-m-d H:i:s");
-        $result = ResourceModel::addResource($type,$name,$url,$autor,$user,$date);
-        return response()->json([
-            'id'=> $result,
-            'date'=> $date
-        ]);
-    }
-
     public function deleteResource(){
         $id = $_POST['id'];
         ResourceModel::deleteResource($id);
