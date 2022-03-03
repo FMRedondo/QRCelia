@@ -10,7 +10,6 @@ function load() {
         type: 'get',
 
         success: function (response) {
-            console.log(response);
             let $table = `
             <div class="w-full mb-8 rounded-lg shadow-lg">
                 <div class="w-full">
@@ -33,7 +32,6 @@ function load() {
 
             response.forEach(function (data) {
                 let tableContent = ``;
-                console.log(data);
                     let ruta = "#" + data.id + " .inputTD"
                     tableContent = `
                         <tr class="text-gray-700" id="${data.id}">

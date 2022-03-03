@@ -349,7 +349,6 @@ function showEditUser() {
             $(".modifyField").change(function() {
                 var newName = $(".userNameMod").val();
                 var newMail = $(".userMailMod").val();
-                var newPassword = $(".userPasswordMod").val();
                 var params = {
                     "id": id,
                     "field": $(this).data("field"),
@@ -363,12 +362,11 @@ function showEditUser() {
                     type: 'post',
     
                     success: function (response) {
-                        let route = "table tbody #" + id + " .regUserName";
-                        $(route).text(newName);
-                        $(route).text(newMail);
-                        $(route).text(newPassword);
-                        route = "table tbody #" + id + " .regUserUpdated"
-                        $(route).text(response);
+                        var route = "table tbody #" + id + " .regUserName";
+                        $(route).html(newName);
+
+                        route = "table tbody #" + id + " .regUserEmail";
+                        $(route).html(newMail);
                     },
     
                     error: function (response) {
