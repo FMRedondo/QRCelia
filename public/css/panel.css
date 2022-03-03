@@ -41,7 +41,7 @@
 	justify-content: flex-end;
 }
 
-.editButton, .removeButton{
+.editButton, .removeButton2{
     width: 3em;
     height: 3em;
     display: flex;
@@ -49,7 +49,11 @@
     align-items: center;
 }
 
-.editButton i{
+.removeButton2{
+    left: 1em;
+}
+
+.editButton i, .removeButton2 i{
     font-size: 1.2em;
 }
 

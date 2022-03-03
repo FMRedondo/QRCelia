@@ -43,6 +43,9 @@ function load() {
                         <button type="button" class="btn btn-success rounded-circle flex editButton" data-id='${data.id}'>
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
+                        <button type="button" class="btnDelResource removeButton2 btn btn-danger rounded-circle flex" data-id='${data.id}'>
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
                     </div>
                     <div class="p-4">
                         <h2 class="name text-lg text-gray-900 font-medium title-font mb-4 whitespace-nowrap truncate">
@@ -80,7 +83,8 @@ function load() {
             })
             
             $(".editButton").click(showEditResource);
-            $(".btnDelResource").click(showDelResource);
+            $(".removeButton2").click(showDeleteResource);
+            $(".btnDelResource").click(showDeleteResource);
             $(".searchResource").keyup(searchResource);
         },
 
@@ -159,6 +163,9 @@ async function addResource(e){
                     <button type="button" class="btn btn-success rounded-circle flex editButton" data-id='${resource.id}'>
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
+                    <button type="button" class="btnDelResource removeButton2 btn btn-danger rounded-circle flex" data-id='${resource.id}'>
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
                 </div>
                 <div class="p-4">
                     <h2 class="name text-lg text-gray-900 font-medium title-font mb-4 whitespace-nowrap truncate">
@@ -210,12 +217,25 @@ async function addResource(e){
         const animation = setInterval(() => {
             $("#successMSJ").remove();
         }, 3000)
+
+        $(".editButton").off("click",showEditResource)
+        $(".editButton").on("click",showEditResource)
+
+        $(".removeButton2").off("click",showDeleteResource);
+        $(".removeButton2").on("click",showDeleteResource);
+
+        $(".btnDelResource").off("click",showDeleteResource);
+        $(".btnDelResource").on("click",showDeleteResource);
+
+        $(".searchResource").off("click",searchResource);
+        $(".searchResource").on("click",searchResource);
     })
 }
 
 // Funcion para mostrar la pestaña para borrar recursos
 // y despues borrarlas cuando le das a si
-$(".delResourcePanel").click(showDelResource);
+$(".btnDelResource").click(showDeleteResource);
+$(".delResourcePanel").click(showDeleteResource);
 function showDelResource() {
     $(".delPanel").show();
     let id = $(this).data("id");
@@ -269,7 +289,7 @@ function searchResource() {
 
                 var thumbnail = ""
                 if (data.type == "image") {
-                    thumbnail = data.url;
+                    thumbnail = "/img/puntosInteres/" + data.url;
                 }
                 if (data.type == "video") {
                     thumbnail = "/img/video.png";
@@ -278,51 +298,57 @@ function searchResource() {
                     thumbnail = "/img/audio.png";
                 }
 
-                let tableContent = `
+                content = `
                 <div id="${data.id}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32" style="width: 30%">
-                <div class="imgThumbnail">
-                    <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-4"
-                    src="/img/${thumbnail}" alt="Image Size 720x400" />
-                    <button type="button" class="btn btn-success rounded-circle flex editButton" data-id='${data.id}'>
-                        <i class="fa-solid fa-pen-to-square"></i>
-                    </button>
-                </div>
-                <div class="p-4">
-                    <h2 class="name text-lg text-gray-900 font-medium title-font mb-4 whitespace-nowrap truncate">
-                        ${data.name}
-                    </h2>
-                    <p class="autor text-gray-600 font-light text-md mb-3">
-                        Autor: ${data.autor}
-                    </p>
-                    <p class="text-gray-600 font-light text-md mb-3">
-                        Tipo: ${data.type}
-                    </p>
+                    <div class="imgThumbnail">
+                        <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-4"
+                        src="${thumbnail}" alt="Image Size 720x400" />
+                        <button type="button" class="btn btn-success rounded-circle flex editButton" data-id='${data.id}'>
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                        <button type="button" class="btnDelResource removeButton2 btn btn-danger rounded-circle flex" data-id='${data.id}'>
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h2 class="name text-lg text-gray-900 font-medium title-font mb-4 whitespace-nowrap truncate">
+                            ${data.name}
+                        </h2>
+                        <p class="autor text-gray-600 font-light text-md mb-3">
+                            Autor: ${data.autor}
+                        </p>
+                        <p class="text-gray-600 font-light text-md mb-3">
+                            Tipo: ${data.type}
+                        </p>
 
-                    <div class="py-4 border-t text-xs text-gray-700">
-                        <div class="d-flex flex-column">
+                        <div class="py-4 border-t text-xs text-gray-700">
+                            <div class="d-flex flex-column">
 
-                            <div class="col-span-2 mb-2">
-                                Fecha de creación:
-                                <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-400 rounded-full">
-                                    ${data.created_at}
-                                </span>
+                                <div class="col-span-2 mb-2">
+                                    Fecha de creación:
+                                    <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-400 rounded-full">
+                                        ${data.created_at}
+                                    </span>
+                                </div>
+                                 
+                                <div class="col-span-2 mb-2">
+                                    Última modificación:
+                                    <span class="resourceUpdated inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-400 rounded-full">
+                                        ${data.updated_at}
+                                    </span>
+                                </div>
+                                
                             </div>
-                             
-                            <div class="col-span-2 mb-2">
-                                Última modificación:
-                                <span class="resourceUpdated inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-400 rounded-full">
-                                    ${data.updated_at}
-                                </span>
-                            </div>
-                            
-                        </div>
                     </div>
                 </div>    
                 `;
-                $("#resourceList").append(tableContent);
+                $("#resourceList").append(content);
             })
+            
             $(".editButton").click(showEditResource);
-            $(".btnDelResource").click(showDelResource);
+            $(".removeButton2").click(showDeleteResource);
+            $(".btnDelResource").click(showDeleteResource);
+            $(".searchResource").keyup(searchResource);
         },
 
         error: function (response) {
@@ -370,7 +396,7 @@ function showEditResource() {
                     resource = `
                     <div class="imgThumbnail" style="height: 35em !important;">
                         <video controls style="padding: 2em;">
-                            <source src="/resources/video/${data.url}" type="video/mp4">
+                            <source src="/video/${data.url}" type="video/mp4">
                             Tu navegador no soporta la visualización del video. Actualizalo.
                         </video>
                     </div>
@@ -380,7 +406,7 @@ function showEditResource() {
                     resource = `
                     <div class="d-flex justify-content-center mb-5 pb-5">
                         <audio controls>
-                            <source src="/resources/audio/${data.url}">
+                            <source src="/audio/${data.url}">
                         </audio>
                     </div>
                     `;
@@ -712,4 +738,18 @@ function createAddPanel(){
   </div>
     `;
     $(".content").append(content);
+}
+
+function reloadActions(){
+    $(".editButton").off("click",showEditResource)
+    $(".editButton").on("click",showEditResource)
+
+    $(".removeButton2").off("click",showDeleteResource);
+    $(".removeButton2").on("click",showDeleteResource);
+
+    $(".btnDelResource").off("click",showDeleteResource);
+    $(".btnDelResource").on("click",showDeleteResource);
+
+    $(".searchResource").off("click",searchResource);
+    $(".searchResource").on("click",searchResource);
 }
