@@ -20,7 +20,7 @@
             
             <information-component :texto="this.text" :poster="'/img/puntosInteres/' + this.poster"></information-component>
 
-            <audio-component  :audio="'/resources/audio/' + this.audio" v-if="this.audio.length != ``"></audio-component>
+            <audio-component  :audio="'/audio/' + this.audio" v-if="this.audio.length != ``"></audio-component>
 
             <separador-component v-if="this.videos.length > 0" texto='Videos'></separador-component>
 
@@ -32,6 +32,7 @@
                 <a class="videoNext" v-if="this.videos.length > 1" onclick="plusVideos(1)">&#10095;</a>
             </div>
 
+            <menuRecursos></menuRecursos>
             <!-- <comentarios :about='this.idpoint'></comentarios> -->
         </div>
     </section>
@@ -52,6 +53,7 @@ export default{
         videos: Array,
         audio: String
     },
+    
         
     methods: {
         async getInterestPoint() {
@@ -108,7 +110,7 @@ export default{
         });
             this.getResources("image");
             this.getResources("video");
-            this.getResources("audio");
+            this.getResources("audio"); 
     },
 }
 </script>

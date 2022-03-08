@@ -15,6 +15,7 @@ Vue.component('audio-component', require('./components/audio.vue').default);
 Vue.component('carga-punto', require('./components/cargaWeb.vue').default);
 Vue.component('comentarios', require('./components/comentarios.vue').default);
 Vue.component('persona', require('./components/persona.vue').default);
+Vue.component('menuRecursos', require('./components/menuRecursos.vue').default);
 
 
 //paginas
