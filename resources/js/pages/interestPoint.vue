@@ -8,7 +8,7 @@
 
             <separador-component texto='Imagenes' v-if="this.images.length > 0"></separador-component>
 
-            <div class="slideshow-container" v-if="this.images.length > 0">
+            <div class="slideshow-container" v-if="this.images.length > 0" id="imagenes">
                 <div class="slide-images fade" v-for="(image,index) in this.images" :key="index">
                     <img :src="'/img/puntosInteres/' + image">
                 </div>
@@ -24,7 +24,7 @@
 
             <separador-component v-if="this.videos.length > 0" texto='Videos'></separador-component>
 
-            <div class="slideVideo-container" v-if="this.videos.length > 0">
+            <div class="slideVideo-container" v-if="this.videos.length > 0" id="video">
                 <div class="slide-videos fade" v-for="(videos,index) in this.videos" :key="index">
                     <video :src="'/videos/' + videos" controls></video>
                 </div>
@@ -32,7 +32,7 @@
                 <a class="videoNext" v-if="this.videos.length > 1" onclick="plusVideos(1)">&#10095;</a>
             </div>
 
-            <menuRecursos></menuRecursos>
+            <menuRecursos ></menuRecursos>
             <!-- <comentarios :about='this.idpoint'></comentarios> -->
         </div>
     </section>

@@ -15,7 +15,9 @@
     text-decoration: none;
 }
 
-
+html{
+    scroll-behavior: smooth !important;
+}
 
 #app{
     padding: 0 !important;
