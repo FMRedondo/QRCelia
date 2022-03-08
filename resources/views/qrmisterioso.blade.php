@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/estilosGenerales.css">
     <link rel="stylesheet" href="/estilos/puntoDeInteres.css">
+    <link rel="icon" type="image/x-icon" href="/img/escudoCelia.png">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>QRCelia</title>
 </head>

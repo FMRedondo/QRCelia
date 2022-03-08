@@ -47,7 +47,7 @@ class customUsersController extends Controller
         $id = $_POST['id'];
         $field = $_POST['field'];
         $value = $_POST['value'];
-        if ($field = "password")
+        if ($field == "password")
             $value = bcrypt($value);
 
         customUsersModel::updateUser($id, $field, $value);

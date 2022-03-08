@@ -32120,7 +32120,9 @@ var render = function () {
             attrs: { titulo: this.name, desc: this.desc },
           }),
           _vm._v(" "),
-          _c("separador-component", { attrs: { texto: "Imagenes" } }),
+          this.images.length > 0
+            ? _c("separador-component", { attrs: { texto: "Imagenes" } })
+            : _vm._e(),
           _vm._v(" "),
           this.images.length > 0
             ? _c(
