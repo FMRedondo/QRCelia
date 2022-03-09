@@ -3,7 +3,7 @@
         
         <header-component></header-component>
         <div class="wrapper">
-
+            <menuRecursos></menuRecursos>
             <title-component :titulo="this.name" :desc="this.desc"></title-component> 
 
             <separador-component texto='Imagenes' v-if="this.images.length > 0"></separador-component>
@@ -32,7 +32,7 @@
                 <a class="videoNext" v-if="this.videos.length > 1" onclick="plusVideos(1)">&#10095;</a>
             </div>
 
-            <menuRecursos ></menuRecursos>
+            
             <!-- <comentarios :about='this.idpoint'></comentarios> -->
         </div>
     </section>
@@ -91,7 +91,8 @@ export default{
                 })
             })
             .then(response => response.json())
-                const resources = []; 
+                const resources = [];
+                const menu = document.getElementById("menuLateral")
                 for (let i = 0; i < response.length; i++) {
                     resources.push((response[i].url));
                 } 
@@ -102,6 +103,45 @@ export default{
                 if (type == "audio")
                     this.audio = resources;
         },
+
+        pintarMenu(){
+            const menu = document.getElementById('menuLateral')
+            if(this.audio.length > 0){
+               menu.insertAdjacentHTML('beforeend',`<a class="enlaceMenuLateral" id='activarAudio'><i class="fa-solid fa-volume-low" id='audioIcon'></i></a>`)
+               document.getElementById('activarAudio').addEventListener('click', this.activarAudio)
+               
+            }
+            if(this.videos.length > 0){
+               menu.insertAdjacentHTML('beforeend',`<a href="#video" class="enlaceMenuLateral"><i class="fa-solid fa-video"></i></a>`)
+            }
+            if(this.images.length > 0){
+               menu.insertAdjacentHTML('beforeend',` <a href="#imagenes" class="enlaceMenuLateral"><i class="fa-solid fa-images"></i></a>`)
+            }
+
+            menu.classList.remove('oculto')
+        },
+        activarAudio(){
+            const button = document.getElementById("audioButton");
+            const icon = document.getElementById("audioIcon");
+            const audio = document.getElementById("audioPlayer");
+            if (audio.paused) {
+                //button.style.animationPlayState = "paused";
+                audio.play();
+                icon.classList.remove("fa-volume-low");
+                icon.classList.add("fa-volume-high");
+            }else{
+                //button.style.animationPlayState = 'running';
+                audio.pause();
+                icon.classList.remove("fa-volume-high");
+                icon.classList.add("fa-volume-low");
+            }
+
+            audio.addEventListener("ended", function(){
+                audio.currentTime = 0;
+                icon.classList.remove("fa-volume-high");
+                icon.classList.add("fa-volume-low")
+            });
+        }
     },
 
     created() {
@@ -111,6 +151,10 @@ export default{
             this.getResources("image");
             this.getResources("video");
             this.getResources("audio"); 
+
+            setTimeout(this.pintarMenu, '3000')
+
+            
     },
 }
 </script>

@@ -2,12 +2,13 @@
 
     <div id="audioButton" v-on:click="playAudio()">
         <audio :src="this.audio" id="audioPlayer"></audio>
-        <i id="audioIcon" class="fa-solid fa-play"></i>
+       <!-- <i id="audioIcon" class="fa-solid fa-play"></i> -->
     </div>
 
 </template>
 
 <style>
+/*
     #audioButton{
         display: flex;
         justify-content: center;
@@ -46,6 +47,23 @@
         transform: translateY(0);
     }
 }
+*/
+
+audio{
+    width: 80%;
+    height: 5em;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3em;
+}
+
+audio::-webkit-media-controls-panel{
+    background: var(--colorPrimario);
+    color: white !important;
+    border-radius: none !important;
+}
+
 </style>
 
 <script>
@@ -60,24 +78,31 @@ export default{
             const icon = document.getElementById("audioIcon");
             const audio = document.getElementById("audioPlayer");
             if (audio.paused) {
-                button.style.animationPlayState = "paused";
+                //button.style.animationPlayState = "paused";
                 audio.play();
-                icon.classList.remove("fa-play");
-                icon.classList.add("fa-pause");
+                icon.classList.remove("fa-volume-low");
+                icon.classList.add("fa-volume-high");
             }else{
-                button.style.animationPlayState = 'running';
+                //button.style.animationPlayState = 'running';
                 audio.pause();
-                icon.classList.remove("fa-pause");
-                icon.classList.add("fa-play");
+                icon.classList.remove("fa-volume-high");
+                icon.classList.add("fa-volume-low");
             }
 
             audio.addEventListener("ended", function(){
                 audio.currentTime = 0;
-                icon.classList.remove("fa-pause");
-                icon.classList.add("fa-play")
+                icon.classList.remove("fa-volume-high");
+                icon.classList.add("fa-volume-low")
             });
+            
         },
         
     },
+     created() {
+         /*
+                const menu = document.getElementById('menuLateral')
+                menu.innerHTML += `<a class="enlaceMenuLateral"><i class="fa-solid fa-volume-low" id='audioIcon'></i></a>`
+                */
+        }
 }
 </script>

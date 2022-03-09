@@ -1,13 +1,17 @@
 <template>
-    <nav class="menuLateral" id="menuLateral">
+    <nav class="menuLateral oculto" id="menuLateral">
+        <a href="#information" class="enlaceMenuLateral"><i class="fa-solid fa-file-lines"></i></a>
+        <!--
         <a href="#video" class="enlaceMenuLateral"><i class="fa-solid fa-video menuActivo"></i></a>
         <a href="#imagenes" class="enlaceMenuLateral"><i class="fa-solid fa-images"></i></a>
-        <a href="#information" class="enlaceMenuLateral"><i class="fa-solid fa-file-lines"></i></a>
-        <a href="#audioButton" class="enlaceMenuLateral"><i class="fa-solid fa-volume-high"></i></a>
+        <a class="enlaceMenuLateral"><i class="fa-solid fa-volume-low" id='audioIcon'></i></a>
+
+        -->
+        
     </nav>
 </template>
 
-<style scoped>
+<style>
 
     .menuLateral{
         display: flex;
@@ -25,6 +29,15 @@
         margin-left: 0.5em;
         backdrop-filter: blur(20px);
         background-color: #14162560;
+        transition: ease-in-out 200ms;
+        min-height: 5em;
+       
+    }
+
+    .oculto{
+        display: none !important;
+        transform: translateX(-200%) !important;
+        transition: ease-in-out 200ms;
     }
 
     .menuLateral a{
@@ -34,7 +47,7 @@
     .menuLateral a{
         color: white;
         transition: ease-in-out 200ms;
-        font-size: 1.5em;
+        font-size: 1.7em;
     }
 
     .menuLateral a:hover{
@@ -47,20 +60,3 @@
     }
 
 </style>
-
-<script>
-
-export default{
-        methods: {
-            created() {
-                const menuRecursos = document.getElementById('menuLateral')
-                menuRecursos.addEventListener('click', elemento => {
-                    if(elemento.target.nodeName == "I"){
-                    document.querySelector('.menuActivo').classList.remove('menuActivo')
-                    elemento.target.classList.add('menuActivo')
-                }
-            })
-        },
-    },
-}
-</script>
