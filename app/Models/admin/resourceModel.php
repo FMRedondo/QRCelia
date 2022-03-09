@@ -36,8 +36,10 @@ class resourceModel extends Model
     }
 
     public static function deleteResource($id){
+        $name = DB::select("SELECT name FROM resources WHERE (id = $id)");
         $sql = "DELETE FROM resources WHERE (id = $id)";
         DB::delete($sql);
+        return $name;
     }
 
     public static function searchResource($search){

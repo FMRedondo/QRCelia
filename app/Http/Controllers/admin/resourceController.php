@@ -9,6 +9,8 @@ use App\Models\admin\resourceModel;
 use SebastianBergmann\CodeUnit\FunctionUnit;
 use SebastianBergmann\Environment\Console;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Illuminate\Support\Facades\File;
+
 
 class ResourceController extends Controller
 {
@@ -29,7 +31,22 @@ class ResourceController extends Controller
 
     public function deleteResource(){
         $id = $_POST['id'];
-        ResourceModel::deleteResource($id);
+        $result = ResourceModel::deleteResource($id);
+
+        foreach ($result as $resource) {
+            $name = $resource->name;
+
+            if (preg_match("/\b(\.jpg|\.JPG|\.png|\.PNG|\.jpeg|\.JPEG)\b/", $name))
+                $folder = "img/puntosInteres/";
+            elseif (preg_match("/\b(\.mp4|\.MP4|\.avi|\.AVI|\.webm|\.WEBM)\b/", $name))
+                $folder = "video/";
+            elseif (preg_match("/\b(\.mp3|\.MP3|\.ogg|\.OGG)\b/", $name))
+                $folder = "audio/";
+
+            $url = $folder . $name;
+
+            File::delete($url);
+        }
     }
 
     public function searchResource(){

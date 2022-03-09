@@ -112,7 +112,7 @@ function checkResourceUpload(){
         for (let i = 0; i < numFiles; i++) {
             var tempURL = URL.createObjectURL($('#resourceUpload').get(0).files[i]);
             var content = `
-                <div class="p-2" style="width: 30%">
+                <div class="p-2">
                     <div class="imgThumbnail">
                         <img src="${tempURL}"/> 
                     </div>
@@ -483,12 +483,14 @@ function showEditResource() {
                 }
             })
 
+            // Animacion para cerrar
             $(".closeModifyWindow").click(function () {
                 $(".closeModifyWindow").addClass("pulseEffect");
                 setTimeout(function() {
                     $(".modifyPanel").hide();
                     $(".modifyPanel").remove();
                     $(".backPanel").hide();
+                    $(".closeModifyWindow").removeClass("pulseEffect");
                 }, 400);
             });
 
@@ -535,6 +537,7 @@ function showEditResource() {
 
 // Funcion para eliminar un recurso
 function showDeleteResource() {
+    $(".backPanel").show();
     var id = $(this).data("id");
     var content = `
         <div class="w-50 m-auto p-5  mx-auto my-auto rounded-xl shadow-lg  bg-white delResourcePanel delPanel">
@@ -727,7 +730,16 @@ function createAddPanel(){
           </div>
       </div>
         <p class="text-sm text-gray-300">
-          <span>Tipos de archivo permitidos: muchos</span>
+            <span>Tipos de archivo permitidos:</span>
+        </p>
+        <p class="text-sm text-gray-300 ml-4">
+            <span>• Imágenes: jpg,jpeg,png,webm</span>
+        </p>
+        <p class="text-sm text-gray-300 ml-4">
+            <span>• Audios: mp3,ogg</span>
+        </p>
+        <p class="text-sm text-gray-300 ml-4">
+            <span>• Videos: mp4,avi</span>
         </p>
       <div>
         <button type="submit" id="btnSendAddResource" class="my-5 w-full flex justify-center bg-blue-500 text-gray-100 p-4  rounded-full tracking-wide font-semibold  focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300">
