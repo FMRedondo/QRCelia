@@ -29,8 +29,10 @@ class interestPointController extends Controller
         $date           = DATE("Y-m-d H:i:s");
         $_token         = $_POST['_token'];
         $archivo = $request -> fecha . "-" . $nombreArchivo;
+        $orden = ["image", "texto", "video", "audio"];
+        $orden = json_encode($orden);
 
-        $result = interestPointModel::addInterestPoint($name, $description, $text, $archivo, $date);
+        $result = interestPointModel::addInterestPoint($name, $description, $text, $archivo,$orden, $date);
         return response() -> json([
             'id' => $result,
             'date' => $date
@@ -48,8 +50,10 @@ class interestPointController extends Controller
         $nombreArchivoNuevo = time() . "-" . $file -> getClientOriginalName();
         $subida = $request -> file('poster') -> move($url, $nombreArchivoNuevo);
         $date           = DATE("Y-m-d H:i:s");
+        $orden = ["image", "texto", "video", "audio"];
+        $orden = json_encode($orden);
 
-        $result = interestPointModel::addInterestPoint($name, $description, $text, $nombreArchivoNuevo, $date);
+        $result = interestPointModel::addInterestPoint($name, $description, $text, $nombreArchivoNuevo, $date, $orden);
         resourceModel::añadirPosterComoRecurso($name, $nombreArchivoNuevo);
         return response() -> json([
             'id' => $result,

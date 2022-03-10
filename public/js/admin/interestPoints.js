@@ -90,6 +90,7 @@ index();
 
 const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('data-id'), '_token': token}, '/admin/puntosInteres/getPoint', 'POST', (response) => {
     const resourceList = document.querySelector("#resourceList")
+    var orden = JSON.parse(response[0].orden)
     const content = `
     
     <div class="rounded-xl shadow-lg bg-white modifyPanel bigPanel">
@@ -109,11 +110,11 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
                 </div>
                 <div class='w-100'>
                 <h3 class='h3 text-center m-3'>Orden de visualización</h3>
-                <ul id="items" class='ordenar handle'>
-                    <li>Texto</li>
-                    <li>Imagenes</li>
-                    <li>Audio</li>
-                    <li>video</li>
+                <ul id="items" class='ordenar handle' data-id='prueba'>
+                    <li data-name='${orden[0]}'>${orden[0]}</li>
+                    <li data-name='${orden[1]}'>${orden[1]}</li>
+                    <li data-name='${orden[2]}'>${orden[2]}</li>
+                    <li data-name='${orden[3]}'>${orden[3]}</li>
                 </ul>
                 </div>
             </div>
@@ -149,31 +150,24 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
         sort: true,
         handle: '.handle',
         animation: 150,
+        dataIdAttr: "data-name",
         store: {
             set:  function (sortable) {
                 var order = sortable.toArray();
                 var orden = []
                 for(let i = 0; i < order.length; i++){
                     let recurso
-                    if(order[i] == "1zh")
-                        recurso = "texto"
-
-                    if(order[i] == "276")
-                        recurso = "image"
-
-                    if(order[i] == "1zk")
-                        recurso = "video"
-
-                    if(order[i] == "1yj")
-                        recurso = "audio"
+                    
                     
                     orden.push(recurso)
                     
                 }
 
+                console.log(order)
+
                 console.log(orden)
-                ajax({"id": response[0].id, "orden": JSON.stringify(orden), "_token": token}, '/admin/puntosInteres/cambiarOrden', 'POST', response => {
-                    console.log(response)
+                ajax({"id": response[0].id, "orden": JSON.stringify(order), "_token": token}, '/admin/puntosInteres/cambiarOrden', 'POST', response => {
+                   
                 })
                 
             }
