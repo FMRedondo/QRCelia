@@ -150,7 +150,7 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
         handle: '.handle',
         animation: 150,
         store: {
-            set: function (sortable) {
+            set: async function (sortable) {
                 var order = sortable.toArray();
                 var orden = []
                 for(let i = 0; i < order.length; i++){
@@ -171,6 +171,7 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
                     
                 }
                 console.log(orden)
+                //await fetch('')
             }
         }
     });
