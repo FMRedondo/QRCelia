@@ -6,33 +6,18 @@
             <menuRecursos></menuRecursos>
             <title-component :titulo="this.name" :desc="this.desc"></title-component> 
 
-            <separador-component texto='Imagenes' v-if="this.images.length > 0"></separador-component>
+            <div v-for="(componente, i) in this.orden" :key="i">
+                
+            <imagenes-component v-if="componente.i == 'image'" :images="this.images"></imagenes-component>
 
-            <div class="slideshow-container" v-if="this.images.length > 0" id="imagenes">
-                <div class="slide-images fade" v-for="(image,index) in this.images" :key="index">
-                    <img :src="'/img/puntosInteres/' + image">
-                </div>
-                <a class="prev" v-if="this.images.length > 1" onclick="plusIMG(-1)">&#10094;</a>
-                <a class="next" v-if="this.images.length > 1" onclick="plusIMG(1)">&#10095;</a>
+                <information-component v-else-if="componente.i == 'texto'" :texto="this.text" :poster="'/img/puntosInteres/' + this.poster"></information-component>
+
+                <audio-component v-else-if="componente.i == 'audio'"  :audio="'/audio/' + this.audio"></audio-component>
+
+                <video-component v-else-if="componente.i == 'video'" :videos="this.videos"></video-component>
+            
             </div>
 
-            <separador-component texto='información'></separador-component>
-            
-            <information-component :texto="this.text" :poster="'/img/puntosInteres/' + this.poster"></information-component>
-
-            <audio-component  :audio="'/audio/' + this.audio" v-if="this.audio.length != ``"></audio-component>
-
-            <separador-component v-if="this.videos.length > 0" texto='Videos'></separador-component>
-
-            <div class="slideVideo-container" v-if="this.videos.length > 0" id="video">
-                <div class="slide-videos fade" v-for="(videos,index) in this.videos" :key="index">
-                    <video :src="'/videos/' + videos" controls></video>
-                </div>
-                <a class="videoPrev" v-if="this.videos.length > 1" onclick="plusVideos(-1)">&#10094;</a>
-                <a class="videoNext" v-if="this.videos.length > 1" onclick="plusVideos(1)">&#10095;</a>
-            </div>
-
-            
             <!-- <comentarios :about='this.idpoint'></comentarios> -->
         </div>
     </section>
@@ -51,7 +36,8 @@ export default{
         poster: String,
         images: Array,
         videos: Array,
-        audio: String
+        audio: String,
+        orden: Array
     },
     
         
@@ -150,7 +136,10 @@ export default{
         });
             this.getResources("image");
             this.getResources("video");
-            this.getResources("audio"); 
+            this.getResources("audio");
+            
+            const response = ["texto","image","video","audio"];
+            this.orden = response
 
             setTimeout(this.pintarMenu, '3000')
 
