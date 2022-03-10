@@ -109,4 +109,15 @@ class interestPointController extends Controller
         $point = $points[array_rand($points, 1)];
         return $point;
     }
+
+    public function cambiarOrden(Request $request){
+        $id = $request -> id;
+        $orden = $request -> orden;
+        //$orden = json_decode($orden, true );
+
+        interestPointModel::updateInterestPoint($id, "orden", $orden);
+
+
+    
+    }
 }

@@ -150,7 +150,7 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
         handle: '.handle',
         animation: 150,
         store: {
-            set: async function (sortable) {
+            set:  function (sortable) {
                 var order = sortable.toArray();
                 var orden = []
                 for(let i = 0; i < order.length; i++){
@@ -170,8 +170,12 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
                     orden.push(recurso)
                     
                 }
+
                 console.log(orden)
-                //await fetch('')
+                ajax({"id": response[0].id, "orden": JSON.stringify(orden), "_token": token}, '/admin/puntosInteres/cambiarOrden', 'POST', response => {
+                    console.log(response)
+                })
+                
             }
         }
     });
