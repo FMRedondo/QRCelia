@@ -118,6 +118,21 @@
 }
 
 
+.ordenar{
+    width: 90%;
+    margin: 1em auto;
+}
+
+.ordenar li{
+    background-color: var(--colorPrimario);
+    color: white;
+    border: 1px solid var(--colorPrimario);
+    padding: 0.5em;
+    text-align: center;
+    margin-bottom: 2px;
+    cursor: move;
+}
+
 @media (max-width: 795px) {
 }
 

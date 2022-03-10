@@ -103,9 +103,18 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
         </div>
 
         <div class="modifyPanelContent w-100 d-flex" id='modifyPanelContent' style="height:90%;">
-            <div class="w-50 d-flex justify-content-center align-items-center">
+            <div class="w-50 d-flex justify-content-center align-items-center flex-column">
                 <div class="w-100">
                 <img src=/img/puntosInteres/${response[0].poster} style='width:90%; margin:0 auto'>
+                </div>
+                <div class='w-100'>
+                <h3 class='h3 text-center m-3'>Orden de visualización</h3>
+                <ul id="items" class='ordenar handle'>
+                    <li>Texto</li>
+                    <li>Imagenes</li>
+                    <li>Audio</li>
+                    <li>video</li>
+                </ul>
                 </div>
             </div>
             <div class="w-50 d-flex flex-column p-5">
@@ -133,6 +142,40 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
         </div>`;
 
     resourceList.innerHTML = content;
+    var el = document.getElementById('items');
+    //var sortable = Sortable.create(el);
+    var sortable = new Sortable(el, {
+        group: "posiciones",
+        sort: true,
+        handle: '.handle',
+        animation: 150,
+        store: {
+            set: function (sortable) {
+                var order = sortable.toArray();
+                var orden = []
+                for(let i = 0; i < order.length; i++){
+                    let recurso
+                    if(order[i] == "1zh")
+                        recurso = "texto"
+
+                    if(order[i] == "276")
+                        recurso = "image"
+
+                    if(order[i] == "1zk")
+                        recurso = "video"
+
+                    if(order[i] == "1yj")
+                        recurso = "audio"
+                    
+                    orden.push(recurso)
+                    
+                }
+                console.log(orden)
+            }
+        }
+    });
+    
+
     
 
     const modifyPanel = document.querySelector(".modifyPanel ")
