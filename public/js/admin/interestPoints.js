@@ -416,6 +416,7 @@ const modificarImagenesRelacionadas =  async elemento => {
 
     let idPunto = elemento.target.getAttribute('data-idPunto')
     let idRecurso = elemento.target.getAttribute('data-id')
+    alert(`${idPunto} -> ${idRecurso} -> ${enlazado}`)
        
     await ajax({'idPunto': idPunto, 'idRecurso': idRecurso, 'enlazado': enlazado, '_token': token}, '/admin/puntosInteres/enlazarPuntoConRecurso', 'POST', response => {})
 }
