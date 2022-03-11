@@ -265,11 +265,10 @@ const  mostrarAñadirPunto = (element) => {
     formData.append('nombre', nombre)
     formData.append('description', desc)
     formData.append('texto', texto)
-    fetch('/api/puntosInteres/subirPoster', {
+    await fetch('/api/puntosInteres/subirPoster', {
         method: 'post',
         body: formData
-    }).then (response => {
-        response = response.json()
+    }).then(data => data.json()).then (response => {
         const backpanel = document.getElementById('backpanel')
         const addPanel = document.getElementById('addPanel')
 
@@ -279,9 +278,6 @@ const  mostrarAñadirPunto = (element) => {
         document.getElementById("typeName").value = ""
         document.getElementById("typeDesc").value = ""
         CKEDITOR.instances['texto'].setData("")
-
-       console.log(response)
-       console.log(response.id)
 
         let contenidoTabla = `
         <div id="card${response.id}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32" style="width: 30%">
@@ -299,6 +295,8 @@ const  mostrarAñadirPunto = (element) => {
             </div>
         </div>    
     </div>`;
+
+ 
     
 
         const contenidoVista = document.querySelector(".contenidoPuntos")
