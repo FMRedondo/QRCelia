@@ -131,7 +131,7 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
                             
                 <div class="mb-4">
                      <label for="resourceUser" class="form-label">Contenido</label>
-                     <textarea class="ckeditor editInput" name="editor1" id="editor1" data-id=${response[0].id} rows="10" cols="88" data-field="text">${response[0].text}</textarea>
+                     <textarea class="ckeditor" name="editor1" id="editor1" data-id=${response[0].id} rows="10" cols="88" data-field="text">${response[0].text}</textarea>
                 </div>
 
                 <div class='recursos'>
@@ -175,7 +175,7 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
     });
     
 
-    
+
 
     const modifyPanel = document.querySelector(".modifyPanel ")
     const backPanel = document.querySelector(".backPanel")
@@ -191,6 +191,8 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
     const inputActualizar  = document.getElementsByClassName("editInput");
         for(let i = 0; i < inputActualizar.length; i++)
             inputActualizar[i].addEventListener('change', actualizarDatos)
+    
+
 
     var editor = CKEDITOR.replace('editor1')
 
@@ -202,6 +204,19 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
 
     const btnAudios = document.getElementById('audiosRelacionado')
     btnAudios.addEventListener('click', audiosRelacionados)
+
+    editor.on('blur', (element) => {
+        ajax(
+            {
+                'id': document.getElementById('editor1').getAttribute('data-id'),
+                'field':  document.getElementById('editor1').getAttribute('data-field'),
+                'value' : editor.getData(),
+                '_token': token
+            },'/admin/puntosInteres/editPoint','POST', response => {
+        
+            })
+    })
+
 })
 
 
