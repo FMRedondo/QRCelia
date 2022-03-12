@@ -479,13 +479,20 @@ const audiosRelacionados = async elemento => {
         modifyPanelContent.insertAdjacentHTML("beforebegin", `<section id="audiosRelacionados"></section>`)
         const contenidoAudiosRelacionados = document.getElementById('audiosRelacionados')
         response.forEach(data => {
-           /* let contenido = `<audio src='/audios/${data.url}' class='${data.enlazado}' data-id=${data.id} data-idPunto=${elemento.target.getAttribute('data-id')}>`*/
+            let contenido = `
+            <div>
+                <audio src='/audio/${data.url}' controls></audio>
+                <p class='${data.enlazado}' data-id=${data.id} data-idPunto=${elemento.target.getAttribute('data-id')}>Seleccionar/deseleccionar</p>
+            </div>`
+            
+              /*
               let contenido = `
               <audio class='${data.enlazado}' data-id=${data.id} data-idPunto=${elemento.target.getAttribute('data-id')} constrols>
                 <source src="/audios/${data.url}" type="audio/mp3">
                 Tu navegador no soporta HTML5 audio.
               </audio>
               `
+              */
             contenidoAudiosRelacionados.insertAdjacentHTML("beforeend", contenido)
         })
 
@@ -495,21 +502,25 @@ const audiosRelacionados = async elemento => {
 
 
 const modificarAudiosRelacionados = async elemento => {
-    var enlazado = elemento.target.getAttribute('class')
-   // no lo reconoce como boolean por lo que no puedo hacer !enlazado para la asignacion :( me da toc, pero es lo que hay
-   var enlazado;
-    if(enlazado == 'true'){
-        elemento.target.setAttribute('class', 'false')
-        enlazado = 'false'
-    }
-    else{
-        elemento.target.setAttribute('class', 'true')
-        enlazado='true'
-    }
 
-    let idPunto = elemento.target.getAttribute('data-idPunto')
-    let idRecurso = elemento.target.getAttribute('data-id')
-       
-    await ajax({'idPunto': idPunto, 'idRecurso': idRecurso, 'enlazado': enlazado, '_token': token}, '/admin/puntosInteres/enlazarPuntoConRecurso', 'POST', response => {})
+    if(elemento.target.nodeName == "P"){
+        var enlazado = elemento.target.getAttribute('class')
+        // no lo reconoce como boolean por lo que no puedo hacer !enlazado para la asignacion :( me da toc, pero es lo que hay
+        var enlazado;
+         if(enlazado == 'true'){
+             elemento.target.setAttribute('class', 'false')
+             enlazado = 'false'
+         }
+         else{
+             elemento.target.setAttribute('class', 'true')
+             enlazado='true'
+         }
+     
+     
+         let idPunto = elemento.target.getAttribute('data-idPunto')
+         let idRecurso = elemento.target.getAttribute('data-id')
+            
+         await ajax({'idPunto': idPunto, 'idRecurso': idRecurso, 'enlazado': enlazado, '_token': token}, '/admin/puntosInteres/enlazarPuntoConRecurso', 'POST', response => {})
+    }
     
 }

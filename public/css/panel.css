@@ -154,14 +154,51 @@
     width: 30%;
 }
 
-#imagenesRelacionadas img.true, #videosRelacionadas video.true, #audiosRelacionados audio.true{
+#imagenesRelacionadas img.true, #videosRelacionadas video.true, #audiosRelacionados audio.true, #audiosRelacionados > div.true{
     border: 2px solid red;
 }
 
-#imagenesRelacionadas img.false, #videosRelacionadas video.false, #audiosRelacionados audio.false{
+#imagenesRelacionadas img.false, #videosRelacionadas video.false, #audiosRelacionados audio.false, #audiosRelacionados > div.false{
     border: 2px solid transparent;
 }
 
+
+#audiosRelacionados > div{
+    width: 30%;
+    padding: 1em 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#audiosRelacionados > div > audio{
+    width: 80%;
+    margin: 0 auto;
+}
+
+#audiosRelacionados > div  p{
+    display: inline-flex;
+    width: 50%;
+    margin:1em auto;
+    text-align: center;
+    border-radius: 10px;
+    background-color: var(--colorPrimario);
+    color: white;
+    padding: 0.5em;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#audiosRelacionados > div  p.true{
+    background-color: var(--colorPrimario);
+    border: 2px solid var(--colorPrimario);
+}
+
+#audiosRelacionados > div  p.false{
+    background-color: transparent;
+    color: black;
+    border: 2px solid var(--colorPrimario);
+}
 
 .recursos{
     display: flex;
