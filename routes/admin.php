@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\customUsersController;
 use App\Http\Controllers\admin\interestPointController;
 use App\Http\Controllers\admin\resourceUploadController;
 use App\Http\Controllers\admin\rolUserController;
+use App\Http\Controllers\admin\customizationController;
 use Spatie\Permission\Models\Role;
 
 Route::get('/', function () {
@@ -26,6 +27,12 @@ Route::get('/personalizar', function () {
 Route::get('/roles', function () {
     return view('admin/roles');
 })-> middleware('can:ver_administracion');
+
+
+Route::get('/obtenerCustomizacion', [customizationController::class, 'getAllCustomizationData'])-> name('ver.opciones');
+Route::post('/cambiarCustomizacion', [customizationController::class, 'updateCustomization'])-> name('cambiar.opciones');
+//
+
 
 Route::get('/roles/getUsersAndRoles', [rolUserController::class, 'getUsersAndRoles'])-> name('getUsersAndRoles.user')-> middleware('can:ver_administracion');
 Route::post('/roles/addRol', [rolUserController::class, 'addRol'])-> name('addRol.user')-> middleware('can:ver_administracion');

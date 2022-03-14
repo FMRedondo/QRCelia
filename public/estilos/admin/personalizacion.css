@@ -1,0 +1,15 @@
+#datos input{
+    border: none;
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid transparent;
+}
+
+#datos input:hover{
+    cursor: pointer;
+}
+
+#datos input:focus{
+    border: 1px solid var(--colorPrimario);
+    outline: none;
+}

@@ -25,4 +25,9 @@ class customizationModel extends Model
         $result = DB::select($sql);
         return $result;
     }
+
+    public static function updateCustom($campo, $valor){
+        $sql = "UPDATE customization SET value = '$valor' WHERE (option = '$campo')";
+        DB::update($sql);
+    }
 }
