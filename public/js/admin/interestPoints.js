@@ -131,7 +131,7 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
                             
                 <div class="mb-4">
                      <label for="resourceUser" class="form-label">Contenido</label>
-                     <textarea class="ckeditor editInput" name="editor1" id="editor1" data-id=${response[0].id} rows="10" cols="88" data-field="text">${response[0].text}</textarea>
+                     <textarea class="ckeditor" name="editor1" id="editor1" data-id=${response[0].id} rows="10" cols="88" data-field="text">${response[0].text}</textarea>
                 </div>
 
                 <div class='recursos'>
@@ -175,7 +175,7 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
     });
     
 
-    
+
 
     const modifyPanel = document.querySelector(".modifyPanel ")
     const backPanel = document.querySelector(".backPanel")
@@ -191,6 +191,8 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
     const inputActualizar  = document.getElementsByClassName("editInput");
         for(let i = 0; i < inputActualizar.length; i++)
             inputActualizar[i].addEventListener('change', actualizarDatos)
+    
+
 
     var editor = CKEDITOR.replace('editor1')
 
@@ -202,6 +204,19 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
 
     const btnAudios = document.getElementById('audiosRelacionado')
     btnAudios.addEventListener('click', audiosRelacionados)
+
+    editor.on('blur', (element) => {
+        ajax(
+            {
+                'id': document.getElementById('editor1').getAttribute('data-id'),
+                'field':  document.getElementById('editor1').getAttribute('data-field'),
+                'value' : editor.getData(),
+                '_token': token
+            },'/admin/puntosInteres/editPoint','POST', response => {
+        
+            })
+    })
+
 })
 
 
@@ -265,11 +280,10 @@ const  mostrarAñadirPunto = (element) => {
     formData.append('nombre', nombre)
     formData.append('description', desc)
     formData.append('texto', texto)
-    fetch('/api/puntosInteres/subirPoster', {
+    await fetch('/api/puntosInteres/subirPoster', {
         method: 'post',
         body: formData
-    }).then (response => {
-        response = response.json()
+    }).then(data => data.json()).then (response => {
         const backpanel = document.getElementById('backpanel')
         const addPanel = document.getElementById('addPanel')
 
@@ -279,9 +293,6 @@ const  mostrarAñadirPunto = (element) => {
         document.getElementById("typeName").value = ""
         document.getElementById("typeDesc").value = ""
         CKEDITOR.instances['texto'].setData("")
-
-       console.log(response)
-       console.log(response.id)
 
         let contenidoTabla = `
         <div id="card${response.id}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32" style="width: 30%">
@@ -299,6 +310,8 @@ const  mostrarAñadirPunto = (element) => {
             </div>
         </div>    
     </div>`;
+
+ 
     
 
         const contenidoVista = document.querySelector(".contenidoPuntos")
@@ -418,6 +431,7 @@ const modificarImagenesRelacionadas =  async elemento => {
 
     let idPunto = elemento.target.getAttribute('data-idPunto')
     let idRecurso = elemento.target.getAttribute('data-id')
+    alert(`${idPunto} -> ${idRecurso} -> ${enlazado}`)
        
     await ajax({'idPunto': idPunto, 'idRecurso': idRecurso, 'enlazado': enlazado, '_token': token}, '/admin/puntosInteres/enlazarPuntoConRecurso', 'POST', response => {})
 }
@@ -480,13 +494,20 @@ const audiosRelacionados = async elemento => {
         modifyPanelContent.insertAdjacentHTML("beforebegin", `<section id="audiosRelacionados"></section>`)
         const contenidoAudiosRelacionados = document.getElementById('audiosRelacionados')
         response.forEach(data => {
-           /* let contenido = `<audio src='/audios/${data.url}' class='${data.enlazado}' data-id=${data.id} data-idPunto=${elemento.target.getAttribute('data-id')}>`*/
+            let contenido = `
+            <div>
+                <audio src='/audio/${data.url}' controls></audio>
+                <p class='${data.enlazado}' data-id=${data.id} data-idPunto=${elemento.target.getAttribute('data-id')}>Seleccionar/deseleccionar</p>
+            </div>`
+            
+              /*
               let contenido = `
               <audio class='${data.enlazado}' data-id=${data.id} data-idPunto=${elemento.target.getAttribute('data-id')} constrols>
                 <source src="/audios/${data.url}" type="audio/mp3">
                 Tu navegador no soporta HTML5 audio.
               </audio>
               `
+              */
             contenidoAudiosRelacionados.insertAdjacentHTML("beforeend", contenido)
         })
 
@@ -496,21 +517,25 @@ const audiosRelacionados = async elemento => {
 
 
 const modificarAudiosRelacionados = async elemento => {
-    var enlazado = elemento.target.getAttribute('class')
-   // no lo reconoce como boolean por lo que no puedo hacer !enlazado para la asignacion :( me da toc, pero es lo que hay
-   var enlazado;
-    if(enlazado == 'true'){
-        elemento.target.setAttribute('class', 'false')
-        enlazado = 'false'
-    }
-    else{
-        elemento.target.setAttribute('class', 'true')
-        enlazado='true'
-    }
 
-    let idPunto = elemento.target.getAttribute('data-idPunto')
-    let idRecurso = elemento.target.getAttribute('data-id')
-       
-    await ajax({'idPunto': idPunto, 'idRecurso': idRecurso, 'enlazado': enlazado, '_token': token}, '/admin/puntosInteres/enlazarPuntoConRecurso', 'POST', response => {})
+    if(elemento.target.nodeName == "P"){
+        var enlazado = elemento.target.getAttribute('class')
+        // no lo reconoce como boolean por lo que no puedo hacer !enlazado para la asignacion :( me da toc, pero es lo que hay
+        var enlazado;
+         if(enlazado == 'true'){
+             elemento.target.setAttribute('class', 'false')
+             enlazado = 'false'
+         }
+         else{
+             elemento.target.setAttribute('class', 'true')
+             enlazado='true'
+         }
+     
+     
+         let idPunto = elemento.target.getAttribute('data-idPunto')
+         let idRecurso = elemento.target.getAttribute('data-id')
+            
+         await ajax({'idPunto': idPunto, 'idRecurso': idRecurso, 'enlazado': enlazado, '_token': token}, '/admin/puntosInteres/enlazarPuntoConRecurso', 'POST', response => {})
+    }
     
 }

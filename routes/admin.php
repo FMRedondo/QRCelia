@@ -46,6 +46,8 @@ Route::post('/puntosInteres/eliminarPunto', [interestPointController::class, 'de
 Route::get('/puntosInteres/getPoints', [interestPointController::class, 'getInterestPoints'])-> name('get.interestPoints')-> middleware('can:ver_administracion');
 Route::post('/puntosInteres/cambiarOrden', [interestPointController::class, 'cambiarOrden'])-> name('cambiar.orden')-> middleware('can:ver_administracion');
 
+Route::post('/puntosInteres/enlazarPuntoConRecurso', [ResourceController::class, 'enlazarPuntoConRecurso'])-> name('enlazar.punto.recurso')-> middleware('can:ver_administracion');
+
 Route::get('/comentarios', [CommentController::class, 'index'])-> name('show.viewComments')-> middleware('can:ver_administracion');
 Route::get('/comentarios/getComments', [CommentController::class, 'getComments'])-> name('show.comments')-> middleware('can:ver_administracion');
 Route::post('/comentarios/searchcomments', [CommentController::class, 'searchcomments'])-> name('search.comments')-> middleware('can:ver_administracion');
