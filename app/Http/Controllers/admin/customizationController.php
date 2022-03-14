@@ -12,17 +12,23 @@ class customizationController extends Controller
     public function createOption(){
         $option = $_POST["option"];
         $value = $_POST["value"];
-        customUsersModel::setCustomizationData($option, $value);
+        customizationModel::setCustomizationData($option, $value);
     }
 
     public function getCustomizationData(){
         $option = $_POST["option"];
-        $result = customUsersModel::getCustomizationData($option);
+        $result = customizationModel::getCustomizationData($option);
         return response() -> json($result);
     }
 
-    public static function getAllCustomizationData(){
-        $result = customUsersModel::getAllCustomizationData();
+    public function getAllCustomizationData(){
+        $result = customizationModel::getAllCustomizationData();
         return response() -> json($result);
+    }
+
+    public function updateCustomization(Request $request){
+        $campo = $request -> campo;
+        $valor = $request -> valor;
+        customizationModel::updateCustom($campo, $valor);
     }
 }
