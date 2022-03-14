@@ -3,6 +3,8 @@
 require('./bootstrap');
 
 window.Vue = require('vue').default;
+Vue.config.productionTip = false;
+Vue.config.silent = true;
 
 //componentes
 Vue.component('header-component', require('./components/header.vue').default);

@@ -2,24 +2,21 @@
     <section id="contentSection">
         
         <header-component></header-component>
-        <div class="wrapper">
-            <menuRecursos></menuRecursos>
-            <title-component :titulo="this.name" :desc="this.desc"></title-component> 
-
-            <div v-for="(componente, i) in this.orden" :key="i">
-                
-            <imagenes-component v-if="componente.i == 'image'" :images="this.images"></imagenes-component>
-
-                <information-component v-else-if="componente.i == 'texto'" :texto="this.text" :poster="'/img/puntosInteres/' + this.poster"></information-component>
-
-                <audio-component v-else-if="componente.i == 'audio'"  :audio="'/audio/' + this.audio"></audio-component>
-
-                <video-component v-else-if="componente.i == 'video'" :videos="this.videos"></video-component>
-            
-            </div>
-
+        <div class="wrapper" id="components">
+            <menuRecursos style="order: -2"></menuRecursos>
+            <title-component style="order: -1" :titulo="this.name" :desc="this.desc"></title-component> 
             <!-- <comentarios :about='this.idpoint'></comentarios> -->
+            
+            <imagenes-component id="imgComp" :images="this.images"></imagenes-component>
+
+            <information-component id="infComp" :texto="this.text" :poster="'/img/puntosInteres/' + this.poster"></information-component>
+
+            <audio-component id="audioComp" v-if="this.audio.length != ``" :audio="'/audio/' + this.audio"></audio-component>
+
+            <video-component id="videoComp" v-if="this.videos.length > 0" :videos="this.videos"></video-component>
+
         </div>
+
     </section>
 </template>
 
@@ -61,6 +58,10 @@ export default{
                 this.text = response[0].text,
                 this.url = response[0].url,
                 this.poster = response[0].poster
+                const orden = JSON.parse(response[0].orden)
+                this.ordenarComponentes(orden);
+
+                
                 const loadScreen = document.getElementById("loadSection")
                 loadScreen.remove()
         },
@@ -78,7 +79,6 @@ export default{
             })
             .then(response => response.json())
                 const resources = [];
-                const menu = document.getElementById("menuLateral")
                 for (let i = 0; i < response.length; i++) {
                     resources.push((response[i].url));
                 } 
@@ -87,7 +87,22 @@ export default{
                 if (type == "video")
                     this.videos = resources;
                 if (type == "audio")
-                    this.audio = resources;
+                    this.audio = resources;        
+        },
+
+        ordenarComponentes(orden){
+                for (let i = 0; i < orden.length; i++) {
+                    let posicion = i.toString()
+                    if (orden[i] == "texto" && document.getElementById("infComp")){
+                        document.getElementById("infComp").style.order = posicion;
+                    }else if(orden[i] == "image" && document.getElementById("imgComp")){
+                        document.getElementById("imgComp").style.order = posicion;
+                    }else if(orden[i] == "video" && document.getElementById("videoComp")){
+                        document.getElementById("videoComp").style.order = posicion;
+                    }else if(orden[i] == "audio" && document.getElementById("audioComp")){
+                        document.getElementById("audioComp").style.order = posicion;
+                    }
+                }
         },
 
         pintarMenu(){
@@ -106,6 +121,7 @@ export default{
 
             menu.classList.remove('oculto')
         },
+
         activarAudio(){
             const button = document.getElementById("audioButton");
             const icon = document.getElementById("audioIcon");
@@ -137,18 +153,18 @@ export default{
             this.getResources("image");
             this.getResources("video");
             this.getResources("audio");
-            
-            const response = ["texto","image","video","audio"];
-            this.orden = response
 
             setTimeout(this.pintarMenu, '3000')
-
-            
     },
 }
 </script>
 
 <style>
+#components{
+    display: flex;
+    flex-direction: column;
+}
+
 #contentSection{
     min-height: 100%;
 }

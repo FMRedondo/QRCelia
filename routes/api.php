@@ -4,7 +4,7 @@ use App\Http\Controllers\admin\interestPointController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\CommentController;
-use App\Http\Controllers\admin\ResourceController;
+use App\Http\Controllers\admin\resourceController;
 use App\Http\Controllers\admin\resourceUploadController;
 
 

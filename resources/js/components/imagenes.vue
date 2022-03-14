@@ -1,8 +1,8 @@
 <template>
     <section>
-        <separador-component texto='Imagenes'></separador-component>
+        <separador-component id="imagenes" texto='Imagenes'></separador-component>
 
-        <div class="slideshow-container" id="imagenes">
+        <div class="slideshow-container">
             <div class="slide-images fade" v-for="(image,index) in this.images" :key="index">
                 <img :src="'/img/puntosInteres/' + image">
             </div>

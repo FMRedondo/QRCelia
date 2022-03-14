@@ -431,7 +431,6 @@ const modificarImagenesRelacionadas =  async elemento => {
 
     let idPunto = elemento.target.getAttribute('data-idPunto')
     let idRecurso = elemento.target.getAttribute('data-id')
-    alert(`${idPunto} -> ${idRecurso} -> ${enlazado}`)
        
     await ajax({'idPunto': idPunto, 'idRecurso': idRecurso, 'enlazado': enlazado, '_token': token}, '/admin/puntosInteres/enlazarPuntoConRecurso', 'POST', response => {})
 }
@@ -451,7 +450,7 @@ const videosRelacionados = async elemento => {
         modifyPanelContent.insertAdjacentHTML("beforebegin", `<section id="videosRelacionadas"></section>`)
         const contenidoVideosRelacionaas = document.getElementById('videosRelacionadas')
         response.forEach(data => {
-            let contenido = `<video src='/videos/${data.url}' alt='${data.nombre}' class='${data.enlazado}' data-id=${data.id} data-idPunto=${elemento.target.getAttribute('data-id')} ><video>`
+            let contenido = `<video src='/video/${data.url}' alt='${data.nombre}' class='${data.enlazado}' data-id=${data.id} data-idPunto=${elemento.target.getAttribute('data-id')} ><video>`
             contenidoVideosRelacionaas.insertAdjacentHTML("beforeend", contenido)
         })
 

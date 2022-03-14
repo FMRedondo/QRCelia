@@ -27,8 +27,10 @@ function showIMG(n) {
     images[i].className = images[i].className.replace(" active", "");
   }
   
-  images[indexIMG-1].style.display = "block";
-  images[indexIMG-1].className += " active";
+  if (images.length > 1) {
+    images[indexIMG-1].style.display = "block";
+    images[indexIMG-1].className += " active";
+  }
 }
 
 /* SLIDE DE VIDEOS */
@@ -59,7 +61,9 @@ function showVideos(n) {
   for (i = 0; i < videos.length; i++) {
     videos[i].className = videos[i].className.replace(" active", "");
   }
-  
-  videos[indexVID-1].style.display = "block";
-  videos[indexVID-1].className += " active";
+
+  if (videos.length > 1) {
+    videos[indexIMG-1].style.display = "block";
+    videos[indexIMG-1].className += " active";
+  }
 }
