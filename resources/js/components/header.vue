@@ -17,7 +17,7 @@
                 <i class="far fa-times-circle closeNav" @click="cerrarMenu"></i>
                 <a href="/" @mouseover="imagenMenu('inicio')"  @mouseleave="quitarImagen">Inicio</a>
                 <a href="/puntosInteres" @mouseover="imagenMenu('puntos')" @mouseleave="quitarImagen">Puntos de interés</a>
-                <!-- <a href="/QRMisterioso" @mouseover="imagenMenu('misterioso')" @mouseleave="quitarImagen">QR Misterioso</a> -->
+                <a href="/qrmisterioso" @mouseover="imagenMenu('misterioso')" @mouseleave="quitarImagen">QR Misterioso</a>
                 <a href="/creditos" @mouseover="imagenMenu('creditos')" @mouseleave="quitarImagen">Créditos</a>
             </nav>
         </div>
@@ -31,10 +31,10 @@
                <i class="fa-solid fa-signs-post"></i>
                 <a >Puntos de interés</a>
            </div>
-           <!--<div class="icono">
+           <div class="icono">
                 <i class="fa-solid fa-question"></i>
-                 <a href="/QRMisterioso" @mouseover="imagenMenu('misterioso')" @mouseleave="quitarImagen">QR Misterioso</a> 
-           </div> -->
+                 <a href="/qrmisterioso" @mouseover="imagenMenu('misterioso')" @mouseleave="quitarImagen">QR Misterioso</a> 
+           </div>
             <div class="icono">
                 <i class="fa-solid fa-users"></i>
                 <a href="/creditos">Créditos</a>

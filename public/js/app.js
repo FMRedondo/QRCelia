@@ -31906,6 +31906,20 @@ var render = function () {
         _c(
           "a",
           {
+            attrs: { href: "/qrmisterioso" },
+            on: {
+              mouseover: function ($event) {
+                return _vm.imagenMenu("misterioso")
+              },
+              mouseleave: _vm.quitarImagen,
+            },
+          },
+          [_vm._v("QR Misterioso")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
             attrs: { href: "/creditos" },
             on: {
               mouseover: function ($event) {
@@ -31919,7 +31933,33 @@ var render = function () {
       ]),
     ]),
     _vm._v(" "),
-    _vm._m(1),
+    _c("nav", { staticClass: "navMovil", attrs: { id: "navMovil" } }, [
+      _c("div", { staticClass: "wrapper" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _vm._m(2),
+        _vm._v(" "),
+        _c("div", { staticClass: "icono" }, [
+          _c("i", { staticClass: "fa-solid fa-question" }),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              attrs: { href: "/qrmisterioso" },
+              on: {
+                mouseover: function ($event) {
+                  return _vm.imagenMenu("misterioso")
+                },
+                mouseleave: _vm.quitarImagen,
+              },
+            },
+            [_vm._v("QR Misterioso")]
+          ),
+        ]),
+        _vm._v(" "),
+        _vm._m(3),
+      ]),
+    ]),
   ])
 }
 var staticRenderFns = [
@@ -31942,28 +31982,32 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("nav", { staticClass: "navMovil", attrs: { id: "navMovil" } }, [
-      _c("div", { staticClass: "wrapper" }, [
-        _c("div", { staticClass: "icono" }, [
-          _c("i", { staticClass: "fa-solid fa-house " }),
-          _vm._v(" "),
-          _c("a", { staticClass: "activo", attrs: { href: "/" } }, [
-            _vm._v("Inicio"),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "icono" }, [
-          _c("i", { staticClass: "fa-solid fa-signs-post" }),
-          _vm._v(" "),
-          _c("a", [_vm._v("Puntos de interés")]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "icono" }, [
-          _c("i", { staticClass: "fa-solid fa-users" }),
-          _vm._v(" "),
-          _c("a", { attrs: { href: "/creditos" } }, [_vm._v("Créditos")]),
-        ]),
+    return _c("div", { staticClass: "icono" }, [
+      _c("i", { staticClass: "fa-solid fa-house " }),
+      _vm._v(" "),
+      _c("a", { staticClass: "activo", attrs: { href: "/" } }, [
+        _vm._v("Inicio"),
       ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "icono" }, [
+      _c("i", { staticClass: "fa-solid fa-signs-post" }),
+      _vm._v(" "),
+      _c("a", [_vm._v("Puntos de interés")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "icono" }, [
+      _c("i", { staticClass: "fa-solid fa-users" }),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "/creditos" } }, [_vm._v("Créditos")]),
     ])
   },
 ]
