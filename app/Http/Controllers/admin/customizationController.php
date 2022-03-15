@@ -31,4 +31,11 @@ class customizationController extends Controller
         $valor = $request -> valor;
         customizationModel::updateCustom($campo, $valor);
     }
+
+    public function cambiarImagenes(Request $request){
+        $file = $request -> file('imagen');
+        $nombre = $request -> nombre;
+        $_token = $request -> _token;
+        $request -> file('imagen') -> move('img/', $nombre);
+    }
 }
