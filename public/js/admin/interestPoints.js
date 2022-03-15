@@ -82,7 +82,7 @@ const index = () => {
             backpanel.classList.toggle("mostrarPanel")
         })
     })
-};
+}
 
 
 index();

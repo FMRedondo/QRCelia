@@ -65,13 +65,38 @@ const index = () => {
             datos.insertAdjacentHTML('beforeend', contenidoTabla)
         });
 
+        const cambioImagenes = `
+        <tr>
+            <th scope="row">Imagen Logo</th>
+            <td>
+                <form action="" method="post" enctype="multipart/form-data" id='imagenLogoForm'>
+                    <input type='file' id='imagenLogo' class='cambioImagen' data-url='escudoCelia.png'>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">Imagen fondo</th>
+            <td>
+                <form action="" method="post" enctype="multipart/form-data" id='imagenFondoForm'>
+                    <input type='file' id='imagenfondo' class='cambioImagen' data-url='celiaRambla.jpg'>
+                </form>
+            </td>
+        </tr>
+        `
+
+        datos.insertAdjacentHTML('beforeend', cambioImagenes)
+
         const inputActualizar = document.getElementsByClassName('actualizarCampo')
         for(let i = 0; i < inputActualizar.length; i++)
             inputActualizar[i].addEventListener('change', actualizarCampo)
+        
+        const inputImagenes = document.getElementsByClassName('cambioImagen')
+        for(let j = 0; j < inputImagenes.length; j++)
+        inputImagenes[j].addEventListener('change', actualizarImagenes)
     }) 
 }
 
-index()
+
 
 
 const actualizarCampo = elemento => {
@@ -82,3 +107,32 @@ const actualizarCampo = elemento => {
 
    })
 }
+
+const actualizarImagenes = async elemento => {
+    var formData = new FormData()
+    var imagen = document.getElementById(elemento.target.id).files
+    formData.append('imagen', imagen[0])
+    formData.append('nombre', elemento.target.getAttribute('data-url'))
+    formData.append('_token', token)
+
+    await fetch('/admin/cambiarImagenes', {
+        method: 'post',
+        body: formData
+    }).then(response => {
+        elemento.target.value = ""
+        const panelMensaje = document.getElementById('mensaje')
+        const aviso = `
+        <div class="alert alert-success" role="alert">
+            Datos actualizados correctamente
+        </div>
+    `;
+    
+    panelMensaje.innerHTML = aviso;
+
+    const animacion = setInterval(() => {
+        panelMensaje.innerHTML = ""
+    }, 3000)
+    })
+}
+
+index()

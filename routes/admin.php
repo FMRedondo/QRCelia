@@ -31,6 +31,7 @@ Route::get('/roles', function () {
 
 Route::get('/obtenerCustomizacion', [customizationController::class, 'getAllCustomizationData'])-> name('ver.opciones');
 Route::post('/cambiarCustomizacion', [customizationController::class, 'updateCustomization'])-> name('cambiar.opciones');
+Route::post('/cambiarImagenes', [customizationController::class, 'cambiarImagenes'])-> name('cambiar.imagenes');
 //
 
 
