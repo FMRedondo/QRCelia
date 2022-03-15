@@ -31,7 +31,7 @@
         background-color: #14162560;
         transition: ease-in-out 200ms;
         min-height: 5em;
-       
+        z-index: 999;
     }
 
     .oculto{

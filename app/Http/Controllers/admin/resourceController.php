@@ -43,7 +43,7 @@ class ResourceController extends Controller
             elseif (preg_match("/\b(\.mp3|\.MP3|\.ogg|\.OGG)\b/", $name))
                 $folder = "audio/";
 
-            $url = $folder . $name;
+            $url = $folder.$name;
 
             File::delete($url);
         }

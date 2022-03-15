@@ -2,39 +2,21 @@
     <section id="contentSection">
         
         <header-component></header-component>
-        <div class="wrapper">
-            <menuRecursos></menuRecursos>
-            <title-component :titulo="this.name" :desc="this.desc"></title-component> 
-
-            <separador-component texto='Imagenes' v-if="this.images.length > 0"></separador-component>
-
-            <div class="slideshow-container" v-if="this.images.length > 0" id="imagenes">
-                <div class="slide-images fade" v-for="(image,index) in this.images" :key="index">
-                    <img :src="'/img/puntosInteres/' + image">
-                </div>
-                <a class="prev" v-if="this.images.length > 1" onclick="plusIMG(-1)">&#10094;</a>
-                <a class="next" v-if="this.images.length > 1" onclick="plusIMG(1)">&#10095;</a>
-            </div>
-
-            <separador-component texto='información'></separador-component>
-            
-            <information-component :texto="this.text" :poster="'/img/puntosInteres/' + this.poster"></information-component>
-
-            <audio-component  :audio="'/audio/' + this.audio" v-if="this.audio.length != ``"></audio-component>
-
-            <separador-component v-if="this.videos.length > 0" texto='Videos'></separador-component>
-
-            <div class="slideVideo-container" v-if="this.videos.length > 0" id="video">
-                <div class="slide-videos fade" v-for="(videos,index) in this.videos" :key="index">
-                    <video :src="'/videos/' + videos" controls></video>
-                </div>
-                <a class="videoPrev" v-if="this.videos.length > 1" onclick="plusVideos(-1)">&#10094;</a>
-                <a class="videoNext" v-if="this.videos.length > 1" onclick="plusVideos(1)">&#10095;</a>
-            </div>
-
-            
+        <div class="wrapper" id="components">
+            <menuRecursos style="order: -2"></menuRecursos>
+            <title-component style="order: -1" :titulo="this.name" :desc="this.desc"></title-component> 
             <!-- <comentarios :about='this.idpoint'></comentarios> -->
+            
+            <imagenes-component id="imgComp" :images="this.images"></imagenes-component>
+
+            <information-component id="infComp" :texto="this.text" :poster="'/img/puntosInteres/' + this.poster"></information-component>
+
+            <audio-component id="audioComp" v-if="this.audio.length != ``" :audio="'/audio/' + this.audio"></audio-component>
+
+            <video-component id="videoComp" v-if="this.videos.length > 0" :videos="this.videos"></video-component>
+
         </div>
+
     </section>
 </template>
 
@@ -51,7 +33,8 @@ export default{
         poster: String,
         images: Array,
         videos: Array,
-        audio: String
+        audio: String,
+        orden: Array
     },
     
         
@@ -75,6 +58,10 @@ export default{
                 this.text = response[0].text,
                 this.url = response[0].url,
                 this.poster = response[0].poster
+                const orden = JSON.parse(response[0].orden)
+                this.ordenarComponentes(orden);
+
+                
                 const loadScreen = document.getElementById("loadSection")
                 loadScreen.remove()
         },
@@ -92,7 +79,6 @@ export default{
             })
             .then(response => response.json())
                 const resources = [];
-                const menu = document.getElementById("menuLateral")
                 for (let i = 0; i < response.length; i++) {
                     resources.push((response[i].url));
                 } 
@@ -101,7 +87,22 @@ export default{
                 if (type == "video")
                     this.videos = resources;
                 if (type == "audio")
-                    this.audio = resources;
+                    this.audio = resources;        
+        },
+
+        ordenarComponentes(orden){
+                for (let i = 0; i < orden.length; i++) {
+                    let posicion = i.toString()
+                    if (orden[i] == "texto" && document.getElementById("infComp")){
+                        document.getElementById("infComp").style.order = posicion;
+                    }else if(orden[i] == "image" && document.getElementById("imgComp")){
+                        document.getElementById("imgComp").style.order = posicion;
+                    }else if(orden[i] == "video" && document.getElementById("videoComp")){
+                        document.getElementById("videoComp").style.order = posicion;
+                    }else if(orden[i] == "audio" && document.getElementById("audioComp")){
+                        document.getElementById("audioComp").style.order = posicion;
+                    }
+                }
         },
 
         pintarMenu(){
@@ -120,6 +121,7 @@ export default{
 
             menu.classList.remove('oculto')
         },
+
         activarAudio(){
             const button = document.getElementById("audioButton");
             const icon = document.getElementById("audioIcon");
@@ -150,16 +152,19 @@ export default{
         });
             this.getResources("image");
             this.getResources("video");
-            this.getResources("audio"); 
+            this.getResources("audio");
 
             setTimeout(this.pintarMenu, '3000')
-
-            
     },
 }
 </script>
 
 <style>
+#components{
+    display: flex;
+    flex-direction: column;
+}
+
 #contentSection{
     min-height: 100%;
 }
