@@ -111,7 +111,10 @@
     left: 0;
 }
 
-
+.titulo span{
+    color: #CBAF87;
+    text-transform: uppercase;
+}
 
 .boton:last-child{
     background-color: transparent;

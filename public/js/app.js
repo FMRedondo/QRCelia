@@ -31932,8 +31932,8 @@ var staticRenderFns = [
         attrs: { src: "/img/escudoCelia.png", alt: "logo IES Celia Viñas" },
       }),
       _vm._v(" "),
-      _c("h1", { staticClass: "titulo" }, [
-        _c("span", [_vm._v("qr")]),
+      _c("h1", { staticClass: "titulo", attrs: { id: "tituloHeader" } }, [
+        _c("span", { attrs: { id: "tituloBold" } }, [_vm._v("qr")]),
         _vm._v("Celia"),
       ]),
     ])

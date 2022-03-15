@@ -3,7 +3,7 @@
        <div class="wrapper">
            <a class="logo" href="/">
                 <img src="/img/escudoCelia.png" alt="logo IES Celia Viñas">
-                <h1 class="titulo"><span>qr</span>Celia</h1>
+                <h1 class="titulo" id="tituloHeader"><span id="tituloBold">qr</span>Celia</h1>
             </a>
            
             <div class="btnMenu">

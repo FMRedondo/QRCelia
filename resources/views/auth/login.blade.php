@@ -1,6 +1,6 @@
-<link rel="shortcut icon" type="image/jpg" href="favicons/favicon.ico"/>
 <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
 <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 <link rel="stylesheet" href="estilos/login/loginYregistro.css">
 <x-guest-layout class='flex items-center'>
     <x-jet-authentication-card>

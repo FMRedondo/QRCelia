@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/estilosGenerales.css">
     <link rel="stylesheet" href="/estilos/puntosInteres.css">
-    <link rel="icon" type="image/x-icon" href="/img/escudoCelia.png">
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Puntos de interes | QRCelia</title>
 </head>
