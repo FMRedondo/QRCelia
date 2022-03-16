@@ -51,7 +51,7 @@ const index = () => {
                         <p class="description text-gray-600 font-light text-md mb-3" id=${data.description} data-field='description'>
                         ${data.description}
                         </p>        
-                        <div class="d-flex flex  mt-2 flex-row-reverse gap-3 ">
+                        <div class="d-flex flex  mt-2 justify-content-between gap-3 ">
                             <button class="btn btn-danger rounded-circle flex removeButton fa-solid fa-trash " data-id=${data.id}></button>
                             <button class="btn btn-success rounded-circle flex editButton fa-solid fa-pen-to-square" data-id=${data.id}></button>
                         </div>
@@ -295,24 +295,23 @@ const  mostrarAñadirPunto = (element) => {
         CKEDITOR.instances['texto'].setData("")
 
         let contenidoTabla = `
-        <div id="card${response.id}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32" style="width: 30%">
-        <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-4"
-            src="/img/puntosInteres/${response.poster}" alt="${nombre}" />
-        <div class="p-4">
-            <h2 class="name text-lg text-gray-900 font-medium title-font mb-2 whitespace-nowrap truncate" id=${nombre} data-field='name'>
-                ${nombre}
-            </h2>
-            <p class="description text-gray-600 font-light text-md mb-3" id=${desc} data-field='description'>
-            ${desc}
-            </p>        
-            <div class="flex items-center mt-2 flex-row-reverse">
-                <button class="btn btn-success rounded-circle flex editButton fa-solid fa-pen-to-square" data-id=${response.id}></button>
-            </div>
-        </div>    
-    </div>`;
+            <div id="card${response.id}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32" style="width: 30%" >
+            <img class="imagenPunto lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-4"
+                src="/img/puntosInteres/${response.poster}" alt="${nombre}" />
+            <div class="p-4">
+                <h2 class="name text-lg text-gray-900 font-medium title-font mb-2 whitespace-nowrap truncate" id=${nombre} data-field='name'>
+                    ${nombre}
+                </h2>
+                <p class="description text-gray-600 font-light text-md mb-3" id=${desc} data-field='description'>
+                ${desc}
+                </p>        
+                <div class="d-flex flex  mt-2 justify-content-between gap-3 ">
+                    <button class="btn btn-danger rounded-circle flex removeButton fa-solid fa-trash " data-id=${response.id}></button>
+                    <button class="btn btn-success rounded-circle flex editButton fa-solid fa-pen-to-square" data-id=${response.id}></button>
+                </div>
+            </div>    
+        </div>`;
 
- 
-    
 
         const contenidoVista = document.querySelector(".contenidoPuntos")
         contenidoVista.innerHTML += contenidoTabla;

@@ -15,7 +15,7 @@ class customizationModel extends Model
     }
 
     public static function getCustomizationData($option){
-        $sql = "SELECT * FROM customization WHERE (option = $option)";
+        $sql = "SELECT value FROM customization WHERE (option = '$option')";
         $result = DB::select($sql);
         return $result;
     }

@@ -1,3 +1,11 @@
+@php
+    use App\Http\Controllers\admin\customizationController;
+    $title = customizationController::getTitle();
+    foreach ($title as $name) {
+        $titulo = $name->value;
+    }
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="/css/estilosGenerales.css">
-    <title>Créditos QRCelia</title>
+    <title>Créditos {{$titulo}}</title>
 </head>
 <body>
     <section id="app">

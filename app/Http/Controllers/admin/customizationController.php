@@ -38,4 +38,9 @@ class customizationController extends Controller
         $_token = $request -> _token;
         $request -> file('imagen') -> move('img/', $nombre);
     }
+
+    public static function getTitle(){
+        $result = customizationModel::getCustomizationData("nombre");
+        return $result;
+    }
 }

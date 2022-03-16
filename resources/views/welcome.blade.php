@@ -1,3 +1,11 @@
+@php
+    use App\Http\Controllers\admin\customizationController;
+    $title = customizationController::getTitle();
+    foreach ($title as $name) {
+        $titulo = $name->value;
+    }
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +15,7 @@
     <link rel="stylesheet" href="/estilos/home.css">
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>QRCelia</title>
+    <title>{{$titulo}}</title>
 </head>
 <body>
     <section id="app" class="home">
