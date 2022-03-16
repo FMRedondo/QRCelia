@@ -7,7 +7,7 @@
             <title-component style="order: -1" :titulo="this.name" :desc="this.desc"></title-component> 
             <!-- <comentarios :about='this.idpoint'></comentarios> -->
             
-            <imagenes-component id="imgComp" :images="this.images"></imagenes-component>
+            <imagenes-component v-if="this.images.length != ``" id="imgComp" :images="this.images"></imagenes-component>
 
             <information-component id="infComp" :texto="this.text" :poster="'/img/puntosInteres/' + this.poster"></information-component>
 
@@ -166,7 +166,7 @@ export default{
 }
 
 #contentSection{
-    min-height: 100%;
+    min-height: 100vh;
 }
 /* SLIDER DE IMAGENES */
 .slideshow-container, .slideVideo-container {
