@@ -91,7 +91,7 @@
 
     .header{
         width: 100%;
-        height: 100px;
+        height: 100px !important;
         z-index: 9999;
         background-color: transparent;
         position: relative;
