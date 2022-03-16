@@ -34,7 +34,7 @@ class ResourceController extends Controller
         $result = ResourceModel::deleteResource($id);
 
         foreach ($result as $resource) {
-            $name = $resource->name;
+            $name = $resource->url;
 
             if (preg_match("/\b(\.jpg|\.JPG|\.png|\.PNG|\.jpeg|\.JPEG)\b/", $name))
                 $folder = "img/puntosInteres/";

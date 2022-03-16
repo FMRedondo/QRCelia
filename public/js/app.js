@@ -6025,7 +6025,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var response, orden, loadScreen;
+        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -6041,19 +6041,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   })
                 }).then(function (response) {
                   return response.json();
+                }).then(function (response) {
+                  _this.idpoint = response[0].id, _this.createdAt = response[0].createdAt, _this.updatedAt = response[0].updatedAt, _this.name = response[0].name, _this.desc = response[0].description, _this.text = response[0].text, _this.url = response[0].url, _this.poster = response[0].poster;
+                  var orden = JSON.parse(response[0].orden);
+                  var loadScreen = document.getElementById("loadSection");
+                  loadScreen.remove();
+                  return orden;
+                }).then(function (orden) {
+                  _this.ordenarComponentes(orden);
                 });
 
               case 2:
                 response = _context.sent;
-                _this.idpoint = response[0].id, _this.createdAt = response[0].createdAt, _this.updatedAt = response[0].updatedAt, _this.name = response[0].name, _this.desc = response[0].description, _this.text = response[0].text, _this.url = response[0].url, _this.poster = response[0].poster;
-                orden = JSON.parse(response[0].orden);
 
-                _this.ordenarComponentes(orden);
-
-                loadScreen = document.getElementById("loadSection");
-                loadScreen.remove();
-
-              case 8:
+              case 3:
               case "end":
                 return _context.stop();
             }

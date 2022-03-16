@@ -50,6 +50,7 @@ export default{
                 })
             })
             .then(response => response.json())
+            .then(response =>{
                 this.idpoint = response[0].id,
                 this.createdAt = response[0].createdAt,
                 this.updatedAt =response[0].updatedAt,
@@ -59,11 +60,13 @@ export default{
                 this.url = response[0].url,
                 this.poster = response[0].poster
                 const orden = JSON.parse(response[0].orden)
-                this.ordenarComponentes(orden);
-
-                
                 const loadScreen = document.getElementById("loadSection")
                 loadScreen.remove()
+                return orden;
+            })
+            .then((orden)=> {
+                this.ordenarComponentes(orden);
+            })
         },
 
         async getResources(type){

@@ -128,6 +128,7 @@ function checkResourceUpload(){
 $("#btnSendAddResource").click(addResource);
 
 async function addResource(e){
+    $("#btnSendAddResource").prop("disabled",true);
     e.preventDefault();
     var formData = new FormData();
     var numImages = $('#resourceUpload').get(0).files.length
@@ -135,6 +136,8 @@ async function addResource(e){
     for (let i = 0; i < numImages; i++) {
         formData.append("resource"+i,$('#resourceUpload').get(0).files[i])     
     }
+    $(".addPanel").hide();
+    $(".backPanel").hide();
 
     await fetch('/api/recursos/addResource', {
         method: 'post',
@@ -202,7 +205,6 @@ async function addResource(e){
             $("#resourceList").append(content);
         });
         $(".addPanel").remove();
-        $(".backPanel").hide();
         createAddPanel();
 
         const msj = `
