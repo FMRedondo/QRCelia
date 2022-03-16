@@ -18,6 +18,13 @@
     <title>{{$titulo}}</title>
 </head>
 <body>
+
+    <div id="loadSection">
+        <div class="backShadow">
+            <i class="fa-solid fa-spinner fa-spin"></i>
+        </div>
+    </div>
+
     <section id="app" class="home">
         <header-component v-on:scroll.native="scrollNav"></header-component>
         <div class="datos" id="datosHome">

@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 async function getHomeData() {
-    const response = await fetch("/admin/obtenerCustomizacion",{
+    const response = await fetch("/obtenerCustomizacion",{
         method: "get",
         headers:{
             'Content-Type': 'application/json'
@@ -43,4 +43,6 @@ async function getHomeData() {
         document.getElementById("tituloHeader").innerHTML = `<span id="tituloBold">${options.tituloBold}</span>${options.tituloNormal}</h1>`;
         
         datosHome.innerHTML = content;
+
+        document.getElementById("loadSection").remove();
 }
