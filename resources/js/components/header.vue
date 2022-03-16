@@ -12,7 +12,7 @@
             
        </div>
 
-        <div class="wrapper navContainer">
+        <div class="wrapper navContainer oculto" id="menuOrdenador">
             <nav class="nav" id="nav">
                 <i class="far fa-times-circle closeNav" @click="cerrarMenu"></i>
                 <a href="/" @mouseover="imagenMenu('inicio')"  @mouseleave="quitarImagen">Inicio</a>
@@ -50,17 +50,13 @@
 
         methods: {
             desplegarMenu: (event) => {
-                const menu = document.getElementById('nav');
-                menu.classList.toggle('oculto');
-                const navContainer = document.getElementsByClassName("navContainer");
-                navContainer[0].style.position = 'absolute';
-                navContainer[0].classList.toggle('oculto');
+
+                const navContainer = document.getElementById("menuOrdenador");
+                navContainer.classList.toggle('oculto');
             },
             cerrarMenu: (event) =>{
-                const menu = document.getElementById('nav');
-                menu.classList.toggle('oculto');
-                const navContainer = document.getElementsByClassName("navContainer");
-                navContainer[0].classList.toggle('oculto')
+                const navContainer = document.getElementById("menuOrdenador");
+                navContainer.classList.toggle('oculto');
             },
 
             quitarImagen: (event) => {
@@ -165,7 +161,6 @@
     }
 
     .header .navContainer{
-        display: none;
         position: relative;
         z-index: 999999 !important;
         top: 0 !important;
@@ -182,7 +177,6 @@
         position: fixed;
         top: 0;
         right: 0;
-        display: none;
         display: flex;
         justify-content: center;
         flex-direction: column;
@@ -192,7 +186,6 @@
         padding: 2em;
         background-repeat: no-repeat !important;
         background-size: cover !important;
-        display: none;
         z-index: 999999999 !important;
         text-align: right;
 
@@ -265,10 +258,6 @@
         .activo{
             color: var(--colorPrimario) !important;
            
-        }
-
-        .nav{
-            display: none;
         }
 
         button{
