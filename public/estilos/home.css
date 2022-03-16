@@ -1,3 +1,30 @@
+#loadSection{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: url("/img/celiaRambla.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: 99999999999999;
+}
+
+#loadSection .backShadow{
+    background-color: rgba(0, 0, 0, 0.7);
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.backShadow i{
+    font-size: 20em;
+    color: white;
+    z-index: 90;
+}
+
 #app{
     width: 100%;
     height: 100vh;
@@ -111,7 +138,10 @@
     left: 0;
 }
 
-
+.titulo span{
+    color: #CBAF87;
+    text-transform: uppercase;
+}
 
 .boton:last-child{
     background-color: transparent;
@@ -157,5 +187,9 @@
 
     .boton{
         width: 100%;
+    }
+
+    .backShadow i{
+        font-size: 10em;
     }
 }

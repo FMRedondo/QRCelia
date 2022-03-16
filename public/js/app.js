@@ -6020,7 +6020,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var response, orden, loadScreen;
+        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -6036,19 +6036,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   })
                 }).then(function (response) {
                   return response.json();
+                }).then(function (response) {
+                  _this.idpoint = response[0].id, _this.createdAt = response[0].createdAt, _this.updatedAt = response[0].updatedAt, _this.name = response[0].name, _this.desc = response[0].description, _this.text = response[0].text, _this.url = response[0].url, _this.poster = response[0].poster;
+                  var orden = JSON.parse(response[0].orden);
+                  var loadScreen = document.getElementById("loadSection");
+                  loadScreen.remove();
+                  return orden;
+                }).then(function (orden) {
+                  _this.ordenarComponentes(orden);
                 });
 
               case 2:
                 response = _context.sent;
-                _this.idpoint = response[0].id, _this.createdAt = response[0].createdAt, _this.updatedAt = response[0].updatedAt, _this.name = response[0].name, _this.desc = response[0].description, _this.text = response[0].text, _this.url = response[0].url, _this.poster = response[0].poster;
-                orden = JSON.parse(response[0].orden);
 
-                _this.ordenarComponentes(orden);
-
-                loadScreen = document.getElementById("loadSection");
-                loadScreen.remove();
-
-              case 8:
+              case 3:
               case "end":
                 return _context.stop();
             }
@@ -11604,7 +11605,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#components{\r\n    display: flex;\r\n    flex-direction: column;\n}\n#contentSection{\r\n    min-height: 100%;\n}\r\n/* SLIDER DE IMAGENES */\n.slideshow-container, .slideVideo-container {\r\n    height: 70vh;\r\n    width: 75%;\r\n    position: relative;\r\n    margin: 3em auto;\n}\n.slide-images, .slide-videos {\r\n  display: none;\n}\n.slide-images:first-child, .slide-videos:first-child {\r\n  display: block;\n}\n.prev, .next, .videoPrev, .videoNext {\r\n    cursor: pointer;\r\n    position: absolute;\r\n    top: 45%;\r\n    width: auto;\r\n    padding: 10px;\r\n    color: white;\r\n    font-weight: bold;\r\n    font-size: 3em;\r\n    transition: 0.3s ease;\r\n    border-radius: 0 3px 3px 0;\r\n    -webkit-user-select: none;\r\n       -moz-user-select: none;\r\n        -ms-user-select: none;\r\n            user-select: none;\n}\n.next, .videoNext {\r\n  right: 0;\r\n  border-radius: 3px 0 0 3px;\n}\n.prev:hover, .next:hover, .videoPrev:hover, .videoNext:hover {\r\n  background-color: rgba(0,0,0,0.8);\n}\n.active {\r\n  background-color: #717171;\n}\n.slide-images img{\r\n    height: 70vh;\r\n    width: 100%;\r\n    margin: 0 auto;\r\n    display: flex;\r\n    justify-content: center;\n}\n.slide-videos video{\r\n    height: 70vh;\r\n    width: 100%;\r\n    margin: 0 auto;\r\n    display: flex;\r\n    justify-content: center;\n}\n.fade {\r\n  -webkit-animation-name: fade;\r\n  -webkit-animation-duration: 0.3s;\r\n  animation-name: fade;\r\n  animation-duration: 0.3s;\n}\r\n\r\n/* SLIDER DE VIDEOS */\r\n\r\n\r\n\r\n\r\n/* ANIMACIONES */\n@-webkit-keyframes fade {\nfrom {opacity: .4}\nto {opacity: 1}\n}\n@keyframes fade {\nfrom {opacity: .4}\nto {opacity: 1}\n}\n@media (max-width: 1050px) {\n.slideshow-container, .slideVideo-container {\r\n        height: 50vh;\r\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\r\n        height: 50vh;\r\n        width: 100%;\n}\n}\n@media (max-width: 750px) {\n.slideshow-container, .slideVideo-container {\r\n        height: 35vh;\r\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\r\n        height: 35vh;\r\n        width: 100%;\n}\n.prev, .next {\r\n        font-size: 1.5em;\n}\n}\n@media (max-width: 500px) {\n.slideshow-container, .slideVideo-container{\r\n        height: 25vh;\r\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\r\n        height: 25vh;\r\n        width: 100%;\n}\n.prev, .next, .videoPrev, .videoNext {\r\n        font-size: 1.5em;\n}\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#components{\r\n    display: flex;\r\n    flex-direction: column;\n}\n#contentSection{\r\n    min-height: 100vh;\n}\r\n/* SLIDER DE IMAGENES */\n.slideshow-container, .slideVideo-container {\r\n    height: 70vh;\r\n    width: 75%;\r\n    position: relative;\r\n    margin: 3em auto;\n}\n.slide-images, .slide-videos {\r\n  display: none;\n}\n.slide-images:first-child, .slide-videos:first-child {\r\n  display: block;\n}\n.prev, .next, .videoPrev, .videoNext {\r\n    cursor: pointer;\r\n    position: absolute;\r\n    top: 45%;\r\n    width: auto;\r\n    padding: 10px;\r\n    color: white;\r\n    font-weight: bold;\r\n    font-size: 3em;\r\n    transition: 0.3s ease;\r\n    border-radius: 0 3px 3px 0;\r\n    -webkit-user-select: none;\r\n       -moz-user-select: none;\r\n        -ms-user-select: none;\r\n            user-select: none;\n}\n.next, .videoNext {\r\n  right: 0;\r\n  border-radius: 3px 0 0 3px;\n}\n.prev:hover, .next:hover, .videoPrev:hover, .videoNext:hover {\r\n  background-color: rgba(0,0,0,0.8);\n}\n.active {\r\n  background-color: #717171;\n}\n.slide-images img{\r\n    height: 70vh;\r\n    width: 100%;\r\n    margin: 0 auto;\r\n    display: flex;\r\n    justify-content: center;\n}\n.slide-videos video{\r\n    height: 70vh;\r\n    width: 100%;\r\n    margin: 0 auto;\r\n    display: flex;\r\n    justify-content: center;\n}\n.fade {\r\n  -webkit-animation-name: fade;\r\n  -webkit-animation-duration: 0.3s;\r\n  animation-name: fade;\r\n  animation-duration: 0.3s;\n}\r\n\r\n/* SLIDER DE VIDEOS */\r\n\r\n\r\n\r\n\r\n/* ANIMACIONES */\n@-webkit-keyframes fade {\nfrom {opacity: .4}\nto {opacity: 1}\n}\n@keyframes fade {\nfrom {opacity: .4}\nto {opacity: 1}\n}\n@media (max-width: 1050px) {\n.slideshow-container, .slideVideo-container {\r\n        height: 50vh;\r\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\r\n        height: 50vh;\r\n        width: 100%;\n}\n}\n@media (max-width: 750px) {\n.slideshow-container, .slideVideo-container {\r\n        height: 35vh;\r\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\r\n        height: 35vh;\r\n        width: 100%;\n}\n.prev, .next {\r\n        font-size: 1.5em;\n}\n}\n@media (max-width: 500px) {\n.slideshow-container, .slideVideo-container{\r\n        height: 25vh;\r\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\r\n        height: 25vh;\r\n        width: 100%;\n}\n.prev, .next, .videoPrev, .videoNext {\r\n        font-size: 1.5em;\n}\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -31974,8 +31975,8 @@ var staticRenderFns = [
         attrs: { src: "/img/escudoCelia.png", alt: "logo IES Celia Viñas" },
       }),
       _vm._v(" "),
-      _c("h1", { staticClass: "titulo" }, [
-        _c("span", [_vm._v("qr")]),
+      _c("h1", { staticClass: "titulo", attrs: { id: "tituloHeader" } }, [
+        _c("span", { attrs: { id: "tituloBold" } }, [_vm._v("qr")]),
         _vm._v("Celia"),
       ]),
     ])
@@ -32592,9 +32593,11 @@ var render = function () {
             attrs: { titulo: this.name, desc: this.desc },
           }),
           _vm._v(" "),
-          _c("imagenes-component", {
-            attrs: { id: "imgComp", images: this.images },
-          }),
+          this.images.length != ""
+            ? _c("imagenes-component", {
+                attrs: { id: "imgComp", images: this.images },
+              })
+            : _vm._e(),
           _vm._v(" "),
           _c("information-component", {
             attrs: {

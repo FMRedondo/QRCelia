@@ -1,7 +1,15 @@
 @php
     namespace interestPointController;
     use App\Http\Controllers\admin\interestPointController;
+    use App\Http\Controllers\admin\customizationController;
+
     $id = interestPointController::getRandomPoint()->id;
+    $title = customizationController::getTitle();
+
+    foreach ($title as $name) {
+        $titulo = $name->value;
+    }
+
 @endphp
 
 <!DOCTYPE html>
@@ -12,9 +20,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/estilosGenerales.css">
     <link rel="stylesheet" href="/estilos/puntoDeInteres.css">
-    <link rel="icon" type="image/x-icon" href="/img/escudoCelia.png">
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>QRCelia</title>
+    <title>{{$titulo}}</title>
 </head>
 <body>
     <div id="loadSection">

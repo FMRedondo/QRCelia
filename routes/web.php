@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\interestPointController;
+use App\Http\Controllers\admin\customizationController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,3 +29,4 @@ Route::get('/creditos', function () {
     return view('creditos');
 });
 
+Route::get('/obtenerCustomizacion', [customizationController::class, 'getAllCustomizationData'])-> name('get.opciones');

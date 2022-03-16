@@ -7,7 +7,7 @@
             <title-component style="order: -1" :titulo="this.name" :desc="this.desc"></title-component> 
             <!-- <comentarios :about='this.idpoint'></comentarios> -->
             
-            <imagenes-component id="imgComp" :images="this.images"></imagenes-component>
+            <imagenes-component v-if="this.images.length != ``" id="imgComp" :images="this.images"></imagenes-component>
 
             <information-component id="infComp" :texto="this.text" :poster="'/img/puntosInteres/' + this.poster"></information-component>
 
@@ -50,6 +50,7 @@ export default{
                 })
             })
             .then(response => response.json())
+            .then(response =>{
                 this.idpoint = response[0].id,
                 this.createdAt = response[0].createdAt,
                 this.updatedAt =response[0].updatedAt,
@@ -59,11 +60,13 @@ export default{
                 this.url = response[0].url,
                 this.poster = response[0].poster
                 const orden = JSON.parse(response[0].orden)
-                this.ordenarComponentes(orden);
-
-                
                 const loadScreen = document.getElementById("loadSection")
                 loadScreen.remove()
+                return orden;
+            })
+            .then((orden)=> {
+                this.ordenarComponentes(orden);
+            })
         },
 
         async getResources(type){
@@ -166,7 +169,7 @@ export default{
 }
 
 #contentSection{
-    min-height: 100%;
+    min-height: 100vh;
 }
 /* SLIDER DE IMAGENES */
 .slideshow-container, .slideVideo-container {

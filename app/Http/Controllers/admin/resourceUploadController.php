@@ -20,26 +20,33 @@ class resourceUploadController extends Controller
             $user = "";
             $date = DATE("Y-m-d H:i:s");
 
+            $archivoValido = false;
+
             if (preg_match("/\b(\.jpg|\.JPG|\.png|\.PNG|\.jpeg|\.JPEG)\b/", $name)) {
                 $type = "image";
                 $url = "img/puntosInteres/";
+                $archivoValido = true;
             }elseif (preg_match("/\b(\.mp4|\.MP4|\.avi|\.AVI|\.webm|\.WEBM)\b/", $name)) {
                 $type = "video";
                 $url = "video/";
+                $archivoValido = true;
             }elseif (preg_match("/\b(\.mp3|\.MP3|\.ogg|\.OGG)\b/", $name)) {
                 $type = "audio";
                 $url = "audio/";
+                $archivoValido = true;
             }else{
-                $type = "extension no detectada";
+                $archivoValido = false;
             }
 
-            $nombreArchivoNuevo = time() . "-" . $file -> getClientOriginalName();
-            $subida = $request -> file("resource" . $i) -> move($url, $nombreArchivoNuevo);
-
-
-            $id = resourceModel::addResource($type,$nombreArchivoNuevo,$nombreArchivoNuevo,$autor,$user,$date);
-            $resource = ["id" => $id, "type" => $type, "name" => $nombreArchivoNuevo, "autor" => $autor, "user" => $user,"date" => $date];
-            array_push($resources, $resource);
+            if ($archivoValido) {
+                $nombreArchivoNuevo = time() . "-" . $file -> getClientOriginalName();
+                $subida = $request -> file("resource" . $i) -> move($url, $nombreArchivoNuevo);
+    
+    
+                $id = resourceModel::addResource($type,$nombreArchivoNuevo,$nombreArchivoNuevo,$autor,$user,$date);
+                $resource = ["id" => $id, "type" => $type, "name" => $nombreArchivoNuevo, "autor" => $autor, "user" => $user,"date" => $date];
+                array_push($resources, $resource);
+            }
         }
         return response()->json($resources);
     }    

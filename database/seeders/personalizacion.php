@@ -31,13 +31,33 @@ class personalizacion extends Seeder
         ]);
 
         DB::table('customization')->insert([
-            'option' => 'negrita-home',
+            'option' => 'tituloBold',
             'value' => 'QR',
         ]);
 
         DB::table('customization')->insert([
-            'option' => 'titulo-home',
+            'option' => 'tituloNormal',
             'value' => 'Celia',
+        ]);
+
+        DB::table('customization')->insert([
+            'option' => 'boton1',
+            'value' => 'Descubre más',
+        ]);
+
+        DB::table('customization')->insert([
+            'option' => 'urlboton1',
+            'value' => '/puntosInteres',
+        ]);
+
+        DB::table('customization')->insert([
+            'option' => 'boton2',
+            'value' => 'QR Misterioso',
+        ]);
+
+        DB::table('customization')->insert([
+            'option' => 'urlboton2',
+            'value' => '/qrmisterioso',
         ]);
 
     }
