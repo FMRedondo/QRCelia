@@ -5507,6 +5507,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   methods: {
     desplegarMenu: function desplegarMenu(event) {
@@ -5530,6 +5538,29 @@ __webpack_require__.r(__webpack_exports__);
         header.style.backgroundColor = "rgba(0, 0, 0, 1)";
       }
     }
+  },
+  created: function created() {
+    window.addEventListener('DOMContentLoaded', function (event) {
+      if (location.pathname == "/") {
+        var inicio = document.getElementsByClassName("menuInicio");
+
+        for (var i = 0; i < inicio.length; i++) {
+          inicio[i].className += " activo";
+        }
+      } else if (location.pathname == "/puntosInteres") {
+        var _inicio = document.getElementsByClassName("menuPuntos");
+
+        for (var _i = 0; _i < _inicio.length; _i++) {
+          _inicio[_i].className += " activo";
+        }
+      } else if (location.pathname == "/creditos") {
+        var _inicio2 = document.getElementsByClassName("menuCreditos");
+
+        for (var _i2 = 0; _i2 < _inicio2.length; _i2++) {
+          _inicio2[_i2].className += " activo";
+        }
+      }
+    });
   }
 });
 
@@ -11461,7 +11492,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.oculto[data-v-798ca618]{\n    /*animation: ocultarMenu 200ms infinite;*/\n    transition: ease-in-out 20ms;\n    display: flex !important;\n}\n.ocultarDatos[data-v-798ca618]{\n    display: flex !important;\n}\n.header[data-v-798ca618]{\n    width: 100%;\n    height: 100px !important;\n    z-index: 9999;\n    background-color: transparent;\n    position: relative;\n    z-index: 9;\n}\n.header .wrapper[data-v-798ca618]{\n    display: flex;\n    justify-content: space-between;\n    padding-top: 1em;\n    width: 80%;\n    margin: 0 auto;\n}\n.logo[data-v-798ca618]{\n    width: 10%;\n    display: flex;\n    align-items: center;\n    gap: 1em;\n    position: relative;\n    z-index: 99999;\n}\n.wrapper[data-v-798ca618]{\n    width: 80%;\n}\n.logo img[data-v-798ca618]{\n    width:30%;\n}\n.titulo[data-v-798ca618]{\n    font-size: 2.2em;\n    color: white;\n}\n.titulo span[data-v-798ca618]{\n    color: #CBAF87;\n    text-transform: uppercase;\n}\n.header .btnMenu[data-v-798ca618]{\n    width: 50%;\n    display: flex;\n    gap: 1.5em;\n    align-items: center;\n    justify-content: flex-end;\n}\n.header .btnMenu a[data-v-798ca618]{\n    text-decoration: none;\n    color: red;\n    font-weight: bolder;\n    font-size: 1.3em;\n}\nbutton[data-v-798ca618]{\n    border: none;\n    background-color: transparent;\n    color: white;\n    font-size: 2.2em;\n    font-weight: bolder;\n    display: flex;\n    justify-content: center;\n    align-content: center;\n}\n.header .navContainer[data-v-798ca618]{\n    position: relative;\n    z-index: 999999 !important;\n    top: 0 !important;\n    left: 0 !important;\n    width: 100%;\n    min-height: calc(100vh - 100px);\n}\n.nav[data-v-798ca618]{\n    width: 50%;\n    height: 100vh;\n    background-color: rgba(0, 0, 0, 0.7); \n    -webkit-backdrop-filter: blur(3px); \n            backdrop-filter: blur(3px);\n    position: fixed;\n    top: 0;\n    right: 0;\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n    align-items: center;\n    gap: 1em;\n    font-size: 2em;\n    padding: 2em;\n    background-repeat: no-repeat !important;\n    background-size: cover !important;\n    z-index: 999999999 !important;\n    text-align: right;\n}\n.nav a[data-v-798ca618]{\n    color: white !important;\n    text-decoration: none;\n    text-align: right;\n    transition: ease-in-out 100ms;\n}\n.nav a[data-v-798ca618]:hover{\n    color: #C6A878 !important;\n}\n.nav a:hover + .nav[data-v-798ca618]{\n    background-color: purple !important;\n}\n.closeNav[data-v-798ca618]{\n    position: fixed;\n    top: 1em;\n    right: 6em;\n}\n.navMovil[data-v-798ca618]{\n    display: none;\n}\n.logo[data-v-798ca618]:focus{\n    border: none !important;\n}\n@media (max-width: 1285px){\n#nav[data-v-798ca618]{\n        width: 100%;\n}\n.closeNav[data-v-798ca618]{\n        align-items: flex-end;\n}\n}\n@media (max-width: 650px){\n.navMovil[data-v-798ca618]{\n        display: block;\n        position: fixed;\n        left: 0;\n        bottom: 0;\n        width: 100%;\n        background-color: #30475E;\n}\n.navMovil .wrapper[data-v-798ca618]{\n        padding: 0.5em;\n        display: flex;\n        gap: 1em;\n        justify-content: space-between;\n}\n.navMovil a[data-v-798ca618]{\n        color: white;\n        font-weight: bolder;\n        text-decoration: none;\n        transform: translateY(-0.5em);\n}\n.activo[data-v-798ca618]{\n        color: var(--colorPrimario) !important;\n}\nbutton[data-v-798ca618]{\n        display: none;\n}\n.icono[data-v-798ca618]{\n        display: flex;\n        flex-direction: column;\n        text-align: center;\n        align-items: center;\n        justify-content: center;\n        gap: 0.5em;\n}\n.icono i[data-v-798ca618]{\n        font-size: 1.2em;\n        margin-bottom: 0.2em;\n        color: #CBAF87;\n}\n.icono a[data-v-798ca618]{\n        font-size: 0.8em;\n}\n.logo img[data-v-798ca618]{ \n        width: 3em;\n}\n.header > .wrapper[data-v-798ca618]{\n        justify-content: center;\n        text-align: center !important;\n}\n} \n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.oculto[data-v-798ca618]{\n    /*animation: ocultarMenu 200ms infinite;*/\n    transition: ease-in-out 20ms;\n    display: none !important;\n}\n.ocultarDatos[data-v-798ca618]{\n    display: flex !important;\n}\n.header[data-v-798ca618]{\n    width: 100%;\n    height: 100px !important;\n    z-index: 9999;\n    background-color: transparent;\n    position: relative;\n    z-index: 9;\n}\n.header .wrapper[data-v-798ca618]{\n    display: flex;\n    justify-content: space-between;\n    padding-top: 1em;\n    width: 80%;\n    margin: 0 auto;\n}\n.logo[data-v-798ca618]{\n    width: 10%;\n    display: flex;\n    align-items: center;\n    gap: 1em;\n    position: relative;\n    z-index: 99999;\n}\n.wrapper[data-v-798ca618]{\n    width: 80%;\n}\n.logo img[data-v-798ca618]{\n    width:30%;\n}\n.titulo[data-v-798ca618]{\n    font-size: 2.2em;\n    color: white;\n}\n.titulo span[data-v-798ca618]{\n    color: #CBAF87;\n    text-transform: uppercase;\n}\n.header .btnMenu[data-v-798ca618]{\n    width: 50%;\n    display: flex;\n    gap: 1.5em;\n    align-items: center;\n    justify-content: flex-end;\n}\n.header .btnMenu a[data-v-798ca618]{\n    text-decoration: none;\n    color: red;\n    font-weight: bolder;\n    font-size: 1.3em;\n}\nbutton[data-v-798ca618]{\n    border: none;\n    background-color: transparent;\n    color: white;\n    font-size: 2.2em;\n    font-weight: bolder;\n    display: flex;\n    justify-content: center;\n    align-content: center;\n}\n.header .navContainer[data-v-798ca618]{\n    position: relative;\n    z-index: 999999 !important;\n    top: 0 !important;\n    left: 0 !important;\n    width: 100%;\n    min-height: calc(100vh - 100px);\n}\n.nav[data-v-798ca618]{\n    width: 50%;\n    height: 100vh;\n    background-color: rgba(0, 0, 0, 0.7); \n    -webkit-backdrop-filter: blur(3px); \n            backdrop-filter: blur(3px);\n    position: fixed;\n    top: 0;\n    right: 0;\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n    align-items: center;\n    gap: 1em;\n    font-size: 2em;\n    padding: 2em;\n    background-repeat: no-repeat !important;\n    background-size: cover !important;\n    z-index: 999999999 !important;\n    text-align: right;\n}\n.nav a[data-v-798ca618]{\n    color: white !important;\n    text-decoration: none;\n    text-align: right;\n    transition: ease-in-out 100ms;\n}\n.nav a[data-v-798ca618]:hover{\n    color: #C6A878 !important;\n}\n.nav a:hover + .nav[data-v-798ca618]{\n    background-color: purple !important;\n}\n.closeNav[data-v-798ca618]{\n    position: fixed;\n    top: 1em;\n    right: 6em;\n}\n.navMovil[data-v-798ca618]{\n    display: none;\n}\n.logo[data-v-798ca618]:focus{\n    border: none !important;\n}\n@media (max-width: 1285px){\n#nav[data-v-798ca618]{\n        width: 100%;\n}\n.closeNav[data-v-798ca618]{\n        align-items: flex-end;\n}\n}\n@media (max-width: 650px){\n.navMovil[data-v-798ca618]{\n        display: block;\n        position: fixed;\n        left: 0;\n        bottom: 0;\n        width: 100%;\n        background-color: #30475E;\n}\n.navMovil .wrapper[data-v-798ca618]{\n        padding: 0.5em;\n        display: flex;\n        gap: 1em;\n        justify-content: space-between;\n}\n.navMovil a[data-v-798ca618]{\n        color: white;\n        font-weight: bolder;\n        text-decoration: none;\n        transform: translateY(-0.5em);\n}\n.activo[data-v-798ca618]{\n        color: var(--colorPrimario) !important;\n}\nbutton[data-v-798ca618]{\n        display: none;\n}\n.icono[data-v-798ca618]{\n        display: flex;\n        flex-direction: column;\n        text-align: center;\n        align-items: center;\n        justify-content: center;\n        gap: 0.5em;\n}\n.icono i[data-v-798ca618]{\n        font-size: 1.2em;\n        margin-bottom: 0.2em;\n        color: #CBAF87;\n}\n.icono a[data-v-798ca618]{\n        font-size: 0.8em;\n        display: flex;\n        flex-direction: column;\n        align-content: center;\n        align-items: center;\n        justify-content: center;\n        margin-top: 0.8em;\n}\n.logo img[data-v-798ca618]{ \n        width: 3em;\n}\n.header > .wrapper[data-v-798ca618]{\n        justify-content: center;\n        text-align: center !important;\n}\n} \n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -31936,33 +31967,7 @@ var render = function () {
       ]
     ),
     _vm._v(" "),
-    _c("nav", { staticClass: "navMovil", attrs: { id: "navMovil" } }, [
-      _c("div", { staticClass: "wrapper" }, [
-        _vm._m(1),
-        _vm._v(" "),
-        _vm._m(2),
-        _vm._v(" "),
-        _c("div", { staticClass: "icono" }, [
-          _c("i", { staticClass: "fa-solid fa-question" }),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              attrs: { href: "/qrmisterioso" },
-              on: {
-                mouseover: function ($event) {
-                  return _vm.imagenMenu("misterioso")
-                },
-                mouseleave: _vm.quitarImagen,
-              },
-            },
-            [_vm._v("QR Misterioso")]
-          ),
-        ]),
-        _vm._v(" "),
-        _vm._m(3),
-      ]),
-    ]),
+    _vm._m(1),
   ])
 }
 var staticRenderFns = [
@@ -31985,32 +31990,48 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "icono" }, [
-      _c("i", { staticClass: "fa-solid fa-house " }),
-      _vm._v(" "),
-      _c("a", { staticClass: "activo", attrs: { href: "/" } }, [
-        _vm._v("Inicio"),
+    return _c("nav", { staticClass: "navMovil", attrs: { id: "navMovil" } }, [
+      _c("div", { staticClass: "wrapper" }, [
+        _c("div", { staticClass: "icono" }, [
+          _c("a", { staticClass: "menuInicio", attrs: { href: "/" } }, [
+            _c("i", { staticClass: "fa-solid fa-house menuInicio" }),
+            _vm._v("\n                 Inicio\n             "),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "icono" }, [
+          _c(
+            "a",
+            { staticClass: "menuPuntos", attrs: { href: "/puntosInteres" } },
+            [
+              _c("i", { staticClass: "fa-solid fa-signs-post menuPuntos" }),
+              _vm._v("\n                 Puntos de interés\n             "),
+            ]
+          ),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "icono" }, [
+          _c(
+            "a",
+            { staticClass: "menuMisterioso", attrs: { href: "/qrmisterioso" } },
+            [
+              _c("i", { staticClass: "fa-solid fa-question menuMisterioso" }),
+              _vm._v("\n                 QR Misterioso\n             "),
+            ]
+          ),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "icono" }, [
+          _c(
+            "a",
+            { staticClass: "menuCreditos", attrs: { href: "/creditos" } },
+            [
+              _c("i", { staticClass: "fa-solid fa-users menuCreditos" }),
+              _vm._v("\n                 Créditos\n             "),
+            ]
+          ),
+        ]),
       ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "icono" }, [
-      _c("i", { staticClass: "fa-solid fa-signs-post" }),
-      _vm._v(" "),
-      _c("a", [_vm._v("Puntos de interés")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "icono" }, [
-      _c("i", { staticClass: "fa-solid fa-users" }),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "/creditos" } }, [_vm._v("Créditos")]),
     ])
   },
 ]

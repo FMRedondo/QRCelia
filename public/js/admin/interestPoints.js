@@ -21,13 +21,14 @@ const ajax = async (data, url, type, success) => {
                ERROR, no se ha podido actualizar la información
             </div>
            `;
-
+        
+           crearMensaje();
            const panelMensaje = document.getElementById('mensaje')
            panelMensaje.innerHTML = error;
            console.log("Error al realizar la peticion")
 
            const animacion = setInterval(() => {
-            panelMensaje.innerHTML = ""
+                document.getElementById('mensaje').remove()
            }, 3000)
 
         },
@@ -234,6 +235,7 @@ const actualizarDatos = (element) => ajax(
         </div>
     `;
 
+    crearMensaje();
     const panelMensaje = document.getElementById('mensaje')
     panelMensaje.innerHTML = aviso;
 
@@ -247,7 +249,7 @@ const actualizarDatos = (element) => ajax(
     cambiarCampos2.innerHTML = "Editar " + element.target.value;
   
     const animacion = setInterval(() => {
-        panelMensaje.innerHTML = ""
+        panelMensaje.remove();
     }, 3000)
 
 })
@@ -536,4 +538,11 @@ const modificarAudiosRelacionados = async elemento => {
          await ajax({'idPunto': idPunto, 'idRecurso': idRecurso, 'enlazado': enlazado, '_token': token}, '/admin/puntosInteres/enlazarPuntoConRecurso', 'POST', response => {})
     }
     
+}
+
+function crearMensaje() {
+    var content = `
+    <div class="mensaje" id="mensaje"></div>
+    `;
+    document.getElementById("app").append(content)
 }
