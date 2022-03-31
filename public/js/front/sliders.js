@@ -32,38 +32,3 @@ function showIMG(n) {
     images[indexIMG-1].className += " active";
   }
 }
-
-/* SLIDE DE VIDEOS */
-var indexVID = 1;
-  showVideos(indexVID);
-
-function plusVideos(n) {
-  showVideos(indexVID += n);
-}
-
-function currentVideos(n) {
-  showVideos(indexVID = n);
-}
-
-function showVideos(n) {
-  let i = 0;
-  var videos = document.getElementsByClassName("slide-videos");
-  if (n > videos.length)
-    indexVID = 1
-
-  if (n < 1)
-    indexVID = videos.length
-
-  for (i = 0; i < videos.length; i++) {
-    videos[i].style.display = "none";
-  }
-
-  for (i = 0; i < videos.length; i++) {
-    videos[i].className = videos[i].className.replace(" active", "");
-  }
-
-  if (videos.length > 1) {
-    videos[indexIMG-1].style.display = "block";
-    videos[indexIMG-1].className += " active";
-  }
-}

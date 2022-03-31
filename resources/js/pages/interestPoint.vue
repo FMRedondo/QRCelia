@@ -13,7 +13,7 @@
 
             <audio-component id="audioComp" v-if="this.audio.length != ``" :audio="'/audio/' + this.audio"></audio-component>
 
-            <video-component id="videoComp" v-if="this.videos.length > 0" :videos="this.videos"></video-component>
+            <video-component :poster="'/img/puntosInteres/' + this.poster" id="videoComp" v-if="this.videos.length > 0" :videos="this.videos"></video-component>
 
         </div>
 
@@ -113,11 +113,12 @@ export default{
             if(this.audio.length > 0){
                menu.insertAdjacentHTML('beforeend',`<a class="enlaceMenuLateral" id='activarAudio'><i class="fa-solid fa-volume-low" id='audioIcon'></i></a>`)
                document.getElementById('activarAudio').addEventListener('click', this.activarAudio)
-               
             }
+
             if(this.videos.length > 0){
                menu.insertAdjacentHTML('beforeend',`<a href="#video" class="enlaceMenuLateral"><i class="fa-solid fa-video"></i></a>`)
             }
+            
             if(this.images.length > 0){
                menu.insertAdjacentHTML('beforeend',` <a href="#imagenes" class="enlaceMenuLateral"><i class="fa-solid fa-images"></i></a>`)
             }
@@ -199,6 +200,7 @@ export default{
     transition: 0.3s ease;
     border-radius: 0 3px 3px 0;
     user-select: none;
+    background-color: rgba(0, 0, 0,0.8);
 }
 
 .next, .videoNext {
@@ -207,7 +209,7 @@ export default{
 }
 
 .prev:hover, .next:hover, .videoPrev:hover, .videoNext:hover {
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(240, 84, 84,0.8);
 }
 
 .active {
