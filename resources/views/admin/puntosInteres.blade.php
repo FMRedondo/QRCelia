@@ -87,7 +87,6 @@
 <div id='imagenesRelacionadas'></div>
 </div>
 <div class='backPanel' id="backpanel"></div>
-<div class="mensaje" id="mensaje"></div>
 
 @stop
 

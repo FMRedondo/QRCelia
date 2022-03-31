@@ -24,20 +24,28 @@
         <nav class='navMovil' id='navMovil'>
            <div class="wrapper">
                 <div class="icono">
-                <i class="fa-solid fa-house "></i>
-                <a href="/" class="activo">Inicio</a>
+                <a href="/" class="menuInicio">
+                    <i class="fa-solid fa-house menuInicio"></i>
+                    Inicio
+                </a>
             </div>
            <div class="icono">
-               <i class="fa-solid fa-signs-post"></i>
-                <a >Puntos de interés</a>
+                <a href="/puntosInteres" class="menuPuntos">
+                    <i class="fa-solid fa-signs-post menuPuntos"></i>
+                    Puntos de interés
+                </a>
            </div>
            <div class="icono">
-                <i class="fa-solid fa-question"></i>
-                 <a href="/qrmisterioso" @mouseover="imagenMenu('misterioso')" @mouseleave="quitarImagen">QR Misterioso</a> 
+                <a href="/qrmisterioso" class="menuMisterioso">
+                    <i class="fa-solid fa-question menuMisterioso"></i>
+                    QR Misterioso
+                </a> 
            </div>
             <div class="icono">
-                <i class="fa-solid fa-users"></i>
-                <a href="/creditos">Créditos</a>
+                <a href="/creditos" class="menuCreditos">
+                    <i class="fa-solid fa-users menuCreditos"></i>
+                    Créditos
+                </a>
             </div>
            </div>
         </nav>
@@ -72,6 +80,27 @@
                     header.style.backgroundColor = "rgba(0, 0, 0, 1)";
                 } 
             }
+        },
+
+        created() {
+            window.addEventListener('DOMContentLoaded', (event) => {
+                if(location.pathname == "/"){
+                    let inicio = document.getElementsByClassName("menuInicio")
+                    for(let i = 0; i < inicio.length; i++) {
+                        inicio[i].className += " activo"; 
+                    }
+                }else if(location.pathname == "/puntosInteres"){
+                    let inicio = document.getElementsByClassName("menuPuntos")
+                    for(let i = 0; i < inicio.length; i++) {
+                        inicio[i].className += " activo"; 
+                    }
+                }else if(location.pathname == "/creditos"){
+                    let inicio = document.getElementsByClassName("menuCreditos")
+                    for(let i = 0; i < inicio.length; i++) {
+                        inicio[i].className += " activo"; 
+                    }
+                }
+            });
         }
     }
 
@@ -82,7 +111,7 @@
     .oculto{
         /*animation: ocultarMenu 200ms infinite;*/
         transition: ease-in-out 20ms;
-        display: flex !important;
+        display: none !important;
     }
 
     .ocultarDatos{
@@ -281,6 +310,12 @@
 
         .icono a{
             font-size: 0.8em;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0.8em;
         }
 
         .logo img{ 
