@@ -193,3 +193,14 @@
         font-size: 10em;
     }
 }
+
+@media (max-width: 397px){
+    #datosHome>.wrapper{
+        margin-top: 0.5em;
+    }
+
+    .datosBanner{
+        font-size: 2em;
+        margin-bottom: 0.5em;
+    }
+}
