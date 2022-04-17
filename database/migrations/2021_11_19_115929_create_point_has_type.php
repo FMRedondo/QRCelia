@@ -15,8 +15,8 @@ class CreatePointHasType extends Migration
     {
         Schema::create('point_has_type', function (Blueprint $table) {
             $table -> id();
-            $table -> string('idPoint');
-            $table -> string('idType');
+            $table -> integer('idPoint');
+            $table -> integer('idType');
         });
     }
 
@@ -27,6 +27,6 @@ class CreatePointHasType extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('point_has_type');
+       
     }
 }

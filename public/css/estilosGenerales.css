@@ -142,3 +142,42 @@ html{
     }
 
 }
+
+.typesPoint{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: #F05454;
+    color: white;
+    gap: 2em;
+    padding: 0.5em 1em;
+}
+
+.typesPoint input{
+    transition: all 300ms;
+}
+
+
+.typesPoint input[type=checkbox]{
+    outline: none;
+    color: #F05454;
+    border: 1px solid white;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PScwIDAgMTYgMTYnIGZpbGw9J3doaXRlJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPjxwYXRoIGQ9J00xMi4yMDcgNC43OTNhMSAxIDAgMDEwIDEuNDE0bC01IDVhMSAxIDAgMDEtMS40MTQgMGwtMi0yYTEgMSAwIDAxMS40MTQtMS40MTRMNi41IDkuMDg2bDQuMjkzLTQuMjkzYTEgMSAwIDAxMS40MTQgMHonLz48L3N2Zz4=) !important;
+}
+.typesPoint input:checked{
+    outline: none;
+    color: #F05454;
+    border: 1px solid white;
+}
+
+.typesPoint input:focus{
+    outline: none !important;
+    color: #F05454;
+    border: 1px solid white !important;
+    box-shadow: none !important;
+}
+
+.typesPoint input:hover{
+    border: 1px solid var(--colorSecundario);
+}

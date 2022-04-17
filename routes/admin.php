@@ -53,6 +53,8 @@ Route::post('/puntosInteres/searchPoints', [interestPointController::class, 'sea
 Route::post('/puntosInteres/eliminarPunto', [interestPointController::class, 'deleteInterestPoint'])-> name('delete.interestPoint')-> middleware('can:ver_administracion');
 Route::get('/puntosInteres/getPoints', [interestPointController::class, 'getInterestPoints'])-> name('get.interestPoints')-> middleware('can:ver_administracion');
 Route::post('/puntosInteres/cambiarOrden', [interestPointController::class, 'cambiarOrden'])-> name('cambiar.orden')-> middleware('can:ver_administracion');
+Route::get('/puntosInteres/getType', [interestPointController::class, 'getType'])-> name('get.type.point')-> middleware('can:ver_administracion');
+Route::get('/puntosInteres/attachedPointType', [interestPointController::class, 'attachedPointType'])-> name('attachedPointType')-> middleware('can:ver_administracion');
 
 Route::post('/puntosInteres/enlazarPuntoConRecurso', [ResourceController::class, 'enlazarPuntoConRecurso'])-> name('enlazar.punto.recurso')-> middleware('can:ver_administracion');
 

@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\qrCodeController;
 use GrahamCampbell\ResultType\Result;
 use Symfony\Component\HttpFoundation\RequestStack;
 use App\Models\admin\resourceModel;
+use App\Models\admin\TypeModel;
 
 class interestPointController extends Controller
 {
@@ -120,8 +121,38 @@ class interestPointController extends Controller
         //$orden = json_decode($orden, true );
 
         interestPointModel::updateInterestPoint($id, "orden", $orden);
+    }
 
 
-    
+    public function getType(Request $request){
+        $type = TypeModel::getTypes(); // Array con todos los tipos
+        $typePoint = interestPointModel::getTypePoint($request -> id);  // array con los tipos asociados
+        
+        $types = [];
+
+        foreach($type as $tp){
+            array_push($types, [
+                'type_id'   => $tp -> id,
+                'type_name' => $tp -> name,
+                'attached'   => false
+            ]);
+        }
+       
+        foreach($typePoint as $tps){
+            for($i = 0; $i < count($types); $i++)
+                if($tps -> idType == $types[$i]["type_id"])
+                    $types[$i]["attached"] = true;
+        }
+       
+        return response() -> json($types);
+    }
+
+    public function attachedPointType(Request $request){
+        if($request -> attached){
+            interestPointModel::attachedPointType($request -> idPoint, $request -> idType);
+        }
+        else{
+            interestPointModel::deletedAttachedPointType($request -> idPoint, $request -> idType);
+        }
     }
 }

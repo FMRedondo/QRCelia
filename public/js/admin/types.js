@@ -142,6 +142,8 @@ function addType(){
             $(".btnDelType").click(showDelType);
             $(".btnShowEditType").off();
             $(".btnShowEditType").click(showEditType);
+
+            $(".backPanel").hide()
         },
 
          error: function (response) {

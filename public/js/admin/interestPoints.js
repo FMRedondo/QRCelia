@@ -104,7 +104,7 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
             </div>
         </div>
 
-        <div class="modifyPanelContent w-100 d-flex" id='modifyPanelContent' style="height:90%;">
+        <div class="modifyPanelContent w-100 d-flex flex-wrap" id='modifyPanelContent' style="height:90%;">
             <div class="w-50 d-flex justify-content-center align-items-center flex-column">
                 <div class="w-100">
                 <img src=/img/puntosInteres/${response[0].poster} style='width:90%; margin:0 auto'>
@@ -141,9 +141,16 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
                     <button class='imagenes' id='audiosRelacionado' data-id='${response[0].id}'><i class="fa-solid fa-volume-high"></i> Audios</button>
                 </div>
             </div>
+            <div class='w-50 d-flex justify-content-center align-items-center flex-column'>
+                <h2 class='h2'>Categorias</h2>
+                <div id='categoriasPuntos' class='d-flex flex-column flex-wrap' style='width: 90%'>
+                    <i class="fa-solid fa-spinner fa-spin-pulse h1 d-flex justify-content-center m-auto mt-25" id='cargando'></i>
+                </div>
+            </div>
         </div>`;
 
     resourceList.innerHTML = content;
+    pintarCategorias(response[0].id)
     var el = document.getElementById('items');
     //var sortable = Sortable.create(el);
     var sortable = new Sortable(el, {
@@ -219,6 +226,49 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
     })
 
 })
+
+
+const pintarCategorias = async idPoint => {
+    await fetch(`/admin/puntosInteres/getType?id=${idPoint}`).then(data => data.json())
+    .then(response => {
+       document.getElementById("cargando").remove()
+       response.forEach(element => {
+        var input
+        if(element.attached == true){
+            input = `
+            <label class='typesPoint'>
+              <span>${element.type_name}</span>
+              <input type='checkbox' data-id=${element.type_id} data-idPoint=${idPoint} class='inputType' checked/>
+            </label>
+           `
+        }else{
+            input = `
+            <label class='typesPoint'>
+              <span>${element.type_name}</span>
+              <input type='checkbox' data-id=${element.type_id} data-idPoint=${idPoint} class='inputType'/>
+            </label>
+           `
+        }
+
+         document.getElementById("categoriasPuntos").innerHTML += input;
+
+       });
+
+       const inputType = document.getElementsByClassName('inputType')
+       for(let i = 0; i < inputType.length; i++)
+            inputType[i].addEventListener("change", changeInputType)
+    })
+}
+
+const changeInputType = async element => {
+   const input = element.target
+   var attached = false
+   if(input.checked)
+        attached = true
+
+   fetch(`/admin/puntosInteres/attachedPointType?idPoint=${input.getAttribute('data-idPoint')}&idType=${input.getAttribute('data-id')}&attached=${attached}`)
+   .then(response => {console.log(response)})
+}
 
 
 const actualizarDatos = (element) => ajax(

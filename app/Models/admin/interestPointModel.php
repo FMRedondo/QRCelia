@@ -56,4 +56,21 @@ class interestPointModel extends Model
         $result = DB::select($sql);
         return $result;
     }
+
+    public static function getTypePoint($idPoint){
+        $sql = "SELECT * FROM point_has_type WHERE 	idPoint = $idPoint";
+        return DB::select($sql);
+    }
+
+    public static function attachedPointType($idPoint, $idType){
+        $sql = "INSERT INTO point_has_type (idPoint, idType) VALUES('$idPoint', $idType)";
+        DB::insert($sql);
+    }
+
+    public static function deletedAttachedPointType($idPoint, $idType){
+        $sql = "DELETE FROM point_has_type WHERE (idPoint = $idPoint AND idType = $idType)";
+        DB::delete($sql);
+    }
+
+
 }
