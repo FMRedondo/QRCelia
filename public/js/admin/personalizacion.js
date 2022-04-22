@@ -34,7 +34,23 @@ const ajax = async (data, url, type, success) => {
     });
 }
 
+/**
+ * Matriz con los valores de cada una de las personalizaciones
+ */
 
+const MATRIZ_VALORES = [
+    ["titulo", ".datosBanner"],
+    ["descripcion", ".textoBanner"],
+    ["tituloBold", "#tituloBold"],
+    ["tituloNormal", ".tituloNormal"],
+    ["boton1", ".boton:first-child span"],
+    ["boton2", ".boton:last-child span"]
+]
+
+const FRAME = document.getElementById("frame")
+
+console.log(MATRIZ_VALORES)
+console.log(MATRIZ_VALORES[0][0])
 
 const index = () => {
     ajax({}, '/admin/obtenerCustomizacion', 'GET', response => {
@@ -87,9 +103,11 @@ const index = () => {
         datos.insertAdjacentHTML('beforeend', cambioImagenes)
 
         const inputActualizar = document.getElementsByClassName('actualizarCampo')
-        for(let i = 0; i < inputActualizar.length; i++)
+        for(let i = 0; i < inputActualizar.length; i++){
             inputActualizar[i].addEventListener('change', actualizarCampo)
-        
+            inputActualizar[i].addEventListener('keyup', preview)
+        }
+
         const inputImagenes = document.getElementsByClassName('cambioImagen')
         for(let j = 0; j < inputImagenes.length; j++)
         inputImagenes[j].addEventListener('change', actualizarImagenes)
@@ -132,7 +150,18 @@ const actualizarImagenes = async elemento => {
     const animacion = setInterval(() => {
         panelMensaje.innerHTML = ""
     }, 3000)
-    })
+    })  
+}
+
+const preview = element => {
+    let elemento = element.target.getAttribute('data-name')
+    for(let i = 0; i < MATRIZ_VALORES.length; i++){
+        if(elemento == MATRIZ_VALORES[i][0]){
+            let query = MATRIZ_VALORES[i][1]
+            FRAME.contentWindow.document.querySelector(query).innerHTML = element.target.value
+            return
+        }
+    }
 }
 
 index()

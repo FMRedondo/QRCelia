@@ -40,7 +40,7 @@ async function getHomeData() {
         </div>
         `;
         
-        document.getElementById("tituloHeader").innerHTML = `<span id="tituloBold">${options.tituloBold}</span>${options.tituloNormal}</h1>`;
+        document.getElementById("tituloHeader").innerHTML = `<span id="tituloBold">${options.tituloBold}</span><span class='tituloNormal'>${options.tituloNormal}</span></h1>`;
         
         datosHome.innerHTML = content;
 

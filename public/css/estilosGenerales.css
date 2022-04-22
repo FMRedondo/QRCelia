@@ -181,3 +181,50 @@ html{
 .typesPoint input:hover{
     border: 1px solid var(--colorSecundario);
 }
+
+.contenidoPuntos{
+    overflow: hidden;
+}
+
+.quitarContenido{
+    animation: all 300ms;
+    transform: translateY(-200%);
+}
+
+.cardMove{
+    position: relative; 
+    height: 15em;
+}
+
+.cardMove img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+}
+
+.cardMove p{
+    position: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 7em;
+    font-size: 2em;
+    font-weight: bolder;
+    color: var(--colorPrimario);
+    opacity: 0;
+    transition: ease-in-out 200ms;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.cardMove:hover{
+    cursor: move;
+}
+
+.cardMove:hover > p{
+    opacity: 1;
+}

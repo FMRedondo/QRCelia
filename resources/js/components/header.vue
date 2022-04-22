@@ -3,7 +3,7 @@
        <div class="wrapper">
            <a class="logo" href="/">
                 <img src="/img/escudoCelia.png" alt="logo IES Celia Viñas">
-                <h1 class="titulo" id="tituloHeader"><span id="tituloBold">qr</span>Celia</h1>
+                <h1 class="titulo" id="tituloHeader"><span id="tituloBold">qr</span><span class='tituloNormal'>Celia</span></h1>
             </a>
            
             <div class="btnMenu">
@@ -158,9 +158,13 @@
         color: white;
     }
 
-    .titulo span{
+    .titulo #tituloBold{
         color: #CBAF87;
         text-transform: uppercase;
+    }
+
+    .titulo .tituloNormal{
+        color: white !important;
     }
 
     .header .btnMenu{

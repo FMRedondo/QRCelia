@@ -8,9 +8,9 @@
 
 @section('content')
 
-<div class="d-flex mb-3 pt-5 flex-row row">
+<div class="d-flex mb-3 pt-5 flex-row row flex-wrap">
     <!-- Barra para buscar -->
-    <div class="col-10 input-group searchBar" style="width: 83.33333333%;">
+    <div class="col-8 input-group searchBar">
       <input type="text" class="form-control searchText searchPoint" placeholder="Buscar..." id="searchPoint">
       <div class="input-group-append searchTypeButton">
         <span class="input-group-text" class="btnSearch">
@@ -19,10 +19,19 @@
       </div>
     </div>
     <!-- Boton de aniadir -->
-    <div class="col-2 input-group justify-content-center" style="width: 16.66666667%;">
-      <button type="button" class="btn btn-labeled btn-success btnAddPoint" id="addbtn">
-          <span class="btn-label"><i class="fa-solid fa-plus"></i></span>Añadir
+    <div class="col-4 input-group d-flex" style="gap:1.5em" >
+      <button type="button" class="btn btn-labeled btn-info btnAddPoint" id="btnOrden" data-edit='false'>
+          <span class="btn-label"><i class="fa-solid fa-arrows-up-down-left-right"></i></span>Orden
       </button>
+
+      <button type="button" class="btn btn-labeled btn-secondary btnAddPoint" id="fliltros">
+        <span class="btn-label"><i class="fa-solid fa-plus"></i></span>Filtros
+      </button>
+
+      <button type="button" class="btn btn-labeled btn-success btnAddPoint" id="addbtn">
+        <span class="btn-label"><i class="fa-solid fa-plus"></i></span>Añadir
+      </button>
+
     </div>
   </div>
 
@@ -95,6 +104,7 @@
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="/css/panel.css">
+    <link rel="stylesheet" href="/css/estilosGenerales.css">
     <link rel="stylesheet" href="/estilos/admin/interestPoints.css">
 
 @stop

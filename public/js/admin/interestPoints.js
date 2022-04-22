@@ -75,6 +75,9 @@ const index = () => {
         const addbtn = document.getElementById("addbtn")
         addbtn.addEventListener('click', mostrarAñadirPunto)
 
+        const ordenBtn = document.getElementById('btnOrden')
+        ordenBtn.addEventListener('click', modificarOrden)
+
         const closeWindows = document.getElementById("closeWindows")
         closeWindows.addEventListener('click', () => {
             const backpanel = document.getElementById('backpanel')
@@ -83,6 +86,8 @@ const index = () => {
             backpanel.classList.toggle("mostrarPanel")
         })
     })
+    document.getElementById('btnOrden').setAttribute('data-edit', 'false')
+    document.getElementsByClassName('contenidoPuntos')[0].setAttribute("id", "")
 }
 
 
@@ -314,6 +319,69 @@ const  mostrarAñadirPunto = (element) => {
    // quitarle el scroll al document
 
    savePoint.addEventListener('click', añadirPunto)   
+}
+
+const modificarOrden = element => {
+    if(element.target.getAttribute('data-edit') == 'false'){
+        const contenidoPuntos = document.getElementsByClassName('contenidoPuntos')[0]
+        contenidoPuntos.innerHTML = ""
+        
+        fetch("/admin/puntosInteres/getPoints").then(response => response.json()).then(data => {
+            console.log(data)
+        data.forEach(element => {
+            let punto = `
+            <div id="card${element.id}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32 cardMove" style="width: 30%" >
+                <img class="rounded w-full object-cover object-center" src="/img/puntosInteres/${element.poster}" alt="${element.name}" />
+                <p>${element.name}</p>
+            </div>
+            `
+            contenidoPuntos.innerHTML += punto
+
+            document.getElementById('btnOrden').setAttribute('data-edit', 'true')
+            document.getElementsByClassName("contenidoPuntos")[0].setAttribute('id', 'movePoint')
+            
+            const el = document.getElementById("movePoint")
+            Sortable.create(el, {
+                group: "orden",
+                sort: true,
+                handle: '.handle',
+                animation: 150,
+                dataIdAttr: "data-id",
+                store:{
+
+                }
+            })
+
+            /*
+        store: {
+            set:  function (sortable) {
+                var order = sortable.toArray();
+                var orden = []
+                for(let i = 0; i < order.length; i++){
+                    let recurso
+                    
+                    
+                    orden.push(recurso)
+                    
+                }
+
+                console.log(order)
+
+                console.log(orden)
+                ajax({"id": response[0].id, "orden": JSON.stringify(order), "_token": token}, '/admin/puntosInteres/cambiarOrden', 'POST', response => {
+                   
+                })
+                
+            }
+        }
+    });
+
+            */
+        });
+        })
+    }else{
+        index()
+    }
 }
 
 
@@ -550,7 +618,7 @@ const audiosRelacionados = async elemento => {
                 <p class='${data.enlazado}' data-id=${data.id} data-idPunto=${elemento.target.getAttribute('data-id')}>Seleccionar/deseleccionar</p>
             </div>`
             
-              /*
+              /* 
               let contenido = `
               <audio class='${data.enlazado}' data-id=${data.id} data-idPunto=${elemento.target.getAttribute('data-id')} constrols>
                 <source src="/audios/${data.url}" type="audio/mp3">
