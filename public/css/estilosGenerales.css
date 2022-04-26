@@ -19,6 +19,14 @@ html{
     scroll-behavior: smooth !important;
 }
 
+.contentText a{
+    color: var(--colorPrimario);
+}
+
+.contentText:hover{
+    color: #fc7a7a;
+}
+
 #app{
     padding: 0 !important;
     margin: 0 !important;
@@ -127,6 +135,10 @@ html{
     
   .switchToggle:checked:before {
     left: 32px;
+  }
+
+  #playVideoBTN:hover{
+    color: #fc7a7a;
   }
 
 /* Animacion para boton pulsar */

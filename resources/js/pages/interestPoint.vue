@@ -60,8 +60,12 @@ export default{
                 this.url = response[0].url,
                 this.poster = response[0].poster
                 const orden = JSON.parse(response[0].orden)
-                const loadScreen = document.getElementById("loadSection")
-                loadScreen.remove()
+                setTimeout(function(){
+                    const loadScreen = document.getElementById("loadSection")
+                    document.getElementById("app").style.display = "block";
+                    loadScreen.remove()
+                }, 1000);
+
                 return orden;
             })
             .then((orden)=> {
@@ -158,7 +162,7 @@ export default{
             this.getResources("video");
             this.getResources("audio");
 
-            setTimeout(this.pintarMenu, '3000')
+            setTimeout(this.pintarMenu, '2000')
     },
 }
 </script>

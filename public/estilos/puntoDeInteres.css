@@ -61,6 +61,7 @@ h1, p, h2, h3{
 }
 
 #app{
+    display: none;
     content: "";
     position: relative;
     top: 0;
@@ -104,6 +105,10 @@ h1, p, h2, h3{
 
 #type{
     text-align: right;
+}
+
+.slide-images.fade{
+    background-color: rgba(0, 0, 0,0.5);
 }
 
 .contentThumbnail{
