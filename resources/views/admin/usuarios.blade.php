@@ -85,7 +85,7 @@
 @stop
 
 @section('css')
-<link rel="stylesheet" href="/css/estilosGenerales.css">
+    <link rel="stylesheet" href="/css/estilosGenerales.css">
     <link rel="stylesheet" href="/css/adminLTE.css">
     <link rel="stylesheet" href="/css/panel.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">

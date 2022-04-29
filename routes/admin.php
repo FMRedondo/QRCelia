@@ -70,6 +70,10 @@ Route::post('/categorias/deleteType', [TypeController::class, 'deleteType'])-> n
 Route::post('/categorias/searchType', [TypeController::class, 'searchType'])-> name('search.type')-> middleware('can:ver_administracion');
 Route::post('/categorias/getType', [TypeController::class, 'getType']) -> name('get.type')-> middleware('can:ver_administracion');
 Route::post('/categorias/editType', [TypeController::class, 'updateType']) -> name('edit.type')-> middleware('can:ver_administracion');
+Route::post('/categorias/setMain', [TypeController::class, 'addMain']) -> name('addMain.type')-> middleware('can:ver_administracion');
+Route::post('/categorias/removeMain', [TypeController::class, 'removeMain']) -> name('removeMain.type')-> middleware('can:ver_administracion');
+
+
 
 Route::get('/recursos', [ResourceController::class, 'index'])-> name('show.viewResources')-> middleware('can:ver_administracion');
 Route::post('/recursos', [resourceUploadController::class, 'addResource'])-> name('upload.resource')-> middleware('can:ver_administracion');

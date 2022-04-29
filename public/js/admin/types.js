@@ -20,6 +20,7 @@ function load() {
                         <thead>
                             <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
                                 <th class="px-4 py-3 text-center">Nombre</th>
+                                <th class="px-4 py-3 text-center">Destacado</th>
                                 <th class="px-4 py-3 text-center">Fecha creacion</th>
                                 <th class="px-4 py-3 text-center">Ultima modificación</th>
                                 <th class="px-4 py-3 text-center">Acciones</th>
@@ -58,6 +59,8 @@ function load() {
                                 </div>
                             </div>
                         </td>
+                        <td class="px-4 py-3 text-xs border inputTD">
+                        </td>
                         <td class="px-4 py-3 text-xs border">
                             <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regTypeCreated"> ${data.created_at} </span>
                         </td>
@@ -71,10 +74,25 @@ function load() {
                     </tr>
                 `;
                 $("tbody").append(tableContent);
+
+                let input = ``;
+                if (data.main === 1) {
+                    input = `
+                        <input class="switchToggle" type="checkbox" checked data-id="${data.id}">
+                    `;
+                }else{
+                    input = `
+                        <input class="switchToggle" type="checkbox" data-id="${data.id}">
+                    `;
+                }
+
+                $("#" + data.id + " " + ".inputTD").append(input)
+
             })
             $(".btnShowEditType").click(showEditType);
             $(".btnDelType").click(showDelType);
             $(".searchType").keyup(searchType);
+            $(".switchToggle").change(changeMain);
         },
 
         error: function (response){
@@ -125,6 +143,8 @@ function addType(){
                             </div>
                         </div>
                     </td>
+                    <td class="px-4 py-3 text-xs border inputTD">
+                    </td>
                     <td class="px-4 py-3 text-xs border">
                         <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regTypeCreated"> ${response.date} </span>
                     </td>
@@ -138,6 +158,20 @@ function addType(){
                 </tr>
                 `;
             $("tbody").append(newContent);
+
+            let input = ``;
+            if (response.main === 1) {
+                input = `
+                    <input class="switchToggle" type="checkbox" checked data-id="${data.id}">
+                `;
+            }else{
+                input = `
+                    <input class="switchToggle" type="checkbox" data-id="${response.id}">
+                `;
+            }
+
+            $("#" + response.id + " " + ".inputTD").append(input)
+
             $(".btnShowEditType").click(showEditType);
             $(".btnDelType").click(showDelType);
             $(".btnShowEditType").off();
@@ -331,4 +365,33 @@ function showEditType() {
         },
 
     });
+}
+
+// Funcion para destacar, quitar de destacados
+function changeMain() {
+    var params = {
+        "idType": $(this).data("id"),
+        "_token": $('meta[name="csrf-token"]').attr('content'),
+    }
+    if ($(this).is(':checked')) {
+        $.ajax({
+            data: params,
+            url: '/admin/categorias/setMain',
+            type: 'post',
+
+            error: function (response) {
+                alert("Error en la peticion");
+            }
+        })
+    }else{
+        $.ajax({
+            data: params,
+            url: '/admin/categorias/removeMain',
+            type: 'post',
+
+            error: function (response) {
+                alert("Error en la peticion");
+            }
+        })                    
+    }
 }
