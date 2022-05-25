@@ -53,4 +53,14 @@ class TypeController extends Controller
         TypeModel::updateType($id,$field,$value,$date);
         return $date;
     }
+
+    public function addMain(){
+        $id = $_POST['idType'];
+        TypeModel::addMain($id);
+    }
+
+    public function removeMain(){
+        $id = $_POST['idType'];
+        TypeModel::removeMain($id);
+    }
 }

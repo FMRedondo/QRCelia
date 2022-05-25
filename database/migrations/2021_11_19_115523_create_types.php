@@ -17,6 +17,8 @@ class CreateTypes extends Migration
             $table->id();
             $table -> string('name');
             $table->timestamps();
+            $table->bigInteger("order")->default(999);
+            $table->boolean("main")->default(0);
         });
     }
 
