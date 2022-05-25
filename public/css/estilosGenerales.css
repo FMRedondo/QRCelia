@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,600;0,700;1,700&display=swap');
 
 :root{
     --colorPrimario: #F05454;
@@ -8,7 +8,7 @@
 }
 
 *{
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Poppins', sans-serif;
     padding: 0 ;
     margin: 0 ;
     box-sizing: border-box;
@@ -239,4 +239,38 @@ html{
 
 .cardMove:hover > p{
     opacity: 1;
+}
+
+.paneles, .contenido{
+    border-radius: 0;
+    -webkit-box-shadow: 0 1px 20px 0 rgb(69 90 100 / 8%);
+    box-shadow: 0 1px 20px 0 rgb(69 90 100 / 8%);
+    border: none;
+    margin-bottom: 30px;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    background-color: white;
+    display:flex;
+    align-items: center;
+    padding: 1.2em 0.5em!important;
+}
+
+.searchBar input{
+    border: none;
+    -webkit-box-shadow: 0 1px 20px 0 rgb(69 90 100 / 8%);
+    box-shadow: 0 1px 20px 0 rgb(69 90 100 / 8%);
+}
+
+.searchBar input:focus{
+    border: none;
+    -webkit-box-shadow: 0 1px 20px 0 rgb(69 90 100 / 50%);
+    box-shadow: 0 1px 20px 0 rgb(69 90 100 / 50%);
+    outline: none !important;
+}
+.btnSearch{
+    background-color:red !important;
+}
+
+.btnSearch i{
+    background: transparent !important;
 }

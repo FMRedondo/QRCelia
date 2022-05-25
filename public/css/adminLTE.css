@@ -11,7 +11,8 @@
 
 
 aside{
-    background-color: #232323 !important;
+    background-color: #3F4D67 !important;
+    box-shadow: 1px 0 20px 0 #3f4d67 !important;
 }
 
 .brand-text{
@@ -23,27 +24,32 @@ aside{
     color: white !important;
     font-weight: bold;
     box-shadow: 0px 0px 0px transparent !important;
-    border-right: 2px solid red;
+    border-right: 2px solid #C6A878;
     border-radius: unset;    
+    background-color: #333F54 !important;
+}
+.navbar-light .navbar-nav .nav-link{
+    color:black !important;
 }
 
 .content-wrapper {
-    background-color: #EFEFEF !important;    
+    background-color: #F5F8FA !important;    
 }
 
 
 .main-header{
-    background: #232323; /* no se que color poner */
+    background: #FFFFFF; /* no se que color poner */
     border-bottom: 1px solid transparent;
-    color: white;
+    color: black;
 }
 
 .nav-link{
-    color: white !important;
+    color: #919FB8 !important;
+    font-size: 13px !important;
 }
 
 aside span b{
-    color: red;
+    color: #C6A878;
     font-weight: bolder;
 }
 

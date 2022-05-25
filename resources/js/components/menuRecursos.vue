@@ -1,13 +1,6 @@
 <template>
     <nav class="menuLateral oculto" id="menuLateral">
         <a href="#information" class="enlaceMenuLateral"><i class="fa-solid fa-file-lines"></i></a>
-        <!--
-        <a href="#video" class="enlaceMenuLateral"><i class="fa-solid fa-video menuActivo"></i></a>
-        <a href="#imagenes" class="enlaceMenuLateral"><i class="fa-solid fa-images"></i></a>
-        <a class="enlaceMenuLateral"><i class="fa-solid fa-volume-low" id='audioIcon'></i></a>
-
-        -->
-        
     </nav>
 </template>
 
@@ -57,6 +50,14 @@
 
     .menuActivo{
         color: #F05454;
+    }
+
+
+    @media (max-width: 700px){
+        .menuLateral{
+            bottom: 0;
+            left: calc(100% - 50%) - 50%;
+        }
     }
 
 </style>

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Puntos de interes | QRCelia')
 
 @section('content_header')
 <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -8,10 +8,10 @@
 
 @section('content')
 
-<div class="d-flex mb-3 pt-5 flex-row row flex-wrap">
+<div class="d-flex mb-3 pt-5 flex-row row flex-wrap paneles">
     <!-- Barra para buscar -->
     <div class="col-8 input-group searchBar">
-      <input type="text" class="form-control searchText searchPoint" placeholder="Buscar..." id="searchPoint">
+      <input type="text" class="form-control searchText searchPoint" placeholder="Busca tu punto de interes" id="searchPoint">
       <div class="input-group-append searchTypeButton">
         <span class="input-group-text" class="btnSearch">
           <i class="fa-solid fa-magnifying-glass"></i>
@@ -88,7 +88,7 @@
   </div>
   
     
-<div class="xl:w-1/3 md:w-1/2 p-4 d-flex flex-wrap contenidoPuntos" style="gap:3em">
+<div class="xl:w-1/3 md:w-1/2 p-4 d-flex flex-wrap contenidoPuntos contenido" style="gap:3em">
     <i class="fa-solid fa-spinner fa-spin-pulse h1 d-flex justify-content-center m-auto mt-25"></i>
 </div>
 

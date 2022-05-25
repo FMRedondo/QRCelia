@@ -21,34 +21,7 @@
                 <a href="/creditos" @mouseover="imagenMenu('creditos')" @mouseleave="quitarImagen">Créditos</a>
             </nav>
         </div>
-        <nav class='navMovil' id='navMovil'>
-           <div class="wrapper">
-                <div class="icono">
-                <a href="/" class="menuInicio">
-                    <i class="fa-solid fa-house menuInicio"></i>
-                    Inicio
-                </a>
-            </div>
-           <div class="icono">
-                <a href="/puntosInteres" class="menuPuntos">
-                    <i class="fa-solid fa-signs-post menuPuntos"></i>
-                    Puntos de interés
-                </a>
-           </div>
-           <div class="icono">
-                <a href="/qrmisterioso" class="menuMisterioso">
-                    <i class="fa-solid fa-question menuMisterioso"></i>
-                    QR Misterioso
-                </a> 
-           </div>
-            <div class="icono">
-                <a href="/creditos" class="menuCreditos">
-                    <i class="fa-solid fa-users menuCreditos"></i>
-                    Créditos
-                </a>
-            </div>
-           </div>
-        </nav>
+        
    </header>
 </template>
 
@@ -246,9 +219,7 @@
         right: 6em;
     }
 
-    .navMovil{
-        display: none;
-    }
+   
 
     .logo:focus{
         border: none !important;
@@ -265,36 +236,10 @@
     }
 
     @media (max-width: 650px){
-        .navMovil{
-            display: block;
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            background-color: #30475E;
-        }
-
-        .navMovil .wrapper{
-            padding: 0.5em;
-            display: flex;
-            gap: 1em;
-            justify-content: space-between;
-        }
-
-        .navMovil a{
-            color: white;
-            font-weight: bolder;
-            text-decoration: none;
-            transform: translateY(-0.5em);
-        }
+       
 
         .activo{
             color: var(--colorPrimario) !important;
-           
-        }
-
-        button{
-            display: none;
         }
 
         .icono{
@@ -327,7 +272,7 @@
         }
 
         .header > .wrapper{
-            justify-content: center;
+            justify-content: space-between;
             text-align: center !important;
         }
 
