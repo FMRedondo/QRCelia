@@ -177,6 +177,9 @@ function addType(){
             $(".btnShowEditType").off();
             $(".btnShowEditType").click(showEditType);
 
+            $(".switchToggle").off();
+            $(".switchToggle").on("change",changeMain);
+
             $(".backPanel").hide()
         },
 
@@ -394,4 +397,6 @@ function changeMain() {
             }
         })                    
     }
+    $(".switchToggle").off();
+    $(".switchToggle").on("change",changeMain);
 }

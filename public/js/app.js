@@ -5941,6 +5941,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     texto: String
@@ -5992,6 +5993,8 @@ __webpack_require__.r(__webpack_exports__);
       var video = "<video id=\"pointVideo\" src=\"/video/".concat(this.videos[0], "\" controls></video>");
       document.getElementById("fillVideo").style.backgroundColor = "black";
       document.getElementById("fillVideo").innerHTML += video;
+      var videoContent = document.getElementById("pointVideo");
+      videoContent.play();
 
       if (this.videos.length > 1) {
         //--> No se muestra el de ir para atras! Que estamos en el primer video
@@ -6291,17 +6294,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'interestPoints',
+  data: function data() {
+    return {
+      data: [],
+      felix: null
+    };
+  },
   created: function created() {
     var _this = this;
 
     document.addEventListener('DOMContentLoaded', function () {
       _this.obtenerDatos();
     });
-  },
-  props: {
-    datos: Array
   },
   methods: {
     obtenerDatos: function obtenerDatos() {
@@ -6313,8 +6323,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return fetch('/api/puntosInteres/getPoints', {
-                  method: 'POST',
+                return fetch('/api/pointHasType/get?main=1', {
+                  method: 'GET',
                   headers: {
                     "Accept": "application/json",
                     'Content-Type': 'application/json'
@@ -6322,24 +6332,76 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }).then(function (response) {
                   return response.json();
                 }).then(function (response) {
-                  var datos = [];
+                  setInterval(function () {
+                    var datos = [];
+                    /*
+                    {
+                        nombre: "primera planta",
+                        id: 1,
+                        puntos: [
+                            {
+                                id: 1
+                            },
+                            {
+                                id: 2,
+                            }
+                        ]
+                    },
+                    {
+                        nombre: "primera planta",
+                        id: 2,
+                        puntos: [
+                            {
+                                id: 1
+                            },
+                            {
+                                id: 2,
+                            }
+                        ]
+                    }
+                    */
 
-                  for (var i = 0; i < response.length; i++) {
-                    var punto = {
-                      'id': response[i].id,
-                      'name': response[i].name,
-                      'poster': response[i].poster,
-                      'text': response[i].text.substr(0, 150) + "...",
-                      'description': response[i].description,
-                      'enlace': "/puntodeinteres/" + response[i].id
-                    };
-                    datos.push(punto);
-                  }
+                    /*
+                    {
+                        nombre: "primera planta",
+                        id: 1,
+                        puntos: [
+                            {
+                                id: 1
+                            },
+                            {
+                                id: 2,
+                            }
+                        ]
+                    },
+                    {
+                        nombre: "primera planta",
+                        id: 2,
+                        puntos: [
+                            {
+                                id: 1
+                            },
+                            {
+                                id: 2,
+                            }
+                        ]
+                    }
+                    */
+                    response.forEach(function (row) {
+                      if (!datos.includes(row.typeId)) {
+                        datos.push( //row.typeName,
+                        row.typeId = {
+                          id: row.typeId
+                        });
+                      }
+                    });
+                    _this2.data = datos;
+                  }, 1000); //Vue.set(variable que almacena todos los datos, nombre que se asigna al objeto, valores que metemos al objeto)
 
-                  _this2.datos = datos;
+                  //Vue.set(variable que almacena todos los datos, nombre que se asigna al objeto, valores que metemos al objeto)
                   var carga = document.getElementById("carga");
                   carga.remove();
-                  return _this2.datos;
+                  console.log(_this2.data);
                 });
 
               case 2:
@@ -11469,7 +11531,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n/*\n    #audioButton{\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        z-index: 999;\n        width: 4em;\n        height: 4em;\n        position: fixed;\n        left: 1%; \n        bottom: 50%;\n        background-color: var(--colorPrimario);\n        border-radius: 50%;\n        cursor: pointer;\n        animation: music 3s infinite;\n    }\n    \n    #audioIcon{\n        color: white;\n        font-size: 2em;\n    }\n\n@keyframes music {\n    25%{\n        transform: translateY(1em);\n    }\n\n    50%{\n        transform: translateY(0);\n    }\n\n    75%{\n        transform: translateY(1em);\n    }\n\n    100%{\n        transform: translateY(0);\n    }\n}\n*/\naudio{\n    width: 80%;\n    height: 5em;\n    margin: 0 auto;\n    display: flex;\n    justify-content: center;\n    margin-bottom: 3em;\n}\naudio::-webkit-media-controls-panel{\n    background: var(--colorPrimario);\n    color: white !important;\n    border-radius: none !important;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\r\n/*\r\n    #audioButton{\r\n        display: flex;\r\n        justify-content: center;\r\n        align-items: center;\r\n        z-index: 999;\r\n        width: 4em;\r\n        height: 4em;\r\n        position: fixed;\r\n        left: 1%; \r\n        bottom: 50%;\r\n        background-color: var(--colorPrimario);\r\n        border-radius: 50%;\r\n        cursor: pointer;\r\n        animation: music 3s infinite;\r\n    }\r\n    \r\n    #audioIcon{\r\n        color: white;\r\n        font-size: 2em;\r\n    }\r\n\r\n@keyframes music {\r\n    25%{\r\n        transform: translateY(1em);\r\n    }\r\n\r\n    50%{\r\n        transform: translateY(0);\r\n    }\r\n\r\n    75%{\r\n        transform: translateY(1em);\r\n    }\r\n\r\n    100%{\r\n        transform: translateY(0);\r\n    }\r\n}\r\n*/\naudio{\r\n    width: 80%;\r\n    height: 5em;\r\n    margin: 0 auto;\r\n    display: flex;\r\n    justify-content: center;\r\n    margin-bottom: 3em;\n}\naudio::-webkit-media-controls-panel{\r\n    background: var(--colorPrimario);\r\n    color: white !important;\r\n    border-radius: none !important;\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11565,7 +11627,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.slide-images.fade[data-v-3e97672c]{\n    height: 100%;\n}\n.imgVertical[data-v-3e97672c]{\n    width: 50% !important;\n}\n.imgCuadrada[data-v-3e97672c]{\n    height: 100%;\n    width: auto;\n}\n@media (max-width: 1050px) {\n.imgCuadrada[data-v-3e97672c]{\n        height: 50vh;\n        width: auto;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.slide-images.fade[data-v-3e97672c]{\r\n    height: 100%;\n}\n.imgVertical[data-v-3e97672c]{\r\n    width: 50% !important;\n}\n.imgCuadrada[data-v-3e97672c]{\r\n    height: 100%;\r\n    width: auto;\n}\n@media (max-width: 1050px) {\n.imgCuadrada[data-v-3e97672c]{\r\n        height: 50vh;\r\n        width: auto;\n}\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11661,7 +11723,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.separacion[data-v-9efaa2cc]{\n    display: flex;\n    justify-content: center;\n    align-content: center;\n    align-items: center;\n    margin-bottom: 2em;\n}\n.contenido[data-v-9efaa2cc]{\n    width: 33%;\n}\n.linea[data-v-9efaa2cc]{\n    display: block;\n    background-color: white;\n    width: 20%;\n    height: 3px;\n}\n.texto[data-v-9efaa2cc]{\n    border: 2px solid white;\n    color: white;\n    padding: 1em;\n    text-transform: uppercase;\n    font-weight: bolder;\n    text-align: center;\n}\n.mt[data-v-9efaa2cc]{\n    margin-top: 3em;\n}\n@media (max-width: 1100px){\n.linea[data-v-9efaa2cc]{\n        width: 10%;\n}\n.contenido[data-v-9efaa2cc]{\n        width: 80%;\n}\n}\n@media (max-width: 700px){\n.linea[data-v-9efaa2cc]{\n        width: 10px !important;\n}\n.contenido[data-v-9efaa2cc]{\n        width: calc(100% - 20px) !important;\n}\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.separacion[data-v-9efaa2cc]{\n    display: flex;\n    justify-content: center;\n    align-content: center;\n    align-items: center;\n    margin-bottom: 2em;\n}\n.contenido[data-v-9efaa2cc]{\n    width: 33%;\n}\n.linea[data-v-9efaa2cc]{\n    display: block;\n    background-color: white;\n    width: 20%;\n    height: 3px;\n}\n.texto[data-v-9efaa2cc]{\n    border: 2px solid white;\n    color: white;\n    padding: 1em;\n    text-transform: uppercase;\n    font-weight: bolder;\n    text-align: center;\n    width: 33%;\n}\n.mt[data-v-9efaa2cc]{\n    margin-top: 3em;\n}\n@media (max-width: 1100px){\n.linea[data-v-9efaa2cc]{\n        width: 10%;\n}\n.contenido[data-v-9efaa2cc]{\n        width: 80%;\n}\n}\n@media (max-width: 700px){\n.linea[data-v-9efaa2cc]{\n        width: 10px !important;\n}\n.contenido[data-v-9efaa2cc]{\n        width: calc(100% - 20px) !important;\n}\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11685,7 +11747,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#faviconBG{\n    width: 5em;\n    height: 5em;\n    position: absolute;\n    z-index: 1;\n    background-color: white;\n}\n#videoPoster, #videoPoster img, #fillVideo, #fillVideo video{\n    width: 100%;\n    height: 100%;\n}\n#videoPoster{\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n#playVideoBTN{\n    position: absolute;\n    font-size: 8em;\n    color: #F05454;\n    z-index: 2;\n}\n#playVideoBTN:hover{\n    cursor: pointer;\n}\n.prev{\n    left: 0;\n}\n#prevButton, #nextButton{\n    display: none;\n    z-index: 10;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#faviconBG{\n    width: 5em;\n    height: 5em;\n    position: absolute;\n    z-index: 1;\n    background-color: white;\n}\n#videoPoster, #videoPoster img, #fillVideo, #fillVideo video{\n    width: 100%;\n    height: 100%;\n    position: absolute;\n}\n#videoPoster{\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n#playVideoBTN{\n    position: absolute;\n    font-size: 8em;\n    color: #F05454;\n    z-index: 2;\n}\n#playVideoBTN:hover{\n    cursor: pointer;\n}\n.prev{\n    left: 0;\n}\n#prevButton, #nextButton{\n    display: none;\n    z-index: 10;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11733,7 +11795,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#components{\n    display: flex;\n    flex-direction: column;\n}\n#contentSection{\n    min-height: 100vh;\n}\n/* SLIDER DE IMAGENES */\n.slideshow-container, .slideVideo-container {\n    height: 70vh;\n    width: 75%;\n    position: relative;\n    margin: 3em auto;\n}\n.slide-images, .slide-videos {\n  display: none;\n}\n.slide-images:first-child, .slide-videos:first-child {\n  display: block;\n}\n.prev, .next, .videoPrev, .videoNext {\n    cursor: pointer;\n    position: absolute;\n    top: 45%;\n    width: auto;\n    padding: 10px;\n    color: white;\n    font-weight: bold;\n    font-size: 3em;\n    transition: 0.3s ease;\n    border-radius: 0 3px 3px 0;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    background-color: rgba(0, 0, 0,0.8);\n}\n.next, .videoNext {\n  right: 0;\n  border-radius: 3px 0 0 3px;\n}\n.prev:hover, .next:hover, .videoPrev:hover, .videoNext:hover {\n  background-color: rgba(240, 84, 84,0.8);\n}\n.active {\n  background-color: #717171;\n}\n.slide-images img{\n    height: 70vh;\n    width: 100%;\n    margin: 0 auto;\n    display: flex;\n    justify-content: center;\n}\n.slide-videos video{\n    height: 70vh;\n    width: 100%;\n    margin: 0 auto;\n    display: flex;\n    justify-content: center;\n}\n.fade {\n  -webkit-animation-name: fade;\n  -webkit-animation-duration: 0.3s;\n  animation-name: fade;\n  animation-duration: 0.3s;\n}\n\n/* SLIDER DE VIDEOS */\n\n\n\n\n/* ANIMACIONES */\n@-webkit-keyframes fade {\nfrom {opacity: .4}\nto {opacity: 1}\n}\n@keyframes fade {\nfrom {opacity: .4}\nto {opacity: 1}\n}\n@media (max-width: 1050px) {\n.slideshow-container, .slideVideo-container {\n        height: 50vh;\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\n        height: 50vh;\n        width: 100%;\n}\n}\n@media (max-width: 750px) {\n.slideshow-container, .slideVideo-container {\n        height: 35vh;\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\n        height: 35vh;\n        width: 100%;\n}\n.prev, .next {\n        font-size: 1.5em;\n}\n}\n@media (max-width: 500px) {\n.slideshow-container, .slideVideo-container{\n        height: 25vh;\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\n        height: 25vh;\n        width: 100%;\n}\n.prev, .next, .videoPrev, .videoNext {\n        font-size: 1.5em;\n}\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#components{\r\n    display: flex;\r\n    flex-direction: column;\n}\n#contentSection{\r\n    min-height: 100vh;\n}\r\n/* SLIDER DE IMAGENES */\n.slideshow-container, .slideVideo-container {\r\n    height: 70vh;\r\n    width: 75%;\r\n    position: relative;\r\n    margin: 3em auto;\n}\n.slide-images, .slide-videos {\r\n  display: none;\n}\n.slide-images:first-child, .slide-videos:first-child {\r\n  display: block;\n}\n.prev, .next, .videoPrev, .videoNext {\r\n    cursor: pointer;\r\n    position: absolute;\r\n    top: 45%;\r\n    width: auto;\r\n    padding: 10px;\r\n    color: white;\r\n    font-weight: bold;\r\n    font-size: 3em;\r\n    transition: 0.3s ease;\r\n    border-radius: 0 3px 3px 0;\r\n    -webkit-user-select: none;\r\n       -moz-user-select: none;\r\n        -ms-user-select: none;\r\n            user-select: none;\r\n    background-color: rgba(0, 0, 0,0.8);\n}\n.next, .videoNext {\r\n  right: 0;\r\n  border-radius: 3px 0 0 3px;\n}\n.prev:hover, .next:hover, .videoPrev:hover, .videoNext:hover {\r\n  background-color: rgba(240, 84, 84,0.8);\n}\n.active {\r\n  background-color: #717171;\n}\n.slide-images img{\r\n    height: 70vh;\r\n    width: 100%;\r\n    margin: 0 auto;\r\n    display: flex;\r\n    justify-content: center;\n}\n.slide-videos video{\r\n    height: 70vh;\r\n    width: 100%;\r\n    margin: 0 auto;\r\n    display: flex;\r\n    justify-content: center;\n}\n.fade {\r\n  -webkit-animation-name: fade;\r\n  -webkit-animation-duration: 0.3s;\r\n  animation-name: fade;\r\n  animation-duration: 0.3s;\n}\r\n\r\n/* SLIDER DE VIDEOS */\r\n\r\n\r\n\r\n\r\n/* ANIMACIONES */\n@-webkit-keyframes fade {\nfrom {opacity: .4}\nto {opacity: 1}\n}\n@keyframes fade {\nfrom {opacity: .4}\nto {opacity: 1}\n}\n@media (max-width: 1050px) {\n.slideshow-container, .slideVideo-container {\r\n        height: 50vh;\r\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\r\n        height: 50vh;\r\n        width: 100%;\n}\n}\n@media (max-width: 750px) {\n.slideshow-container, .slideVideo-container {\r\n        height: 35vh;\r\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\r\n        height: 35vh;\r\n        width: 100%;\n}\n.prev, .next {\r\n        font-size: 1.5em;\n}\n}\n@media (max-width: 500px) {\n.slideshow-container, .slideVideo-container{\r\n        height: 25vh;\r\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\r\n        height: 25vh;\r\n        width: 100%;\n}\n.prev, .next, .videoPrev, .videoNext {\r\n        font-size: 1.5em;\n}\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -32461,11 +32523,11 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "separacion" }, [
-    _c("div", { staticClass: "linea contenido" }),
+    _c("div", { staticClass: "linea" }),
     _vm._v(" "),
-    _c("div", { staticClass: "texto contenido" }, [_vm._v(_vm._s(_vm.texto))]),
+    _c("div", { staticClass: "texto" }, [_vm._v(_vm._s(_vm.texto))]),
     _vm._v(" "),
-    _c("div", { staticClass: "linea contenido" }),
+    _c("div", { staticClass: "linea" }),
   ])
 }
 var staticRenderFns = []
@@ -32840,6 +32902,13 @@ var render = function () {
         "div",
         { staticClass: "wrapper" },
         [
+          _vm._v(
+            "\n                        " +
+              _vm._s(_vm.data) +
+              "\n                        " +
+              _vm._s(_vm.felix) +
+              "\n\n        "
+          ),
           _c("separador-component", { attrs: { texto: "Puntos de interés" } }),
           _vm._v(" "),
           _c(
@@ -45056,7 +45125,7 @@ Vue.compile = compileToFunctions;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_args":[["axios@0.21.4","/home/diurno/Escritorio/QRCelia"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"/home/diurno/Escritorio/QRCelia","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
 
 /***/ })
 
