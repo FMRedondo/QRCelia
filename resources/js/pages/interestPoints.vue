@@ -2,6 +2,9 @@
     <section class="interestPoints">
         <header-component></header-component>
         <div class="wrapper">
+                            {{data}}
+                            {{felix}}
+
             <separador-component texto='Puntos de interés'></separador-component>
             <div id="carga">
                 <carga-punto></carga-punto>
@@ -19,52 +22,85 @@
 </template>
 
 <script>
+import Vue from "vue";
 export default {
     name: 'interestPoints',
+
+    data(){
+        return{
+            data: [],felix:null
+        }
+    },
+
     created () {
         document.addEventListener('DOMContentLoaded', () => {
              this.obtenerDatos()
         })
     },
 
-    props: {
-        datos: Array,
-    },
-
-
     methods: {
         async obtenerDatos(){
-           await fetch('/api/puntosInteres/getPoints', {
-                 method: 'POST',
+           await fetch('/api/pointHasType/get?main=1', {
+                 method: 'GET',
                   headers: {
                     "Accept": "application/json",
                     'Content-Type': 'application/json'
                    },
                    
             }).then(response => response.json()).then(response => {
-                var datos = [];
-                for(let i = 0; i < response.length; i++){
-                    var punto = {
-                       'id'          : response[i].id,
-                       'name'        : response[i].name,
-                       'poster'      : response[i].poster,
-                       'text'        : response[i].text.substr(0, 150) + "...",
-                       'description' : response[i].description,
-                       'enlace'      : "/puntodeinteres/" + response[i].id
+                setInterval(() => {
+                    const datos = []
+
+                    /*
+                    {
+                        nombre: "primera planta",
+                        id: 1,
+                        puntos: [
+                            {
+                                id: 1
+                            },
+                            {
+                                id: 2,
+                            }
+                        ]
+                    },
+                    {
+                        nombre: "primera planta",
+                        id: 2,
+                        puntos: [
+                            {
+                                id: 1
+                            },
+                            {
+                                id: 2,
+                            }
+                        ]
                     }
+                    */
 
-                    datos.push(punto)
-                }
+                    response.forEach(row => {
+                        if (!datos.includes(row.typeId)) {
+                            datos.push(
+                                //row.typeName,
+                                row.typeId = {
+                                    id: row.typeId
+                                }
+                            )
+                        }
+                    });
 
-                this.datos = datos
+                    this.data = datos
+                }, 1000);
+                //Vue.set(variable que almacena todos los datos, nombre que se asigna al objeto, valores que metemos al objeto)
                 
                 const carga = document.getElementById("carga")
                 carga.remove()
-                return this.datos;
-
+                console.log(this.data)
             
             })
         },
+
+
     }
 }
 </script>

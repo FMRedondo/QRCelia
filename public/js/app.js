@@ -5941,6 +5941,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     texto: String
@@ -5992,6 +5993,8 @@ __webpack_require__.r(__webpack_exports__);
       var video = "<video id=\"pointVideo\" src=\"/video/".concat(this.videos[0], "\" controls></video>");
       document.getElementById("fillVideo").style.backgroundColor = "black";
       document.getElementById("fillVideo").innerHTML += video;
+      var videoContent = document.getElementById("pointVideo");
+      videoContent.play();
 
       if (this.videos.length > 1) {
         //--> No se muestra el de ir para atras! Que estamos en el primer video
@@ -6291,17 +6294,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'interestPoints',
+  data: function data() {
+    return {
+      data: [],
+      felix: null
+    };
+  },
   created: function created() {
     var _this = this;
 
     document.addEventListener('DOMContentLoaded', function () {
       _this.obtenerDatos();
     });
-  },
-  props: {
-    datos: Array
   },
   methods: {
     obtenerDatos: function obtenerDatos() {
@@ -6313,8 +6323,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return fetch('/api/puntosInteres/getPoints', {
-                  method: 'POST',
+                return fetch('/api/pointHasType/get?main=1', {
+                  method: 'GET',
                   headers: {
                     "Accept": "application/json",
                     'Content-Type': 'application/json'
@@ -6322,24 +6332,76 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }).then(function (response) {
                   return response.json();
                 }).then(function (response) {
-                  var datos = [];
+                  setInterval(function () {
+                    var datos = [];
+                    /*
+                    {
+                        nombre: "primera planta",
+                        id: 1,
+                        puntos: [
+                            {
+                                id: 1
+                            },
+                            {
+                                id: 2,
+                            }
+                        ]
+                    },
+                    {
+                        nombre: "primera planta",
+                        id: 2,
+                        puntos: [
+                            {
+                                id: 1
+                            },
+                            {
+                                id: 2,
+                            }
+                        ]
+                    }
+                    */
 
-                  for (var i = 0; i < response.length; i++) {
-                    var punto = {
-                      'id': response[i].id,
-                      'name': response[i].name,
-                      'poster': response[i].poster,
-                      'text': response[i].text.substr(0, 150) + "...",
-                      'description': response[i].description,
-                      'enlace': "/puntodeinteres/" + response[i].id
-                    };
-                    datos.push(punto);
-                  }
+                    /*
+                    {
+                        nombre: "primera planta",
+                        id: 1,
+                        puntos: [
+                            {
+                                id: 1
+                            },
+                            {
+                                id: 2,
+                            }
+                        ]
+                    },
+                    {
+                        nombre: "primera planta",
+                        id: 2,
+                        puntos: [
+                            {
+                                id: 1
+                            },
+                            {
+                                id: 2,
+                            }
+                        ]
+                    }
+                    */
+                    response.forEach(function (row) {
+                      if (!datos.includes(row.typeId)) {
+                        datos.push( //row.typeName,
+                        row.typeId = {
+                          id: row.typeId
+                        });
+                      }
+                    });
+                    _this2.data = datos;
+                  }, 1000); //Vue.set(variable que almacena todos los datos, nombre que se asigna al objeto, valores que metemos al objeto)
 
-                  _this2.datos = datos;
+                  //Vue.set(variable que almacena todos los datos, nombre que se asigna al objeto, valores que metemos al objeto)
                   var carga = document.getElementById("carga");
                   carga.remove();
-                  return _this2.datos;
+                  console.log(_this2.data);
                 });
 
               case 2:
@@ -11661,7 +11723,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.separacion[data-v-9efaa2cc]{\n    display: flex;\n    justify-content: center;\n    align-content: center;\n    align-items: center;\n    margin-bottom: 2em;\n}\n.contenido[data-v-9efaa2cc]{\n    width: 33%;\n}\n.linea[data-v-9efaa2cc]{\n    display: block;\n    background-color: white;\n    width: 20%;\n    height: 3px;\n}\n.texto[data-v-9efaa2cc]{\n    border: 2px solid white;\n    color: white;\n    padding: 1em;\n    text-transform: uppercase;\n    font-weight: bolder;\n    text-align: center;\n}\n.mt[data-v-9efaa2cc]{\n    margin-top: 3em;\n}\n@media (max-width: 1100px){\n.linea[data-v-9efaa2cc]{\n        width: 10%;\n}\n.contenido[data-v-9efaa2cc]{\n        width: 80%;\n}\n}\n@media (max-width: 700px){\n.linea[data-v-9efaa2cc]{\n        width: 10px !important;\n}\n.contenido[data-v-9efaa2cc]{\n        width: calc(100% - 20px) !important;\n}\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.separacion[data-v-9efaa2cc]{\n    display: flex;\n    justify-content: center;\n    align-content: center;\n    align-items: center;\n    margin-bottom: 2em;\n}\n.contenido[data-v-9efaa2cc]{\n    width: 33%;\n}\n.linea[data-v-9efaa2cc]{\n    display: block;\n    background-color: white;\n    width: 20%;\n    height: 3px;\n}\n.texto[data-v-9efaa2cc]{\n    border: 2px solid white;\n    color: white;\n    padding: 1em;\n    text-transform: uppercase;\n    font-weight: bolder;\n    text-align: center;\n    width: 33%;\n}\n.mt[data-v-9efaa2cc]{\n    margin-top: 3em;\n}\n@media (max-width: 1100px){\n.linea[data-v-9efaa2cc]{\n        width: 10%;\n}\n.contenido[data-v-9efaa2cc]{\n        width: 80%;\n}\n}\n@media (max-width: 700px){\n.linea[data-v-9efaa2cc]{\n        width: 10px !important;\n}\n.contenido[data-v-9efaa2cc]{\n        width: calc(100% - 20px) !important;\n}\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11685,7 +11747,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#faviconBG{\n    width: 5em;\n    height: 5em;\n    position: absolute;\n    z-index: 1;\n    background-color: white;\n}\n#video{\n    padding-bottom: 10em;\n}\n#videoPoster, #videoPoster img, #fillVideo, #fillVideo video{\n    width: 100%;\n    height: 100%;\n}\n#videoPoster{\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n#playVideoBTN{\n    position: absolute;\n    font-size: 8em;\n    color: #F05454;\n    z-index: 2;\n}\n#playVideoBTN:hover{\n    cursor: pointer;\n}\n.prev{\n    left: 0;\n}\n#prevButton, #nextButton{\n    display: none;\n    z-index: 10;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#faviconBG{\n    width: 5em;\n    height: 5em;\n    position: absolute;\n    z-index: 1;\n    background-color: white;\n}\n#video{\n    padding-bottom: 10em;\n}\n#videoPoster, #videoPoster img, #fillVideo, #fillVideo video{\n    width: 100%;\n    height: 100%;\n    position: absolute;\n}\n#videoPoster{\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n#playVideoBTN{\n    position: absolute;\n    font-size: 8em;\n    color: #F05454;\n    z-index: 2;\n}\n#playVideoBTN:hover{\n    cursor: pointer;\n}\n.prev{\n    left: 0;\n}\n#prevButton, #nextButton{\n    display: none;\n    z-index: 10;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -32461,11 +32523,11 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "separacion" }, [
-    _c("div", { staticClass: "linea contenido" }),
+    _c("div", { staticClass: "linea" }),
     _vm._v(" "),
-    _c("div", { staticClass: "texto contenido" }, [_vm._v(_vm._s(_vm.texto))]),
+    _c("div", { staticClass: "texto" }, [_vm._v(_vm._s(_vm.texto))]),
     _vm._v(" "),
-    _c("div", { staticClass: "linea contenido" }),
+    _c("div", { staticClass: "linea" }),
   ])
 }
 var staticRenderFns = []
@@ -32840,6 +32902,13 @@ var render = function () {
         "div",
         { staticClass: "wrapper" },
         [
+          _vm._v(
+            "\n                        " +
+              _vm._s(_vm.data) +
+              "\n                        " +
+              _vm._s(_vm.felix) +
+              "\n\n        "
+          ),
           _c("separador-component", { attrs: { texto: "Puntos de interés" } }),
           _vm._v(" "),
           _c(

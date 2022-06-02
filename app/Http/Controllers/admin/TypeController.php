@@ -63,4 +63,9 @@ class TypeController extends Controller
         $id = $_POST['idType'];
         TypeModel::removeMain($id);
     }
+
+    public function getMainTypes($value){
+        $result = TypeModel::getMainTypes($value);
+        return response()->json($result);
+    }
 }

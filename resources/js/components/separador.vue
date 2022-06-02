@@ -1,8 +1,8 @@
 <template>
     <section class="separacion">
-        <div class="linea contenido"></div>
-        <div class="texto contenido">{{texto}}</div>
-        <div class="linea contenido"></div>
+        <div class="linea"></div>
+        <div class="texto">{{texto}}</div>
+        <div class="linea"></div>
     </section>
 </template>
 
@@ -34,6 +34,7 @@
         text-transform: uppercase;
         font-weight: bolder;
         text-align: center;
+        width: 33%;
     }
 
     .mt{

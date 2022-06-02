@@ -30,10 +30,14 @@ export default{
             document.getElementById("posterVideoIMG").remove();
             document.getElementById("faviconBG").remove();
 
-            var video = `<video id="pointVideo" src="/video/${this.videos[0]}" controls></video>`;
+            let video = `<video id="pointVideo" src="/video/${this.videos[0]}" controls></video>`;
 
             document.getElementById("fillVideo").style.backgroundColor = "black";
             document.getElementById("fillVideo").innerHTML += video;
+
+            let videoContent = document.getElementById("pointVideo");
+            videoContent.play();
+
             
             if (this.videos.length > 1) {
                 //--> No se muestra el de ir para atras! Que estamos en el primer video
@@ -99,6 +103,7 @@ export default{
     #videoPoster, #videoPoster img, #fillVideo, #fillVideo video{
         width: 100%;
         height: 100%;
+        position: absolute;
     }
 
     #videoPoster{

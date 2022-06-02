@@ -14,11 +14,11 @@ class CreateTypes extends Migration
     public function up()
     {
         Schema::create('types', function (Blueprint $table) {
-            $table->id();
+            $table -> id();
             $table -> string('name');
-            $table->timestamps();
-            $table->bigInteger("order")->default(999);
-            $table->boolean("main")->default(0);
+            $table -> bigInteger("orden")->nullable();
+            $table -> boolean("main")->default(0);
+            $table -> timestamps();
         });
     }
 

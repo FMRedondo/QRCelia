@@ -13,6 +13,7 @@
 aside{
     background-color: #3F4D67 !important;
     box-shadow: 1px 0 20px 0 #3f4d67 !important;
+    position: fixed !important;
 }
 
 .brand-text{

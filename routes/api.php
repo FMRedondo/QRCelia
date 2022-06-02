@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\CommentController;
 use App\Http\Controllers\admin\resourceController;
 use App\Http\Controllers\admin\resourceUploadController;
+use App\Http\Controllers\admin\pointHasTypeController;
+
 
 
 /*
@@ -34,3 +36,5 @@ Route::post('/recursos/addResource', [resourceUploadController::class, 'addResou
 
 
 Route::post('/puntosInteres/verImagenesEnlazadas', [ResourceController::class, 'verPuntosInteresEnlazados'])-> name('ver.imagenes.enlazadas');
+
+Route::get('/pointHasType/get', [pointHasTypeController::class, 'get']);

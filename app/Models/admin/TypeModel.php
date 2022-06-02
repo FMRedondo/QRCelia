@@ -11,7 +11,7 @@ class TypeModel extends Model
     use HasFactory;
     
     public static function getTypes(){
-        $sql = "SELECT * FROM types ORDER BY types.order";
+        $sql = "SELECT * FROM types ORDER BY types.orden";
         $result = DB::SELECT($sql);
         return $result;
     }
@@ -42,6 +42,8 @@ class TypeModel extends Model
         $sql = "INSERT INTO types (name,created_at,updated_at) VALUES ('$name','$date','$date')";
         DB::insert($sql);
         $id = DB::getPdo()->lastInsertId();
+        $sql = "UPDATE types SET orden = $id WHERE (id = $id)";
+        DB::update($sql);
         return $id;
     }
 
@@ -53,6 +55,12 @@ class TypeModel extends Model
     public static function removeMain($id){
         $sql = "UPDATE types SET main = 0 WHERE (id = $id)";
         DB::update($sql);
+    }
+
+    public static function getMainTypes($value){
+        $sql = "SELECT * FROM types WHERE (main = $value)";
+        $result = DB::SELECT($sql);
+        return $result;
     }
 
 }
