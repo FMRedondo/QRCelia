@@ -72,5 +72,4 @@ class interestPointModel extends Model
         DB::delete($sql);
     }
 
-
 }

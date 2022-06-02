@@ -239,11 +239,16 @@ return [
             'icon'        => 'fa-solid fa-gear',
             'label_color' => 'success',
         ],
-
         [
             'text'        => 'Personalización',
             'url'         => 'admin/personalizar',
-            'icon'        => 'fa-solid fa-pen-ruler mb-3',
+            'icon'        => 'fa-solid fa-pen-ruler',
+            'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Modo guapo',
+            'url'         => 'admin/tab',
+            'icon'        => 'fa-solid fa-pen-ruler',
             'label_color' => 'success',
         ],
 

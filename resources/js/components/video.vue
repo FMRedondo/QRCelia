@@ -92,6 +92,10 @@ export default{
         background-color: white;
     }
 
+    #video{
+        padding-bottom: 10em;
+    }
+
     #videoPoster, #videoPoster img, #fillVideo, #fillVideo video{
         width: 100%;
         height: 100%;

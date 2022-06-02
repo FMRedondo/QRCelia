@@ -40,6 +40,8 @@
     padding:1em;
 }
 
+
+
 .alignCloseButton{
 	display: flex;
 	justify-content: flex-end;
@@ -221,4 +223,46 @@
     margin-right: 1em;
     color: green;
     font-size: 2em;
+}
+
+.table {
+    border-spacing: 0 15px;
+}
+
+i {
+    font-size: 1rem !important;
+}
+
+.table tr {
+    border-radius: 20px;
+}
+
+tr td:nth-child(n+5),
+tr th:nth-child(n+5) {
+    border-radius: 0 .625rem .625rem 0;
+}
+
+tr td:nth-child(1),
+tr th:nth-child(1) {
+    border-radius: .625rem 0 0 .625rem;
+}
+
+/*
+* NUEVOS ESTILOS
+*/
+
+.addPanel{
+    position: fixed;
+    top: 0 !important;
+    left: calc(100% - 33%) !important;
+    width: 33% !important;
+    height: 100%;
+    margin: 0;
+    transform: translateX(-200%);
+}
+
+.modalActive{
+    display: block !important;
+    transform: translateX(0) !important;
+    animation: ease-in-out 1.5s;
 }

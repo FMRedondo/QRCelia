@@ -10,6 +10,7 @@ use GrahamCampbell\ResultType\Result;
 use Symfony\Component\HttpFoundation\RequestStack;
 use App\Models\admin\resourceModel;
 use App\Models\admin\TypeModel;
+use Illuminate\Support\Facades\DB;
 
 class interestPointController extends Controller
 {
@@ -70,8 +71,29 @@ class interestPointController extends Controller
         interestPointModel::deleteInterestPoint($id);
     }
 
-    public function getInterestPoints(){
-        return interestPointModel::getInterestPoints();
+    public function getInterestPoints(Request $request){
+        //return interestPointModel::getInterestPoints();
+        $data = DB::table('interest_points')
+        -> when($request -> page, function ($query) use ($request){
+            $skip = ($request -> page - 1) * 9;
+            $take = 9;
+            return $query -> skip($skip) -> take($take);
+        })
+        -> when($request -> author, function ($query) use ($request){
+            return $query -> where('interest_points.author', 'LIKE', "%$request -> author%");
+        })
+        -> when($request -> idType, function ($query) use ($request){
+            return $query -> leftjoin('point_has_type', 'point_has_type.idPoint', '=', 'interest_points.id')
+                          -> where('point_has_type.idType', '=', $request -> idType );
+        })
+
+        -> when($request -> search, function ($query) use ($request){
+            return $query -> where('interest_points.name', 'LIKE', "%$request -> search%");
+        })
+        -> get()
+        -> toArray();
+
+        return $data;
     }
 
 

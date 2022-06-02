@@ -91,7 +91,7 @@ function load() {
 // Funcion para mostrar/cerrar pestaña para añadir nuevo usuario
 $(".btnAddUser").click(showAddUser);
 function showAddUser() {
-    $(".addPanel").toggle();
+    document.getElementsByClassName("addPanel")[0].classList.toggle('modalActive');
     $(".backPanel").show();
 }
 

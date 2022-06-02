@@ -12,12 +12,14 @@ use App\Http\Controllers\admin\rolUserController;
 use App\Http\Controllers\admin\customizationController;
 use Spatie\Permission\Models\Role;
 
-Route::get('/', function () {
-    return view('admin/index');
-})-> middleware('can:ver_administracion');
+Route::get('/', [panelesController::class, 'index']) -> name('index') -> middleware('can:ver_administracion');
 
 Route::get('/ajustes', function () {
     return view('admin/ajustes');
+})-> middleware('can:ver_administracion');
+
+Route::get('/tab', function () {
+    return view('admin/tab');
 })-> middleware('can:ver_administracion');
 
 Route::get('/personalizar', function () {

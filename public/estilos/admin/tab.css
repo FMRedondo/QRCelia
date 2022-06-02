@@ -1,0 +1,14 @@
+/*TAB CSS*/
+
+.iframe-mode{
+    margin: 0 !important;
+}
+
+.cerrar{
+    color: white !important;
+}
+
+.iframe-mode .nav-link.active{
+   background-color: #C6A878 !important;
+   color: white !important;
+}

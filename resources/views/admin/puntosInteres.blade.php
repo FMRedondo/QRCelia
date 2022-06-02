@@ -7,8 +7,28 @@
 @stop
 
 @section('content')
+<!--
 
-<div class="d-flex mb-3 pt-5 flex-row row flex-wrap paneles">
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav> -->
+<div class="d-flex mb-3 pt-5 flex-row row flex-wrap paneles"> 
     <!-- Barra para buscar -->
     <div class="col-8 input-group searchBar">
       <input type="text" class="form-control searchText searchPoint" placeholder="Busca tu punto de interes" id="searchPoint">
@@ -24,7 +44,7 @@
           <span class="btn-label"><i class="fa-solid fa-arrows-up-down-left-right"></i></span>Orden
       </button>
 
-      <button type="button" class="btn btn-labeled btn-secondary btnAddPoint" id="fliltros">
+      <button type="button" class="btn btn-labeled btn-secondary btnAddPoint" id="showFilters">
         <span class="btn-label"><i class="fa-solid fa-plus"></i></span>Filtros
       </button>
 
@@ -69,7 +89,7 @@
     </div>
   </div>
 
-  <!-- Cartel para eliminar una categoria -->
+  <!-- Cartel para eliminar un punto -->
   <div class="w-50 m-auto p-5  mx-auto my-auto rounded-xl shadow-lg  bg-white delTypePanel delPanel">
     <div class="">
       <div class="text-center p-5 flex-auto justify-center">
@@ -87,7 +107,10 @@
     </div>
   </div>
   
-    
+    <div class="xl:w-1/3 md:w-1/2 p-4 d-flex flex-wrap filtros" style="gap:3em" id="filtros">
+        <select id="filt"></select>
+    </div>      
+
 <div class="xl:w-1/3 md:w-1/2 p-4 d-flex flex-wrap contenidoPuntos contenido" style="gap:3em">
     <i class="fa-solid fa-spinner fa-spin-pulse h1 d-flex justify-content-center m-auto mt-25"></i>
 </div>

@@ -37,7 +37,7 @@ const ajax = async (data, url, type, success) => {
 
 
 const index = () => {
-    const response = ajax({}, '/admin/puntosInteres/getPoints', 'get', ( response ) => {
+    const response = ajax({}, '/admin/puntosInteres/getPoints?page=1', 'get', ( response ) => {
         const contenidoVista = document.querySelector(".contenidoPuntos")
             contenidoVista.innerHTML = "";
             response.forEach(data => {
@@ -77,6 +77,8 @@ const index = () => {
 
         const ordenBtn = document.getElementById('btnOrden')
         ordenBtn.addEventListener('click', modificarOrden)
+        const filterbtn = document.getElementById('showFilters')
+        filterbtn.addEventListener('click',mostrarFiltros)
 
         const closeWindows = document.getElementById("closeWindows")
         closeWindows.addEventListener('click', () => {
@@ -441,7 +443,11 @@ const modificarOrden = element => {
 
 }
 
-
+const mostrarFiltros = event => {
+    const filter = document.getElementById("filtros")
+    console.log(filter)
+    filter.classList.toggle('oculto')
+}
 /*
  *  BUSCAR PUNTOS DE INTERES
 */
