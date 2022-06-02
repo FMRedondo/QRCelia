@@ -6332,73 +6332,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }).then(function (response) {
                   return response.json();
                 }).then(function (response) {
-                  setInterval(function () {
-                    var datos = [];
-                    /*
-                    {
-                        nombre: "primera planta",
-                        id: 1,
-                        puntos: [
-                            {
-                                id: 1
-                            },
-                            {
-                                id: 2,
-                            }
-                        ]
-                    },
-                    {
-                        nombre: "primera planta",
-                        id: 2,
-                        puntos: [
-                            {
-                                id: 1
-                            },
-                            {
-                                id: 2,
-                            }
-                        ]
-                    }
-                    */
+                  var datos = [];
+                  response.forEach(function (row) {
+                    var aux = true;
 
-                    /*
-                    {
-                        nombre: "primera planta",
-                        id: 1,
-                        puntos: [
-                            {
-                                id: 1
-                            },
-                            {
-                                id: 2,
-                            }
-                        ]
-                    },
-                    {
-                        nombre: "primera planta",
-                        id: 2,
-                        puntos: [
-                            {
-                                id: 1
-                            },
-                            {
-                                id: 2,
-                            }
-                        ]
-                    }
-                    */
-                    response.forEach(function (row) {
-                      if (!datos.includes(row.typeId)) {
-                        datos.push( //row.typeName,
-                        row.typeId = {
-                          id: row.typeId
-                        });
+                    for (var i = 0; i < datos.length; i++) {
+                      if (datos[i][0] == row.typeId) {
+                        aux = false;
                       }
-                    });
-                    _this2.data = datos;
-                  }, 1000); //Vue.set(variable que almacena todos los datos, nombre que se asigna al objeto, valores que metemos al objeto)
+                    }
 
-                  //Vue.set(variable que almacena todos los datos, nombre que se asigna al objeto, valores que metemos al objeto)
+                    if (aux) {
+                      datos.push([row.typeId, [{
+                        name: row.pointName,
+                        poster: row.poster,
+                        text: row.text,
+                        description: row.description,
+                        enlace: row.enlace
+                      }]]);
+                    } else {// busca la poscion del tipo y añades el objeto
+                    }
+                  });
+                  _this2.data = datos;
                   var carga = document.getElementById("carga");
                   carga.remove();
                   console.log(_this2.data);

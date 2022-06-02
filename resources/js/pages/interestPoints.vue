@@ -15,7 +15,7 @@
                 <carga-punto></carga-punto>
             </div>
             <div class="datos ultimoElemento" >
-                <punto-interes v-for="(point, index) in this.datos" :key="index" :titulo=point.name :imagen=point.poster :texto=point.text :descripcion=point.description :enlace=point.enlace ></punto-interes>
+                <punto-interes v-for="(point, index) in this.datos" :key="index" :titulo="point.name" :imagen="point.poster" :texto="point.text" :descripcion="point.description" :enlace="point.enlace"></punto-interes>
             </div>
         </div>
     </section>
@@ -48,51 +48,33 @@ export default {
                    },
                    
             }).then(response => response.json()).then(response => {
-                setInterval(() => {
-                    const datos = []
+                    var datos = []
+                     response.forEach(row => {
+                         var aux = true
+                         for(let i = 0; i < datos.length; i++){
+                             if(datos[i][0] == row.typeId){
+                                aux = false
+                             }
+                         }
+                         if(aux){
+                             datos.push([row.typeId, [
+                                 {
+                                    name: row.pointName,
+                                    poster: row.poster,
+                                    text: row.text,
+                                    description: row.description,
+                                    enlace: row.enlace
+                             }
+                             ]])
+                         }else{
+                             // busca la poscion del tipo y añades el objeto
+                         }
 
-                    /*
-                    {
-                        nombre: "primera planta",
-                        id: 1,
-                        puntos: [
-                            {
-                                id: 1
-                            },
-                            {
-                                id: 2,
-                            }
-                        ]
-                    },
-                    {
-                        nombre: "primera planta",
-                        id: 2,
-                        puntos: [
-                            {
-                                id: 1
-                            },
-                            {
-                                id: 2,
-                            }
-                        ]
-                    }
-                    */
-
-                    response.forEach(row => {
-                        if (!datos.includes(row.typeId)) {
-                            datos.push(
-                                //row.typeName,
-                                row.typeId = {
-                                    id: row.typeId
-                                }
-                            )
-                        }
                     });
 
+                     
                     this.data = datos
-                }, 1000);
-                //Vue.set(variable que almacena todos los datos, nombre que se asigna al objeto, valores que metemos al objeto)
-                
+                            
                 const carga = document.getElementById("carga")
                 carga.remove()
                 console.log(this.data)
