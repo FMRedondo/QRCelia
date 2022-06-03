@@ -53,7 +53,7 @@
 
     @media (max-width: 700px){
         .linea{
-            width: 10px !important;
+            width: calc(100% - 20px)!important
         }
 
         .contenido{

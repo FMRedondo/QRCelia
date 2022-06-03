@@ -17,16 +17,17 @@ class pointHasTypeController extends Controller{
          })
 
          ->select(DB::raw(
-            "interest_points.id AS pointId,
+            "
+            interest_points.id AS pointId,
             interest_points.name AS pointName,
-           asociado,
-           author,
-           description,
-           poster,
-           text,
-           types.id AS typeId,
-           types.name AS typeName,
-           types.orden AS typeOrden
+            asociado,
+            author,
+            description,
+            poster,
+            text,
+            types.id AS typeId,
+            types.name AS typeName,
+            types.orden AS typeOrden
             "
          ))
 

@@ -5,9 +5,7 @@
             <div v-for="(categoria) in data" :key="categoria.id">
                 <separador-component :texto="categoria[1]"></separador-component>
                 <div class="datos ultimoElemento">
-                    <div v-for="(point, index) in categoria[2]" :key="index">
-                        <punto-interes :titulo="point.name" :imagen="point.poster" :texto="point.text" :descripcion="point.description" :enlace="point.id"></punto-interes>
-                    </div>
+                    <punto-interes v-for="(point, index) in categoria[2]" :key="index" :titulo="point.name" :imagen="point.poster" :texto="point.text" :descripcion="point.description" :enlace="point.enlace"></punto-interes>
                 </div>
             </div>
 
@@ -58,14 +56,18 @@ export default {
                                 aux = false
                              }
                          }
-                         if(aux){
+                         if(aux){                            
+                            if (row.text.length > 150) {
+                                row.text = row.text.substr(0, 150) + " ...";
+                            }
+
                              datos.push([row.typeId, row.typeName, [
                                 {
                                     name: row.pointName,
                                     poster: row.poster,
                                     text: row.text,
                                     description: row.description,
-                                    enlace: row.enlace,
+                                    enlace: "/puntodeinteres/" + row.pointId,
                                     orden: row.typeOrden
                                 }
                              ]])
@@ -80,7 +82,7 @@ export default {
                                             poster: row.poster,
                                             text: row.text,
                                             description: row.description,
-                                            enlace: row.enlace,
+                                            enlace: "/puntodeinteres/" + row.pointId,
                                             orden: row.typeOrden
                                         }
                                     )
