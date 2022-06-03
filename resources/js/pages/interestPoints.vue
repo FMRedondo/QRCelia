@@ -2,10 +2,15 @@
     <section class="interestPoints">
         <header-component></header-component>
         <div class="wrapper">
-                            {{data}}
-                            {{felix}}
+            <div v-for="(categoria) in data" :key="categoria.id">
+                <separador-component :texto="categoria[1]"></separador-component>
+                <div class="datos ultimoElemento">
+                    <div v-for="(point, index) in categoria[2]" :key="index">
+                        <punto-interes :titulo="point.name" :imagen="point.poster" :texto="point.text" :descripcion="point.description" :enlace="point.id"></punto-interes>
+                    </div>
+                </div>
+            </div>
 
-            <separador-component texto='Puntos de interés'></separador-component>
             <div id="carga">
                 <carga-punto></carga-punto>
                 <carga-punto></carga-punto>
@@ -13,9 +18,6 @@
                 <carga-punto></carga-punto>
                 <carga-punto></carga-punto>
                 <carga-punto></carga-punto>
-            </div>
-            <div class="datos ultimoElemento" >
-                <punto-interes v-for="(point, index) in this.datos" :key="index" :titulo="point.name" :imagen="point.poster" :texto="point.text" :descripcion="point.description" :enlace="point.enlace"></punto-interes>
             </div>
         </div>
     </section>
@@ -28,7 +30,7 @@ export default {
 
     data(){
         return{
-            data: [],felix:null
+            data: []
         }
     },
 
@@ -57,17 +59,36 @@ export default {
                              }
                          }
                          if(aux){
-                             datos.push([row.typeId, [
-                                 {
+                             datos.push([row.typeId, row.typeName, [
+                                {
                                     name: row.pointName,
                                     poster: row.poster,
                                     text: row.text,
                                     description: row.description,
-                                    enlace: row.enlace
-                             }
+                                    enlace: row.enlace,
+                                    orden: row.typeOrden
+                                }
                              ]])
                          }else{
-                             // busca la poscion del tipo y añades el objeto
+                            // busca la poscion del tipo y añades el objeto
+                            for (let i = 0; i < datos.length; i++) {
+                                if (datos[i][0] == row.typeId) {
+                                    console.log(datos[i])
+                                    datos[i][2].push(
+                                        {
+                                            name: row.pointName,
+                                            poster: row.poster,
+                                            text: row.text,
+                                            description: row.description,
+                                            enlace: row.enlace,
+                                            orden: row.typeOrden
+                                        }
+                                    )
+                                }                                
+                            }
+                            
+
+
                          }
 
                     });

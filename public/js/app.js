@@ -6297,13 +6297,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'interestPoints',
   data: function data() {
     return {
-      data: [],
-      felix: null
+      data: []
     };
   },
   created: function created() {
@@ -6343,14 +6344,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     }
 
                     if (aux) {
-                      datos.push([row.typeId, [{
+                      datos.push([row.typeId, row.typeName, [{
                         name: row.pointName,
                         poster: row.poster,
                         text: row.text,
                         description: row.description,
-                        enlace: row.enlace
+                        enlace: row.enlace,
+                        orden: row.typeOrden
                       }]]);
-                    } else {// busca la poscion del tipo y añades el objeto
+                    } else {
+                      // busca la poscion del tipo y añades el objeto
+                      for (var _i = 0; _i < datos.length; _i++) {
+                        if (datos[_i][0] == row.typeId) {
+                          console.log(datos[_i]);
+
+                          datos[_i][2].push({
+                            name: row.pointName,
+                            poster: row.poster,
+                            text: row.text,
+                            description: row.description,
+                            enlace: row.enlace,
+                            orden: row.typeOrden
+                          });
+                        }
+                      }
                     }
                   });
                   _this2.data = datos;
@@ -11486,7 +11503,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\r\n/*\r\n    #audioButton{\r\n        display: flex;\r\n        justify-content: center;\r\n        align-items: center;\r\n        z-index: 999;\r\n        width: 4em;\r\n        height: 4em;\r\n        position: fixed;\r\n        left: 1%; \r\n        bottom: 50%;\r\n        background-color: var(--colorPrimario);\r\n        border-radius: 50%;\r\n        cursor: pointer;\r\n        animation: music 3s infinite;\r\n    }\r\n    \r\n    #audioIcon{\r\n        color: white;\r\n        font-size: 2em;\r\n    }\r\n\r\n@keyframes music {\r\n    25%{\r\n        transform: translateY(1em);\r\n    }\r\n\r\n    50%{\r\n        transform: translateY(0);\r\n    }\r\n\r\n    75%{\r\n        transform: translateY(1em);\r\n    }\r\n\r\n    100%{\r\n        transform: translateY(0);\r\n    }\r\n}\r\n*/\naudio{\r\n    width: 80%;\r\n    height: 5em;\r\n    margin: 0 auto;\r\n    display: flex;\r\n    justify-content: center;\r\n    margin-bottom: 3em;\n}\naudio::-webkit-media-controls-panel{\r\n    background: var(--colorPrimario);\r\n    color: white !important;\r\n    border-radius: none !important;\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n/*\n    #audioButton{\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        z-index: 999;\n        width: 4em;\n        height: 4em;\n        position: fixed;\n        left: 1%; \n        bottom: 50%;\n        background-color: var(--colorPrimario);\n        border-radius: 50%;\n        cursor: pointer;\n        animation: music 3s infinite;\n    }\n    \n    #audioIcon{\n        color: white;\n        font-size: 2em;\n    }\n\n@keyframes music {\n    25%{\n        transform: translateY(1em);\n    }\n\n    50%{\n        transform: translateY(0);\n    }\n\n    75%{\n        transform: translateY(1em);\n    }\n\n    100%{\n        transform: translateY(0);\n    }\n}\n*/\naudio{\n    width: 80%;\n    height: 5em;\n    margin: 0 auto;\n    display: flex;\n    justify-content: center;\n    margin-bottom: 3em;\n}\naudio::-webkit-media-controls-panel{\n    background: var(--colorPrimario);\n    color: white !important;\n    border-radius: none !important;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11582,7 +11599,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.slide-images.fade[data-v-3e97672c]{\r\n    height: 100%;\n}\n.imgVertical[data-v-3e97672c]{\r\n    width: 50% !important;\n}\n.imgCuadrada[data-v-3e97672c]{\r\n    height: 100%;\r\n    width: auto;\n}\n@media (max-width: 1050px) {\n.imgCuadrada[data-v-3e97672c]{\r\n        height: 50vh;\r\n        width: auto;\n}\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.slide-images.fade[data-v-3e97672c]{\n    height: 100%;\n}\n.imgVertical[data-v-3e97672c]{\n    width: 50% !important;\n}\n.imgCuadrada[data-v-3e97672c]{\n    height: 100%;\n    width: auto;\n}\n@media (max-width: 1050px) {\n.imgCuadrada[data-v-3e97672c]{\n        height: 50vh;\n        width: auto;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11606,7 +11623,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.menuLateral {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n  position: fixed;\r\n  top: 50%;\r\n  left: 0;\r\n  border-radius: 22px;\r\n  padding: 1em 0.5em;\r\n  gap: 1.5em;\r\n  transform: translateY(-50%);\r\n  color: white;\r\n  margin-left: 0.5em;\r\n  -webkit-backdrop-filter: blur(20px);\r\n          backdrop-filter: blur(20px);\r\n  background-color: #14162560;\r\n  transition: ease-in-out 200ms;\r\n  min-height: 5em;\r\n  z-index: 999;\n}\n.oculto {\r\n  display: none !important;\r\n  transform: translateX(-200%) !important;\r\n  transition: ease-in-out 200ms;\n}\n.menuLateral a {\r\n  color: white;\n}\n.menuLateral a {\r\n  color: white;\r\n  transition: ease-in-out 200ms;\r\n  font-size: 1.7em;\n}\n.menuLateral a:hover {\r\n  transform: scale(1.1);\r\n  color: #f05454;\n}\n.menuActivo {\r\n  color: #f05454;\n}\n@media (max-width: 700px) {\n.menuLateral {\r\n    top: 90% !important;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n    -webkit-backdrop-filter: blur(30px);\r\n            backdrop-filter: blur(30px);\r\n    width: 80%;\r\n    margin: 0 auto;\r\n    flex-direction: row;\r\n    justify-content: center;\r\n    margin: 0;\n}\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.menuLateral {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  position: fixed;\n  top: 50%;\n  left: 0;\n  border-radius: 22px;\n  padding: 1em 0.5em;\n  gap: 1.5em;\n  transform: translateY(-50%);\n  color: white;\n  margin-left: 0.5em;\n  -webkit-backdrop-filter: blur(20px);\n          backdrop-filter: blur(20px);\n  background-color: #14162560;\n  transition: ease-in-out 200ms;\n  min-height: 5em;\n  z-index: 999;\n}\n.oculto {\n  display: none !important;\n  transform: translateX(-200%) !important;\n  transition: ease-in-out 200ms;\n}\n.menuLateral a {\n  color: white;\n}\n.menuLateral a {\n  color: white;\n  transition: ease-in-out 200ms;\n  font-size: 1.7em;\n}\n.menuLateral a:hover {\n  transform: scale(1.1);\n  color: #f05454;\n}\n.menuActivo {\n  color: #f05454;\n}\n@media (max-width: 700px) {\n.menuLateral {\n    top: 90% !important;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    -webkit-backdrop-filter: blur(30px);\n            backdrop-filter: blur(30px);\n    width: 80%;\n    margin: 0 auto;\n    flex-direction: row;\n    justify-content: center;\n    margin: 0;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11750,7 +11767,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#components{\r\n    display: flex;\r\n    flex-direction: column;\n}\n#contentSection{\r\n    min-height: 100vh;\n}\r\n/* SLIDER DE IMAGENES */\n.slideshow-container, .slideVideo-container {\r\n    height: 70vh;\r\n    width: 75%;\r\n    position: relative;\r\n    margin: 3em auto;\n}\n.slide-images, .slide-videos {\r\n  display: none;\n}\n.slide-images:first-child, .slide-videos:first-child {\r\n  display: block;\n}\n.prev, .next, .videoPrev, .videoNext {\r\n    cursor: pointer;\r\n    position: absolute;\r\n    top: 45%;\r\n    width: auto;\r\n    padding: 10px;\r\n    color: white;\r\n    font-weight: bold;\r\n    font-size: 3em;\r\n    transition: 0.3s ease;\r\n    border-radius: 0 3px 3px 0;\r\n    -webkit-user-select: none;\r\n       -moz-user-select: none;\r\n        -ms-user-select: none;\r\n            user-select: none;\r\n    background-color: rgba(0, 0, 0,0.8);\n}\n.next, .videoNext {\r\n  right: 0;\r\n  border-radius: 3px 0 0 3px;\n}\n.prev:hover, .next:hover, .videoPrev:hover, .videoNext:hover {\r\n  background-color: rgba(240, 84, 84,0.8);\n}\n.active {\r\n  background-color: #717171;\n}\n.slide-images img{\r\n    height: 70vh;\r\n    width: 100%;\r\n    margin: 0 auto;\r\n    display: flex;\r\n    justify-content: center;\n}\n.slide-videos video{\r\n    height: 70vh;\r\n    width: 100%;\r\n    margin: 0 auto;\r\n    display: flex;\r\n    justify-content: center;\n}\n.fade {\r\n  -webkit-animation-name: fade;\r\n  -webkit-animation-duration: 0.3s;\r\n  animation-name: fade;\r\n  animation-duration: 0.3s;\n}\r\n\r\n/* SLIDER DE VIDEOS */\r\n\r\n\r\n\r\n\r\n/* ANIMACIONES */\n@-webkit-keyframes fade {\nfrom {opacity: .4}\nto {opacity: 1}\n}\n@keyframes fade {\nfrom {opacity: .4}\nto {opacity: 1}\n}\n@media (max-width: 1050px) {\n.slideshow-container, .slideVideo-container {\r\n        height: 50vh;\r\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\r\n        height: 50vh;\r\n        width: 100%;\n}\n}\n@media (max-width: 750px) {\n.slideshow-container, .slideVideo-container {\r\n        height: 35vh;\r\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\r\n        height: 35vh;\r\n        width: 100%;\n}\n.prev, .next {\r\n        font-size: 1.5em;\n}\n}\n@media (max-width: 500px) {\n.slideshow-container, .slideVideo-container{\r\n        height: 25vh;\r\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\r\n        height: 25vh;\r\n        width: 100%;\n}\n.prev, .next, .videoPrev, .videoNext {\r\n        font-size: 1.5em;\n}\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#components{\n    display: flex;\n    flex-direction: column;\n}\n#contentSection{\n    min-height: 100vh;\n}\n/* SLIDER DE IMAGENES */\n.slideshow-container, .slideVideo-container {\n    height: 70vh;\n    width: 75%;\n    position: relative;\n    margin: 3em auto;\n}\n.slide-images, .slide-videos {\n  display: none;\n}\n.slide-images:first-child, .slide-videos:first-child {\n  display: block;\n}\n.prev, .next, .videoPrev, .videoNext {\n    cursor: pointer;\n    position: absolute;\n    top: 45%;\n    width: auto;\n    padding: 10px;\n    color: white;\n    font-weight: bold;\n    font-size: 3em;\n    transition: 0.3s ease;\n    border-radius: 0 3px 3px 0;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    background-color: rgba(0, 0, 0,0.8);\n}\n.next, .videoNext {\n  right: 0;\n  border-radius: 3px 0 0 3px;\n}\n.prev:hover, .next:hover, .videoPrev:hover, .videoNext:hover {\n  background-color: rgba(240, 84, 84,0.8);\n}\n.active {\n  background-color: #717171;\n}\n.slide-images img{\n    height: 70vh;\n    width: 100%;\n    margin: 0 auto;\n    display: flex;\n    justify-content: center;\n}\n.slide-videos video{\n    height: 70vh;\n    width: 100%;\n    margin: 0 auto;\n    display: flex;\n    justify-content: center;\n}\n.fade {\n  -webkit-animation-name: fade;\n  -webkit-animation-duration: 0.3s;\n  animation-name: fade;\n  animation-duration: 0.3s;\n}\n\n/* SLIDER DE VIDEOS */\n\n\n\n\n/* ANIMACIONES */\n@-webkit-keyframes fade {\nfrom {opacity: .4}\nto {opacity: 1}\n}\n@keyframes fade {\nfrom {opacity: .4}\nto {opacity: 1}\n}\n@media (max-width: 1050px) {\n.slideshow-container, .slideVideo-container {\n        height: 50vh;\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\n        height: 50vh;\n        width: 100%;\n}\n}\n@media (max-width: 750px) {\n.slideshow-container, .slideVideo-container {\n        height: 35vh;\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\n        height: 35vh;\n        width: 100%;\n}\n.prev, .next {\n        font-size: 1.5em;\n}\n}\n@media (max-width: 500px) {\n.slideshow-container, .slideVideo-container{\n        height: 25vh;\n        width: 100%;\n}\n.slide-images img, .slide-videos video{\n        height: 25vh;\n        width: 100%;\n}\n.prev, .next, .videoPrev, .videoNext {\n        font-size: 1.5em;\n}\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -32857,14 +32874,40 @@ var render = function () {
         "div",
         { staticClass: "wrapper" },
         [
-          _vm._v(
-            "\n                        " +
-              _vm._s(_vm.data) +
-              "\n                        " +
-              _vm._s(_vm.felix) +
-              "\n\n        "
-          ),
-          _c("separador-component", { attrs: { texto: "Puntos de interés" } }),
+          _vm._l(_vm.data, function (categoria) {
+            return _c(
+              "div",
+              { key: categoria.id },
+              [
+                _c("separador-component", { attrs: { texto: categoria[1] } }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "datos ultimoElemento" },
+                  _vm._l(categoria[2], function (point, index) {
+                    return _c(
+                      "div",
+                      { key: index },
+                      [
+                        _c("punto-interes", {
+                          attrs: {
+                            titulo: point.name,
+                            imagen: point.poster,
+                            texto: point.text,
+                            descripcion: point.description,
+                            enlace: point.id,
+                          },
+                        }),
+                      ],
+                      1
+                    )
+                  }),
+                  0
+                ),
+              ],
+              1
+            )
+          }),
           _vm._v(" "),
           _c(
             "div",
@@ -32884,26 +32927,8 @@ var render = function () {
             ],
             1
           ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "datos ultimoElemento" },
-            _vm._l(this.datos, function (point, index) {
-              return _c("punto-interes", {
-                key: index,
-                attrs: {
-                  titulo: point.name,
-                  imagen: point.poster,
-                  texto: point.text,
-                  descripcion: point.description,
-                  enlace: point.enlace,
-                },
-              })
-            }),
-            1
-          ),
         ],
-        1
+        2
       ),
     ],
     1
@@ -45080,7 +45105,7 @@ Vue.compile = compileToFunctions;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
+module.exports = JSON.parse('{"_args":[["axios@0.21.4","/home/diurno/Escritorio/QRCelia"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"/home/diurno/Escritorio/QRCelia","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
 
 /***/ })
 

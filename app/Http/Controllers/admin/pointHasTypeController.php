@@ -25,7 +25,8 @@ class pointHasTypeController extends Controller{
            poster,
            text,
            types.id AS typeId,
-           types.name AS typeName
+           types.name AS typeName,
+           types.orden AS typeOrden
             "
          ))
 
