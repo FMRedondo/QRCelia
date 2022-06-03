@@ -57,6 +57,7 @@ h1, p, h2, h3{
 #contentSection{
     width: 100%;
     background-color: rgba(0, 0, 0, 0.7);  
+    backdrop-filter: blur(3px);
     position: relative;
 }
 
@@ -137,7 +138,8 @@ h1, p, h2, h3{
 
 .contentText p, .contentText ul li{
     color: white;
-    font-size: 1.2em;
+    font-size: 1.35em;
+    letter-spacing: 1.25px;
 }
 
 .contentText ul li{

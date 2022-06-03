@@ -21,6 +21,7 @@ html{
 
 .contentText a{
     color: var(--colorPrimario);
+    word-wrap: break-word;
 }
 
 .contentText:hover{
