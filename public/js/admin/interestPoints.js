@@ -36,6 +36,13 @@ const ajax = async (data, url, type, success) => {
 }
 
 
+const eliminarPunto = elemento => {
+    ajax({'id': elemento.target.getAttribute('data-id'), '_token': token}, '/admin/puntosInteres/eliminarPunto', 'POST', response => {
+        let puntoInteres = document.getElementById(`card${elemento.target.getAttribute('data-id')}`)
+        puntoInteres.remove()
+    })
+}
+
 const index = () => {
     const response = ajax({}, '/admin/puntosInteres/getPoints?page=1', 'get', ( response ) => {
         const contenidoVista = document.querySelector(".contenidoPuntos")
@@ -77,8 +84,7 @@ const index = () => {
 
         const ordenBtn = document.getElementById('btnOrden')
         ordenBtn.addEventListener('click', modificarOrden)
-        const filterbtn = document.getElementById('showFilters')
-        filterbtn.addEventListener('click',mostrarFiltros)
+
 
         const closeWindows = document.getElementById("closeWindows")
         closeWindows.addEventListener('click', () => {
@@ -438,6 +444,8 @@ const modificarOrden = element => {
         const contenidoVista = document.querySelector(".contenidoPuntos")
         contenidoVista.innerHTML += contenidoTabla;
 
+        console.log(response.qr)
+
         
     })
 
@@ -481,14 +489,6 @@ searchPoint.addEventListener('keyup', elemento => {
     })
 
 })
-
-
-const eliminarPunto = elemento => {
-    ajax({'id': elemento.target.getAttribute('data-id'), '_token': token}, '/admin/puntosInteres/eliminarPunto', 'POST', response => {
-        let puntoInteres = document.getElementById(`card${elemento.target.getAttribute('data-id')}`)
-        puntoInteres.remove()
-    })
-}
 
 
 const cerrar = () => {

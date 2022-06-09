@@ -16,7 +16,8 @@ class interestPointController extends Controller
 {
     
     public function index(){
-        return view('admin/puntosInteres');
+        $categorias = DB::table('types') -> get();
+        return view('admin/puntosInteres', ['categorias' => $categorias]);
     }
 
     public function verEditarPuntosInteres(){
@@ -35,9 +36,11 @@ class interestPointController extends Controller
         $orden = json_encode($orden);
 
         $result = interestPointModel::addInterestPoint($name, $description, $text, $archivo,$orden, $date);
+        $qr = qrCodeController::generateQR($result);
         return response() -> json([
             'id' => $result,
-            'date' => $date
+            'date' => $date,
+            'qr' => $qr
         ]);
 
     }
@@ -57,10 +60,12 @@ class interestPointController extends Controller
 
         $result = interestPointModel::addInterestPoint($name, $description, $text, $nombreArchivoNuevo, $date, $orden);
         resourceModel::añadirPosterComoRecurso($name, $nombreArchivoNuevo);
+        $qr = qrCodeController::generateQR();
         return response() -> json([
             'id' => $result,
             'date' => $date,
-            'poster' => $nombreArchivoNuevo
+            'poster' => $nombreArchivoNuevo,
+            'qr' => $qr
         ]);
 
     }

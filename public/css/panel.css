@@ -254,15 +254,20 @@ tr th:nth-child(1) {
 .addPanel{
     position: fixed;
     top: 0 !important;
-    left: calc(100% - 33%) !important;
+    left: calc(100% + 33%) !important;
     width: 33% !important;
-    height: 100%;
-    margin: 0;
-    transform: translateX(-200%);
+    height: 100% !important;
+    margin: 0 !important;
+    transform: translateX(-200%) !important;
 }
 
 .modalActive{
     display: block !important;
     transform: translateX(0) !important;
     animation: ease-in-out 1.5s;
+}
+
+.searchBar{
+    position: initial;
+    border: 1px solid rgba(0, 0, 0, .5) !important;
 }
