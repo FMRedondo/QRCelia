@@ -55,6 +55,10 @@
         .linea{
             width: calc(100% - 20px)!important
         }
+        
+        .texto{
+            width: calc(100% - 20px)!important;
+        }
 
         .contenido{
             width: calc(100% - 20px) !important;
