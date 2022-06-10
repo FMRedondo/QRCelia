@@ -11,6 +11,7 @@ use App\Http\Controllers\admin\resourceUploadController;
 use App\Http\Controllers\admin\rolUserController;
 use App\Http\Controllers\admin\customizationController;
 use Spatie\Permission\Models\Role;
+use App\Http\Controllers\admin\qrCodeController;
 
 Route::get('/', [panelesController::class, 'index']) -> name('index') -> middleware('can:ver_administracion');
 
@@ -95,3 +96,5 @@ Route::post('/usuarios/deleteUser', [customUsersController::class, 'deleteUser']
 Route::post('/usuarios/searchUsers', [customUsersController::class, 'searchUsers'])-> name('search.users')-> middleware('can:ver_administracion');
 Route::post('/usuarios/getUser', [customUsersController::class, 'getUser']) -> name('get.user')-> middleware('can:ver_administracion');
 Route::post('/usuarios/editUser', [customUsersController::class, 'updateUser']) -> name('edit.user')-> middleware('can:ver_administracion');
+
+Route::get('/generateqr', [qrCodeController::class, 'generateQR'])-> middleware('can:ver_administracion');

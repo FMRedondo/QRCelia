@@ -60,12 +60,10 @@ class interestPointController extends Controller
 
         $result = interestPointModel::addInterestPoint($name, $description, $text, $nombreArchivoNuevo, $date, $orden);
         resourceModel::añadirPosterComoRecurso($name, $nombreArchivoNuevo);
-        $qr = qrCodeController::generateQR();
         return response() -> json([
             'id' => $result,
             'date' => $date,
             'poster' => $nombreArchivoNuevo,
-            'qr' => $qr
         ]);
 
     }

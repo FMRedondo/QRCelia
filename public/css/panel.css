@@ -271,3 +271,7 @@ tr th:nth-child(1) {
     position: initial;
     border: 1px solid rgba(0, 0, 0, .5) !important;
 }
+
+.card-header{
+    background-color: var(--colorPrimario) !important;
+}

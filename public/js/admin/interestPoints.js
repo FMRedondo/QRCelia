@@ -16,20 +16,20 @@ const ajax = async (data, url, type, success) => {
         success: success,
 
         error: function (response) {
-           const error = `
+            const error = `
            <div class="alert alert-danger" role="alert">
                ERROR, no se ha podido actualizar la información
             </div>
            `;
-        
-           crearMensaje();
-           const panelMensaje = document.getElementById('mensaje')
-           panelMensaje.innerHTML = error;
-           console.log("Error al realizar la peticion")
 
-           const animacion = setInterval(() => {
+            crearMensaje();
+            const panelMensaje = document.getElementById('mensaje')
+            panelMensaje.innerHTML = error;
+            console.log("Error al realizar la peticion")
+
+            const animacion = setInterval(() => {
                 document.getElementById('mensaje').remove()
-           }, 3000)
+            }, 3000)
 
         },
     });
@@ -37,18 +37,18 @@ const ajax = async (data, url, type, success) => {
 
 
 const eliminarPunto = elemento => {
-    ajax({'id': elemento.target.getAttribute('data-id'), '_token': token}, '/admin/puntosInteres/eliminarPunto', 'POST', response => {
+    ajax({ 'id': elemento.target.getAttribute('data-id'), '_token': token }, '/admin/puntosInteres/eliminarPunto', 'POST', response => {
         let puntoInteres = document.getElementById(`card${elemento.target.getAttribute('data-id')}`)
         puntoInteres.remove()
     })
 }
 
 const index = () => {
-    const response = ajax({}, '/admin/puntosInteres/getPoints?page=1', 'get', ( response ) => {
+    const response = ajax({}, '/admin/puntosInteres/getPoints?page=1', 'get', (response) => {
         const contenidoVista = document.querySelector(".contenidoPuntos")
-            contenidoVista.innerHTML = "";
-            response.forEach(data => {
-                let contenidoTabla = `
+        contenidoVista.innerHTML = "";
+        response.forEach(data => {
+            let contenidoTabla = `
                     <div id="card${data.id}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32" style="width: 30%" >
                     <img class="imagenPunto lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-4"
                         src="/img/puntosInteres/${data.poster}" alt="${data.name}" />
@@ -65,16 +65,16 @@ const index = () => {
                         </div>
                     </div>    
                 </div>`;
-        
-                contenidoVista.innerHTML += contenidoTabla;
+
+            contenidoVista.innerHTML += contenidoTabla;
         });
-        
+
         const btnEdit = document.getElementsByClassName("editButton");
-        for(let i = 0; i < btnEdit.length; i++)
+        for (let i = 0; i < btnEdit.length; i++)
             btnEdit[i].addEventListener('click', datosPuntoInteres)
 
         const btnDelete = document.getElementsByClassName('removeButton')
-        for(let i = 0; i < btnDelete.length; i++)
+        for (let i = 0; i < btnDelete.length; i++)
             btnDelete[i].addEventListener('click', eliminarPunto)
 
         // FALTA HACER EL EVEVENTO PARA LA ACUALIZACION DE LOS DATOS
@@ -101,8 +101,15 @@ const index = () => {
 
 index();
 
+const obetenerURL = () => {
+    var loc = window.location;
+    var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/') + 1);
+    pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/') + 1);
+    return loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));
+}
 
-const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('data-id'), '_token': token}, '/admin/puntosInteres/getPoint', 'POST', (response) => {
+
+const datosPuntoInteres = (element) => ajax({ 'id': element.target.getAttribute('data-id'), '_token': token }, '/admin/puntosInteres/getPoint', 'POST', (response) => {
     const resourceList = document.querySelector("#resourceList")
     var orden = JSON.parse(response[0].orden)
     const content = `
@@ -119,6 +126,21 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
 
         <div class="modifyPanelContent w-100 d-flex flex-wrap" id='modifyPanelContent' style="height:90%;">
             <div class="w-50 d-flex justify-content-center align-items-center flex-column">
+                <div class='w-100'>
+                <div class="card card-dark shadow-none m-auto mb-3" style="width:90%">
+                <div class="card-header">
+                    <h3 class="card-title">Código QR</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body mb-4">
+                <iframe src="/admin/generateqr?url='${obetenerURL()}puntosInteres/${response[0].id}'" style="width:100%; height:15em !important"></iframe>
+                </div>
+            </div>
+                </div>
                 <div class="w-100">
                 <img src=/img/puntosInteres/${response[0].poster} style='width:90%; margin:0 auto'>
                 </div>
@@ -153,6 +175,7 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
                     <button class='imagenes' id='videosEnlazadas' data-id='${response[0].id}'><i class="fa-solid fa-video"></i> videos </button>
                     <button class='imagenes' id='audiosRelacionado' data-id='${response[0].id}'><i class="fa-solid fa-volume-high"></i> Audios</button>
                 </div>
+
             </div>
             <div class='w-50 d-flex justify-content-center align-items-center flex-column'>
                 <h2 class='h2'>Categorias</h2>
@@ -173,28 +196,28 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
         animation: 150,
         dataIdAttr: "data-name",
         store: {
-            set:  function (sortable) {
+            set: function (sortable) {
                 var order = sortable.toArray();
                 var orden = []
-                for(let i = 0; i < order.length; i++){
+                for (let i = 0; i < order.length; i++) {
                     let recurso
-                    
-                    
+
+
                     orden.push(recurso)
-                    
+
                 }
 
                 console.log(order)
 
                 console.log(orden)
-                ajax({"id": response[0].id, "orden": JSON.stringify(order), "_token": token}, '/admin/puntosInteres/cambiarOrden', 'POST', response => {
-                   
+                ajax({ "id": response[0].id, "orden": JSON.stringify(order), "_token": token }, '/admin/puntosInteres/cambiarOrden', 'POST', response => {
+
                 })
-                
+
             }
         }
     });
-    
+
 
 
 
@@ -209,10 +232,10 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
         backPanel.style.display = "none"
     })
 
-    const inputActualizar  = document.getElementsByClassName("editInput");
-        for(let i = 0; i < inputActualizar.length; i++)
-            inputActualizar[i].addEventListener('change', actualizarDatos)
-    
+    const inputActualizar = document.getElementsByClassName("editInput");
+    for (let i = 0; i < inputActualizar.length; i++)
+        inputActualizar[i].addEventListener('change', actualizarDatos)
+
 
 
     var editor = CKEDITOR.replace('editor1')
@@ -230,11 +253,11 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
         ajax(
             {
                 'id': document.getElementById('editor1').getAttribute('data-id'),
-                'field':  document.getElementById('editor1').getAttribute('data-field'),
-                'value' : editor.getData(),
+                'field': document.getElementById('editor1').getAttribute('data-field'),
+                'value': editor.getData(),
                 '_token': token
-            },'/admin/puntosInteres/editPoint','POST', response => {
-        
+            }, '/admin/puntosInteres/editPoint', 'POST', response => {
+
             })
     })
 
@@ -243,164 +266,163 @@ const datosPuntoInteres = (element) => ajax({'id': element.target.getAttribute('
 
 const pintarCategorias = async idPoint => {
     await fetch(`/admin/puntosInteres/getType?id=${idPoint}`).then(data => data.json())
-    .then(response => {
-       document.getElementById("cargando").remove()
-       response.forEach(element => {
-        var input
-        if(element.attached == true){
-            input = `
+        .then(response => {
+            document.getElementById("cargando").remove()
+            response.forEach(element => {
+                var input
+                if (element.attached == true) {
+                    input = `
             <label class='typesPoint'>
               <span>${element.type_name}</span>
               <input type='checkbox' data-id=${element.type_id} data-idPoint=${idPoint} class='inputType' checked/>
             </label>
            `
-        }else{
-            input = `
+                } else {
+                    input = `
             <label class='typesPoint'>
               <span>${element.type_name}</span>
               <input type='checkbox' data-id=${element.type_id} data-idPoint=${idPoint} class='inputType'/>
             </label>
            `
-        }
+                }
 
-         document.getElementById("categoriasPuntos").innerHTML += input;
+                document.getElementById("categoriasPuntos").innerHTML += input;
 
-       });
+            });
 
-       const inputType = document.getElementsByClassName('inputType')
-       for(let i = 0; i < inputType.length; i++)
-            inputType[i].addEventListener("change", changeInputType)
-    })
+            const inputType = document.getElementsByClassName('inputType')
+            for (let i = 0; i < inputType.length; i++)
+                inputType[i].addEventListener("change", changeInputType)
+        })
 }
 
 const changeInputType = async element => {
-   const input = element.target
-   var attached = false
-   if(input.checked)
+    const input = element.target
+    var attached = false
+    if (input.checked)
         attached = true
 
-   fetch(`/admin/puntosInteres/attachedPointType?idPoint=${input.getAttribute('data-idPoint')}&idType=${input.getAttribute('data-id')}&attached=${attached}`)
-   .then(response => {console.log(response)})
+    fetch(`/admin/puntosInteres/attachedPointType?idPoint=${input.getAttribute('data-idPoint')}&idType=${input.getAttribute('data-id')}&attached=${attached}`)
+        .then(response => { console.log(response) })
 }
 
 
 const actualizarDatos = (element) => ajax(
-    {   
+    {
         'id': element.target.getAttribute('data-id'),
-        'field':  element.target.getAttribute('data-field'),
-        'value' : element.target.value,
+        'field': element.target.getAttribute('data-field'),
+        'value': element.target.value,
         '_token': token
-    },'/admin/puntosInteres/editPoint','POST',(response) => {
-    
-    const aviso = `
+    }, '/admin/puntosInteres/editPoint', 'POST', (response) => {
+
+        const aviso = `
         <div class="alert alert-success" role="alert">
             Datos actualizados correctamente
         </div>
     `;
 
-    crearMensaje();
-    const panelMensaje = document.getElementById('mensaje')
-    panelMensaje.innerHTML = aviso;
+        crearMensaje();
+        const panelMensaje = document.getElementById('mensaje')
+        panelMensaje.innerHTML = aviso;
 
-    const ruta = `#card${element.target.getAttribute('data-id')} .${element.target.getAttribute('data-field')}`
-    const cambiarCampos = document.querySelector(ruta);
-    cambiarCampos.innerHTML = element.target.value;
+        const ruta = `#card${element.target.getAttribute('data-id')} .${element.target.getAttribute('data-field')}`
+        const cambiarCampos = document.querySelector(ruta);
+        cambiarCampos.innerHTML = element.target.value;
 
-    //ESTO NO FUNCIONA
-    const ruta2 = `#windowTitle${element.target.getAttribute('data-id')} .${element.target.getAttribute('data-field')}` //<--- EL PETARDAZO ESTÁ AQUI
-    const cambiarCampos2 = document.querySelector(ruta2);
-    cambiarCampos2.innerHTML = "Editar " + element.target.value;
-  
-    const animacion = setInterval(() => {
-        panelMensaje.remove();
-    }, 3000)
+        //ESTO NO FUNCIONA
+        const ruta2 = `#windowTitle${element.target.getAttribute('data-id')} .${element.target.getAttribute('data-field')}` //<--- EL PETARDAZO ESTÁ AQUI
+        const cambiarCampos2 = document.querySelector(ruta2);
+        cambiarCampos2.innerHTML = "Editar " + element.target.value;
 
-})
+        const animacion = setInterval(() => {
+            panelMensaje.remove();
+        }, 3000)
+
+    })
 
 
-const  mostrarAñadirPunto = (element) => {
-   const backpanel = document.getElementById('backpanel')
-   const addPanel = document.getElementById('addPanel')
-   const savePoint = document.getElementById("savePoint")
-   addPanel.classList.toggle("mostrarPanel")
-   backpanel.classList.toggle("mostrarPanel")
-   // quitarle el scroll al document
+const mostrarAñadirPunto = (element) => {
+    const backpanel = document.getElementById('backpanel')
+    const addPanel = document.getElementById('addPanel')
+    const savePoint = document.getElementById("savePoint")
+    addPanel.classList.toggle("mostrarPanel")
+    backpanel.classList.toggle("mostrarPanel")
+    // quitarle el scroll al document
 
-   savePoint.addEventListener('click', añadirPunto)   
+    savePoint.addEventListener('click', añadirPunto)
 }
 
 const modificarOrden = element => {
-    if(element.target.getAttribute('data-edit') == 'false'){
+    if (element.target.getAttribute('data-edit') == 'false') {
         const contenidoPuntos = document.getElementsByClassName('contenidoPuntos')[0]
         contenidoPuntos.innerHTML = ""
-        
+
         fetch("/admin/puntosInteres/getPoints").then(response => response.json()).then(data => {
             console.log(data)
-        data.forEach(element => {
-            let punto = `
+            data.forEach(element => {
+                let punto = `
             <div id="card${element.id}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32 cardMove" style="width: 30%" >
                 <img class="rounded w-full object-cover object-center" src="/img/puntosInteres/${element.poster}" alt="${element.name}" />
                 <p>${element.name}</p>
             </div>
             `
-            contenidoPuntos.innerHTML += punto
+                contenidoPuntos.innerHTML += punto
 
-            document.getElementById('btnOrden').setAttribute('data-edit', 'true')
-            document.getElementsByClassName("contenidoPuntos")[0].setAttribute('id', 'movePoint')
-            
-            const el = document.getElementById("movePoint")
-            Sortable.create(el, {
-                group: "orden",
-                sort: true,
-                handle: '.handle',
-                animation: 150,
-                dataIdAttr: "data-id",
-                store:{
+                document.getElementById('btnOrden').setAttribute('data-edit', 'true')
+                document.getElementsByClassName("contenidoPuntos")[0].setAttribute('id', 'movePoint')
 
-                }
-            })
+                const el = document.getElementById("movePoint")
+                Sortable.create(el, {
+                    group: "orden",
+                    sort: true,
+                    handle: '.handle',
+                    animation: 150,
+                    dataIdAttr: "data-id",
+                    store: {
 
-            /*
-        store: {
-            set:  function (sortable) {
-                var order = sortable.toArray();
-                var orden = []
-                for(let i = 0; i < order.length; i++){
-                    let recurso
-                    
-                    
-                    orden.push(recurso)
-                    
-                }
-
-                console.log(order)
-
-                console.log(orden)
-                ajax({"id": response[0].id, "orden": JSON.stringify(order), "_token": token}, '/admin/puntosInteres/cambiarOrden', 'POST', response => {
-                   
+                    }
                 })
-                
-            }
-        }
-    });
 
-            */
+                /*
+            store: {
+                set:  function (sortable) {
+                    var order = sortable.toArray();
+                    var orden = []
+                    for(let i = 0; i < order.length; i++){
+                        let recurso
+                        
+                        
+                        orden.push(recurso)
+                        
+                    }
+    
+                    console.log(order)
+    
+                    console.log(orden)
+                    ajax({"id": response[0].id, "orden": JSON.stringify(order), "_token": token}, '/admin/puntosInteres/cambiarOrden', 'POST', response => {
+                       
+                    })
+                    
+                }
+            }
         });
+    
+                */
+            });
         })
-    }else{
+    } else {
         index()
     }
 }
 
 
- const añadirPunto = async (event) => {
+const añadirPunto = async (event) => {
     event.preventDefault();
-    
-    let nombre = document.getElementById("typeName").value
-    let desc   = document.getElementById("typeDesc").value
-    let texto  = new String(CKEDITOR.instances['texto'].getData())
-    let fecha = new Date()
 
+    let nombre = document.getElementById("typeName").value
+    let desc = document.getElementById("typeDesc").value
+    let texto = new String(CKEDITOR.instances['texto'].getData())
+    let fecha = new Date()
     var formData = new FormData()
     var poster = document.getElementById('poster').files;
     formData.append('poster', poster[0])
@@ -411,7 +433,7 @@ const modificarOrden = element => {
     await fetch('/api/puntosInteres/subirPoster', {
         method: 'post',
         body: formData
-    }).then(data => data.json()).then (response => {
+    }).then(data => data.json()).then(response => {
         const backpanel = document.getElementById('backpanel')
         const addPanel = document.getElementById('addPanel')
 
@@ -443,12 +465,7 @@ const modificarOrden = element => {
 
         const contenidoVista = document.querySelector(".contenidoPuntos")
         contenidoVista.innerHTML += contenidoTabla;
-
-        console.log(response.qr)
-
-        
     })
-
 }
 
 const mostrarFiltros = event => {
@@ -463,7 +480,7 @@ const mostrarFiltros = event => {
 const searchPoint = document.getElementById('searchPoint')
 searchPoint.addEventListener('keyup', elemento => {
     let busqueda = elemento.target.value
-    ajax({'search': busqueda, '_token': token}, '/admin/puntosInteres/searchPoints', 'POST', response => {
+    ajax({ 'search': busqueda, '_token': token }, '/admin/puntosInteres/searchPoints', 'POST', response => {
         const contenidoVista = document.querySelector(".contenidoPuntos")
         contenidoVista.innerHTML = "";
         response.forEach(data => {
@@ -483,7 +500,7 @@ searchPoint.addEventListener('keyup', elemento => {
                     </div>
                 </div>    
             </div>`;
-    
+
             contenidoVista.innerHTML += contenidoTabla;
         });
     })
@@ -494,7 +511,7 @@ searchPoint.addEventListener('keyup', elemento => {
 const cerrar = () => {
     modifyPanelContent.classList.toggle('oculto')
     document.getElementById('imagenesRelacionadas').remove()
-    const btnBorrar =  document.getElementById('volver')
+    const btnBorrar = document.getElementById('volver')
     btnBorrar.remove()
     btnBorrar.removeEventListener('click', cerrar)
 }
@@ -502,7 +519,7 @@ const cerrar = () => {
 const cerrarVideos = () => {
     modifyPanelContent.classList.toggle('oculto')
     document.getElementById('videosRelacionadas').remove()
-    const btnBorrar =  document.getElementById('volver')
+    const btnBorrar = document.getElementById('volver')
     btnBorrar.remove()
     btnBorrar.removeEventListener('click', cerrarVideos)
 }
@@ -511,7 +528,7 @@ const cerrarVideos = () => {
 const cerrarAudios = () => {
     modifyPanelContent.classList.toggle('oculto')
     document.getElementById('audiosRelacionados').remove()
-    const btnBorrar =  document.getElementById('volver')
+    const btnBorrar = document.getElementById('volver')
     btnBorrar.remove()
     btnBorrar.removeEventListener('click', cerrarVideos)
 }
@@ -519,7 +536,7 @@ const cerrarAudios = () => {
 /**
  * imagenes asociadas a un punto de interes
  */
-const imagenesRelacionadas =  async (elemento) => {
+const imagenesRelacionadas = async (elemento) => {
     const modifyPanelContent = document.querySelector("#modifyPanelContent")
     modifyPanelContent.classList.toggle('oculto')
 
@@ -528,7 +545,7 @@ const imagenesRelacionadas =  async (elemento) => {
 
     document.getElementById('volver').addEventListener('click', cerrar)
 
-    const imagenes = await ajax({'id': elemento.target.getAttribute('data-id'), 'tipo': 'image'}, '/api/puntosInteres/verImagenesEnlazadas', 'POST', response => {
+    const imagenes = await ajax({ 'id': elemento.target.getAttribute('data-id'), 'tipo': 'image' }, '/api/puntosInteres/verImagenesEnlazadas', 'POST', response => {
         const modifyPanelContent = document.querySelector("#modifyPanelContent")
         modifyPanelContent.insertAdjacentHTML("beforebegin", `<section id="imagenesRelacionadas"></section>`)
         const contenidoImagenesRelacionaas = document.getElementById('imagenesRelacionadas')
@@ -541,23 +558,23 @@ const imagenesRelacionadas =  async (elemento) => {
     })
 }
 
-const modificarImagenesRelacionadas =  async elemento => {
+const modificarImagenesRelacionadas = async elemento => {
     var enlazado = elemento.target.getAttribute('class')
-   // no lo reconoce como boolean por lo que no puedo hacer !enlazado para la asignacion :( me da toc, pero es lo que hay
-   var enlazado;
-    if(enlazado == 'true'){
+    // no lo reconoce como boolean por lo que no puedo hacer !enlazado para la asignacion :( me da toc, pero es lo que hay
+    var enlazado;
+    if (enlazado == 'true') {
         elemento.target.setAttribute('class', 'false')
         enlazado = 'false'
     }
-    else{
+    else {
         elemento.target.setAttribute('class', 'true')
-        enlazado='true'
+        enlazado = 'true'
     }
 
     let idPunto = elemento.target.getAttribute('data-idPunto')
     let idRecurso = elemento.target.getAttribute('data-id')
-       
-    await ajax({'idPunto': idPunto, 'idRecurso': idRecurso, 'enlazado': enlazado, '_token': token}, '/admin/puntosInteres/enlazarPuntoConRecurso', 'POST', response => {})
+
+    await ajax({ 'idPunto': idPunto, 'idRecurso': idRecurso, 'enlazado': enlazado, '_token': token }, '/admin/puntosInteres/enlazarPuntoConRecurso', 'POST', response => { })
 }
 
 
@@ -569,8 +586,8 @@ const videosRelacionados = async elemento => {
     botonCerrar.insertAdjacentHTML("beforebegin", "<button id='volver'><i class='fa-solid fa-arrow-left'></i></button>")
 
     document.getElementById('volver').addEventListener('click', cerrarVideos)
-    
-    const videos = await ajax({'id': elemento.target.getAttribute('data-id'), 'tipo': 'video'}, '/api/puntosInteres/verImagenesEnlazadas', 'POST', response => {
+
+    const videos = await ajax({ 'id': elemento.target.getAttribute('data-id'), 'tipo': 'video' }, '/api/puntosInteres/verImagenesEnlazadas', 'POST', response => {
         const modifyPanelContent = document.querySelector("#modifyPanelContent")
         modifyPanelContent.insertAdjacentHTML("beforebegin", `<section id="videosRelacionadas"></section>`)
         const contenidoVideosRelacionaas = document.getElementById('videosRelacionadas')
@@ -584,24 +601,24 @@ const videosRelacionados = async elemento => {
 }
 
 
-const modificarVideosRelacionados = async elemento =>{
+const modificarVideosRelacionados = async elemento => {
     var enlazado = elemento.target.getAttribute('class')
 
     var enlazado;
-    if(enlazado == 'true'){
+    if (enlazado == 'true') {
         elemento.target.setAttribute('class', 'false')
         enlazado = 'false'
     }
-    else{
+    else {
         elemento.target.setAttribute('class', 'true')
-        enlazado='true'
+        enlazado = 'true'
     }
 
     let idPunto = elemento.target.getAttribute('data-idPunto')
     let idRecurso = elemento.target.getAttribute('data-id')
-       
-    await ajax({'idPunto': idPunto, 'idRecurso': idRecurso, 'enlazado': enlazado, '_token': token}, '/admin/puntosInteres/enlazarPuntoConRecurso', 'POST', response => {})
-    
+
+    await ajax({ 'idPunto': idPunto, 'idRecurso': idRecurso, 'enlazado': enlazado, '_token': token }, '/admin/puntosInteres/enlazarPuntoConRecurso', 'POST', response => { })
+
 }
 
 const audiosRelacionados = async elemento => {
@@ -613,7 +630,7 @@ const audiosRelacionados = async elemento => {
 
     document.getElementById('volver').addEventListener('click', cerrarAudios)
 
-    const imagenes = await ajax({'id': elemento.target.getAttribute('data-id'), 'tipo': 'audio'}, '/api/puntosInteres/verImagenesEnlazadas', 'POST', response => {
+    const imagenes = await ajax({ 'id': elemento.target.getAttribute('data-id'), 'tipo': 'audio' }, '/api/puntosInteres/verImagenesEnlazadas', 'POST', response => {
         const modifyPanelContent = document.querySelector("#modifyPanelContent")
         modifyPanelContent.insertAdjacentHTML("beforebegin", `<section id="audiosRelacionados"></section>`)
         const contenidoAudiosRelacionados = document.getElementById('audiosRelacionados')
@@ -623,15 +640,15 @@ const audiosRelacionados = async elemento => {
                 <audio src='/audio/${data.url}' controls></audio>
                 <p class='${data.enlazado}' data-id=${data.id} data-idPunto=${elemento.target.getAttribute('data-id')}>Seleccionar/deseleccionar</p>
             </div>`
-            
-              /* 
-              let contenido = `
-              <audio class='${data.enlazado}' data-id=${data.id} data-idPunto=${elemento.target.getAttribute('data-id')} constrols>
-                <source src="/audios/${data.url}" type="audio/mp3">
-                Tu navegador no soporta HTML5 audio.
-              </audio>
-              `
-              */
+
+            /* 
+            let contenido = `
+            <audio class='${data.enlazado}' data-id=${data.id} data-idPunto=${elemento.target.getAttribute('data-id')} constrols>
+              <source src="/audios/${data.url}" type="audio/mp3">
+              Tu navegador no soporta HTML5 audio.
+            </audio>
+            `
+            */
             contenidoAudiosRelacionados.insertAdjacentHTML("beforeend", contenido)
         })
 
@@ -642,26 +659,26 @@ const audiosRelacionados = async elemento => {
 
 const modificarAudiosRelacionados = async elemento => {
 
-    if(elemento.target.nodeName == "P"){
+    if (elemento.target.nodeName == "P") {
         var enlazado = elemento.target.getAttribute('class')
         // no lo reconoce como boolean por lo que no puedo hacer !enlazado para la asignacion :( me da toc, pero es lo que hay
         var enlazado;
-         if(enlazado == 'true'){
-             elemento.target.setAttribute('class', 'false')
-             enlazado = 'false'
-         }
-         else{
-             elemento.target.setAttribute('class', 'true')
-             enlazado='true'
-         }
-     
-     
-         let idPunto = elemento.target.getAttribute('data-idPunto')
-         let idRecurso = elemento.target.getAttribute('data-id')
-            
-         await ajax({'idPunto': idPunto, 'idRecurso': idRecurso, 'enlazado': enlazado, '_token': token}, '/admin/puntosInteres/enlazarPuntoConRecurso', 'POST', response => {})
+        if (enlazado == 'true') {
+            elemento.target.setAttribute('class', 'false')
+            enlazado = 'false'
+        }
+        else {
+            elemento.target.setAttribute('class', 'true')
+            enlazado = 'true'
+        }
+
+
+        let idPunto = elemento.target.getAttribute('data-idPunto')
+        let idRecurso = elemento.target.getAttribute('data-id')
+
+        await ajax({ 'idPunto': idPunto, 'idRecurso': idRecurso, 'enlazado': enlazado, '_token': token }, '/admin/puntosInteres/enlazarPuntoConRecurso', 'POST', response => { })
     }
-    
+
 }
 
 function crearMensaje() {

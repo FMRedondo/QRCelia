@@ -7,66 +7,6 @@
 @stop
 
 @section('content')
-    <!--
-                <div class="row">
-                  <div class="col-md-3">ddd</div>
-                  <div class="cols-md-9">
-                    <div class="d-flex mb-3 pt-5 flex-row row flex-wrap paneles">
-                     
-                      
-                   
-                      <div class="col-4 input-group d-flex" style="gap:1.5em" >
-                        <button type="button" class="btn btn-labeled btn-info btnAddPoint" id="btnOrden" data-edit='false'>
-                            <span class="btn-label"><i class="fa-solid fa-arrows-up-down-left-right"></i></span>Orden
-                        </button>
-                  
-                        <button type="button" class="btn btn-labeled btn-secondary btnAddPoint" id="showFilters">
-                          <span class="btn-label"><i class="fa-solid fa-plus"></i></span>Filtros
-                        </button>
-                  
-                        <button type="button" class="btn btn-labeled btn-success btnAddPoint" id="addbtn">
-                          <span class="btn-label"><i class="fa-solid fa-plus"></i></span>Añadir
-                        </button>
-                  
-                      </div>
-                    </div>
-                  
-                   
-                    
-                  
-                   
-                    <div class="w-50 m-auto p-5  mx-auto my-auto rounded-xl shadow-lg  bg-white delTypePanel delPanel">
-                      <div class="">
-                        <div class="text-center p-5 flex-auto justify-center">
-                            <i class="fa-solid fa-circle-info" style="color: #ef4444;"></i>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 flex items-center text-red-500 mx-auto" viewBox="0 0 20 20" fill="currentColor">
-                              <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
-                            </svg>
-                            <h2 class="text-xl font-bold py-4 ">¿Estas seguro?</h2>
-                            <p class="text-sm text-gray-500 px-8">Esta opción es irreversible, si borras la categoría, no la podras recuperar</p>
-                        </div>
-                        <div class="p-3  mt-2 text-center space-x-4 md:block">
-                            <button class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100 btnWindow" data-val='false'>Cancelar</button>
-                            <button class="mb-2 md:mb-0 bg-red border border-red-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-red-600 btnWindow" data-val='true'>Borrar</button>
-                        </div>
-                      </div>
-                    </div>
-                    
-                      <div class="xl:w-1/3 md:w-1/2 p-4 d-flex flex-wrap filtros" style="gap:3em" id="filtros">
-                          <select id="filt"></select>
-                      </div>
-                  
-                  <div class="xl:w-1/3 md:w-1/2 p-4 d-flex flex-wrap contenidoPuntos contenido" style="gap:3em">
-                      <i class="fa-solid fa-spinner fa-spin-pulse h1 d-flex justify-content-center m-auto mt-25"></i>
-                  </div>
-                  
-                  <div class="xl:w-1/3 md:w-1/2 p-4 d-flex flex-wrap" id="resourceList" style="gap:3em">
-                  <div id='imagenesRelacionadas'></div>
-                  </div>
-                 
-                </div>
-
-                -->
 
     <div class="row">
         <div class="col-md-3">
@@ -105,7 +45,7 @@
 
             </div>
 
-            <div class="card card-dark shadow-none mb-3">
+            <div class="card card-dark shadow-none mb-5">
                 <div class="card-header">
                     <h3 class="card-title">Tipo de contenido</h3>
                     <div class="card-tools">
@@ -196,7 +136,27 @@
             </div>
             </form>
     </div>
-
+    <div class="w-50 m-auto p-5  mx-auto my-auto rounded-xl shadow-lg  bg-white delTypePanel delPanel">
+        <div class="">
+          <div class="text-center p-5 flex-auto justify-center">
+              <i class="fa-solid fa-circle-info" style="color: #ef4444;"></i>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 flex items-center text-red-500 mx-auto" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+              </svg>
+              <h2 class="text-xl font-bold py-4 ">¿Estas seguro?</h2>
+              <p class="text-sm text-gray-500 px-8">Esta opción es irreversible, si borras la categoría, no la podras recuperar</p>
+          </div>
+          <div class="p-3  mt-2 text-center space-x-4 md:block">
+              <button class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100 btnWindow" data-val='false'>Cancelar</button>
+              <button class="mb-2 md:mb-0 bg-red border border-red-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-red-600 btnWindow" data-val='true'>Borrar</button>
+          </div>
+        </div>
+      </div>
+    
+    
+    <div class="xl:w-1/3 md:w-1/2 p-4 d-flex flex-wrap" id="resourceList" style="gap:3em">
+    <div id='imagenesRelacionadas'></div>
+    </div>
     <div class='backPanel' id="backpanel"></div>
 
 

@@ -39,4 +39,3 @@ Route::post('/recursos/addResource', [resourceUploadController::class, 'addResou
 Route::post('/puntosInteres/verImagenesEnlazadas', [ResourceController::class, 'verPuntosInteresEnlazados'])-> name('ver.imagenes.enlazadas');
 
 Route::get('/pointHasType/get', [pointHasTypeController::class, 'get']);
-Route::get('/generateqr', [qrCodeController::class, 'generateQR']);
