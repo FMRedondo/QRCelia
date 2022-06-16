@@ -34,6 +34,7 @@ Route::post('/comentarios/addComment', [CommentController::class, 'addComment'])
 
 Route::post('/puntosInteres/subirPoster', [interestPointController::class, 'subirPoster'])-> name('subir.poster');
 Route::post('/recursos/addResource', [resourceUploadController::class, 'addResource'])-> name('add.resource');
+Route::post('/recursos/searchByType', [ResourceController::class, 'searchByType'])-> name('APIsearchByType.resource');
 
 
 Route::post('/puntosInteres/verImagenesEnlazadas', [ResourceController::class, 'verPuntosInteresEnlazados'])-> name('ver.imagenes.enlazadas');

@@ -36,7 +36,7 @@ function load() {
                 }
 
                 content = `
-                <div id="${data.id}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32" style="width: 30%">
+                <div id="${data.id}" data-type="${data.type}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32" style="width: 30%">
                     <div class="imgThumbnail">
                         <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-4"
                         src="${thumbnail}" alt="Image Size 720x400" />
@@ -701,7 +701,7 @@ $(".closeModifyWindow").click(() => {
 // Crear ventana para añadir
 function createAddPanel(){
     const content = `
-  <div class="w-50 m-auto mx-auto my-auto rounded-xl shadow-lg  bg-white addPanel" style="top: 10% !important;">
+  <div class="w-50 m-auto mx-auto my-auto rounded-xl shadow-lg  bg-white addPanel">
     <div class="titleContent d-flex justify-content-between p-2">
       <div class="text-center">
         <h2 class="mt-1 text-3xl font-bold text-gray-900">Subir un nuevo recurso</h2>
@@ -767,3 +767,109 @@ function reloadActions(){
     $(".searchResource").off("click",searchResource);
     $(".searchResource").on("click",searchResource);
 }
+
+// Funcion para filtrar recursos por tipo
+$(".checkType").change(function () {
+    let type = $(this).data("type");
+
+    //Si se activa un checkVOX, se cogen los recursos de ese tipo y se cargan en pantalla
+    if(this.checked) {
+        var params = {
+            "type": type,
+            "_token": $('meta[name="csrf-token"]').attr('content'),
+        }
+
+        $.ajax({
+            data: params,
+            url: '/api/recursos/searchByType',
+            type: 'post',
+    
+            success: function (response) {
+                //Hay ya checks o no? Para borrar todas las tarjetas ya hechas
+                if (($(":checkbox:checked").length - 1) == 0) {
+                    $("#resourceList").empty();
+                }
+
+                response.forEach(function (data) {
+    
+                    if (data.updated_at == null)
+                        data.updated_at = "No disponible"
+                    
+                    if (data.created_at == null)
+                        data.created_at = "No disponible"
+        
+                    var thumbnail = ""
+        
+                    if (data.type == "image")
+                        thumbnail = "/img/puntosInteres/" + data.url;
+                    
+                    if (data.type == "video") 
+                        thumbnail = "/img/video.png";
+                    
+                    if (data.type == "audio")
+                        thumbnail = "/img/audio.png";
+                    
+        
+                    content = `
+                        <div id="${data.id}" data-type="${data.type}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32" style="width: 30%">
+                            <div class="imgThumbnail">
+                                <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-4"
+                                src="${thumbnail}" alt="Image Size 720x400" />
+                                <button type="button" class="btn btn-success rounded-circle flex editButton" data-id='${data.id}'>
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                <button type="button" class="btnDelResource removeButton2 btn btn-danger rounded-circle flex" data-id='${data.id}'>
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                            </div>
+                            <div class="p-4">
+                                <h2 class="name text-lg text-gray-900 font-medium title-font mb-4 whitespace-nowrap truncate">
+                                    ${data.name}
+                                </h2>
+                                <p class="autor text-gray-600 font-light text-md mb-3">
+                                    Autor: ${data.autor}
+                                </p>
+                                <p class="text-gray-600 font-light text-md mb-3">
+                                    Tipo: ${data.type}
+                                </p>
+        
+                                <div class="py-4 border-t text-xs text-gray-700">
+                                    <div class="d-flex flex-column">
+        
+                                        <div class="col-span-2 mb-2">
+                                            Fecha de creación:
+                                            <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-400 rounded-full">
+                                                ${data.created_at}
+                                            </span>
+                                        </div>
+                                        
+                                        <div class="col-span-2 mb-2">
+                                            Última modificación:
+                                            <span class="resourceUpdated inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-400 rounded-full">
+                                                ${data.updated_at}
+                                            </span>
+                                        </div>
+                                        
+                                    </div>
+                            </div>
+                        </div>    
+                    `;
+                    $("#resourceList").append(content);   
+                })   
+            },
+    
+            error: function (response){
+    
+            }
+        });
+    //Si se desactiva, nos cargamos las tarjetas de esa categoria usando el data-type de las tarjetas
+    //Si no hay ningún checkbox activo, volvemos a cargar TODOS los recursos
+    }else{
+        if ($(":checkbox:checked").length == 0) {
+            $("#resourceList").empty();
+            load();
+        }else{
+            $(`.c-card[data-type=${type}]`).remove()
+        }
+    }
+})
