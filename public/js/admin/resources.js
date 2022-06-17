@@ -9,9 +9,33 @@ function load() {
     createAddPanel();
 
     $('.searchByPoint').select2({
-        width: '100%'
-    });
+        width: '100%',
+        placeholder: 'Buscar recursos de un punto',
+        ajax: {
+            url: '/admin/puntosInteres/searchPoints',
+            method: 'POST',
+            data: function (params) {
+                var data = {
+                    search: params.term,
+                    _token: $('meta[name="csrf-token"]').attr('content')
+                }            
+                return data;
+            },
+            processResults: function (data) {
+                let puntos = []
+                data.forEach(punto => {
+                    puntos.push({
+                        "id": punto.id,
+                        "text": punto.name,
+                    })
+                });
 
+                return {
+                    results: puntos
+                };
+            },
+        },
+    });
 
     var params = []
     $.ajax({
@@ -857,6 +881,7 @@ $(".checkType").change(function () {
                                         </div>
                                         
                                     </div>
+                                </div>
                             </div>
                         </div>    
                     `;
@@ -878,4 +903,94 @@ $(".checkType").change(function () {
             $(`.c-card[data-type=${type}]`).remove()
         }
     }
+})
+
+
+//Buscar recursos asignados a un punto
+$("#searchByPoint").change(function () {
+    let id = $(this).children("option:selected").val();
+    var params = {
+        "id": id,
+        "type": "daigual",
+    };
+    $.ajax({
+        data: params,
+        url: '/api/puntodeinteres/getResources',
+        type: 'POST',
+
+        success: function (response) {
+            $("#resourceList").empty();
+
+            response.forEach(data => {
+    
+                if (data.updated_at == null)
+                    data.updated_at = "No disponible"
+                
+                if (data.created_at == null)
+                    data.created_at = "No disponible"
+    
+                var thumbnail = ""
+    
+                if (data.type == "image")
+                    thumbnail = "/img/puntosInteres/" + data.url;
+                
+                if (data.type == "video") 
+                    thumbnail = "/img/video.png";
+                
+                if (data.type == "audio")
+                    thumbnail = "/img/audio.png";
+                    
+                content = `
+                    <div id="${data.id}" data-type="${data.type}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32" style="width: 30%">
+                        <div class="imgThumbnail">
+                            <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-4"
+                            src="${thumbnail}" alt="Image Size 720x400" />
+                            <button type="button" class="btn btn-success rounded-circle flex editButton" data-id='${data.id}'>
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <button type="button" class="btnDelResource removeButton2 btn btn-danger rounded-circle flex" data-id='${data.id}'>
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
+                        <div class="p-4">
+                            <h2 class="name text-lg text-gray-900 font-medium title-font mb-4 whitespace-nowrap truncate">
+                                ${data.name}
+                            </h2>
+                            <p class="autor text-gray-600 font-light text-md mb-3">
+                                Autor: ${data.autor}
+                            </p>
+                            <p class="text-gray-600 font-light text-md mb-3">
+                                Tipo: ${data.type}
+                            </p>
+
+                            <div class="py-4 border-t text-xs text-gray-700">
+                                <div class="d-flex flex-column">
+
+                                    <div class="col-span-2 mb-2">
+                                        Fecha de creación:
+                                        <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-400 rounded-full">
+                                            ${data.created_at}
+                                        </span>
+                                    </div>
+                                    
+                                    <div class="col-span-2 mb-2">
+                                        Última modificación:
+                                        <span class="resourceUpdated inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-400 rounded-full">
+                                            ${data.updated_at}
+                                        </span>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                `;
+                $("#resourceList").append(content);
+            })
+        },
+        
+        error: function (response){
+            console.log("Esto ha fallado, está más roto que la carrera artística de Rosalía")
+        }
+    })
 })

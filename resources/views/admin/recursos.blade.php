@@ -21,9 +21,7 @@
                 </div>
 
                 <div class="col-12 input-group mt-3">
-                    <select class="searchByPoint" name="puntos[]">
-                        <option value="AL">Alabama</option>
-                        <option value="WY">Wyoming</option>
+                    <select id="searchByPoint" class="searchByPoint" name="puntos[]">
                     </select>
                 </div>
 
