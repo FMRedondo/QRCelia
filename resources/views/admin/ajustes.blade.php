@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title',  'QRCelia | Ajustes')
 
 @section('content_header')
    <h1>Esta es la página de los ajustes</h1>

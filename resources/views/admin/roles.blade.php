@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title',  'QRCelia | Roles')
 
 @section('content_header')
     <h1>Configurar roles</h1>

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title',  'QRCelia | Comentarios')
 
 @section('content_header')
    

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title',  'QRCelia | Recursos')
 
 @section('content_header')
   <meta name="csrf-token" content="{{ csrf_token() }}">

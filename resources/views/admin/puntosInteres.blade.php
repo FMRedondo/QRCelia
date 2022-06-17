@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Puntos de interes | QRCelia')
+@section('title',  'QRCelia | Punto de Interés')
 
 @section('content_header')
     <meta name="csrf-token" content="{{ csrf_token() }}">

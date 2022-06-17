@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Ficha puntos interes')
+@section('title',  'QRCelia | Ficha de Punto de Interes')
 
 @section('content_header')
     
