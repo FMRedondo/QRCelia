@@ -275,3 +275,12 @@ tr th:nth-child(1) {
 .card-header{
     background-color: var(--colorPrimario) !important;
 }
+
+.select2-selection.select2-selection--single{
+    height: 100% !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: 8px !important;
+    right: 1px !important;
+}

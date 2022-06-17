@@ -7,6 +7,12 @@ load();
 // Mostrar una lista con todos los recursos
 function load() {
     createAddPanel();
+
+    $('.searchByPoint').select2({
+        width: '100%'
+    });
+
+
     var params = []
     $.ajax({
         data: params,

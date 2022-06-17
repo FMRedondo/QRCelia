@@ -19,6 +19,15 @@
                     </span>
                   </div>
                 </div>
+
+                <div class="col-12 input-group mt-3">
+                    <select class="searchByPoint" name="puntos[]">
+                        <option value="AL">Alabama</option>
+                        <option value="WY">Wyoming</option>
+                    </select>
+                </div>
+
+
           </div>
      
       <div class="card card-dark shadow-none mb-5">
@@ -82,9 +91,11 @@
     <link rel="stylesheet" href="/css/panel.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @stop
 
 @section('js')
     <script src="https://kit.fontawesome.com/75e57fedbe.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="/js/admin/resources.js"></script>
 @stop
