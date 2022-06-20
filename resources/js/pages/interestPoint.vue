@@ -167,7 +167,15 @@ export default{
                 icon.classList.remove("fa-volume-high");
                 icon.classList.add("fa-volume-low")
             });
-        }
+        },
+         activateComments(){
+            fetch('/api/activeComments').then(data => data.json()).then(response => {
+                if(response[0].value == 0)
+                    this.comments = false;
+                else
+                    this.comments = true;
+            })
+        },
     },
 
     created() {
@@ -177,6 +185,7 @@ export default{
             this.getResources("image");
             this.getResources("video");
             this.getResources("audio");
+            this.activateComments();
 
             setTimeout(this.pintarMenu, '2000')
     },

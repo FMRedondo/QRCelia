@@ -42,4 +42,5 @@ Route::post('/puntosInteres/verImagenesEnlazadas', [ResourceController::class, '
 
 Route::get('/pointHasType/get', [pointHasTypeController::class, 'get']);
 
-Route::get('/getSettings', [SettingController::class, 'getSettings']);
+Route::get('/getSettings', [SettingController::class, 'getSettings']); 
+Route::get('/activeComments', [SettingController::class, 'activeComments']);

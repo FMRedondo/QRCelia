@@ -6255,17 +6255,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         icon.classList.remove("fa-volume-high");
         icon.classList.add("fa-volume-low");
       });
+    },
+    activateComments: function activateComments() {
+      var _this3 = this;
+
+      fetch('/api/activeComments').then(function (data) {
+        return data.json();
+      }).then(function (response) {
+        if (response[0].value == 0) _this3.comments = false;else _this3.comments = true;
+      });
     }
   },
   created: function created() {
-    var _this3 = this;
+    var _this4 = this;
 
     window.addEventListener('DOMContentLoaded', function (event) {
-      _this3.getInterestPoint();
+      _this4.getInterestPoint();
     });
     this.getResources("image");
     this.getResources("video");
     this.getResources("audio");
+    this.activateComments();
     setTimeout(this.pintarMenu, '2000');
   }
 });

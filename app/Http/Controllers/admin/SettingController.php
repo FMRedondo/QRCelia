@@ -27,4 +27,11 @@ class SettingController extends Controller
 
             ]);
     }
+
+    public function activeComments(){
+        return DB::table('custom_settings')
+            ->where('option', '=', 'comentarios')
+            ->limit(1)
+            ->get();
+    }
 }
