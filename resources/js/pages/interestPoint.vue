@@ -5,7 +5,7 @@
         <div class="wrapper" id="components">
             <menuRecursos style="order: -2"></menuRecursos>
             <title-component style="order: -1" :titulo="this.name" :desc="this.desc"></title-component> 
-            <!-- <comentarios :about='this.idpoint'></comentarios> -->
+            
             
             <imagenes-component v-if="this.images.length != ``" id="imgComp" :images="this.images"></imagenes-component>
 
@@ -14,14 +14,22 @@
             <audio-component id="audioComp" v-if="this.audio.length != ``" :audio="'/audio/' + this.audio"></audio-component>
 
             <video-component :poster="'/img/puntosInteres/' + this.poster" id="videoComp" v-if="this.videos.length > 0" :videos="this.videos"></video-component>
-
         </div>
+        <div v-if="comments">
+                <comentarios :about='this.idpoint'></comentarios>
+            </div>
 
     </section>
 </template>
 
 <script>
 export default{
+    data() {
+        return {
+            comments: true
+        };
+    },
+
     props: {
         idpoint: Number,
         createdAt: String,

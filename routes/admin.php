@@ -12,12 +12,13 @@ use App\Http\Controllers\admin\rolUserController;
 use App\Http\Controllers\admin\customizationController;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\admin\qrCodeController;
+use App\Http\Controllers\admin\SettingController;
 
 Route::get('/', [panelesController::class, 'index']) -> name('index') -> middleware('can:ver_administracion');
 
-Route::get('/ajustes', function () {
-    return view('admin/ajustes');
-})-> middleware('can:ver_administracion');
+Route::get('/ajustes', [SettingController::class, 'index'])-> middleware('can:ver_administracion');
+Route::get('/changeOption', [SettingController::class, 'changeOption'])-> middleware('can:ver_administracion');
+
 
 Route::get('/tab', function () {
     return view('admin/tab');
@@ -35,7 +36,7 @@ Route::get('/roles', function () {
 Route::get('/obtenerCustomizacion', [customizationController::class, 'getAllCustomizationData'])-> name('ver.opciones');
 Route::post('/cambiarCustomizacion', [customizationController::class, 'updateCustomization'])-> name('cambiar.opciones');
 Route::post('/cambiarImagenes', [customizationController::class, 'cambiarImagenes'])-> name('cambiar.imagenes');
-//
+
 
 
 Route::get('/roles/getUsersAndRoles', [rolUserController::class, 'getUsersAndRoles'])-> name('getUsersAndRoles.user')-> middleware('can:ver_administracion');
@@ -59,7 +60,7 @@ Route::post('/puntosInteres/cambiarOrden', [interestPointController::class, 'cam
 Route::get('/puntosInteres/getType', [interestPointController::class, 'getType'])-> name('get.type.point')-> middleware('can:ver_administracion');
 Route::get('/puntosInteres/attachedPointType', [interestPointController::class, 'attachedPointType'])-> name('attachedPointType')-> middleware('can:ver_administracion');
 Route::get('/puntosInteres/attachedPointType', [interestPointController::class, 'attachedPointType'])-> name('attachedPointType')-> middleware('can:ver_administracion');
-
+Route::post('/puntosInteres/enlazarPuntoConRecurso', [ResourceController::class, 'enlazarPuntoConRecurso'])-> name('enlazar.punto.recurso')-> middleware('can:ver_administracion');
 
 Route::get('/comentarios', [CommentController::class, 'index'])-> name('show.viewComments')-> middleware('can:ver_administracion');
 Route::get('/comentarios/getComments', [CommentController::class, 'getComments'])-> name('show.comments')-> middleware('can:ver_administracion');

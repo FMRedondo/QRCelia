@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\resourceController;
 use App\Http\Controllers\admin\resourceUploadController;
 use App\Http\Controllers\admin\pointHasTypeController;
 use App\Http\Controllers\admin\qrCodeController;
+use App\Http\Controllers\admin\SettingController;
 
 
 
@@ -40,3 +41,5 @@ Route::post('/recursos/searchByType', [ResourceController::class, 'searchByType'
 Route::post('/puntosInteres/verImagenesEnlazadas', [ResourceController::class, 'verPuntosInteresEnlazados'])-> name('ver.imagenes.enlazadas');
 
 Route::get('/pointHasType/get', [pointHasTypeController::class, 'get']);
+
+Route::get('/getSettings', [SettingController::class, 'getSettings']);

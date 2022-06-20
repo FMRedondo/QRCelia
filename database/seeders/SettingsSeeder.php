@@ -15,13 +15,10 @@ class SettingsSeeder extends Seeder
     public function run()
     {
         DB::table('custom_settings')->insert([
-            'option' => 'enable_comments',
+            'option' => 'comentarios',
             'value' => false
         ]);
 
-        DB::table('custom_settings')->insert([
-            'option' => 'enable_registration',
-            'value' => false
-        ]);
+        
     }
 }
