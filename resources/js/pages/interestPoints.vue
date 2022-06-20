@@ -75,7 +75,6 @@ export default {
                             // busca la poscion del tipo y añades el objeto
                             for (let i = 0; i < datos.length; i++) {
                                 if (datos[i][0] == row.typeId) {
-                                    console.log(datos[i])
                                     datos[i][2].push(
                                         {
                                             name: row.pointName,

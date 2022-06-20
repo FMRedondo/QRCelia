@@ -31,6 +31,7 @@ class pointHasTypeController extends Controller{
             "
          ))
 
+        ->orderBy('types.orden', 'asc')
  
         ->get()
         ->toArray();
