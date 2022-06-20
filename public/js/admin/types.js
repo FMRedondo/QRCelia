@@ -132,40 +132,40 @@ function addType(){
 
         success: function (response) {
             $(".addPanel").toggle();
-
+console.log(response)
                 var newContent = `
-                <tr class="text-gray-700" id="${response.id}" data-orden="${data.orden}>
-                    <td class="px-4 py-3 border">
-                        <div class="flex items-center text-sm">
-                            <div class="relative w-8 h-8 mr-3 rounded-full md:block">
-                                <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true">
-                                </div>
+                <tr class="text-gray-700" id="${response.id}" data-orden="${response.orden}">
+                <td class="px-4 py-3 border">
+                    <div class="flex items-center text-sm">
+                        <div class="relative w-8 h-8 mr-3 rounded-full md:block">
+                            <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true">
                             </div>
-                            <div>
-                                <p class="font-semibold text-black regTypeName">${name}</p>
-                            </div>
+                         </div>
+                        <div>
+                            <p class="font-semibold text-black regTypeName">${name}</p>
                         </div>
-                    </td>
-                    <td class="px-4 py-3 text-xs border inputTD">
-                    </td>
-                    <td class="px-4 py-3 text-xs border">
-                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regTypeCreated"> ${response.date} </span>
-                    </td>
-                    <td class="px-4 py-3 text-xs border">
-                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regTypeUpdated"> ${response.date} </span>
-                    </td>
-                    <td class="px-4 py-3 text-sm border d-flex flex-row justify-content-around">
-                        <button type="button" class="btn btn-primary btnShowEditType" data-id='${response.id}'>Modificar</button>
-                        <button type="button" class="btn btn-danger btnDelType" data-id='${response.id}'>Eliminar</button>
-                    </td>
-                </tr>
+                    </div>
+                </td>
+                <td class="px-4 py-3 text-xs border inputTD">
+                </td>
+                <td class="px-4 py-3 text-xs border">
+                    <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regTypeCreated"> ${response.date} </span>
+                </td>
+                <td class="px-4 py-3 text-xs border">
+                    <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm regTypeUpdated"> ${response.date} </span>
+                </td>
+                <td class="px-4 py-3 text-sm border d-flex flex-row justify-content-around">
+                    <button type="button" class="btn btn-primary btnShowEditType" data-id='${response.id}'>Modificar</button>
+                    <button type="button" class="btn btn-danger btnDelType" data-id='${response.id}'>Eliminar</button>
+                </td>
+            </tr>
                 `;
             $("tbody").append(newContent);
 
             let input = ``;
             if (response.main === 1) {
                 input = `
-                    <input class="switchToggle" type="checkbox" checked data-id="${data.id}">
+                    <input class="switchToggle" type="checkbox" checked data-id="${response.id}">
                 `;
             }else{
                 input = `

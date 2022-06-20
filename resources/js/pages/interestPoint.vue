@@ -17,7 +17,7 @@
         </div>
         <div v-if="comments">
                 <comentarios :about='this.idpoint'></comentarios>
-            </div>
+        </div>
 
     </section>
 </template>
