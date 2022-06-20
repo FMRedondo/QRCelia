@@ -6362,8 +6362,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       // busca la poscion del tipo y añades el objeto
                       for (var _i = 0; _i < datos.length; _i++) {
                         if (datos[_i][0] == row.typeId) {
-                          console.log(datos[_i]);
-
                           datos[_i][2].push({
                             name: row.pointName,
                             poster: row.poster,

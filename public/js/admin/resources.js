@@ -987,6 +987,7 @@ $("#searchByPoint").change(function () {
                 `;
                 $("#resourceList").append(content);
             })
+            reloadActions()
         },
         
         error: function (response){

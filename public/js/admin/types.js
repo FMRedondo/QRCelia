@@ -26,7 +26,7 @@ function load() {
                                 <th class="px-4 py-3 text-center">Acciones</th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white">
+                        <tbody id="tbody" class="bg-white">
                         </tbody>
                     </table>
                 </div>
@@ -47,7 +47,7 @@ function load() {
                 }
 
                 tableContent = `
-                    <tr class="text-gray-700" id="${data.id}">
+                    <tr class="text-gray-700" id="${data.id}" data-orden="${data.orden}">
                         <td class="px-4 py-3 border">
                             <div class="flex items-center text-sm">
                                 <div class="relative w-8 h-8 mr-3 rounded-full md:block">
@@ -93,6 +93,9 @@ function load() {
             $(".btnDelType").click(showDelType);
             $(".searchType").keyup(searchType);
             $(".switchToggle").change(changeMain);
+
+            ordenar();
+
         },
 
         error: function (response){
@@ -131,7 +134,7 @@ function addType(){
             $(".addPanel").toggle();
 
                 var newContent = `
-                <tr class="text-gray-700" id="${response.id}">
+                <tr class="text-gray-700" id="${response.id}" data-orden="${data.orden}>
                     <td class="px-4 py-3 border">
                         <div class="flex items-center text-sm">
                             <div class="relative w-8 h-8 mr-3 rounded-full md:block">
@@ -248,7 +251,7 @@ function searchType() {
                 }
 
                 let tableContent = `
-                    <tr class="text-gray-700" id="${data.id}">
+                    <tr class="text-gray-700" id="${data.id}" data-orden="${data.orden}>
                         <td class="px-4 py-3 border">
                             <div class="flex items-center text-sm">
                                 <div class="relative w-8 h-8 mr-3 rounded-full md:block">
@@ -399,4 +402,38 @@ function changeMain() {
     }
     $(".switchToggle").off();
     $(".switchToggle").on("change",changeMain);
+}
+
+function ordenar() {
+    var el = document.getElementById("tbody");
+    Sortable.create(el, {
+        group: 'tbody',
+        animation: 100,
+        onEnd: function(evt) {
+            var newOrden = (evt.newIndex)
+            var id = (evt.item).id
+            var params = {
+                "id": id,
+                "field": "orden",
+                "value": newOrden,
+                "_token": $('meta[name="csrf-token"]').attr('content')
+            }
+
+            console.log(params)
+                
+            $.ajax({
+                data: params,
+                url: '/admin/categorias/editType',
+                type: 'post',
+
+                success: function (response) {
+                },
+
+                error: function (response) {
+                    alert("Error en la peticion");
+                    console.log(response);
+                },
+            });
+        }
+      });
 }
