@@ -418,8 +418,6 @@ function ordenar() {
                 "value": newOrden,
                 "_token": $('meta[name="csrf-token"]').attr('content')
             }
-
-            console.log(params)
                 
             $.ajax({
                 data: params,

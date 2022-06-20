@@ -236,9 +236,6 @@ const datosPuntoInteres = (element) => ajax({ 'id': element.target.getAttribute(
 
                 }
 
-                console.log(order)
-
-                console.log(orden)
                 ajax({ "id": response[0].id, "orden": JSON.stringify(order), "_token": token }, '/admin/puntosInteres/cambiarOrden', 'POST', response => {
 
                 })
@@ -387,7 +384,6 @@ const modificarOrden = element => {
         contenidoPuntos.innerHTML = ""
 
         fetch("/admin/puntosInteres/getPoints").then(response => response.json()).then(data => {
-            console.log(data)
             data.forEach(element => {
                 let punto = `
             <div id="card${element.id}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32 cardMove" style="width: 30%" >
@@ -499,7 +495,6 @@ const añadirPunto = async (event) => {
 
 const mostrarFiltros = event => {
     const filter = document.getElementById("filtros")
-    console.log(filter)
     filter.classList.toggle('oculto')
 }
 /*
@@ -717,3 +712,10 @@ function crearMensaje() {
     `;
     document.getElementById("app").append(content)
 }
+
+const descInput = document.getElementById("typeDesc");
+descInput.addEventListener('keypress', function(event){
+    if (descInput.value.length > 150) {
+        event.preventDefault();
+    }
+})
