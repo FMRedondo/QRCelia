@@ -5,13 +5,25 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\admin\CommentModel;
+use Illuminate\Support\Facades\DB;
 
 class CommentController extends Controller
 {
     //
 
     public function index(){
-        return view('admin/comentarios');
+        $comments = DB::table('comments')
+        ->join('interest_points', 'interest_points.id', '=', 'comments.idPunto')
+        ->select(
+            'comments.id as id',
+            'comments.content as comment',
+            'interest_points.name as idPoint',
+        )
+        -> get();
+
+        return view('admin/comentarios', [
+            'comments' => $comments
+        ]);
     }
 
     public function addComment(Request $request){
