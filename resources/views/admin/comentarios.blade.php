@@ -23,11 +23,44 @@
       </div>
     </div>
   </div>
-  
-    <i class="fa-solid fa-spinner fa-spin-pulse h1 d-flex justify-content-center mt-5 mb-5"></i>
+
 
   <!-- Tabla de datos -->
-  <div class="contenidoPrincipal container m-auto"></div>
+  <div class="contenidoPrincipal container m-auto">
+    <div class="card mt-5">
+      <div class="card-header">
+          <h3 class="card-title text-white">COMENTARIOS</h3>
+      </div>
+
+      <div class="card-body p-0">
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                     
+                      <th>Contenido</th>
+                      <th>Punto de interes</th>
+                      <th style="width: 40px">Acciones</th>
+                  </tr>
+              </thead>
+              <tbody>
+                @php
+      
+                foreach ($comments as $comment){
+                  echo "<tr id='".$comment->id."'>";
+                    echo "<td>".$comment->comment."</td>";
+                    echo "<td>".$comment->idPoint."</td>";
+                    echo " <td><span class='badge bg-danger'><button type='button' class='btn btn-danger btnDelComments' data-id='". $comment->id."'>Eliminar</button></span></td>";
+                    echo "</tr>";
+                }
+                
+              @endphp
+               
+                
+              </tbody>
+          </table>
+      </div>
+  </div>
+  </div>
 
   <!-- Cartel para eliminar un comentario-->
   <div class="w-50 m-auto p-5  mx-auto my-auto rounded-xl shadow-lg  bg-white delCommentsPanel delPanel">

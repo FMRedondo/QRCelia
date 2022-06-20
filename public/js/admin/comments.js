@@ -9,7 +9,7 @@ function index() {
         type: 'GET',
 
         success: function (response) {
-            $("tbody").empty();
+           /* $("tbody").empty();
             $tabla = `<div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg mt-5">
                         <div class="w-full overflow-x-auto">
                             <table class="w-full">
@@ -48,10 +48,9 @@ function index() {
 
                 $(".contenido").append(contenidoTabla);
 
-                $(".btnDelComments").click(showDelComments);
+            });*/
 
-
-            });
+            $(".btnDelComments").click(showDelComments);
         },
 
         error: function (response) {
