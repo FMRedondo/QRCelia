@@ -57,7 +57,6 @@ h1, p, h2, h3{
 #contentSection{
     width: 100%;
     background-color: rgba(0, 0, 0, 0.7);  
-    backdrop-filter: blur(3px);
     position: relative;
 }
 

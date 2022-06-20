@@ -246,9 +246,9 @@ return [
             'label_color' => 'success',
         ],
         [
-            'text'        => 'Modo guapo',
+            'text'        => 'Modo Ventanas',
             'url'         => 'admin/tab',
-            'icon'        => 'fa-solid fa-pen-ruler',
+            'icon'        => 'fa-brands fa-windows',
             'label_color' => 'success',
         ],
 
