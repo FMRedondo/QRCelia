@@ -5572,12 +5572,10 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     setTimeout(function () {
       var imgSlider = document.getElementsByClassName("imagenSlider");
-      console.log(imgSlider);
 
       for (var i = 0; i < imgSlider.length; i++) {
         var img = new Image();
-        img.src = imgSlider[i].getAttribute("src");
-        console.log("NO" + img.src); // DE NORMAL ES UNA FOTO NORMAL PANORAMIX, COMO EL DRUIDA
+        img.src = imgSlider[i].getAttribute("src"); // DE NORMAL ES UNA FOTO NORMAL PANORAMIX, COMO EL DRUIDA
 
         if (img.width < img.height) {
           imgSlider[i].classList.add("imgVertical");
@@ -6182,9 +6180,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   resources.push(response[i].url);
                 }
 
-                if (type == "image") _this2.images = resources;
-                if (type == "video") _this2.videos = resources;
-                if (type == "audio") _this2.audio = resources;
+                if (type == "image") {
+                  _this2.images = resources;
+                }
+
+                if (type == "video") {
+                  _this2.videos = resources;
+                }
+
+                if (type == "audio") {
+                  _this2.audio = resources;
+                }
 
               case 8:
               case "end":

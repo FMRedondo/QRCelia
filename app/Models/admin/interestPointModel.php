@@ -46,7 +46,7 @@ class interestPointModel extends Model
     }
 
     public static function getResourcesFromPoint($id, $type){
-        if ($type = "daigual")
+        if ($type == "daigual")
             $sql = "SELECT * FROM resources INNER JOIN point_has_resources ON resources.id = point_has_resources.idResource WHERE (point_has_resources.idPoint = $id)";
         else
             $sql = "SELECT * FROM resources INNER JOIN point_has_resources ON resources.id = point_has_resources.idResource WHERE (point_has_resources.idPoint = $id AND resources.type = '$type')";

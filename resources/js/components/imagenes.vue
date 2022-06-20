@@ -25,12 +25,10 @@ export default{
     created() {
         setTimeout(function(){
             const imgSlider = document.getElementsByClassName("imagenSlider");
-            console.log(imgSlider);
             
             for (let i = 0; i < imgSlider.length; i++) {
                 let img = new Image();
                 img.src = imgSlider[i].getAttribute("src")
-                console.log("NO" + img.src)
 
                 // DE NORMAL ES UNA FOTO NORMAL PANORAMIX, COMO EL DRUIDA
 

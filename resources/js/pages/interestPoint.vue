@@ -97,12 +97,20 @@ export default{
                 for (let i = 0; i < response.length; i++) {
                     resources.push((response[i].url));
                 } 
-                if (type == "image")
-                    this.images = resources; 
-                if (type == "video")
+                if (type == "image"){
+                    this.images = resources;
+                }
+
+
+                if (type == "video"){
                     this.videos = resources;
-                if (type == "audio")
-                    this.audio = resources;        
+                }
+
+                    
+                if (type == "audio"){
+                    this.audio = resources;     
+                }
+                    
         },
 
         ordenarComponentes(orden){
