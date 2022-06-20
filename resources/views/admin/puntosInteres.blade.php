@@ -35,7 +35,7 @@
                 <div class="card-body">
                     @foreach ($categorias as $categoria)
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="{{ $categoria->id }}">
+                            <input class="form-check-input filterCategory" type="checkbox" value="" id="{{ $categoria->id }}" data-id="{{ $categoria->id }}">
                             <label class="form-check-label mr-3" for="flexCheckDefault">
                                 {{ $categoria->name }}
                             </label>
@@ -58,19 +58,19 @@
 
                 <div class="card-body">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="insertVideo">
+                        <input class="form-check-input filterData" type="checkbox" value="" id="insertVideo" data-name="video">
                         <label class="form-check-label mr-3" for="flexCheckDefault">
                             Vídeo
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="insertAudio">
+                        <input class="form-check-input filterData" type="checkbox" value="" id="insertAudio" data-name="audio">
                         <label class="form-check-label mr-3" for="flexCheckDefault">
                             Audio
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="insertImage">
+                        <input class="form-check-input filterData" type="checkbox" value="" id="insertImage" data-name="image">
                         <label class="form-check-label mr-3" for="flexCheckDefault">
                             Imagenes
                         </label>

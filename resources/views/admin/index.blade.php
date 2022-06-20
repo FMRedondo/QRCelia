@@ -98,7 +98,7 @@
                     </div>
                     <div class="card card-danger">
                         <div class="card-header">
-                            <h3 class="card-title">USUARIOS</h3>
+                            <h3 class="card-title">CATEGORIAS</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
@@ -117,16 +117,14 @@
                                         <thead>
                                             <tr>
                                                 <th>Nombre</th>
-                                                <th>Correo</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($listaUsuarios as $usuario)
-                                                <tr>
-                                                    <td>{{$usuario -> name}}</td>
-                                                    <td>{{$usuario -> email}}</td>
-                                                </tr>
-                                            @endforeach
+                                            @foreach ($categories as $categorie)
+                                            <tr>
+                                                <td>{{$categorie -> name}}</td>
+                                            </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -187,14 +185,12 @@
                                         <thead>
                                             <tr>
                                                 <th>Nombre</th>
-                                                <th>Correo</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($listaUsuarios as $usuario)
+                                            @foreach ($interestPoint as $punto)
                                                 <tr>
-                                                    <td>{{$usuario -> name}}</td>
-                                                    <td>{{$usuario -> email}}</td>
+                                                    <td>{{$punto -> name}}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

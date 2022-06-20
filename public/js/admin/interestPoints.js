@@ -44,7 +44,36 @@ const eliminarPunto = elemento => {
 }
 
 const index = () => {
-    const response = ajax({}, '/admin/puntosInteres/getPoints?page=1', 'get', (response) => {
+    var params = {};
+    if(document.getElementById("searchPoint").value.length != 0){
+        params.search = document.getElementById("searchPoint").value;
+    }
+
+    var categoriesList = [];
+    const categories =  document.getElementsByClassName('filterCategory')
+    for (let i = 0; i < categories.length; i++) {
+        categories[i].addEventListener('change', index)
+        if(categories[i].checked){
+            categoriesList.push(categories[i].getAttribute('data-id'))
+        }
+    }
+
+    if(categoriesList.length > 0){
+        params.categories = categoriesList;
+    }
+    var dataList = [];
+    const filterData = document.getElementsByClassName('filterData')
+    for (let i = 0; i < filterData.length; i++) {
+        filterData[i].addEventListener('change', index)
+        if(filterData[i].checked){
+            dataList.push(filterData[i].getAttribute('data-name'))
+        }
+        params.data = dataList;
+    }
+
+    console.log(params)
+
+    const response = ajax(params, '/admin/puntosInteres/getPoints?page=1', 'get', (response) => {
         const contenidoVista = document.querySelector(".contenidoPuntos")
         contenidoVista.innerHTML = "";
         response.forEach(data => {
@@ -479,8 +508,8 @@ const mostrarFiltros = event => {
 
 const searchPoint = document.getElementById('searchPoint')
 searchPoint.addEventListener('keyup', elemento => {
-    let busqueda = elemento.target.value
-    ajax({ 'search': busqueda, '_token': token }, '/admin/puntosInteres/searchPoints', 'POST', response => {
+    //let busqueda = elemento.target.value
+    /*ajax({ 'search': busqueda, '_token': token }, '/admin/puntosInteres/searchPoints', 'POST', response => {
         const contenidoVista = document.querySelector(".contenidoPuntos")
         contenidoVista.innerHTML = "";
         response.forEach(data => {
@@ -503,7 +532,8 @@ searchPoint.addEventListener('keyup', elemento => {
 
             contenidoVista.innerHTML += contenidoTabla;
         });
-    })
+    })*/
+    index();
 
 })
 
