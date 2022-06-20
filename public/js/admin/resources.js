@@ -886,6 +886,7 @@ $(".checkType").change(function () {
                         </div>    
                     `;
                     $("#resourceList").append(content);   
+                    reloadActions()
                 })   
             },
     

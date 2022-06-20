@@ -140,7 +140,7 @@ export default {
         flex-wrap: wrap;
         gap: 2em;
         padding-bottom: 3em;
-
+        justify-content: center
     }
 
     #carga{
