@@ -99,7 +99,6 @@ class interestPointController extends Controller
         return response() -> json($result);
     }
 
-
     public function searchInterestPoints(Request $request){
         $search = $request -> search;
         $_token = $request -> _token;

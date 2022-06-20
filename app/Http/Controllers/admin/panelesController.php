@@ -17,6 +17,7 @@ class panelesController extends Controller
         $this -> numComentarios = DB::table('comments');
         $this -> usuarios = DB::table('users');
         $this -> listaUsuarios = $this -> usuarios -> limit(4);
+        $this -> interestPoint = DB::table('interest_points')-> limit(5);
    }
 
     public function index(){
@@ -25,7 +26,9 @@ class panelesController extends Controller
             'categorias' => $this -> numCategorias-> count(),
             'recursos' => $this -> numRecursos -> count(),
             'comentarios' => $this -> numComentarios -> count(),
-            'listaUsuarios' => $this -> listaUsuarios -> get()
+            'listaUsuarios' => $this -> listaUsuarios -> get(),
+            'interestPoint' => $this -> interestPoint -> get(),
+            'categories' => $this -> numCategorias -> get()
         ]);
     }
 
