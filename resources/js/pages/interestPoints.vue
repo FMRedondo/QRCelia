@@ -79,7 +79,7 @@ export default {
                                         {
                                             name: row.pointName,
                                             poster: row.poster,
-                                            text: row.text,
+                                            text: row.text.slice(0, 200) + " ...",
                                             description: row.description,
                                             enlace: "/puntodeinteres/" + row.pointId,
                                             orden: row.typeOrden

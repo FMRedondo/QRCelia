@@ -18,6 +18,7 @@ function load() {
                             <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
                                 <th class="px-4 py-3 text-center">Nombre</th>
                                 <th class="px-4 py-3 text-center">Administrador</th>
+                                <th class="px-4 py-3 text-center">Viajero</th>
                             </tr>
                         </thead>
                         <tbody class="bg-white">
@@ -49,6 +50,9 @@ function load() {
                             </td>
                             <td class="inputTD px-4 py-3 text-xs border">
 
+                            </td>
+                            <td class="viajeroTD px-4 py-3 text-xs border">
+                                <input class="switchToggle" type="checkbox" data-rol="viajero" data-id="${data.id}">
                             </td>
                         </tr>
                     `;
