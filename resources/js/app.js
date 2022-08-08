@@ -26,6 +26,7 @@ Vue.component('menuRecursos', require('./components/menuRecursos.vue').default);
 Vue.component('interestpoints-page', require('./pages/interestPoints.vue').default);
 Vue.component('interestpoint-page', require('./pages/interestPoint.vue').default);
 Vue.component('creditos-page', require('./pages/creditos.vue').default);
+Vue.component('cercanos-page', require('./pages/PuntosCercanos.vue').default);
 
 
 

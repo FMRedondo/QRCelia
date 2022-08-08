@@ -29,4 +29,8 @@ Route::get('/creditos', function () {
     return view('creditos');
 });
 
+Route::get('/puntosCercanos', function () {
+    return view('puntosCercanos');
+});
+
 Route::get('/obtenerCustomizacion', [customizationController::class, 'getAllCustomizationData'])-> name('get.opciones');
