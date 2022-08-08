@@ -6082,7 +6082,11 @@ vue__WEBPACK_IMPORTED_MODULE_2__["default"].use((vue_sweetalert2__WEBPACK_IMPORT
       permission: false,
       data: [],
       latitude: 0,
-      longitude: 0
+      longitude: 0,
+      updateTimeSeconds: 60 // son los segundos que tarda en actualizarse los datos (si se bajan estos segundos es bajo su responsabilidad, no he probado con muchos registros, si son pocos si se puede)
+      // Esto tendria que venir de los ajustes del CMS, pero me da pereza, hoy es dia 8/8/2022 y es verano, como entederas no lo voy ha hacer
+      // todo bien, espero que lo hagas tu! 🍺❗
+
     };
   },
   created: function created() {

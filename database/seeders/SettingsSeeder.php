@@ -18,7 +18,6 @@ class SettingsSeeder extends Seeder
             'option' => 'comentarios',
             'value' => false
         ]);
-
         
     }
 }

@@ -110,21 +110,36 @@
                     <div class='form-group mb-4'>
                         <label class='mb-2'>Nombre:</label>
                         <input type='text' class='form-control typeName '
-                            placeholder='Introduce el nombre del punto' id="typeName" name='typeName'>
+                            placeholder='Introduce el nombre del punto' id="typeName" name='typeName' required>
                     </div>
                     <div class='form-group mb-4'>
                         <label class='mb-2'>Descripción:</label>
                         <input type='text' class='form-control typeName rounded'
-                            placeholder='Introduce la descripcion del punto' id="typeDesc" name='typeDesc'>
+                            placeholder='Introduce la descripcion del punto' id="typeDesc" name='typeDesc' required>
                     </div>
                     <div class='form-group mb-4'>
                         <label class='mb-2'>texto:</label>
                         <textarea class="ckeditor" name="texto" id="texto" rows="10" cols="88"></textarea>
                     </div>
                     <div class='form-group mb-4'>
-                        <label class='mb-2'>Poster:</label>
-                        <input type="file" name="poster" id='poster'>
+                        <label class='mb-2'>Punto localizado:</label>
+                        <input type="checkbox" name="localizado" id='localizado'>
                     </div>
+
+                    <div class='form-group mb-4'>
+                        <label class='mb-2 w-50 d-none'>Latitud:</label>
+                        <input type="hidden" name="latitud" id="latitud" class="inputLocalizados w-50">
+                    </div>
+
+                    <div class='form-group mb-4'>
+                        <label class='mb-2 w-50 d-none'>Longitud:</label>
+                        <input type="hidden" name="Longitud" id='Longitud' class="inputLocalizados w-50">
+                    </div>
+                    <div class='form-group mb-4'>
+                        <label class='mb-2'>Poster:</label>
+                        <input type="file" name="poster" id='poster' required>
+                    </div>
+
             </div>
             <div class="  space-x-4 md:block d-flex justify-center">
                 <input type="reset"

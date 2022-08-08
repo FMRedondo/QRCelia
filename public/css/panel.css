@@ -38,6 +38,7 @@
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.5);
     z-index: 99999999999999;
     padding:1em;
+    overflow-y: scroll;
 }
 
 

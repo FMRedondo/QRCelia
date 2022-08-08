@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use App\Models\admin\resourceModel;
 use App\Models\admin\TypeModel;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 
 class interestPointController extends Controller
 {
@@ -46,23 +47,40 @@ class interestPointController extends Controller
     }
 
     public function subirPoster(Request $request){
-        $file = $request -> file('poster');
-        $name           = $request -> nombre;
-        $description    = $request -> description;
-        $text           = $request -> texto;
-        $nombreArchivo  = $request -> nombreArchivo;
-        $url = "img/puntosInteres/";
-        $nombreArchivoNuevo = time() . "-" . $file -> getClientOriginalName();
-        $subida = $request -> file('poster') -> move($url, $nombreArchivoNuevo);
-        $date           = DATE("Y-m-d H:i:s");
-        $orden = ["image", "texto", "video", "audio"];
-        $orden = json_encode($orden);
+        /*
+            MODIFICAR ESTE METODO PARA:
+                -> PODER SUBIR UN POSTER VACIO
+                -> pODER SUBIR UN PUNTO LOCALIZO
 
-        $result = interestPointModel::addInterestPoint($name, $description, $text, $nombreArchivoNuevo, $date, $orden);
-        resourceModel::añadirPosterComoRecurso($name, $nombreArchivoNuevo);
+        */
+
+        $newPoint = DB::table('interest_points')->insertGetId([
+            'name' => $request -> nombre,
+            'description' => $request -> description,
+            'text' => $request -> texto,
+            'orden' => json_encode(["image", "texto", "video", "audio"]),
+            'poster' => "sinPoster.png",
+            'created_at' => Carbon::now()->toDateTimeString(),
+            'updated_at' => Carbon::now()->toDateTimeString()
+        ]);
+
+        if($request->hasFile('poster')){
+            $file = $request -> file('poster');
+            $nombreArchivo  = $request -> nombreArchivo;
+            $url = "img/puntosInteres/";
+            $nombreArchivoNuevo = time() . "-" . $file -> getClientOriginalName();
+            $subida = $request -> file('poster') -> move($url, $nombreArchivoNuevo);
+            $point = DB::table('interest_points') -> where('id', $newPoint) -> update([
+                'poster' => $nombreArchivoNuevo
+            ]);
+        }
+        else{
+            $nombreArchivoNuevo = "sinPoster.png";
+        }
+
         return response() -> json([
-            'id' => $result,
-            'date' => $date,
+            'id' => $newPoint,
+            'date' => DATE("Y-m-d H:i:s"),
             'poster' => $nombreArchivoNuevo,
         ]);
 

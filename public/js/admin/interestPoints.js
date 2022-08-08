@@ -375,6 +375,23 @@ const mostrarAñadirPunto = (element) => {
     backpanel.classList.toggle("mostrarPanel")
     // quitarle el scroll al document
 
+    const localizado = document.getElementById('localizado')
+    localizado.addEventListener('change', event => {
+        const inputs = document.getElementsByClassName('inputLocalizados')
+        if (event.target.checked) {
+            for (let i = 0; i < inputs.length; i++){
+                inputs[i].setAttribute('type', 'text')
+                inputs[i].previousElementSibling.classList.remove('d-none')
+            } 
+        } else {
+            for (let i = 0; i < inputs.length; i++){
+                inputs[i].value = null;
+                inputs[i].setAttribute('type', 'hidden')
+                inputs[i].previousElementSibling.classList.add('d-none')
+            } 
+        }
+    })
+
     savePoint.addEventListener('click', añadirPunto)
 }
 
