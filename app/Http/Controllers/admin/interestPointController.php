@@ -77,6 +77,17 @@ class interestPointController extends Controller
             $nombreArchivoNuevo = "sinPoster.png";
         }
 
+        if($request->latitude && $request->longitude){
+            DB::table('puntos_cercanos') -> insert([
+                'idPuntoInteres' => $newPoint,
+                'latitude' => $request -> latitude,
+                'longitude' => $request -> longitude,
+                'created_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => Carbon::now()->toDateTimeString()
+
+            ]);
+        }
+
         return response() -> json([
             'id' => $newPoint,
             'date' => DATE("Y-m-d H:i:s"),

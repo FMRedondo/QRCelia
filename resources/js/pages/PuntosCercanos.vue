@@ -3,8 +3,8 @@
     <header-component></header-component>
     <div class="wrapper">
       <separador-component texto="Puntos Cercanos"></separador-component>
-      <p v-if="!permission">{{ this.popPermission() }}</p>
       <p v-if="permission">{{ this.getData() }}</p>
+     
       <p style="color: white">{{ latitude }} -- {{ longitude }}</p>
     </div>
   </section>
@@ -25,78 +25,35 @@ export default {
     return {
       permission: false,
       data: [],
-      latitude: 0,
-      longitude: 0,
+      latitude: null,
+      longitude: null,
       updateTimeSeconds: 60, // son los segundos que tarda en actualizarse los datos (si se bajan estos segundos es bajo su responsabilidad, no he probado con muchos registros, si son pocos si se puede)
       // Esto tendria que venir de los ajustes del CMS, pero me da pereza, hoy es dia 8/8/2022 y es verano, como entederas no lo voy ha hacer
       // todo bien, espero que lo hagas tu! 🍺❗
     };
   },
   created() {
-    if (localStorage.getItem("permission")) this.permission = true;
+    this.getLocation();
   },
   methods: {
-     getLocation() {
-      if (this.permission) {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-            function (position) {
-              alert(position.coords.latitude + " " + position.coords.longitude);
-              //this.latitude = position.coords.latitude;
-              //this.longitude = position.coords.longitude;
-              this.latitude = 20;
-              this.longitude = 100;
-            },
-            function (error) {
-              this.$swal({
+    getLocation(){
+  
+        if (navigator.geolocation){
+          navigator.geolocation.getCurrentPosition(position => {
+            this.latitude = position.coords.latitude
+            this.longitude = position.coords.longitude
+          }, error => {
+            this.$swal({
                 icon: "error",
                 title: "Oops...",
-                text: "No se pudo obtener la posición",
+                text: "No se pudo obtener la posición. Tienes que acepar los permisos de localización",
                 footer:
-                  '<a href="https://support.google.com/chrome/answer/142065?hl=es&co=GENIE.Platform%3DAndroid">¿Tienes alguna duda?</a>',
+                  '<a href="https://support.google.com/chrome/answer/142065?hl=es&co=GENIE.Platform%3DAndroid" target="_blanck">¿Tienes alguna duda?</a>',
               });
-            }
-          );
+          })
         }
-      } else {
-        this.$swal({
-          icon: "error",
-          title: "Oops...",
-          text: "No se pudo obtener la posición. Recarga la página y si el error persiste, visite el enlace que aparece a continuación",
-          footer:
-            '<a href="https://support.google.com/chrome/answer/142065?hl=es&co=GENIE.Platform%3DAndroid">¿Tienes alguna duda?</a>',
-        });
-      }
     },
-
-    popPermission() {
-      this.$swal({
-        title: "Antes de empezar...",
-        text: "Necesitamos que tengas la ubicación activada para poder mostrar los puntos cercanos",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Si, claro!",
-        cancelButtonText: "No, cancelar!",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          this.$swal(
-            "Perfecto!",
-            "Ya tenemos tu permiso para acceder a tu ubicación. Ahora solo tienes que aceptar los permisos del navegador, a continuación, puede que te salga una ventana para aceptarlos",
-            "success"
-          );
-          this.permission == true;
-          localStorage.setItem("permission", true);
-          this.getLocation();
-        }
-      });
-    },
-   
-
-    getData() {
-      this.getLocation();
-    },
+    
   },
 };
 </script>

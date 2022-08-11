@@ -467,11 +467,15 @@ const añadirPunto = async (event) => {
     let fecha = new Date()
     var formData = new FormData()
     var poster = document.getElementById('poster').files;
+    var longitude = document.getElementById('longitude').value
+    var latitude = document.getElementById('latitude').value
     formData.append('poster', poster[0])
     formData.append('fecha', fecha)
     formData.append('nombre', nombre)
     formData.append('description', desc)
     formData.append('texto', texto)
+    formData.append('latitude', latitude)
+    formData.append('longitude', longitude)
     await fetch('/api/puntosInteres/subirPoster', {
         method: 'post',
         body: formData
@@ -485,6 +489,13 @@ const añadirPunto = async (event) => {
         document.getElementById("typeName").value = ""
         document.getElementById("typeDesc").value = ""
         CKEDITOR.instances['texto'].setData("")
+        document.getElementById('addForm').reset();
+        const inputs = document.getElementsByClassName('inputLocalizados')
+        for(let i = 0; i < inputs.length; i++) {
+            inputs[i].value = null;
+            inputs[i].setAttribute('type', 'hidden')
+            inputs[i].previousElementSibling.classList.add('d-none')
+        }
 
         let contenidoTabla = `
             <div id="card${response.id}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden w-32" style="width: 30%" >

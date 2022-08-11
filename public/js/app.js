@@ -6079,8 +6079,8 @@ vue__WEBPACK_IMPORTED_MODULE_2__["default"].use((vue_sweetalert2__WEBPACK_IMPORT
     return {
       permission: false,
       data: [],
-      latitude: 0,
-      longitude: 0,
+      latitude: null,
+      longitude: null,
       updateTimeSeconds: 60 // son los segundos que tarda en actualizarse los datos (si se bajan estos segundos es bajo su responsabilidad, no he probado con muchos registros, si son pocos si se puede)
       // Esto tendria que venir de los ajustes del CMS, pero me da pereza, hoy es dia 8/8/2022 y es verano, como entederas no lo voy ha hacer
       // todo bien, espero que lo hagas tu! 🍺❗
@@ -6088,61 +6088,25 @@ vue__WEBPACK_IMPORTED_MODULE_2__["default"].use((vue_sweetalert2__WEBPACK_IMPORT
     };
   },
   created: function created() {
-    if (localStorage.getItem("permission")) this.permission = true;
+    this.getLocation();
   },
   methods: {
     getLocation: function getLocation() {
-      if (this.permission) {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function (position) {
-            alert(position.coords.latitude + " " + position.coords.longitude); //this.latitude = position.coords.latitude;
-            //this.longitude = position.coords.longitude;
-
-            this.latitude = 20;
-            this.longitude = 100;
-          }, function (error) {
-            this.$swal({
-              icon: "error",
-              title: "Oops...",
-              text: "No se pudo obtener la posición",
-              footer: '<a href="https://support.google.com/chrome/answer/142065?hl=es&co=GENIE.Platform%3DAndroid">¿Tienes alguna duda?</a>'
-            });
-          });
-        }
-      } else {
-        this.$swal({
-          icon: "error",
-          title: "Oops...",
-          text: "No se pudo obtener la posición. Recarga la página y si el error persiste, visite el enlace que aparece a continuación",
-          footer: '<a href="https://support.google.com/chrome/answer/142065?hl=es&co=GENIE.Platform%3DAndroid">¿Tienes alguna duda?</a>'
-        });
-      }
-    },
-    popPermission: function popPermission() {
       var _this = this;
 
-      this.$swal({
-        title: "Antes de empezar...",
-        text: "Necesitamos que tengas la ubicación activada para poder mostrar los puntos cercanos",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Si, claro!",
-        cancelButtonText: "No, cancelar!"
-      }).then(function (result) {
-        if (result.isConfirmed) {
-          _this.$swal("Perfecto!", "Ya tenemos tu permiso para acceder a tu ubicación. Ahora solo tienes que aceptar los permisos del navegador, a continuación, puede que te salga una ventana para aceptarlos", "success");
-
-          _this.permission == true;
-          localStorage.setItem("permission", true);
-
-          _this.getLocation();
-        }
-      });
-    },
-    getData: function getData() {
-      this.getLocation();
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          _this.latitude = position.coords.latitude;
+          _this.longitude = position.coords.longitude;
+        }, function (error) {
+          _this.$swal({
+            icon: "error",
+            title: "Oops...",
+            text: "No se pudo obtener la posición. Tienes que acepar los permisos de localización",
+            footer: '<a href="https://support.google.com/chrome/answer/142065?hl=es&co=GENIE.Platform%3DAndroid" target="_blanck">¿Tienes alguna duda?</a>'
+          });
+        });
+      }
     }
   }
 });
@@ -32950,10 +32914,6 @@ var render = function () {
         { staticClass: "wrapper" },
         [
           _c("separador-component", { attrs: { texto: "Puntos Cercanos" } }),
-          _vm._v(" "),
-          !_vm.permission
-            ? _c("p", [_vm._v(_vm._s(this.popPermission()))])
-            : _vm._e(),
           _vm._v(" "),
           _vm.permission ? _c("p", [_vm._v(_vm._s(this.getData()))]) : _vm._e(),
           _vm._v(" "),

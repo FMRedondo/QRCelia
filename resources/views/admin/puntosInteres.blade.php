@@ -106,7 +106,7 @@
                     </path>
                 </svg>
                 <h2 class="text-xl font-bold py-4 text-center">Añadir nuevo punto interes</h2>
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="" method="post" enctype="multipart/form-data" id="addForm">
                     <div class='form-group mb-4'>
                         <label class='mb-2'>Nombre:</label>
                         <input type='text' class='form-control typeName '
@@ -128,12 +128,12 @@
 
                     <div class='form-group mb-4'>
                         <label class='mb-2 w-50 d-none'>Latitud:</label>
-                        <input type="hidden" name="latitud" id="latitud" class="inputLocalizados w-50">
+                        <input type="hidden" name="latitude" id="latitude" class="inputLocalizados w-50">
                     </div>
 
                     <div class='form-group mb-4'>
                         <label class='mb-2 w-50 d-none'>Longitud:</label>
-                        <input type="hidden" name="Longitud" id='Longitud' class="inputLocalizados w-50">
+                        <input type="hidden" name="longitude" id='longitude' class="inputLocalizados w-50">
                     </div>
                     <div class='form-group mb-4'>
                         <label class='mb-2'>Poster:</label>
