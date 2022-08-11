@@ -49,7 +49,6 @@ class interestPointController extends Controller
     public function subirPoster(Request $request){
         /*
             MODIFICAR ESTE METODO PARA:
-                -> PODER SUBIR UN POSTER VACIO
                 -> pODER SUBIR UN PUNTO LOCALIZO
 
         */

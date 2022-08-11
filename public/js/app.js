@@ -6070,8 +6070,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 
@@ -6093,6 +6091,33 @@ vue__WEBPACK_IMPORTED_MODULE_2__["default"].use((vue_sweetalert2__WEBPACK_IMPORT
     if (localStorage.getItem("permission")) this.permission = true;
   },
   methods: {
+    getLocation: function getLocation() {
+      if (this.permission) {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function (position) {
+            alert(position.coords.latitude + " " + position.coords.longitude); //this.latitude = position.coords.latitude;
+            //this.longitude = position.coords.longitude;
+
+            this.latitude = 20;
+            this.longitude = 100;
+          }, function (error) {
+            this.$swal({
+              icon: "error",
+              title: "Oops...",
+              text: "No se pudo obtener la posición",
+              footer: '<a href="https://support.google.com/chrome/answer/142065?hl=es&co=GENIE.Platform%3DAndroid">¿Tienes alguna duda?</a>'
+            });
+          });
+        }
+      } else {
+        this.$swal({
+          icon: "error",
+          title: "Oops...",
+          text: "No se pudo obtener la posición. Recarga la página y si el error persiste, visite el enlace que aparece a continuación",
+          footer: '<a href="https://support.google.com/chrome/answer/142065?hl=es&co=GENIE.Platform%3DAndroid">¿Tienes alguna duda?</a>'
+        });
+      }
+    },
     popPermission: function popPermission() {
       var _this = this;
 
@@ -6115,25 +6140,6 @@ vue__WEBPACK_IMPORTED_MODULE_2__["default"].use((vue_sweetalert2__WEBPACK_IMPORT
           _this.getLocation();
         }
       });
-    },
-    getLocation: function getLocation() {
-      if (this.permission) {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function (position) {
-            this.latitude = position.coords.latitude;
-            this.longitude = position.coords.longitude;
-          }, function (error) {
-            this.$swal({
-              icon: "error",
-              title: "Oops...",
-              text: "No se pudo obtener la posición",
-              footer: '<a href="https://support.google.com/chrome/answer/142065?hl=es&co=GENIE.Platform%3DAndroid">¿Tienes alguna duda?</a>'
-            });
-          });
-        }
-      } else {
-        alert("nop");
-      }
     },
     getData: function getData() {
       this.getLocation();
@@ -32952,13 +32958,7 @@ var render = function () {
           _vm.permission ? _c("p", [_vm._v(_vm._s(this.getData()))]) : _vm._e(),
           _vm._v(" "),
           _c("p", { staticStyle: { color: "white" } }, [
-            _vm._v(
-              "\n      " +
-                _vm._s(_vm.latitude) +
-                " -- " +
-                _vm._s(_vm.longitude) +
-                "\n    "
-            ),
+            _vm._v(_vm._s(_vm.latitude) + " -- " + _vm._s(_vm.longitude)),
           ]),
         ],
         1

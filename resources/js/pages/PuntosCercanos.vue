@@ -5,9 +5,7 @@
       <separador-component texto="Puntos Cercanos"></separador-component>
       <p v-if="!permission">{{ this.popPermission() }}</p>
       <p v-if="permission">{{ this.getData() }}</p>
-      <p style="color:white">
-        {{latitude}} -- {{longitude}}
-      </p>
+      <p style="color: white">{{ latitude }} -- {{ longitude }}</p>
     </div>
   </section>
 </template>
@@ -30,14 +28,47 @@ export default {
       latitude: 0,
       longitude: 0,
       updateTimeSeconds: 60, // son los segundos que tarda en actualizarse los datos (si se bajan estos segundos es bajo su responsabilidad, no he probado con muchos registros, si son pocos si se puede)
-                              // Esto tendria que venir de los ajustes del CMS, pero me da pereza, hoy es dia 8/8/2022 y es verano, como entederas no lo voy ha hacer
-                              // todo bien, espero que lo hagas tu! 🍺❗
+      // Esto tendria que venir de los ajustes del CMS, pero me da pereza, hoy es dia 8/8/2022 y es verano, como entederas no lo voy ha hacer
+      // todo bien, espero que lo hagas tu! 🍺❗
     };
   },
   created() {
     if (localStorage.getItem("permission")) this.permission = true;
   },
   methods: {
+     getLocation() {
+      if (this.permission) {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            function (position) {
+              alert(position.coords.latitude + " " + position.coords.longitude);
+              //this.latitude = position.coords.latitude;
+              //this.longitude = position.coords.longitude;
+              this.latitude = 20;
+              this.longitude = 100;
+            },
+            function (error) {
+              this.$swal({
+                icon: "error",
+                title: "Oops...",
+                text: "No se pudo obtener la posición",
+                footer:
+                  '<a href="https://support.google.com/chrome/answer/142065?hl=es&co=GENIE.Platform%3DAndroid">¿Tienes alguna duda?</a>',
+              });
+            }
+          );
+        }
+      } else {
+        this.$swal({
+          icon: "error",
+          title: "Oops...",
+          text: "No se pudo obtener la posición. Recarga la página y si el error persiste, visite el enlace que aparece a continuación",
+          footer:
+            '<a href="https://support.google.com/chrome/answer/142065?hl=es&co=GENIE.Platform%3DAndroid">¿Tienes alguna duda?</a>',
+        });
+      }
+    },
+
     popPermission() {
       this.$swal({
         title: "Antes de empezar...",
@@ -61,28 +92,7 @@ export default {
         }
       });
     },
-    getLocation() {
-      if (this.permission) {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-            function (position) {
-                this.latitude = position.coords.latitude;
-                this.longitude = position.coords.longitude;
-            },
-            function (error) {
-               this.$swal({
-                icon: "error",
-                title: "Oops...",
-                text: "No se pudo obtener la posición",
-                footer: '<a href="https://support.google.com/chrome/answer/142065?hl=es&co=GENIE.Platform%3DAndroid">¿Tienes alguna duda?</a>',
-              });
-            }
-          );
-        }
-      }else{
-        alert("nop")
-      }
-    },
+   
 
     getData() {
       this.getLocation();
